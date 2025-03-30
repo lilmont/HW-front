@@ -6,5 +6,4 @@ import { Component, Input } from '@angular/core';
   styleUrl: './card-list.component.css'
 })
 export class CardListComponent {
-  @Input() title: string = '';
 }

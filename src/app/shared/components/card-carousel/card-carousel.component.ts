@@ -7,7 +7,6 @@ import { Component, ElementRef, Input, Renderer2, ViewChild } from '@angular/cor
 })
 export class CardCarouselComponent {
   @Input() cards: { name: string; avatar: string; text: string }[] = [];
-  @Input() title: string = '';
 
   @ViewChild('carousel') carousel!: ElementRef;
   index = 0;

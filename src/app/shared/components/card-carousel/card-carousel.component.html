@@ -1,23 +1,22 @@
-<div class="relative w-3/4 max-w-6xl mx-auto overflow-hidden mt-12">
-    <hw-text-divider [title]="title"></hw-text-divider>
+<div class="relative w-3/4 max-w-6xl mx-auto overflow-hidden py-2">
     <!-- Carousel Wrapper -->
     <div class="flex transition-transform duration-500 ease-out" #carousel [ngStyle]="{
             'transform': index === 0 ? 'translateX(0%)' : 
                         (index === cards.length - 1 ? 'translateX(' + (cards.length - 1) * 50 + '%)' : 'translateX(' + index * 45 + '%)')
           }">
         <div *ngFor="let card of cards; let i = index"
-            class="w-[65%] mx-2 shrink-0 bg-white dark:bg-gray-200 p-6 text-center rounded-2xl shadow-md">
+            class="w-[65%] mx-2 shrink-0 bg-white p-6 text-center rounded-2xl shadow-md">
             <hw-testimonial-card [avatar]="card.avatar" [name]="card.name" [text]="card.text"></hw-testimonial-card>
         </div>
     </div>
 
     <!-- Navigation Buttons -->
     <button (click)="next()"
-        class="absolute bottom-0 right-12 transform -translate-y-1/2 bg-gray-300 p-2 rounded-full shadow-md hover:bg-gray-400 dark:bg-gray-400 dark:hover:bg-gray-600 text-gray-900 hover:text-white cursor-pointer">
+        class="absolute bottom-0 right-12 transform -translate-y-1/2 bg-gray-300 p-2 rounded-full shadow-md hover:bg-gray-400 text-gray-900 hover:text-white cursor-pointer">
         ❯
     </button>
     <button (click)="prev()"
-        class="absolute bottom-0 right-4 transform -translate-y-1/2 bg-gray-300 p-2 rounded-full shadow-md hover:bg-gray-400 dark:bg-gray-400 dark:hover:bg-gray-600 text-gray-900 hover:text-white cursor-pointer">
+        class="absolute bottom-0 right-4 transform -translate-y-1/2 bg-gray-300 p-2 rounded-full shadow-md hover:bg-gray-400 text-gray-900 hover:text-white cursor-pointer">
         ❮
     </button>
 </div>

@@ -7,4 +7,6 @@ import { Component, Input } from '@angular/core';
 })
 export class TextDividerComponent {
   @Input() title: string = "";
+  @Input() linkText: string = "";
+  @Input() hasLink: boolean = false;
 }
