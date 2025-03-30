@@ -3,3 +3,14 @@
 @import "flowbite/src/themes/default";
 @plugin "flowbite/plugin";
 @source "../node_modules/flowbite";
+
+@theme {
+    --color-custom-200: #F6F7F9;
+    --color-custom-300: #F2F0FA;
+    --color-custom-400: #7A65E5;
+    --color-custom-500: #655DD6;
+    --color-custom-600: #4751C2;
+    --color-custom-700: #2143A7;
+    --color-custom-800: #0E3C9A;
+    --color-custom-900: #003792;
+}

@@ -36,7 +36,8 @@ import { FilteredCardsComponent } from './components/filtered-cards/filtered-car
     CardListComponent,
     JumbotronComponent,
     CardCarouselComponent,
-    FilteredCardsComponent
+    FilteredCardsComponent,
+    TextDividerComponent
   ]
 })
 export class SharedModule { }
