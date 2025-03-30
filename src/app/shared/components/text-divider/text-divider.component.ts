@@ -1,0 +1,10 @@
+import { Component, Input } from '@angular/core';
+
+@Component({
+  selector: 'hw-text-divider',
+  templateUrl: './text-divider.component.html',
+  styleUrl: './text-divider.component.css'
+})
+export class TextDividerComponent {
+  @Input() title: string = "";
+}
