@@ -5,6 +5,7 @@
 @source "../node_modules/flowbite";
 
 @theme {
+    --color-custom-100: #FFFFFF;
     --color-custom-200: #F6F7F9;
     --color-custom-300: #F2F0FA;
     --color-custom-400: #7A65E5;
