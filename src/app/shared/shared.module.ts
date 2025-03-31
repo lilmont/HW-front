@@ -11,6 +11,8 @@ import { CardCarouselComponent } from './components/card-carousel/card-carousel.
 import { TestimonialCardComponent } from './components/testimonial-card/testimonial-card.component';
 import { FilteredCardsComponent } from './components/filtered-cards/filtered-cards.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { LayoutComponent } from './components/layout/layout.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -26,21 +28,22 @@ import { FooterComponent } from './components/footer/footer.component';
     CardCarouselComponent,
     TestimonialCardComponent,
     FilteredCardsComponent,
-    FooterComponent
+    FooterComponent,
+    LayoutComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule,
   ],
   exports: [
     NavbarComponent,
-    HeaderComponent,
     CarouselComponent,
     CardListComponent,
     JumbotronComponent,
     CardCarouselComponent,
     FilteredCardsComponent,
     TextDividerComponent,
-    FooterComponent
+    LayoutComponent
   ]
 })
 export class SharedModule { }
