@@ -10,6 +10,7 @@ import { JumbotronComponent } from './components/jumbotron/jumbotron.component';
 import { CardCarouselComponent } from './components/card-carousel/card-carousel.component';
 import { TestimonialCardComponent } from './components/testimonial-card/testimonial-card.component';
 import { FilteredCardsComponent } from './components/filtered-cards/filtered-cards.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 
@@ -24,7 +25,8 @@ import { FilteredCardsComponent } from './components/filtered-cards/filtered-car
     JumbotronComponent,
     CardCarouselComponent,
     TestimonialCardComponent,
-    FilteredCardsComponent
+    FilteredCardsComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule
@@ -37,7 +39,8 @@ import { FilteredCardsComponent } from './components/filtered-cards/filtered-car
     JumbotronComponent,
     CardCarouselComponent,
     FilteredCardsComponent,
-    TextDividerComponent
+    TextDividerComponent,
+    FooterComponent
   ]
 })
 export class SharedModule { }
