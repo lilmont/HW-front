@@ -1,5 +1,5 @@
 <hw-carousel></hw-carousel>
-<hw-text-divider [title]="'دوره ها'"></hw-text-divider>
+<hw-text-divider id="courses-section" [title]="'دوره ها'"></hw-text-divider>
 <hw-card-list></hw-card-list>
 <hw-jumbotron></hw-jumbotron>
 <div class="flex justify-center gap-4 my-12">
@@ -9,6 +9,7 @@
 </div>
 <hw-text-divider [title]="'فراگیران'" [hasLink]="true" [linkText]="'مشاهده همه نظرات'"></hw-text-divider>
 <hw-card-carousel [cards]="testimonials"></hw-card-carousel>
-<hw-filtered-cards [title]="'پروژه ها'" [hasLink]="true" [linkText]="'مشاهده همه پروژه ها'"></hw-filtered-cards>
+<hw-filtered-cards [title]="'جدیدترین پروژه ها'" [hasLink]="true"
+    [linkText]="'مشاهده همه پروژه ها'"></hw-filtered-cards>
 <hw-text-divider [title]="'سفارش پروژه'"></hw-text-divider>
 <hw-order-project-form></hw-order-project-form>
