@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NavbarComponent } from './components/navbar/navbar.component';
 import { HeaderComponent } from './components/header/header.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { CardComponent } from './components/card/card.component';
@@ -18,7 +17,6 @@ import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
-    NavbarComponent,
     HeaderComponent,
     CarouselComponent,
     CardComponent,
@@ -36,7 +34,6 @@ import { RouterModule } from '@angular/router';
     RouterModule,
   ],
   exports: [
-    NavbarComponent,
     CarouselComponent,
     CardListComponent,
     JumbotronComponent,
