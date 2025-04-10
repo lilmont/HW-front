@@ -15,3 +15,7 @@
     --color-custom-800: #0E3C9A;
     --color-custom-900: #003792;
 }
+
+html {
+    scroll-behavior: smooth;
+}
