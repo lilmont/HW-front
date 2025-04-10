@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TestimonialsGridComponent } from './testimonials-grid/testimonials-grid.component';
+import { TestimonialsGridComponent } from './components/testimonials-grid/testimonials-grid.component';
 
 
 

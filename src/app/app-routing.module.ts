@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './shared/components/layout/layout.component';
 import { HomePageComponent } from './home/components/home-page/home-page.component';
-import { TestimonialsGridComponent } from './testimonials/testimonials-grid/testimonials-grid.component';
+import { TestimonialsGridComponent } from './testimonials/components/testimonials-grid/testimonials-grid.component';
 
 const routes: Routes = [
   {

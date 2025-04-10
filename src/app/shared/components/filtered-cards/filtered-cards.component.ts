@@ -6,9 +6,6 @@ import { Component, Input } from '@angular/core';
   styleUrl: './filtered-cards.component.css'
 })
 export class FilteredCardsComponent {
-  @Input() title: string = "";
-  @Input() linkText: string = "";
-  @Input() hasLink: boolean = false;
   labels = ['همه', 'متفرقه', 'رستوران', 'فروشگاهی', 'ساختمان', 'زیبایی', 'صنعت', 'شرکتی'];
   cards = [
     { title: 'پروژه آرایشگاه مردانه شارپنر', description: 'پروژه آرایگاه مردانه شارپنر با امکان رزرو آنلاین نوبت به همراه ده ساعت برنامه نویسی اختصاصی', category: 'همه' },
