@@ -7,6 +7,7 @@ import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './home/home.module';
 import { TestimonialsModule } from './testimonials/testimonials.module';
 import { ProjectsModule } from './projects/projects.module';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ProjectsModule } from './projects/projects.module';
     SharedModule,
     HomeModule,
     TestimonialsModule,
-    ProjectsModule
+    ProjectsModule,
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
