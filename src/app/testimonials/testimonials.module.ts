@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TestimonialsGridComponent } from './components/testimonials-grid/testimonials-grid.component';
+import { TestimonialsRoutingModule } from './testimonials-routing.module';
 
 
 
@@ -9,7 +10,8 @@ import { TestimonialsGridComponent } from './components/testimonials-grid/testim
     TestimonialsGridComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    TestimonialsRoutingModule
   ]
 })
 export class TestimonialsModule { }

@@ -1,20 +1,29 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './shared/components/layout/layout.component';
-import { HomePageComponent } from './home/components/home-page/home-page.component';
-import { TestimonialsGridComponent } from './testimonials/components/testimonials-grid/testimonials-grid.component';
-import { ProjectsListComponent } from './projects/components/projects-list/projects-list.component';
+import { BlankLayoutComponent } from './shared/components/blank-layout/blank-layout.component';
 
 const routes: Routes = [
   {
     path: '',
     component: LayoutComponent,
     children: [
-      { path: '', component: HomePageComponent },  // Home page
-      { path: 'testimonials', component: TestimonialsGridComponent }, // Testimonials page
-      { path: 'projects', component: ProjectsListComponent }, // Projects page
-    ],
+      { path: '', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) }, // Home
+      { path: 'testimonials', loadChildren: () => import('./testimonials/testimonials.module').then(m => m.TestimonialsModule) }, // Testimonials
+      { path: 'projects', loadChildren: () => import('./projects/projects.module').then(m => m.ProjectsModule) }, // Projects
+    ]
   },
+  {
+    path: 'users',
+    component: BlankLayoutComponent,
+    children: [
+      { path: '', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) }, // Users/Auth
+    ]
+  },
+  {
+    path: '**',
+    redirectTo: ''
+  }
 ];
 
 @NgModule({
