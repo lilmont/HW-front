@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
@@ -8,6 +7,7 @@ import { HomeModule } from './home/home.module';
 import { TestimonialsModule } from './testimonials/testimonials.module';
 import { ProjectsModule } from './projects/projects.module';
 import { CoreModule } from './core/core.module';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,8 @@ import { CoreModule } from './core/core.module';
     HomeModule,
     TestimonialsModule,
     ProjectsModule,
-    CoreModule
+    CoreModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]

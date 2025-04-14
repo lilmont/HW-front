@@ -12,6 +12,7 @@ import { FilteredCardsComponent } from './components/filtered-cards/filtered-car
 import { FooterComponent } from './components/footer/footer.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { RouterModule } from '@angular/router';
+import { BlankLayoutComponent } from './components/blank-layout/blank-layout.component';
 
 
 
@@ -27,7 +28,8 @@ import { RouterModule } from '@angular/router';
     TestimonialCardComponent,
     FilteredCardsComponent,
     FooterComponent,
-    LayoutComponent
+    LayoutComponent,
+    BlankLayoutComponent
   ],
   imports: [
     CommonModule,
@@ -40,7 +42,8 @@ import { RouterModule } from '@angular/router';
     CardCarouselComponent,
     FilteredCardsComponent,
     TextDividerComponent,
-    LayoutComponent
+    LayoutComponent,
+    BlankLayoutComponent
   ]
 })
 export class SharedModule { }

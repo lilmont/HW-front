@@ -5,13 +5,24 @@
             <span class="self-center text-2xl font-semibold whitespace-nowrap text-custom-900">Hardworker</span>
         </a>
         <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x">
-            <button type="button" class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300"
+            <span>
+                <a [routerLink]="['/users/signup']"
+                    class="py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-custom-600 md:p-0">
+                    ثبت نام
+                </a>
+                <span class="mx-2">/</span>
+                <a [routerLink]="['/']"
+                    class="py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-custom-600 md:p-0">
+                    ورود
+                </a>
+            </span>
+            <!-- <button type="button" class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300"
                 id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
                 data-dropdown-placement="bottom">
                 <span class="sr-only">Open user menu</span>
                 <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-3.jpg" alt="user photo">
             </button>
-            <!-- Dropdown menu -->
+            
             <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-sm"
                 id="user-dropdown">
                 <div class="px-4 py-3">
@@ -22,19 +33,12 @@
                     <li>
                         <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-custom-200">پروفایل</a>
                     </li>
-                    <!-- <li>
-                        <a href="#"
-                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Earnings</a>
-                    </li> -->
+                    
                     <li>
                         <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-custom-200">خروج</a>
                     </li>
                 </ul>
-            </div>
+            </div> -->
             <button data-collapse-toggle="navbar-user" type="button"
                 class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
                 aria-controls="navbar-user" aria-expanded="false">
