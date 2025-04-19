@@ -13,10 +13,17 @@ export class SignupComponent {
     phoneNumber: ''
   };
   Messages = Messages;
+  phoneInvalid = false;
 
   constructor(private authService: AuthService) {
   }
   sendSignupCode() {
+    this.phoneInvalid = !this.isPhoneNumberValid(this.signupData.phoneNumber); // <-- validate here
+
+    if (this.phoneInvalid) {
+      return;
+    }
+
     this.authService.sendSignupRequest(this.signupData).subscribe({
       next: () => {
         console.log("Move to confirm code page")
@@ -27,5 +34,10 @@ export class SignupComponent {
         // show error
       }
     });
+  }
+
+  private isPhoneNumberValid(phone: string): boolean {
+    const iranPhoneStrictRegex = /^09\d{9}$/;
+    return iranPhoneStrictRegex.test(phone);
   }
 }

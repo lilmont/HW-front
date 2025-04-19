@@ -21,6 +21,9 @@
                 <input type="tel" id="phone-number" [(ngModel)]="signupData.phoneNumber" name="phoneNumber"
                     class="bg-gray-50 border border-custom-300 text-gray-900 text-sm rounded-lg focus:ring-custom-500 focus:border-custom-500 block w-full ps-10 p-2.5 mt-6"
                     placeholder="09123456789">
+                <div *ngIf="phoneInvalid" class="text-red-600 text-sm mt-1">
+                    {{Messages.Errors.invalidPhoneNumber}}
+                </div>
             </div>
             <button type="button" (click)="sendSignupCode()"
                 class="w-full text-white bg-custom-700 hover:bg-custom-800 focus:ring-4 focus:outline-none focus:ring-custom-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer mt-3">

@@ -1,9 +1,9 @@
 export const Messages = {
     Errors: {
-        invalidPhoneNumber: 'شماره موبایل نامعتبر است',
         tooManyRequests: 'خطا در ثبت نام. لطفا با پشتیبانی تماس بگیرید',
         invalidRequest: 'مشکلی پیش آمده، لطفا دوباره امتحان کنید',
-        error: 'خطا'
+        error: 'خطا',
+        invalidPhoneNumber: 'شماره تلفن باید با 09 شروع شود و 11 رقم باشد.',
     },
     Buttons: {
         sendCode: 'ارسال کد یکبار مصرف',
