@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../../core/services/auth.service';
 import { ISendSignupCodeRequest } from '../../../models/SendSignupCodeRequest';
+import { Messages } from '../../../texts/messages';
 
 @Component({
   selector: 'hw-signup',
@@ -11,9 +12,9 @@ export class SignupComponent {
   signupData: ISendSignupCodeRequest = {
     phoneNumber: ''
   };
+  Messages = Messages;
 
   constructor(private authService: AuthService) {
-
   }
   sendSignupCode() {
     this.authService.sendSignupRequest(this.signupData).subscribe({

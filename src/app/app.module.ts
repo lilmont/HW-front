@@ -8,6 +8,8 @@ import { TestimonialsModule } from './testimonials/testimonials.module';
 import { ProjectsModule } from './projects/projects.module';
 import { CoreModule } from './core/core.module';
 import { AuthModule } from './auth/auth.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,16 @@ import { AuthModule } from './auth/auth.module';
     TestimonialsModule,
     ProjectsModule,
     CoreModule,
-    AuthModule
+    AuthModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      toastClass: 'ngx-toastr toast-enter',
+      positionClass: 'toast-bottom-right',
+      timeOut: 5000,
+      closeButton: false,
+      enableHtml: true,
+      preventDuplicates: true
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

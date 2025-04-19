@@ -6,25 +6,28 @@ import { ILoginRequest } from '../../models/ILoginRequest';
 import { IJwtResponse } from '../../models/IJwtResponse';
 import { ISendSignupCodeRequest } from '../../models/SendSignupCodeRequest';
 import { Messages } from '../../texts/messages';
+import { ToastService } from './toast.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private baseUrl = environment.apiBaseUrl; // use environment config
+  private baseUrl = environment.apiBaseUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private toastr: ToastService) { }
 
   sendSignupRequest(data: ISendSignupCodeRequest): Observable<void> {
     return this.http.post<void>(`${this.baseUrl}/auth/signup-code`, data).pipe(
       catchError((error) => {
         if (error.status === 429) {
-          alert(Messages.Errors.tooManyRequests);
+          this.toastr.error(Messages.Errors.tooManyRequests, Messages.Errors.error);
         } else if (error.status === 400) {
-          alert(Messages.Errors.invalidRequest);
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
         } else {
-          alert(Messages.Errors.invalidRequest);
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
         }
 
         return throwError(() => error);
