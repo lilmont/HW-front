@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Messages } from '../../../texts/messages';
 
 @Component({
   selector: 'hw-footer',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './footer.component.css'
 })
 export class FooterComponent {
-
+  Messages = Messages;
 }

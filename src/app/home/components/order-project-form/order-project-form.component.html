@@ -6,21 +6,21 @@
                 <path
                     d="M6 0H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3H2a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Zm10 0h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3h-1a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Z" />
             </svg>
-            <p>برای سفارش پروژه این فرم رو پر کنید تا با هم گپ بزنیم</p>
+            <p>{{Messages.Headers.orderProjectDesc}}</p>
         </blockquote>
 
         <form class="max-w-lg mx-auto mt-10">
             <div class="mb-5">
                 <label for="fullname" class="block mb-2 text-sm font-medium text-gray-900">
-                    نام و نام خانوادگی
+                    {{Messages.Labels.fullName}}
                 </label>
-                <input type="text" id="fullname" placeholder="نام و نام خانوادگی"
+                <input type="text" id="fullname" [placeholder]="Messages.Labels.fullName"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-custom-500 focus:border-custom-500 block w-full p-2.5"
                     required>
             </div>
             <div class="mb-5">
                 <label for="phone-number" class="block mb-2 text-sm font-medium text-gray-900">
-                    شماره تماس
+                    {{Messages.Labels.phoneNumber}}
                 </label>
                 <div class="relative">
                     <div class="absolute inset-y-0 start-0 top-0 flex items-center ps-3.5 pointer-events-none">
@@ -37,15 +37,15 @@
             </div>
             <div class="mb-5">
                 <label for="order-description" class="block mb-2 text-sm font-medium text-gray-900">
-                    توضیحات
+                    {{Messages.Labels.description}}
                 </label>
                 <textarea id="order-description" rows="4"
                     class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-custom-500 focus:border-custom-500"
-                    placeholder="در صورت تمایل شرح کوتاهی از سفارش خود بنویسید..."></textarea>
+                    [placeholder]="Messages.Labels.descriptionPlaceholder"></textarea>
             </div>
             <button type="submit"
                 class="cursor-pointer text-white bg-custom-700 hover:bg-custom-800 focus:ring-4 focus:outline-none focus:ring-custom-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                ثبت سفارش
+                {{Messages.Buttons.submitOrder}}
             </button>
         </form>
     </div>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Messages } from '../../../texts/messages';
 
 @Component({
   selector: 'hw-jumbotron',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './jumbotron.component.css'
 })
 export class JumbotronComponent {
-
+  Messages = Messages;
 }

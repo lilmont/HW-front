@@ -6,7 +6,8 @@ import { Component, Input } from '@angular/core';
   styleUrl: './text-divider.component.css'
 })
 export class TextDividerComponent {
-  @Input() title: string = "";
-  @Input() linkText: string = "";
+  @Input() title: string = '';
+  @Input() linkText: string = '';
   @Input() hasLink: boolean = false;
+  @Input() linkRoute: string = '';
 }

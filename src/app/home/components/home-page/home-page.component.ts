@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Messages } from '../../../texts/messages';
 
 @Component({
   selector: 'hw-home-page',
@@ -7,6 +8,7 @@ import { Component } from '@angular/core';
 })
 export class HomePageComponent {
   title = 'hardworker-front';
+  Messages = Messages;
   testimonials = [
     { name: 'نرگس سادات فاطمی', avatar: 'https://randomuser.me/api/portraits/men/1.jpg', text: 'آموزش و تدریس واقعا عالی است و صدالبته پشتیبانی قوی ،ممنون آقای مزروعی' },
     { name: 'علی رهنمائیان', avatar: 'https://randomuser.me/api/portraits/women/2.jpg', text: 'آموزش ها خوبه وکامل توضیح دادن اما مهمتر این هست که پشتیبانی قوی هست وسوالات شمارو جواب میدن' },

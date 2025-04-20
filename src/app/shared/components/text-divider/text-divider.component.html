@@ -2,7 +2,7 @@
     <span class="px-4 font-bol text-custom-700">{{title}}</span>
     <div class="flex-grow border-t border-gray-300"></div>
     <span class="px-4 text-gray-500" *ngIf="hasLink">
-        <a href="#" class="block px-4 py-2 text-sm text-custom-500 font-bold">
+        <a [href]="linkRoute" class="block px-4 py-2 text-sm text-custom-500 font-bold">
             {{linkText}}
         </a>
     </span>

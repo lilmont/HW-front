@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Messages } from '../../../texts/messages';
 
 @Component({
   selector: 'hw-card',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './card.component.css'
 })
 export class CardComponent {
-
+  Messages = Messages;
 }

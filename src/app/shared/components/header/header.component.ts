@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Messages } from '../../../texts/messages';
 
 @Component({
   selector: 'hw-header',
@@ -6,4 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
+  Messages = Messages;
 }

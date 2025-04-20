@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Messages } from '../../../texts/messages';
 
 @Component({
   selector: 'hw-filtered-cards',
@@ -6,6 +7,7 @@ import { Component, Input } from '@angular/core';
   styleUrl: './filtered-cards.component.css'
 })
 export class FilteredCardsComponent {
+  Messages = Messages;
   labels = ['همه', 'متفرقه', 'رستوران', 'فروشگاهی', 'ساختمان', 'زیبایی', 'صنعت', 'شرکتی'];
   cards = [
     { title: 'پروژه آرایشگاه مردانه شارپنر', description: 'پروژه آرایگاه مردانه شارپنر با امکان رزرو آنلاین نوبت به همراه ده ساعت برنامه نویسی اختصاصی', category: 'همه' },
