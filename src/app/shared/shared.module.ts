@@ -13,6 +13,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { RouterModule } from '@angular/router';
 import { BlankLayoutComponent } from './components/blank-layout/blank-layout.component';
+import { LoadingButtonComponent } from './components/loading-button/loading-button.component';
 
 
 
@@ -29,7 +30,8 @@ import { BlankLayoutComponent } from './components/blank-layout/blank-layout.com
     FilteredCardsComponent,
     FooterComponent,
     LayoutComponent,
-    BlankLayoutComponent
+    BlankLayoutComponent,
+    LoadingButtonComponent
   ],
   imports: [
     CommonModule,
@@ -43,7 +45,8 @@ import { BlankLayoutComponent } from './components/blank-layout/blank-layout.com
     FilteredCardsComponent,
     TextDividerComponent,
     LayoutComponent,
-    BlankLayoutComponent
+    BlankLayoutComponent,
+    LoadingButtonComponent
   ]
 })
 export class SharedModule { }
