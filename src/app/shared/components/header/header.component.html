@@ -6,8 +6,8 @@
                 {{Messages.Headers.hardworker}}
             </span>
         </a>
-        <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x">
-            <span>
+        <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x relative">
+            <span *ngIf="!jwtHelperService.isLoggedIn()">
                 <a [routerLink]="['/users/signup']"
                     class="py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-custom-600 md:p-0">
                     {{Messages.Headers.signup}}
@@ -18,29 +18,33 @@
                     {{Messages.Headers.login}}
                 </a>
             </span>
-            <!-- <button type="button" class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300"
-                id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
-                data-dropdown-placement="bottom">
+
+            <button *ngIf="jwtHelperService.isLoggedIn()" type="button"
+                class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300"
+                id="user-menu-button" aria-expanded="false" (click)="toggleDropdown()">
                 <span class="sr-only">Open user menu</span>
                 <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-3.jpg" alt="user photo">
             </button>
-            
-            <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-sm"
+
+            <div *ngIf="jwtHelperService.isLoggedIn() && showDropdown"
+                class="z-50 absolute top-full mt-2 left-0 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-sm"
                 id="user-dropdown">
                 <div class="px-4 py-3">
-                    <span class="block text-sm text-gray-900">اسم و فامیل</span>
-                    <span class="block text-sm  text-gray-500 truncate">09131234567</span>
+                    <!-- <span class="block text-sm text-gray-900">اسم و فامیل</span> -->
+                    <span class="block text-sm text-gray-500 truncate">{{jwtHelperService.getUser()?.username}}</span>
                 </div>
                 <ul class="py-2" aria-labelledby="user-menu-button">
                     <li>
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-custom-200">پروفایل</a>
+                        <a href="#"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-custom-200">{{Messages.Headers.profile}}</a>
                     </li>
-                    
                     <li>
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-custom-200">خروج</a>
+                        <a href="#" (click)="logout()"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-custom-200">{{Messages.Headers.logout}}</a>
                     </li>
                 </ul>
-            </div> -->
+            </div>
+
             <button data-collapse-toggle="navbar-user" type="button"
                 class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
                 aria-controls="navbar-user" aria-expanded="false">

@@ -52,8 +52,9 @@ export const Messages = {
         hardworkerHeader: 'آموزش برنامه نویسی وب سایت | hardworker.ir',
         hardworker: 'Hardworker',
         enterConfirmationCode: 'لطفا کد تایید را وارد کنید',
-        setPassword: 'رمز عبور'
-
+        setPassword: 'رمز عبور',
+        profile: 'پروفایل',
+        logout: 'خروج',
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'

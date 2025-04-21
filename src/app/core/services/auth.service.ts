@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { catchError, Observable, throwError } from 'rxjs';
+import { catchError, Observable, tap, throwError } from 'rxjs';
 import { ILoginRequest } from '../../models/ILoginRequest';
 import { IJwtResponse } from '../../models/IJwtResponse';
 import { ISendSignupCodeRequest } from '../../models/SendSignupCodeRequest';
@@ -53,6 +53,11 @@ export class AuthService {
 
   Signup(data: ISendSignupCodeRequest): Observable<IJwtResponse> {
     return this.http.post<IJwtResponse>(`${this.baseUrl}/auth/signup`, data).pipe(
+      tap((res) => {
+        if (res && res.token) {
+          localStorage.setItem('token', res.token);
+        }
+      }),
       catchError((error) => {
         if (error.status === 409) {
           this.toastr.error(Messages.Errors.userExists, Messages.Errors.error);
