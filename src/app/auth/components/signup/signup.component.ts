@@ -13,16 +13,19 @@ import { LoadingService } from '../../../core/services/loading.service';
 export class SignupComponent implements OnInit {
   signupData: ISendSignupCodeRequest = {
     phoneNumber: '',
-    code: ''
+    code: '',
+    password: ''
   };
   Messages = Messages;
-  step: 'phone' | 'code' = 'phone';
-  phoneInvalid = false;
-  codeInvalid = false;
+  step: 'phone' | 'code' | 'password' = 'phone';
+  phoneInvalid: boolean = false;
+  codeInvalid: boolean = false;
   confirmationDigits: string[] = ['', '', '', '', '', ''];
   timer: number = 120;
   timerInterval: any;
   showResendButton: boolean = false;
+  showPassword: boolean = false;
+  passwordInvalid: boolean = false;
 
   constructor(
     private authService: AuthService,
@@ -30,6 +33,7 @@ export class SignupComponent implements OnInit {
     public loadingService: LoadingService) {
   }
 
+  //#region Validate Code
   ngOnInit(): void {
     if (this.step === 'code') {
       this.startTimer();
@@ -66,6 +70,33 @@ export class SignupComponent implements OnInit {
     this.startTimer();
   }
 
+  confirmCode() {
+    this.codeInvalid = !this.isCodeValid(this.signupData.code);
+
+    if (this.codeInvalid) {
+      return;
+    }
+
+    this.loadingService.show();
+
+    this.authService.validateSignupCode(this.signupData).subscribe({
+      next: () => {
+        this.step = 'password';
+        this.loadingService.hide();
+      },
+      error: (error) => {
+        this.loadingService.hide();
+      }
+    });
+  }
+
+  private isCodeValid(code: string): boolean {
+    const sixDigitCodeRegex = /^\d{6}$/;
+    return sixDigitCodeRegex.test(code);
+  }
+  //#endregion Validate Code
+
+  //#region Send Code
   sendSignupCode() {
     this.phoneInvalid = !this.isPhoneNumberValid(this.signupData.phoneNumber);
 
@@ -91,18 +122,24 @@ export class SignupComponent implements OnInit {
     const iranPhoneStrictRegex = /^09\d{9}$/;
     return iranPhoneStrictRegex.test(phone);
   }
+  //#endregion Send Code
 
-  confirmCode() {
-    this.codeInvalid = !this.isCodeValid(this.signupData.code);
+  //#region Set Password
+  togglePasswordVisibility(): void {
+    this.showPassword = !this.showPassword;
+  }
 
-    if (this.codeInvalid) {
+  setPassword() {
+    this.passwordInvalid = !this.isPasswordValid(this.signupData.password);
+
+    if (this.passwordInvalid) {
       return;
     }
 
     this.loadingService.show();
 
-    this.authService.validateSignupCode(this.signupData).subscribe({
-      next: () => {
+    this.authService.Signup(this.signupData).subscribe({
+      next: (result) => {
         this.loadingService.hide();
       },
       error: (error) => {
@@ -111,8 +148,7 @@ export class SignupComponent implements OnInit {
     });
   }
 
-  private isCodeValid(code: string): boolean {
-    const sixDigitCodeRegex = /^\d{6}$/;
-    return sixDigitCodeRegex.test(code);
+  isPasswordValid(password: string): boolean {
+    return password.length >= 6;
   }
 }

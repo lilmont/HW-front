@@ -51,9 +51,21 @@ export class AuthService {
     );
   }
 
-  // signup(data: ISignupRequest): Observable<IJwtResponse> {
-  //   return this.http.post<IJwtResponse>(`${this.baseUrl}/auth/signup`, data);
-  // }
+  Signup(data: ISendSignupCodeRequest): Observable<IJwtResponse> {
+    return this.http.post<IJwtResponse>(`${this.baseUrl}/auth/signup`, data).pipe(
+      catchError((error) => {
+        if (error.status === 409) {
+          this.toastr.error(Messages.Errors.userExists, Messages.Errors.error);
+        } else if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+
+        return throwError(() => error);
+      })
+    );
+  }
 
   // login(data: ILoginRequest): Observable<IJwtResponse> {
   //   return this.http.post<IJwtResponse>(`${this.baseUrl}/auth/login`, data);

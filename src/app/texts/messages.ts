@@ -5,7 +5,9 @@ export const Messages = {
         error: 'خطا',
         invalidPhoneNumber: 'شماره تلفن باید با 09 شروع شود و 11 رقم باشد.',
         wrongValidationCode: 'کد وارد شده اشتباه است',
-        invalidValidationCode: 'کد تایید باید 6 رقم باشد'
+        invalidValidationCode: 'کد تایید باید 6 رقم باشد',
+        invalidPassword: 'رمز عبور باید حداقل 6 کاراکتر باشد',
+        userExists: 'این شماره قبلا ثبت نام شده است',
     },
     Buttons: {
         sendCode: 'ارسال کد یکبار مصرف',
@@ -27,6 +29,7 @@ export const Messages = {
         confirmationCodePart1: 'کد تایید برای شماره',
         confirmationCodePart2: 'پیامک شد',
         timer: 'ثانیه تا دریافت کد مجدد',
+        setPasswordDesc: 'لطفا یک رمز عبور برای خود انتخاب کنید (حداقل 6 کاراکتر)'
     },
     Headers: {
         signup: 'ثبت نام',
@@ -49,6 +52,7 @@ export const Messages = {
         hardworkerHeader: 'آموزش برنامه نویسی وب سایت | hardworker.ir',
         hardworker: 'Hardworker',
         enterConfirmationCode: 'لطفا کد تایید را وارد کنید',
+        setPassword: 'رمز عبور'
 
     },
     Alts: {
