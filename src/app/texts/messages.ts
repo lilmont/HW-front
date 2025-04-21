@@ -4,6 +4,8 @@ export const Messages = {
         invalidRequest: 'مشکلی پیش آمده، لطفا دوباره امتحان کنید',
         error: 'خطا',
         invalidPhoneNumber: 'شماره تلفن باید با 09 شروع شود و 11 رقم باشد.',
+        wrongValidationCode: 'کد وارد شده اشتباه است',
+        invalidValidationCode: 'کد تایید باید 6 رقم باشد'
     },
     Buttons: {
         sendCode: 'ارسال کد یکبار مصرف',
@@ -13,13 +15,18 @@ export const Messages = {
         purchase: 'خرید',
         submitOrder: 'ثبت سفارش',
         moreInfo: 'اطلاعات بیشتر',
+        confirm: 'تایید',
+        resendCode: 'ارسال دوباره کد تایید',
     },
     Labels: {
         enterPhoneNumber: 'لطفا شماره موبایل خود را وارد کنید',
         fullName: 'نام و نام خانوادگی',
         phoneNumber: 'شماره تماس',
         description: 'توضیحات',
-        descriptionPlaceholder: 'در صورت تمایل شرح کوتاهی از سفارش خود بنویسید...'
+        descriptionPlaceholder: 'در صورت تمایل شرح کوتاهی از سفارش خود بنویسید...',
+        confirmationCodePart1: 'کد تایید برای شماره',
+        confirmationCodePart2: 'پیامک شد',
+        timer: 'ثانیه تا دریافت کد مجدد',
     },
     Headers: {
         signup: 'ثبت نام',
@@ -41,6 +48,8 @@ export const Messages = {
         disclaimerYear: '2015',
         hardworkerHeader: 'آموزش برنامه نویسی وب سایت | hardworker.ir',
         hardworker: 'Hardworker',
+        enterConfirmationCode: 'لطفا کد تایید را وارد کنید',
+
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'

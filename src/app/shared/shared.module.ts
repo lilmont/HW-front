@@ -14,6 +14,7 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { RouterModule } from '@angular/router';
 import { BlankLayoutComponent } from './components/blank-layout/blank-layout.component';
 import { LoadingButtonComponent } from './components/loading-button/loading-button.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -31,11 +32,12 @@ import { LoadingButtonComponent } from './components/loading-button/loading-butt
     FooterComponent,
     LayoutComponent,
     BlankLayoutComponent,
-    LoadingButtonComponent
+    LoadingButtonComponent,
   ],
   imports: [
     CommonModule,
     RouterModule,
+    FormsModule
   ],
   exports: [
     CarouselComponent,
@@ -46,7 +48,7 @@ import { LoadingButtonComponent } from './components/loading-button/loading-butt
     TextDividerComponent,
     LayoutComponent,
     BlankLayoutComponent,
-    LoadingButtonComponent
+    LoadingButtonComponent,
   ]
 })
 export class SharedModule { }

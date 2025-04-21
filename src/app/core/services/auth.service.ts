@@ -35,6 +35,22 @@ export class AuthService {
     );
   }
 
+  validateSignupCode(data: ISendSignupCodeRequest): Observable<void> {
+    return this.http.post<void>(`${this.baseUrl}/auth/verify-signup-code`, data).pipe(
+      catchError((error) => {
+        if (error.status === 429) {
+          this.toastr.error(Messages.Errors.wrongValidationCode, Messages.Errors.error);
+        } else if (error.status === 400) {
+          this.toastr.error(Messages.Errors.wrongValidationCode, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+
+        return throwError(() => error);
+      })
+    );
+  }
+
   // signup(data: ISignupRequest): Observable<IJwtResponse> {
   //   return this.http.post<IJwtResponse>(`${this.baseUrl}/auth/signup`, data);
   // }
