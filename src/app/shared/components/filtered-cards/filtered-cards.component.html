@@ -1,12 +1,12 @@
 <div class="relative w-3/4 max-w-6xl mx-auto overflow-hidden mt-2">
     <div class="flex items-center justify-center mb-12">
         <div class="max-w-full sm:w-full md:max-w-3xl lg:max-w-4xl xl:max-w-6xl" dir="rtl">
-            <div class="flex space-x-4 space-x mb-6 mt-10 overflow-x-auto scrollbar-hide">
-                <button class="" *ngFor="let label of labels" (click)="filterCards(label)" [ngClass]="{
-                'cursor-pointer bg-custom-800 text-white hover:bg-custom-700': selectedLabel === label, 
-                'cursor-pointer bg-custom-100 text-black hover:bg-custom-400 hover:text-white': selectedLabel !== label 
-              }"
-                    class="px-6 py-2 rounded-full bg-custom-100 hover:bg-custom-400 hover:text-white focus:outline-none flex-shrink-0">
+            <div class="flex mb-6 mt-10 overflow-x-auto scrollbar-hide">
+                <button *ngFor="let label of labels" (click)="filterCards(label)" [ngClass]="{
+                            'cursor-pointer bg-custom-800 text-white hover:bg-custom-700': selectedLabel === label, 
+                            'cursor-pointer bg-custom-100 text-black hover:bg-custom-400 hover:text-white': selectedLabel !== label 
+                        }"
+                    class="px-6 py-2 rounded-full bg-custom-100 hover:bg-custom-400 hover:text-white focus:outline-none flex-shrink-0 mr-4 last:mr-0">
                     {{ label }}
                 </button>
             </div>
@@ -22,9 +22,9 @@
                                 card.title }}</h5>
                             <p class="mb-3 font-normal text-gray-700">{{ card.description }}</p>
 
-                            <div class="flex space-x-2 justify-end mt-4">
+                            <div class="flex justify-end mt-4">
                                 <button
-                                    class="px-4 py-2 text-white bg-custom-700 rounded-lg hover:bg-custom-800 cursor-pointer">
+                                    class="px-4 py-2 text-white bg-custom-700 rounded-lg hover:bg-custom-800 cursor-pointer ml-2">
                                     {{Messages.Buttons.preview}}
                                 </button>
                                 <button
@@ -32,6 +32,7 @@
                                     {{Messages.Buttons.purchase}}
                                 </button>
                             </div>
+
                         </div>
                     </div>
                 </div>
