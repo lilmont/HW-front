@@ -4,6 +4,7 @@ import { ISendSignupCodeRequest } from '../../../models/SendSignupCodeRequest';
 import { Messages } from '../../../texts/messages';
 import { ToastService } from '../../../core/services/toast.service';
 import { LoadingService } from '../../../core/services/loading.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'hw-signup',
@@ -17,21 +18,48 @@ export class SignupComponent implements OnInit {
     password: ''
   };
   Messages = Messages;
-  step: 'phone' | 'code' | 'password' = 'phone';
+  step: 'phone' | 'code' = 'phone';
   phoneInvalid: boolean = false;
   codeInvalid: boolean = false;
   confirmationDigits: string[] = ['', '', '', '', '', ''];
   timer: number = 120;
   timerInterval: any;
   showResendButton: boolean = false;
-  showPassword: boolean = false;
-  passwordInvalid: boolean = false;
 
   constructor(
     private authService: AuthService,
     private toastr: ToastService,
-    public loadingService: LoadingService) {
+    public loadingService: LoadingService,
+    private router: Router) {
   }
+
+  //#region Send Code
+  sendSignupCode() {
+    this.phoneInvalid = !this.isPhoneNumberValid(this.signupData.phoneNumber);
+
+    if (this.phoneInvalid) {
+      return;
+    }
+
+    this.loadingService.show();
+
+    this.authService.sendVerificationCode(this.signupData).subscribe({
+      next: () => {
+        this.step = 'code';
+        this.loadingService.hide();
+        this.startTimer();
+      },
+      error: (error) => {
+        this.loadingService.hide();
+      }
+    });
+  }
+
+  private isPhoneNumberValid(phone: string): boolean {
+    const iranPhoneStrictRegex = /^09\d{9}$/;
+    return iranPhoneStrictRegex.test(phone);
+  }
+  //#endregion Send Code
 
   //#region Validate Code
   ngOnInit(): void {
@@ -64,7 +92,6 @@ export class SignupComponent implements OnInit {
     }, 1000);
   }
 
-
   resendCode() {
     this.sendSignupCode();
     this.startTimer();
@@ -79,9 +106,12 @@ export class SignupComponent implements OnInit {
 
     this.loadingService.show();
 
-    this.authService.validateSignupCode(this.signupData).subscribe({
+    this.authService.validateVerificationCode(this.signupData).subscribe({
       next: () => {
-        this.step = 'password';
+        this.toastr.success(Messages.Success.loginSuccessful, '');
+        setTimeout(() => {
+          this.router.navigate(['/']);
+        }, 2500);
         this.loadingService.hide();
       },
       error: (error) => {
@@ -93,62 +123,5 @@ export class SignupComponent implements OnInit {
   private isCodeValid(code: string): boolean {
     const sixDigitCodeRegex = /^\d{6}$/;
     return sixDigitCodeRegex.test(code);
-  }
-  //#endregion Validate Code
-
-  //#region Send Code
-  sendSignupCode() {
-    this.phoneInvalid = !this.isPhoneNumberValid(this.signupData.phoneNumber);
-
-    if (this.phoneInvalid) {
-      return;
-    }
-
-    this.loadingService.show();
-
-    this.authService.sendSignupRequest(this.signupData).subscribe({
-      next: () => {
-        this.step = 'code';
-        this.loadingService.hide();
-        this.startTimer();
-      },
-      error: (error) => {
-        this.loadingService.hide();
-      }
-    });
-  }
-
-  private isPhoneNumberValid(phone: string): boolean {
-    const iranPhoneStrictRegex = /^09\d{9}$/;
-    return iranPhoneStrictRegex.test(phone);
-  }
-  //#endregion Send Code
-
-  //#region Set Password
-  togglePasswordVisibility(): void {
-    this.showPassword = !this.showPassword;
-  }
-
-  setPassword() {
-    this.passwordInvalid = !this.isPasswordValid(this.signupData.password);
-
-    if (this.passwordInvalid) {
-      return;
-    }
-
-    this.loadingService.show();
-
-    this.authService.Signup(this.signupData).subscribe({
-      next: (result) => {
-        this.loadingService.hide();
-      },
-      error: (error) => {
-        this.loadingService.hide();
-      }
-    });
-  }
-
-  isPasswordValid(password: string): boolean {
-    return password.length >= 6;
   }
 }

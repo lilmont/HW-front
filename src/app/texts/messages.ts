@@ -9,6 +9,9 @@ export const Messages = {
         invalidPassword: 'رمز عبور باید حداقل 6 کاراکتر باشد',
         userExists: 'این شماره قبلا ثبت نام شده است',
     },
+    Success: {
+        loginSuccessful: 'ورود با موفقیت انجام شد',
+    },
     Buttons: {
         sendCode: 'ارسال کد یکبار مصرف',
         callToAction1: 'اکانت خودتو بساز',
@@ -55,6 +58,7 @@ export const Messages = {
         setPassword: 'رمز عبور',
         profile: 'پروفایل',
         logout: 'خروج',
+        congrats: 'تبریک!',
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'

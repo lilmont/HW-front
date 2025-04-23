@@ -73,57 +73,5 @@
             </p>
         </form>
         <!-- End Validate Confirmation Code -->
-
-        <!-- Validate Confirmation Code -->
-        <form class="space-y-6" *ngIf="step === 'password'">
-            <h5 class="text-xl font-medium text-gray-900">
-                {{ Messages.Headers.setPassword }}
-            </h5>
-
-            <label for="password" class="block mb-2 text-sm font-small text-gray-900 mt-4">
-                {{ Messages.Labels.setPasswordDesc}}
-            </label>
-
-            <input type="text" name="username" id="username" autocomplete="username" [value]="signupData.phoneNumber"
-                hidden />
-
-            <div class="relative mt-6 mb-1">
-                <input [type]="showPassword ? 'text' : 'password'" id="password" name="password"
-                    [(ngModel)]="signupData.password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
-                                 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 pr-10 text-center mb-1"
-                    placeholder="•••••••••" autocomplete="new-password" required />
-
-                <button type="button" (click)="togglePasswordVisibility()"
-                    class="absolute inset-y-0 right-2 flex items-center text-gray-500" tabindex="-1">
-                    <svg *ngIf="!showPassword" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor" class="w-5 h-5">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 
-                                 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7C7.523 19 3.732 
-                                 16.057 2.458 12z" />
-                    </svg>
-
-                    <svg *ngIf="showPassword" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor" class="w-5 h-5">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 
-                                 19c-4.477 0-8.268-2.943-9.542-7a9.98 
-                                 9.98 0 012.982-4.568m1.5-1.5A9.956 
-                                 9.956 0 0112 5c4.478 0 8.268 2.943 
-                                 9.542 7a9.956 9.956 0 01-4.043 
-                                 5.118M15 12a3 3 0 11-6 0 3 3 0 
-                                 016 0zM3 3l18 18" />
-                    </svg>
-                </button>
-            </div>
-
-            <div *ngIf="passwordInvalid" class="text-red-600 text-sm">
-                {{Messages.Errors.invalidPassword}}
-            </div>
-
-            <app-loading-button [loading$]="loadingService.loading$" label="{{ Messages.Buttons.confirm }}"
-                (click)="setPassword()"></app-loading-button>
-        </form>
-        <!-- End Validate Confirmation Code -->
     </div>
 </div>
