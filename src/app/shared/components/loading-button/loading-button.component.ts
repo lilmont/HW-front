@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { Messages } from '../../../texts/messages';
 
 @Component({
-  selector: 'app-loading-button',
+  selector: 'hw-loading-button',
   templateUrl: './loading-button.component.html',
 })
 export class LoadingButtonComponent {

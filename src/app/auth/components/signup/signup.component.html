@@ -25,6 +25,7 @@
                     </div>
 
                     <input type="tel" id="phone-number" [(ngModel)]="signupData.phoneNumber" name="phoneNumber"
+                        dir="ltr"
                         class="bg-gray-50 border border-custom-300 text-gray-900 text-sm rounded-lg focus:ring-custom-500 focus:border-custom-500 block w-full ps-10 p-2.5 mt-6"
                         placeholder="09123456789">
                 </div>
@@ -34,8 +35,8 @@
                 </div>
             </div>
 
-            <app-loading-button [loading$]="loadingService.loading$" label="{{ Messages.Buttons.sendCode }}"
-                (click)="sendSignupCode()"></app-loading-button>
+            <hw-loading-button [loading$]="loadingService.loading$" label="{{ Messages.Buttons.sendCode }}"
+                (click)="sendSignupCode()"></hw-loading-button>
         </form>
         <!-- End Send Confirmation Code -->
 
@@ -50,7 +51,7 @@
                 {{Messages.Labels.confirmationCodePart2}}
             </label>
 
-            <input type="text" id="confirmation-code" [(ngModel)]="signupData.code" name="code" maxlength="6"
+            <input type="text" id="confirmation-code" [(ngModel)]="signupData.code" name="code" maxlength="6" dir="ltr"
                 class="bg-gray-50 border border-custom-300 text-gray-900 text-sm rounded-lg focus:ring-custom-500 focus:border-custom-500 block w-full p-2.5 mt-6 text-center mb-1"
                 placeholder="">
 
@@ -58,8 +59,8 @@
                 {{Messages.Errors.invalidValidationCode}}
             </div>
 
-            <app-loading-button [loading$]="loadingService.loading$" label="{{ Messages.Buttons.confirm }}"
-                (click)="confirmCode()"></app-loading-button>
+            <hw-loading-button [loading$]="loadingService.loading$" label="{{ Messages.Buttons.confirm }}"
+                (click)="confirmCode()"></hw-loading-button>
 
             <div *ngIf="showResendButton">
                 <button type="button" (click)="resendCode()"
