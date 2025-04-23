@@ -10,12 +10,7 @@
             <span *ngIf="!jwtHelperService.isLoggedIn()">
                 <a [routerLink]="['/users/signup']"
                     class="py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-custom-600 md:p-0">
-                    {{Messages.Headers.signup}}
-                </a>
-                <span class="mx-2">/</span>
-                <a [routerLink]="['/']"
-                    class="py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-custom-600 md:p-0">
-                    {{Messages.Headers.login}}
+                    {{Messages.Headers.signup}} / {{Messages.Headers.login}}
                 </a>
             </span>
 
