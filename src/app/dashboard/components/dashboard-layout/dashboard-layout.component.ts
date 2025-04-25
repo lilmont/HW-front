@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrl: './dashboard-layout.component.css'
 })
 export class DashboardLayoutComponent {
+  isSidebarOpen: boolean = true;
 
+  onSidebarToggle(): void {
+    this.isSidebarOpen = !this.isSidebarOpen;
+  }
 }

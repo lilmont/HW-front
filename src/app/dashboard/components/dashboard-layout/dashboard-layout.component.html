@@ -1,9 +1,9 @@
 <!-- dashboard-layout.component.html -->
 <div class="dashboard-layout">
-    <!-- <app-dashboard-header></app-dashboard-header> -->
+    <hw-dashboard-header (toggleSidebar)="onSidebarToggle()"></hw-dashboard-header>
 
     <div class="flex">
-        <hw-sidebar class="w-64"></hw-sidebar>
+        <hw-dashboard-sidebar class="w-64" [isOpen]="isSidebarOpen"></hw-dashboard-sidebar>
         <main class="flex-1 p-4 overflow-auto">
             <router-outlet></router-outlet>
         </main>

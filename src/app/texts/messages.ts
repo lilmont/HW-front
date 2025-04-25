@@ -32,7 +32,8 @@ export const Messages = {
         confirmationCodePart1: 'کد تایید برای شماره',
         confirmationCodePart2: 'پیامک شد',
         timer: 'ثانیه تا دریافت کد مجدد',
-        setPasswordDesc: 'لطفا یک رمز عبور برای خود انتخاب کنید (حداقل 6 کاراکتر)'
+        setPasswordDesc: 'لطفا یک رمز عبور برای خود انتخاب کنید (حداقل 6 کاراکتر)',
+
     },
     Headers: {
         signup: 'ثبت نام',
@@ -59,6 +60,14 @@ export const Messages = {
         profile: 'پروفایل',
         logout: 'خروج',
         congrats: 'تبریک!',
+        personalInfo: 'اطلاعات شخصی',
+        webCourse: 'جلسات اولیه وب',
+        myCourses: 'دوره های من',
+        support: 'پشتیبانی',
+        wallet: 'کیف پول',
+        myProjects: 'پروژه های من',
+        hosting: 'هاست',
+        comments: 'ثبت نظر'
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'
