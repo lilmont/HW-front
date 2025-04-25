@@ -5,8 +5,8 @@
     aria-label="Sidebar">
     <div class="h-full px-3 pb-4 overflow-y-auto bg-white">
         <ul class="space-y-2 font-medium">
-            <li class="cursor-pointer" [ngClass]="{ 'bg-gray-200': selectedItemIndex === 0 }"
-                (click)="selectedItemIndex = 0">
+            <li [routerLink]="['/dashboard/web-course']" class="cursor-pointer"
+                [ngClass]="{ 'bg-gray-200': selectedItemIndex === 0 }" (click)="selectedItemIndex = 0">
                 <a class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
                     <svg class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900"
                         viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -58,8 +58,8 @@
                     </span>
                 </a>
             </li>
-            <li class="cursor-pointer" [ngClass]="{ 'bg-gray-200': selectedItemIndex === 1 }"
-                (click)="selectedItemIndex = 1">
+            <li [routerLink]="['/dashboard/my-courses']" class="cursor-pointer"
+                [ngClass]="{ 'bg-gray-200': selectedItemIndex === 1 }" (click)="selectedItemIndex = 1">
                 <a class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
                     <svg class="shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900"
                         fill="#374151" viewBox="0 0 14 14" role="img" focusable="false" aria-hidden="true"
@@ -79,8 +79,8 @@
                     </span>
                 </a>
             </li>
-            <li class="cursor-pointer" [ngClass]="{ 'bg-gray-200': selectedItemIndex === 2 }"
-                (click)="selectedItemIndex = 2">
+            <li [routerLink]="['/dashboard/support']" class="cursor-pointer"
+                [ngClass]="{ 'bg-gray-200': selectedItemIndex === 2 }" (click)="selectedItemIndex = 2">
                 <a class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
                     <svg class="shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900"
                         viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg"
@@ -102,8 +102,8 @@
                     </span>
                 </a>
             </li>
-            <li class="cursor-pointer" [ngClass]="{ 'bg-gray-200': selectedItemIndex === 3 }"
-                (click)="selectedItemIndex = 3">
+            <li [routerLink]="['/dashboard/wallet']" class="cursor-pointer"
+                [ngClass]="{ 'bg-gray-200': selectedItemIndex === 3 }" (click)="selectedItemIndex = 3">
                 <a class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
                     <svg class="shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900"
                         viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -125,8 +125,8 @@
                     </span>
                 </a>
             </li>
-            <li class="cursor-pointer" [ngClass]="{ 'bg-gray-200': selectedItemIndex === 4 }"
-                (click)="selectedItemIndex = 4">
+            <li [routerLink]="['/dashboard/my-projects']" class="cursor-pointer"
+                [ngClass]="{ 'bg-gray-200': selectedItemIndex === 4 }" (click)="selectedItemIndex = 4">
                 <a class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
                     <svg class="shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900"
                         viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -150,8 +150,8 @@
                     </span>
                 </a>
             </li>
-            <li class="cursor-pointer" [ngClass]="{ 'bg-gray-200': selectedItemIndex === 5 }"
-                (click)="selectedItemIndex = 5">
+            <li [routerLink]="['/dashboard/hosting']" class="cursor-pointer"
+                [ngClass]="{ 'bg-gray-200': selectedItemIndex === 5 }" (click)="selectedItemIndex = 5">
                 <a class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
                     <svg class="shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900"
                         viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -173,8 +173,8 @@
                     </span>
                 </a>
             </li>
-            <li class="cursor-pointer" [ngClass]="{ 'bg-gray-200': selectedItemIndex === 6 }"
-                (click)="selectedItemIndex = 6">
+            <li [routerLink]="['/dashboard/comments']" class="cursor-pointer"
+                [ngClass]="{ 'bg-gray-200': selectedItemIndex === 6 }" (click)="selectedItemIndex = 6">
                 <a class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
                     <svg class="shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900"
                         viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"

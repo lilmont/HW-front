@@ -1,11 +1,12 @@
-<!-- dashboard-layout.component.html -->
-<div class="dashboard-layout">
-    <hw-dashboard-header (toggleSidebar)="onSidebarToggle()"></hw-dashboard-header>
+<div class="dashboard-layout flex flex-col h-screen">
+    <hw-dashboard-header class="h-16" (toggleSidebar)="onSidebarToggle()"></hw-dashboard-header>
 
-    <div class="flex">
-        <hw-dashboard-sidebar class="w-64" [isOpen]="isSidebarOpen"></hw-dashboard-sidebar>
+    <div class="flex flex-1 overflow-hidden">
+        <hw-dashboard-sidebar class="w-64 shrink-0" class="w-64" [isOpen]="isSidebarOpen"></hw-dashboard-sidebar>
         <main class="flex-1 p-4 overflow-auto">
-            <router-outlet></router-outlet>
+            <div class="min-h-full h-full">
+                <router-outlet></router-outlet>
+            </div>
         </main>
     </div>
 </div>

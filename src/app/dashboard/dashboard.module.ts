@@ -4,12 +4,26 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardLayoutComponent } from './components/dashboard-layout/dashboard-layout.component';
 import { DashboardHeaderComponent } from './components/dashboard-header/dashboard-header.component';
 import { DashboardSidebarComponent } from './components/dashboard-sidebar/dashboard-sidebar.component';
+import { WebCourseComponent } from './pages/web-course/web-course.component';
+import { UserCoursesComponent } from './pages/user-courses/user-courses.component';
+import { SupportComponent } from './pages/support/support.component';
+import { WalletComponent } from './pages/wallet/wallet.component';
+import { UserProjectsComponent } from './pages/user-projects/user-projects.component';
+import { HostingComponent } from './pages/hosting/hosting.component';
+import { CommentsComponent } from './pages/comments/comments.component';
 
 @NgModule({
   declarations: [
     DashboardLayoutComponent,
     DashboardHeaderComponent,
-    DashboardSidebarComponent
+    DashboardSidebarComponent,
+    WebCourseComponent,
+    UserCoursesComponent,
+    SupportComponent,
+    WalletComponent,
+    UserProjectsComponent,
+    HostingComponent,
+    CommentsComponent
   ],
   imports: [
     CommonModule,
