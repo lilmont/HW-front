@@ -9,4 +9,6 @@ import { Messages } from '../../../texts/messages';
 export class DashboardSidebarComponent {
   Messages = Messages;
   @Input() isOpen: boolean = true;
+  selectedItemIndex: number | null = 0;
+
 }
