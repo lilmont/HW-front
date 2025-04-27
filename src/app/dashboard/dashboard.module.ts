@@ -11,6 +11,9 @@ import { WalletComponent } from './pages/wallet/wallet.component';
 import { UserProjectsComponent } from './pages/user-projects/user-projects.component';
 import { HostingComponent } from './pages/hosting/hosting.component';
 import { CommentsComponent } from './pages/comments/comments.component';
+import { UserInfoComponent } from './pages/user-info/user-info.component';
+import { FormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -23,11 +26,14 @@ import { CommentsComponent } from './pages/comments/comments.component';
     WalletComponent,
     UserProjectsComponent,
     HostingComponent,
-    CommentsComponent
+    CommentsComponent,
+    UserInfoComponent
   ],
   imports: [
     CommonModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    FormsModule,
+    SharedModule
   ]
 })
 export class DashboardModule { }

@@ -11,6 +11,7 @@ export class LoadingButtonComponent {
   @Input() label!: string;
   @Input() disabled: boolean = false;
   @Input() type: 'button' | 'submit' = 'button';
+  @Input() width: string = 'w-full';
 
   Messages = Messages;
 }

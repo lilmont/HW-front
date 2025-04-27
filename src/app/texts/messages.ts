@@ -8,9 +8,15 @@ export const Messages = {
         invalidValidationCode: 'کد تایید باید 6 رقم باشد',
         invalidPassword: 'رمز عبور باید حداقل 6 کاراکتر باشد',
         userExists: 'این شماره قبلا ثبت نام شده است',
+        unauthorized: 'دسترسی غیر مجاز است',
+        invalidInput: 'اطلاعات وارد شده نامعتبر است',
+        invalidEmail: 'ایمیل وارد شده نامعتبر است',
+        invalidCardNumber: 'شماره کارت نامعتبر است (16 رقم بدون کاراکتر اضافه)',
+        invalidBiography: 'بیوگرافی باید حداکثر 500 کاراکتر باشد',
     },
     Success: {
         loginSuccessful: 'ورود با موفقیت انجام شد',
+        saveUserInfoSuccessful: 'ویرایش با موفقیت انجام شد',
     },
     Buttons: {
         sendCode: 'ارسال کد یکبار مصرف',
@@ -22,6 +28,7 @@ export const Messages = {
         moreInfo: 'اطلاعات بیشتر',
         confirm: 'تایید',
         resendCode: 'ارسال دوباره کد تایید',
+        save: 'ذخیره',
     },
     Labels: {
         enterPhoneNumber: 'لطفا شماره موبایل خود را وارد کنید',
@@ -33,7 +40,18 @@ export const Messages = {
         confirmationCodePart2: 'پیامک شد',
         timer: 'ثانیه تا دریافت کد مجدد',
         setPasswordDesc: 'لطفا یک رمز عبور برای خود انتخاب کنید (حداقل 6 کاراکتر)',
-
+        firstName: 'نام',
+        firstNamePlaceholder: 'لطفا نام خود را وارد کنید',
+        lastName: 'نام خانوادگی',
+        lastNamePlaceholder: 'لطفا نام خانوادگی خود را وارد کنید',
+        email: 'ایمیل',
+        emailPlaceholder: 'لطفا ایمیل خود را وارد کنید',
+        cardNumber: 'شماره کارت',
+        cardNumberPlaceholder: 'لطفا شماره کارت خود را وارد کنید (16 رقم بدون فاصله)',
+        biography: 'بیوگرافی (حداکثر 500 کاراکتر)',
+        biographyPlaceholder: 'مختصرا و تاثیرگذار خود را معرفی کنید',
+        avatarDesc: 'این عکس را سایر هنرجویان و کارفرمایان میبینند.',
+        fiveHundredChars: '500 کاراکتر',
     },
     Headers: {
         signup: 'ثبت نام',
@@ -67,7 +85,8 @@ export const Messages = {
         wallet: 'کیف پول',
         myProjects: 'پروژه های من',
         hosting: 'هاست',
-        comments: 'ثبت نظر'
+        comments: 'ثبت نظر',
+
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'
