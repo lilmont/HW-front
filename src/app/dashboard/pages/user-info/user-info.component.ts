@@ -1,26 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Messages } from '../../../texts/messages';
 import { UserService } from '../../../core/services/user.service';
 import { IUserInfo } from '../../../models/IUserInfo';
 import { LoadingService } from '../../../core/services/loading.service';
 import { ToastService } from '../../../core/services/toast.service';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'hw-user-info',
   templateUrl: './user-info.component.html',
   styleUrl: './user-info.component.css'
 })
-export class UserInfoComponent {
+export class UserInfoComponent implements OnInit {
   Messages = Messages;
   emailInvalid: boolean = false;
   cardNumberInvalid: boolean = false;
   biographyInvalid: boolean = false;
+  private baseUrl = environment.apiBaseUrl;
   userInfo: IUserInfo = {
     firstName: '',
     lastName: '',
     email: '',
     cardNumber: '',
-    biography: ''
+    biography: '',
+    avatarImage: ''
   };
 
   constructor(
@@ -28,6 +31,9 @@ export class UserInfoComponent {
     public loadingService: LoadingService,
     private toastr: ToastService,
   ) { }
+  ngOnInit(): void {
+    this.getUderInfo();
+  }
 
   saveUserInfo() {
     this.emailInvalid = !this.isEmailValid(this.userInfo.email);
@@ -71,4 +77,44 @@ export class UserInfoComponent {
     input.value = this.userInfo.cardNumber;
   }
 
+  getUderInfo() {
+    this.userService.getUserInfo().subscribe({
+      next: (data) => {
+        this.userInfo = data;
+      },
+      error: (error) => {
+        this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+      }
+    });
+  }
+
+  onAvatarSelect(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    const file = input?.files?.[0];
+    if (file) {
+      const validImageTypes = ['image/jpeg', 'image/png', 'image/jpg'];
+      if (!validImageTypes.includes(file.type)) {
+        this.toastr.error(Messages.Errors.invalidImage, Messages.Errors.error);
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append('file', file, file.name);
+
+      this.uploadImage(formData);
+    }
+  }
+
+  uploadImage(formData: FormData): void {
+    this.userService.uploadAvatar(formData).subscribe({
+      next: (data) => {
+        this.userInfo.avatarImage = data.fileName;
+        this.toastr.success(Messages.Success.profileAvatarUpdatedSuccessfully, '');
+      },
+      error: (error) => {
+        console.log("4");
+        this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+      }
+    });
+  }
 }

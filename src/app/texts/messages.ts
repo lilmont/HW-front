@@ -13,10 +13,13 @@ export const Messages = {
         invalidEmail: 'ایمیل وارد شده نامعتبر است',
         invalidCardNumber: 'شماره کارت نامعتبر است (16 رقم بدون کاراکتر اضافه)',
         invalidBiography: 'بیوگرافی باید حداکثر 500 کاراکتر باشد',
+        invalidImage: 'فایل انتخاب شده نامعتبر است. لطفا یک تصویر با فرمت jpg, jpeg, png انتخاب کنید',
+
     },
     Success: {
         loginSuccessful: 'ورود با موفقیت انجام شد',
         saveUserInfoSuccessful: 'ویرایش با موفقیت انجام شد',
+        profileAvatarUpdatedSuccessfully: 'عکس پروفایل با موفقیت به روز شد',
     },
     Buttons: {
         sendCode: 'ارسال کد یکبار مصرف',

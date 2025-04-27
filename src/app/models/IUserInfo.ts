@@ -4,6 +4,7 @@ export interface IUserInfo {
     email: string;
     cardNumber: string;
     biography: string;
+    avatarImage: string;
 }
 
 export class UserInfo implements IUserInfo {
@@ -12,7 +13,12 @@ export class UserInfo implements IUserInfo {
     email: string = '';
     cardNumber: string = '';
     biography: string = '';
+    avatarImage: string = '';
     constructor(init?: Partial<UserInfo>) {
         Object.assign(this, init);
     }
+}
+
+export interface IUserAvatar {
+    fileName: string;
 }
