@@ -8,6 +8,8 @@ import { WalletComponent } from './pages/wallet/wallet.component';
 import { UserProjectsComponent } from './pages/user-projects/user-projects.component';
 import { HostingComponent } from './pages/hosting/hosting.component';
 import { CommentsComponent } from './pages/comments/comments.component';
+import { UserInfoComponent } from './pages/user-info/user-info.component';
+import { AuthGuard } from '../auth/auth.guard';
 
 const routes: Routes = [
     {
@@ -15,13 +17,14 @@ const routes: Routes = [
         component: DashboardLayoutComponent,
         children: [
             { path: '', redirectTo: 'web-course', pathMatch: 'full' },
-            { path: 'web-course', component: WebCourseComponent },
-            { path: 'my-courses', component: UserCoursesComponent },
-            { path: 'support', component: SupportComponent },
-            { path: 'wallet', component: WalletComponent },
-            { path: 'my-projects', component: UserProjectsComponent },
-            { path: 'hosting', component: HostingComponent },
-            { path: 'comments', component: CommentsComponent },
+            { path: 'web-course', component: WebCourseComponent, canActivate: [AuthGuard] },
+            { path: 'my-courses', component: UserCoursesComponent, canActivate: [AuthGuard] },
+            { path: 'support', component: SupportComponent, canActivate: [AuthGuard] },
+            { path: 'wallet', component: WalletComponent, canActivate: [AuthGuard] },
+            { path: 'my-projects', component: UserProjectsComponent, canActivate: [AuthGuard] },
+            { path: 'hosting', component: HostingComponent, canActivate: [AuthGuard] },
+            { path: 'comments', component: CommentsComponent, canActivate: [AuthGuard] },
+            { path: 'user-info', component: UserInfoComponent, canActivate: [AuthGuard] },
         ],
     },
 ];
