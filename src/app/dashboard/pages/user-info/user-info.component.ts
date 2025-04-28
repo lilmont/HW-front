@@ -114,8 +114,6 @@ export class UserInfoComponent implements OnInit {
         this.toastr.success(Messages.Success.profileAvatarUpdatedSuccessfully, '');
       },
       error: (error) => {
-        console.log("4");
-        this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
       }
     });
   }

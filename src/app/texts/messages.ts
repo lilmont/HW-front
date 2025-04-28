@@ -14,7 +14,7 @@ export const Messages = {
         invalidCardNumber: 'شماره کارت نامعتبر است (16 رقم بدون کاراکتر اضافه)',
         invalidBiography: 'بیوگرافی باید حداکثر 500 کاراکتر باشد',
         invalidImage: 'فایل انتخاب شده نامعتبر است. لطفا یک تصویر با فرمت jpg, jpeg, png انتخاب کنید',
-
+        fileSizeTooLarge: 'حجم فایل انتخاب شده بیش از حد مجاز است. لطفا یک تصویر با حجم کمتر از 5 مگابایت انتخاب کنید',
     },
     Success: {
         loginSuccessful: 'ورود با موفقیت انجام شد',

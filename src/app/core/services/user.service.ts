@@ -52,6 +52,10 @@ export class UserService {
           this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
         } else if (error.status === 401) {
           this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
+        } else if (error.status === 430) {
+          this.toastr.error(Messages.Errors.fileSizeTooLarge, Messages.Errors.error);
+        } else if (error.status === 431) {
+          this.toastr.error(Messages.Errors.invalidImage, Messages.Errors.error);
         } else {
           this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
         }
