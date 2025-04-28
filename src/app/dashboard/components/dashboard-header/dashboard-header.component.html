@@ -23,7 +23,7 @@
             <div class="flex items-center">
                 <div class="flex items-center ms-3 relative">
                     <div>
-                        <button type="button"
+                        <button type="button" #dropdownButton
                             class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300"
                             aria-expanded="false" (click)="toggleDropdown()">
                             <span class="sr-only">Open user menu</span>
@@ -31,7 +31,7 @@
                                 src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo">
                         </button>
                     </div>
-                    <div *ngIf="showDropdown"
+                    <div *ngIf="showDropdown" #dropdownMenu
                         class="absolute left-0 top-6 z-50 my-4 min-w-fit w-auto whitespace-nowrap list-none bg-white divide-y divide-gray-100 rounded-sm shadow-sm"
                         id="dropdown-user">
                         <div class="px-4 py-3" role="none">
