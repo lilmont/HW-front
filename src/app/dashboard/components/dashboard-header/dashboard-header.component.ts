@@ -48,5 +48,6 @@ export class DashboardHeaderComponent {
 
   logout() {
     this.jwtHelperService.logout();
+    location.href = '/';
   }
 }
