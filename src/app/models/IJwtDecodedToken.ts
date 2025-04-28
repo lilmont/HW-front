@@ -3,4 +3,6 @@ export interface IJWTDecodedToken {
   name: string;
   sub: string;
   username?: string;
+  firstName?: string;
+  lastName?: string;
 }
