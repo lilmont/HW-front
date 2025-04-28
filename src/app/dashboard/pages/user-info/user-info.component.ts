@@ -16,7 +16,7 @@ export class UserInfoComponent implements OnInit {
   emailInvalid: boolean = false;
   cardNumberInvalid: boolean = false;
   biographyInvalid: boolean = false;
-  private baseUrl = environment.apiBaseUrl;
+  baseUrl = environment.apiBaseUrl;
   userInfo: IUserInfo = {
     firstName: '',
     lastName: '',
@@ -32,7 +32,7 @@ export class UserInfoComponent implements OnInit {
     private toastr: ToastService,
   ) { }
   ngOnInit(): void {
-    this.getUderInfo();
+    this.getUserInfo();
   }
 
   saveUserInfo() {
@@ -43,6 +43,8 @@ export class UserInfoComponent implements OnInit {
     if (this.emailInvalid || this.cardNumberInvalid || this.biographyInvalid) {
       return;
     }
+
+    this.loadingService.show();
 
     this.userService.updateUserInfo(this.userInfo).subscribe({
       next: () => {
@@ -77,7 +79,7 @@ export class UserInfoComponent implements OnInit {
     input.value = this.userInfo.cardNumber;
   }
 
-  getUderInfo() {
+  getUserInfo() {
     this.userService.getUserInfo().subscribe({
       next: (data) => {
         this.userInfo = data;

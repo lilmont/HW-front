@@ -3,7 +3,7 @@
         <!-- Avatar Section -->
         <div class="flex flex-col items-center mb-10">
             <div class="relative w-28 h-28">
-                <img [src]="userInfo.avatarImage && userInfo.avatarImage.trim() !== '' ? 'baseUrl/uploads/avatars/' + userInfo.avatarImage : 'images/avatar.png'"
+                <img [src]="userInfo.avatarImage && userInfo.avatarImage.trim() !== '' ? baseUrl + '/uploads/avatars/' + userInfo.avatarImage : 'images/avatar.png'"
                     alt="Avatar" class="rounded-full w-full h-full object-cover border-2 border-gray-300">
                 <label for="avatarUpload"
                     class="absolute bottom-0 right-0 bg-custom-600 hover:bg-custom-700 text-white p-2 rounded-full cursor-pointer">
