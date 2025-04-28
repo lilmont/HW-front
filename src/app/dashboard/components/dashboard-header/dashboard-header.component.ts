@@ -38,7 +38,7 @@ export class DashboardHeaderComponent {
     if (this.dropdownButton.nativeElement.contains(target)) {
       return;
     }
-    if (this.dropdownMenu.nativeElement.contains(target)) {
+    if (this.dropdownMenu?.nativeElement?.contains(target)) {
       this.closeDropdown();
       return;
     }
