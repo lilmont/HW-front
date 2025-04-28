@@ -36,9 +36,9 @@ export class UserInfoComponent implements OnInit {
   }
 
   saveUserInfo() {
-    this.emailInvalid = !this.isEmailValid(this.userInfo.email);
-    this.cardNumberInvalid = !this.isCardNumberValid(this.userInfo.cardNumber);
-    this.biographyInvalid = !this.isBiographyValid(this.userInfo.biography);
+    this.emailInvalid = !this.isEmailValid(this.userInfo.email ?? '');
+    this.cardNumberInvalid = !this.isCardNumberValid(this.userInfo.cardNumber ?? '');
+    this.biographyInvalid = !this.isBiographyValid(this.userInfo.biography ?? '');
 
     if (this.emailInvalid || this.cardNumberInvalid || this.biographyInvalid) {
       return;

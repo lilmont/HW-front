@@ -77,7 +77,7 @@
                     [placeholder]="Messages.Labels.biographyPlaceholder" maxlength="500"></textarea>
 
                 <div class="text-sm text-gray-600 mt-1">
-                    {{ userInfo.biography.length || 0 }} / {{Messages.Labels.fiveHundredChars}}
+                    {{ userInfo.biography?.length || 0 }} / {{Messages.Labels.fiveHundredChars}}
                 </div>
 
                 <div *ngIf="biographyInvalid" class="text-red-600 text-sm mt-1">
