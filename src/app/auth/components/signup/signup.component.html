@@ -34,9 +34,9 @@
                     {{Messages.Errors.invalidPhoneNumber}}
                 </div>
             </div>
-
-            <hw-loading-button [loading$]="loadingService.loading$" label="{{ Messages.Buttons.sendCode }}"
-                (click)="sendSignupCode()"></hw-loading-button>
+            <button
+                class="w-full text-white bg-custom-700 hover:bg-custom-800 focus:ring-4 focus:outline-none focus:ring-custom-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer mt-3"
+                (click)="sendSignupCode()">{{ Messages.Buttons.sendCode }}</button>
         </form>
         <!-- End Send Confirmation Code -->
 
@@ -59,8 +59,9 @@
                 {{Messages.Errors.invalidValidationCode}}
             </div>
 
-            <hw-loading-button [loading$]="loadingService.loading$" label="{{ Messages.Buttons.confirm }}"
-                (click)="confirmCode()"></hw-loading-button>
+            <button
+                class="w-full text-white bg-custom-700 hover:bg-custom-800 focus:ring-4 focus:outline-none focus:ring-custom-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer mt-3"
+                (click)="confirmCode()">{{ Messages.Buttons.confirm }}</button>
 
             <div *ngIf="showResendButton">
                 <button type="button" (click)="resendCode()"

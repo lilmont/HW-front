@@ -109,10 +109,8 @@ export class SignupComponent implements OnInit {
     this.authService.validateVerificationCode(this.signupData).subscribe({
       next: () => {
         this.toastr.success(Messages.Success.loginSuccessful, '');
-        setTimeout(() => {
-          this.router.navigate(['/']);
-        }, 2500);
         this.loadingService.hide();
+        this.router.navigate(['/']);
       },
       error: (error) => {
         this.loadingService.hide();
