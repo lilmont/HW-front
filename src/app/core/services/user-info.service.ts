@@ -17,8 +17,13 @@ export class UserInfoService {
   ) { }
 
   loadUser() {
-    if (this.jwtHelperService.isLoggedIn())
-      this.userService.getUserInfo().subscribe(user => this.userSubject.next(user));
+    const decodedToken = this.jwtHelperService.getUser();
+    const user: IUserInfo = {
+      firstName: decodedToken?.firstName,
+      lastName: decodedToken?.lastName,
+      avatarImage: decodedToken?.avatarImage,
+    };
+    this.userSubject.next(user);
   }
 
   updateUser(user: IUserInfo) {

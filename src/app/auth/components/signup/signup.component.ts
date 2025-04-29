@@ -5,6 +5,7 @@ import { Messages } from '../../../texts/messages';
 import { ToastService } from '../../../core/services/toast.service';
 import { LoadingService } from '../../../core/services/loading.service';
 import { Router } from '@angular/router';
+import { UserInfoService } from '../../../core/services/user-info.service';
 
 @Component({
   selector: 'hw-signup',
@@ -30,7 +31,9 @@ export class SignupComponent implements OnInit {
     private authService: AuthService,
     private toastr: ToastService,
     public loadingService: LoadingService,
-    private router: Router) {
+    private router: Router,
+    private userInfoService: UserInfoService,
+  ) {
   }
 
   //#region Send Code
@@ -110,6 +113,7 @@ export class SignupComponent implements OnInit {
       next: () => {
         this.toastr.success(Messages.Success.loginSuccessful, '');
         this.loadingService.hide();
+        this.userInfoService.loadUser();
         this.router.navigate(['/']);
       },
       error: (error) => {
