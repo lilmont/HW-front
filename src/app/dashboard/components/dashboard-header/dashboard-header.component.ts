@@ -1,19 +1,26 @@
-import { Component, ElementRef, EventEmitter, HostListener, OnInit, Output, output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, OnDestroy, OnInit, Output, output, ViewChild } from '@angular/core';
 import { Messages } from '../../../texts/messages';
 import { JwtHelperService } from '../../../core/services/jwt.helper.service';
-import { UserService } from '../../../core/services/user.service';
 import { environment } from '../../../../environments/environment';
+import { Subscription } from 'rxjs';
+import { UserInfoService } from '../../../core/services/user-info.service';
+import { IUserInfo } from '../../../models/IUserInfo';
 
 @Component({
   selector: 'hw-dashboard-header',
   templateUrl: './dashboard-header.component.html',
   styleUrl: './dashboard-header.component.css'
 })
-export class DashboardHeaderComponent implements OnInit {
+export class DashboardHeaderComponent implements OnInit, OnDestroy {
   Messages = Messages;
   showDropdown: boolean = false;
-  avatarImage: string | undefined = '';
   baseUrl = environment.apiBaseUrl;
+  private subscription!: Subscription;
+  userInfo: IUserInfo = {
+    firstName: '',
+    lastName: '',
+    avatarImage: ''
+  }
 
   @Output() toggleSidebar = new EventEmitter<void>();
   @ViewChild('dropdownButton') dropdownButton!: ElementRef;
@@ -21,18 +28,22 @@ export class DashboardHeaderComponent implements OnInit {
 
   constructor(
     public jwtHelperService: JwtHelperService,
-    private userService: UserService) {
+    private userInfoService: UserInfoService) {
 
   }
-  ngOnInit(): void {
-    this.userService.getUserInfo().subscribe({
-      next: (data) => {
-        this.avatarImage = data.avatarImage;
-      },
-      error: (error) => {
 
+  ngOnInit(): void {
+    this.subscription = this.userInfoService.user$.subscribe(user => {
+      if (user) {
+        this.userInfo.avatarImage = user.avatarImage ?? '';
+        this.userInfo.firstName = user.firstName ?? '';
+        this.userInfo.lastName = user.lastName ?? '';
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   toggleDropdown(): void {

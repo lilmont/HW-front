@@ -5,6 +5,7 @@ import { IUserInfo } from '../../../models/IUserInfo';
 import { LoadingService } from '../../../core/services/loading.service';
 import { ToastService } from '../../../core/services/toast.service';
 import { environment } from '../../../../environments/environment';
+import { UserInfoService } from '../../../core/services/user-info.service';
 
 @Component({
   selector: 'hw-user-info',
@@ -30,6 +31,7 @@ export class UserInfoComponent implements OnInit {
     private userService: UserService,
     public loadingService: LoadingService,
     private toastr: ToastService,
+    private userInfoService: UserInfoService
   ) { }
   ngOnInit(): void {
     this.getUserInfo();
@@ -48,6 +50,7 @@ export class UserInfoComponent implements OnInit {
 
     this.userService.updateUserInfo(this.userInfo).subscribe({
       next: () => {
+        this.userInfoService.updateUser({ ...this.userInfo, firstName: this.userInfo.firstName, lastName: this.userInfo.lastName });
         this.toastr.success(Messages.Success.saveUserInfoSuccessful, '');
         this.loadingService.hide();
       },
@@ -111,9 +114,8 @@ export class UserInfoComponent implements OnInit {
     this.userService.uploadAvatar(formData).subscribe({
       next: (data) => {
         this.userInfo.avatarImage = data.fileName;
+        this.userInfoService.updateUser({ ...this.userInfo, avatarImage: data.fileName });
         this.toastr.success(Messages.Success.profileAvatarUpdatedSuccessfully, '');
-      },
-      error: (error) => {
       }
     });
   }

@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Messages } from '../../../texts/messages';
 import { JwtHelperService } from '../../../core/services/jwt.helper.service';
 import { environment } from '../../../../environments/environment';
-import { UserService } from '../../../core/services/user.service';
+import { IUserInfo } from '../../../models/IUserInfo';
+import { Subscription } from 'rxjs';
+import { UserInfoService } from '../../../core/services/user-info.service';
 
 @Component({
   selector: 'hw-header',
@@ -14,17 +16,23 @@ export class HeaderComponent implements OnInit {
   showDropdown: boolean = false;
   avatarImage: string | undefined = '';
   baseUrl = environment.apiBaseUrl;
+  private subscription!: Subscription;
+  userInfo: IUserInfo = {
+    firstName: '',
+    lastName: '',
+    avatarImage: ''
+  }
+
   constructor(public jwtHelperService: JwtHelperService,
-    private userService: UserService
+    private userInfoService: UserInfoService
   ) {
   }
   ngOnInit(): void {
-    this.userService.getUserInfo().subscribe({
-      next: (data) => {
-        this.avatarImage = data.avatarImage;
-      },
-      error: (error) => {
-
+    this.subscription = this.userInfoService.user$.subscribe(user => {
+      if (user) {
+        this.userInfo.avatarImage = user.avatarImage ?? '';
+        this.userInfo.firstName = user.firstName ?? '';
+        this.userInfo.lastName = user.lastName ?? '';
       }
     });
   }
