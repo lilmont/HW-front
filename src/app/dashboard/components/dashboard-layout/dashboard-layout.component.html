@@ -1,7 +1,7 @@
-<div class="dashboard-layout flex flex-col h-screen">
+<div *ngIf="layoutReady" class="dashboard-layout flex flex-col h-screen">
     <hw-dashboard-header class="h-16" (toggleSidebar)="onSidebarToggle()"></hw-dashboard-header>
 
-    <div class="flex flex-1 overflow-hidden">
+    <div class="flex flex-1 mt-14">
         <hw-dashboard-sidebar [isOpen]="isSidebarOpen"></hw-dashboard-sidebar>
         <main [ngClass]="{'lg:mr-0':!isSidebarOpen, 'lg:mr-64': isSidebarOpen}" class="p-4 w-full">
             <div class="min-h-full h-full">

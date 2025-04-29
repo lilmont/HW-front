@@ -8,7 +8,7 @@ import { Messages } from '../../../texts/messages';
 })
 export class DashboardSidebarComponent {
   Messages = Messages;
-  @Input() isOpen: boolean = true;
+  @Input() isOpen: boolean = false;
   selectedItemIndex: number | null = 0;
 
 }
