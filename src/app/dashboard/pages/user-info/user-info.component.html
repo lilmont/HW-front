@@ -88,8 +88,9 @@
 
         <!-- Save Button -->
         <div class="mt-6 text-left">
-            <hw-loading-button [width]="'w-auto'" [loading$]="loadingService.loading$"
-                label="{{ Messages.Buttons.save }}" (click)="saveUserInfo()"></hw-loading-button>
+            <button
+                class="w-auto text-white bg-custom-700 hover:bg-custom-800 focus:ring-4 focus:outline-none focus:ring-custom-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer mt-3"
+                (click)="saveUserInfo()">{{ Messages.Buttons.save }}</button>
         </div>
     </form>
 </div>

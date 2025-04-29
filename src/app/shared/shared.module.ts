@@ -15,6 +15,7 @@ import { RouterModule } from '@angular/router';
 import { BlankLayoutComponent } from './components/blank-layout/blank-layout.component';
 import { LoadingButtonComponent } from './components/loading-button/loading-button.component';
 import { FormsModule } from '@angular/forms';
+import { LoadingOverlayComponent } from './components/loading-overlay/loading-overlay.component';
 
 
 
@@ -33,6 +34,7 @@ import { FormsModule } from '@angular/forms';
     LayoutComponent,
     BlankLayoutComponent,
     LoadingButtonComponent,
+    LoadingOverlayComponent,
   ],
   imports: [
     CommonModule,
@@ -49,6 +51,7 @@ import { FormsModule } from '@angular/forms';
     LayoutComponent,
     BlankLayoutComponent,
     LoadingButtonComponent,
+    LoadingOverlayComponent
   ]
 })
 export class SharedModule { }

@@ -31,7 +31,7 @@ export class UserInfoComponent implements OnInit {
     private userService: UserService,
     public loadingService: LoadingService,
     private toastr: ToastService,
-    private userInfoService: UserInfoService
+    private userInfoService: UserInfoService,
   ) { }
   ngOnInit(): void {
     this.getUserInfo();
@@ -111,11 +111,16 @@ export class UserInfoComponent implements OnInit {
   }
 
   uploadImage(formData: FormData): void {
+    this.loadingService.show();
     this.userService.uploadAvatar(formData).subscribe({
       next: (data) => {
         this.userInfo.avatarImage = data.fileName;
         this.userInfoService.updateUser({ ...this.userInfo, avatarImage: data.fileName });
         this.toastr.success(Messages.Success.profileAvatarUpdatedSuccessfully, '');
+        this.loadingService.hide();
+      },
+      error: (error) => {
+        this.loadingService.hide();
       }
     });
   }
