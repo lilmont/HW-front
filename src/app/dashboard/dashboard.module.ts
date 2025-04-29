@@ -27,7 +27,7 @@ import { SharedModule } from '../shared/shared.module';
     UserProjectsComponent,
     HostingComponent,
     CommentsComponent,
-    UserInfoComponent
+    UserInfoComponent,
   ],
   imports: [
     CommonModule,

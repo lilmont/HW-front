@@ -2,8 +2,8 @@
     <hw-dashboard-header class="h-16" (toggleSidebar)="onSidebarToggle()"></hw-dashboard-header>
 
     <div class="flex flex-1 overflow-hidden">
-        <hw-dashboard-sidebar class="w-64 shrink-0" class="w-64" [isOpen]="isSidebarOpen"></hw-dashboard-sidebar>
-        <main class="flex-1 p-4 overflow-auto">
+        <hw-dashboard-sidebar [isOpen]="isSidebarOpen"></hw-dashboard-sidebar>
+        <main [ngClass]="{'lg:mr-0':!isSidebarOpen, 'lg:mr-64': isSidebarOpen}" class="p-4 w-full">
             <div class="min-h-full h-full">
                 <router-outlet></router-outlet>
             </div>
