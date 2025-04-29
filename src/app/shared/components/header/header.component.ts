@@ -14,6 +14,7 @@ import { UserInfoService } from '../../../core/services/user-info.service';
 export class HeaderComponent implements OnInit {
   Messages = Messages;
   showDropdown: boolean = false;
+  isNavbarOpen: boolean = false;
   avatarImage: string | undefined = '';
   baseUrl = environment.apiBaseUrl;
   private subscription!: Subscription;
@@ -39,6 +40,10 @@ export class HeaderComponent implements OnInit {
 
   toggleDropdown(): void {
     this.showDropdown = !this.showDropdown;
+  }
+
+  toggleNavbar() {
+    this.isNavbarOpen = !this.isNavbarOpen;
   }
 
   logout() {
