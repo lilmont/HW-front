@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Messages } from '../../../texts/messages';
 
 @Component({
   selector: 'hw-wallet',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrl: './wallet.component.css'
 })
 export class WalletComponent {
-
+  Messages = Messages;
+  sessions = [];
 }

@@ -32,6 +32,9 @@ export const Messages = {
         confirm: 'تایید',
         resendCode: 'ارسال دوباره کد تایید',
         save: 'ذخیره',
+        increaseBalance: 'افزایش موجودی',
+        submitTransaction: 'ثبت فیش',
+        increaseBalanceGuide: 'راهنمای افزایش موجودی',
     },
     Labels: {
         enterPhoneNumber: 'لطفا شماره موبایل خود را وارد کنید',
@@ -93,6 +96,13 @@ export const Messages = {
         sessionTitle: 'عنوان جلسه',
         sessionDescription: 'توضیحات جلسه',
         download: 'دانلود',
+        balance: 'موجودی',
+        toman: 'تومان',
+        yourTransactions: 'تراکنش های شما',
+        number: '#',
+        transactionTitle: 'عنوان تراکنش',
+        date: 'تاریخ',
+        amount: 'مبلغ',
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'
