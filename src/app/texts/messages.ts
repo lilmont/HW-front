@@ -89,7 +89,10 @@ export const Messages = {
         myProjects: 'پروژه های من',
         hosting: 'هاست',
         comments: 'ثبت نظر',
-
+        sessionNumber: 'شماره جلسه',
+        sessionTitle: 'عنوان جلسه',
+        sessionDescription: 'توضیحات جلسه',
+        download: 'دانلود',
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'
