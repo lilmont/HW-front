@@ -83,11 +83,14 @@ export class UserInfoComponent implements OnInit {
   }
 
   getUserInfo() {
+    this.loadingService.show();
     this.userService.getUserInfo().subscribe({
       next: (data) => {
         this.userInfo = data;
+        this.loadingService.hide();
       },
       error: (error) => {
+        this.loadingService.hide();
         this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
       }
     });
