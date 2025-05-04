@@ -14,6 +14,7 @@ import { CommentsComponent } from './pages/comments/comments.component';
 import { UserInfoComponent } from './pages/user-info/user-info.component';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import { CoreModule } from '../core/core.module';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     DashboardRoutingModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    CoreModule
   ]
 })
 export class DashboardModule { }
