@@ -19,26 +19,14 @@
     --color-yellow-200: #e8ac09;
 }
 
-@font-face {
-    font-family: 'Vazirmatn';
-    src: url('/fonts/Vazirmatn-Regular.ttf') format('truetype');
-    font-weight: 400;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Vazirmatn';
-    src: url('/fonts/Vazirmatn-Bold.ttf') format('truetype');
-    font-weight: 700;
-    font-style: normal;
-}
 
 html {
     scroll-behavior: smooth;
 }
 
 body {
-    font-family: 'Vazirmatn', sans-serif;
+    font-family: 'Vazirmatn-FD', sans-serif;
+    font-feature-settings: "locl";
 }
 
 /* Toasts */

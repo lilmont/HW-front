@@ -1,0 +1,27 @@
+@font-face {
+    font-family: "Vazirmatn";
+    src: url("/fonts/font-files/vazirmatn/Vazirmatn.woff2") format("woff2"),
+        url("/fonts/font-files/vazirmatn/Vazirmatn.woff") format("woff"),
+        url("/fonts/font-files/vazirmatn/Vazirmatn.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Vazirmatn-Medium";
+    src: url("/fonts/font-files/vazirmatn/Vazirmatn-Medium.woff2") format("woff2"),
+        url("/fonts/font-files/vazirmatn/Vazirmatn-Medium.woff") format("woff"),
+        url("/fonts/font-files/vazirmatn/Vazirmatn-Medium.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Vazirmatn-Light";
+    src: url("/fonts/font-files/vazirmatn/Vazirmatn-Light.woff2") format("woff2"),
+        url("/fonts/font-files/vazirmatn/Vazirmatn-Light.woff") format("woff"),
+        url("/fonts/font-files/vazirmatn/Vazirmatn-Light.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Vazirmatn-FD";
+    src: url("/fonts/font-files/vazirmatn/Vazirmatn-FD.woff2") format("woff2"),
+        url("/fonts/font-files/vazirmatn/Vazirmatn-FD.woff") format("woff"),
+        url("/fonts/font-files/vazirmatn/Vazirmatn-FD.ttf") format("truetype");
+}
