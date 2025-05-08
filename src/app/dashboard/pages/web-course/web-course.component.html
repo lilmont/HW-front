@@ -1,44 +1,42 @@
-<div class="relative overflow-x-auto shadow-md sm:rounded-lg px-10 py-6">
-    <h1 class="text-2xl font-bold mb-6">{{Messages.Headers.webCourse}}</h1>
-    <table class="w-full text-sm text-left rtl:text-right text-gray-500">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50">
-            <tr>
-                <th scope="col" class="px-6 py-3 w-[110px]">
-                    {{Messages.Headers.sessionNumber}}
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    {{Messages.Headers.sessionTitle}}
-                </th>
-                <!-- <th scope="col" class="px-6 py-3">
+<h1 class="text-xl lg:text-2xl font-bold mb-6">{{Messages.Headers.webCourse}}</h1>
+<table class="w-full text-sm rtl:text-right text-gray-500 text-center">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-50 text-center">
+        <tr>
+            <th scope="col" class="px-3 lg:px-6 py-3 w-[110px]">
+                {{Messages.Headers.sessionNumber}}
+            </th>
+            <th scope="col" class="px-1 lg:px-6 py-3">
+                {{Messages.Headers.sessionTitle}}
+            </th>
+            <!-- <th scope="col" class="px-6 py-3">
                     {{Messages.Headers.sessionDescription}}
                 </th> -->
-                <th scope="col" class="px-6 py-3 w-[90px]">
-                    {{Messages.Headers.download}}
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let session of sessions" class="bg-white border-b border-gray-200">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">
-                    {{session.number}}
-                </th>
-                <td class="px-6 py-4">
-                    {{session.title}}
-                </td>
-                <!-- <td class="px-6 py-4">
+            <th scope="col" class="px-3 lg:px-6 py-3 w-[90px] text-left">
+                {{Messages.Headers.download}}
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let session of sessions" class="bg-white border-b border-gray-200 text-center">
+            <th scope="row" class="px-3 lg:px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                {{session.number}}
+            </th>
+            <td class="px-1 lg:px-6 py-4">
+                {{session.title}}
+            </td>
+            <!-- <td class="px-6 py-4">
                     Laptop
                 </td> -->
-                <td class="px-6 py-4 text-center">
-                    <a [href]="session.downloadLink" download target="_blank" class="text-blue-600 hover:text-blue-800">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V4" />
-                        </svg>
-                    </a>
-                </td>
-            </tr>
+            <td class="px-3 lg:px-6 py-4 text-left">
+                <a [href]="session.downloadLink" download target="_blank" class="text-blue-600 hover:text-blue-800">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V4" />
+                    </svg>
+                </a>
+            </td>
+        </tr>
 
-        </tbody>
-    </table>
-</div>
+    </tbody>
+</table>

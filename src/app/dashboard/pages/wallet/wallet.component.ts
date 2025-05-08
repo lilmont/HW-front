@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Messages } from '../../../texts/messages';
 import { PaymentHttpService } from '../../../core/services/payment-http.service';
 import { IUserTransaction } from '../../../models/IUserTransaction';
@@ -13,6 +13,9 @@ export class WalletComponent implements OnInit {
   sessions = [];
   transactions: IUserTransaction[] = [];
 
+  @ViewChild('topScrollbar') topScrollbar!: ElementRef;
+  @ViewChild('tableContainer') tableContainer!: ElementRef;
+
   constructor(private paymentHttpService: PaymentHttpService) {
   }
   ngOnInit(): void {
@@ -22,6 +25,23 @@ export class WalletComponent implements OnInit {
       },
       error: (error) => {
       }
+    });
+  }
+
+  ngAfterViewInit(): void {
+    const topScrollbarEl = this.topScrollbar.nativeElement;
+    const tableContainerEl = this.tableContainer.nativeElement;
+
+    // Set the width of the top scrollbar to match the table container
+    topScrollbarEl.firstChild.style.width = `${tableContainerEl.scrollWidth}px`;
+
+    // Synchronize scroll positions
+    topScrollbarEl.addEventListener('scroll', () => {
+      tableContainerEl.scrollLeft = topScrollbarEl.scrollLeft;
+    });
+
+    tableContainerEl.addEventListener('scroll', () => {
+      topScrollbarEl.scrollLeft = tableContainerEl.scrollLeft;
     });
   }
 }
