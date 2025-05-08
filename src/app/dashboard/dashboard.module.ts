@@ -15,6 +15,9 @@ import { UserInfoComponent } from './pages/user-info/user-info.component';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { CoreModule } from '../core/core.module';
+import { AddBalanceComponent } from './components/add-balance/add-balance.component';
+import { SubmitReceiptComponent } from './components/submit-receipt/submit-receipt.component';
+import { UserTransactionsTableComponent } from './components/user-transactions-table/user-transactions-table.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,9 @@ import { CoreModule } from '../core/core.module';
     HostingComponent,
     CommentsComponent,
     UserInfoComponent,
+    AddBalanceComponent,
+    SubmitReceiptComponent,
+    UserTransactionsTableComponent,
   ],
   imports: [
     CommonModule,
