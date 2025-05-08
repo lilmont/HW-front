@@ -1,11 +1,13 @@
 <div *ngIf="layoutReady" class="dashboard-layout flex flex-col h-screen">
     <hw-dashboard-header class="h-16" (toggleSidebar)="onSidebarToggle()"></hw-dashboard-header>
 
-    <div class="flex flex-1 mt-14">
+    <div class="flex flex-1">
         <hw-dashboard-sidebar [isOpen]="isSidebarOpen"></hw-dashboard-sidebar>
-        <main [ngClass]="{'lg:mr-0':!isSidebarOpen, 'lg:mr-64': isSidebarOpen}" class="p-4 w-full">
-            <div class="min-h-full h-full">
-                <router-outlet></router-outlet>
+        <main [ngClass]="{'lg:mr-0':!isSidebarOpen, 'lg:mr-64': isSidebarOpen}" class="w-full">
+            <div class="h-[calc(100vh-4rem)] overflow-auto p-4">
+                <div class="relative shadow-md sm:rounded-lg px-6 lg:px-10 py-6 lg:py-10 h-full overflow-auto">
+                    <router-outlet></router-outlet>
+                </div>
             </div>
         </main>
     </div>
