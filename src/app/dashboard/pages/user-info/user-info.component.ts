@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Messages } from '../../../texts/messages';
-import { UserService } from '../../../core/services/user.service';
+import { UserHttpService } from '../../../core/services/user-http.service';
 import { IUserInfo } from '../../../models/IUserInfo';
 import { LoadingService } from '../../../core/services/loading.service';
 import { ToastService } from '../../../core/services/toast.service';
@@ -28,7 +28,7 @@ export class UserInfoComponent implements OnInit {
   };
 
   constructor(
-    private userService: UserService,
+    private userHttpService: UserHttpService,
     public loadingService: LoadingService,
     private toastr: ToastService,
     private userInfoService: UserInfoService,
@@ -48,7 +48,7 @@ export class UserInfoComponent implements OnInit {
 
     this.loadingService.show();
 
-    this.userService.updateUserInfo(this.userInfo).subscribe({
+    this.userHttpService.updateUserInfo(this.userInfo).subscribe({
       next: () => {
         this.userInfoService.updateUser({ ...this.userInfo, firstName: this.userInfo.firstName, lastName: this.userInfo.lastName });
         this.toastr.success(Messages.Success.saveUserInfoSuccessful, '');
@@ -84,7 +84,7 @@ export class UserInfoComponent implements OnInit {
 
   getUserInfo() {
     this.loadingService.show();
-    this.userService.getUserInfo().subscribe({
+    this.userHttpService.getUserInfo().subscribe({
       next: (data) => {
         this.userInfo = data;
         this.loadingService.hide();
@@ -115,7 +115,7 @@ export class UserInfoComponent implements OnInit {
 
   uploadImage(formData: FormData): void {
     this.loadingService.show();
-    this.userService.uploadAvatar(formData).subscribe({
+    this.userHttpService.uploadAvatar(formData).subscribe({
       next: (data) => {
         this.userInfo.avatarImage = data.fileName;
         this.userInfoService.updateUser({ ...this.userInfo, avatarImage: data.fileName });

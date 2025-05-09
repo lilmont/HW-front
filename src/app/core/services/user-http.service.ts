@@ -9,7 +9,7 @@ import { Messages } from '../../texts/messages';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class UserHttpService {
   private baseUrl = environment.apiBaseUrl;
   constructor(
     private http: HttpClient,

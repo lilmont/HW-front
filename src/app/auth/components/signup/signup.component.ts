@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../../core/services/auth.service';
+import { AuthHttpService } from '../../../core/services/auth-http.service';
 import { ISendSignupCodeRequest } from '../../../models/SendSignupCodeRequest';
 import { Messages } from '../../../texts/messages';
 import { ToastService } from '../../../core/services/toast.service';
@@ -28,7 +28,7 @@ export class SignupComponent implements OnInit {
   showResendButton: boolean = false;
 
   constructor(
-    private authService: AuthService,
+    private authHttpService: AuthHttpService,
     private toastr: ToastService,
     public loadingService: LoadingService,
     private router: Router,
@@ -46,13 +46,13 @@ export class SignupComponent implements OnInit {
 
     this.loadingService.show();
 
-    this.authService.sendVerificationCode(this.signupData).subscribe({
+    this.authHttpService.sendVerificationCode(this.signupData).subscribe({
       next: () => {
         this.step = 'code';
         this.loadingService.hide();
         this.startTimer();
       },
-      error: (error) => {
+      error: () => {
         this.loadingService.hide();
       }
     });
@@ -109,14 +109,14 @@ export class SignupComponent implements OnInit {
 
     this.loadingService.show();
 
-    this.authService.validateVerificationCode(this.signupData).subscribe({
+    this.authHttpService.validateVerificationCode(this.signupData).subscribe({
       next: () => {
         this.toastr.success(Messages.Success.loginSuccessful, '');
         this.loadingService.hide();
         this.userInfoService.loadUser();
         this.router.navigate(['/']);
       },
-      error: (error) => {
+      error: () => {
         this.loadingService.hide();
       }
     });
