@@ -1,4 +1,9 @@
-<button [disabled]="(loading$ | async) || disabled" [type]="type" [ngClass]="width"
+<button [disabled]="(loading$ | async) || disabled" [type]="type" [ngClass]="[
+  width,
+  (loading$ | async) || disabled ? 
+    'bg-gray-300 text-gray-500 cursor-not-allowed hover:bg-gray-300' :
+    'bg-custom-700 hover:bg-custom-800 text-white cursor-pointer'
+]"
     class="text-white bg-custom-700 hover:bg-custom-800 focus:ring-4 focus:outline-none focus:ring-custom-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer mt-3">
 
     <ng-container *ngIf="!(loading$ | async); else loading">
@@ -38,9 +43,9 @@
                     }
                 }
             </style>
-            <circle class="spinner_qM83" fill="white" cx="4" cy="12" r="3" />
-            <circle class="spinner_qM83 spinner_oXPr" fill="white" cx="12" cy="12" r="3" />
-            <circle class="spinner_qM83 spinner_ZTLf" fill="white" cx="20" cy="12" r="3" />
+            <circle class="spinner_qM83" fill="black" cx="4" cy="12" r="3" />
+            <circle class="spinner_qM83 spinner_oXPr" fill="black" cx="12" cy="12" r="3" />
+            <circle class="spinner_qM83 spinner_ZTLf" fill="black" cx="20" cy="12" r="3" />
         </svg>
     </ng-template>
 </button>

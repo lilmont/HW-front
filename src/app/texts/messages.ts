@@ -15,11 +15,14 @@ export const Messages = {
         invalidBiography: 'بیوگرافی باید حداکثر 500 کاراکتر باشد',
         invalidImage: 'فایل انتخاب شده نامعتبر است. لطفا یک تصویر با فرمت jpg, jpeg, png انتخاب کنید',
         fileSizeTooLarge: 'حجم فایل انتخاب شده بیش از حد مجاز است. لطفا یک تصویر با حجم کمتر از 5 مگابایت انتخاب کنید',
+        transactionNotFound: 'تراکنش یافت نشد',
+        duplicateTransaction: 'این تراکنش قبلا ثبت شده است',
     },
     Success: {
         loginSuccessful: 'ورود با موفقیت انجام شد',
         saveUserInfoSuccessful: 'ویرایش با موفقیت انجام شد',
         profileAvatarUpdatedSuccessfully: 'عکس پروفایل با موفقیت به روز شد',
+        submitTransactionSuccessful: 'تراکنش با موفقیت ثبت شد',
     },
     Buttons: {
         sendCode: 'ارسال کد یکبار مصرف',
@@ -58,6 +61,8 @@ export const Messages = {
         biographyPlaceholder: 'مختصرا و تاثیرگذار خود را معرفی کنید',
         avatarDesc: 'این عکس را سایر هنرجویان و کارفرمایان میبینند.',
         fiveHundredChars: '500 کاراکتر',
+        submitReceiptPlaceholder: 'شماره فیش (تراکنش) را وارد کنید',
+        transactionTimer: 'ثانیه تا امکان ثبت مجدد فیش',
     },
     Headers: {
         signup: 'ثبت نام',
