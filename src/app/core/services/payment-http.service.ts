@@ -29,4 +29,17 @@ export class PaymentHttpService {
       })
     );
   }
+
+  getUserBalance(): Observable<number> {
+    return this.http.get<number>(`${this.baseUrl}/payment/user-balance`).pipe(
+      catchError((error) => {
+        if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+        return throwError(() => error);
+      })
+    );
+  }
 }

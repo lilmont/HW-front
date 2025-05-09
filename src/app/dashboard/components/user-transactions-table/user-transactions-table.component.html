@@ -39,10 +39,10 @@
                             {{transaction.transactionDate | jalaliDate}}
                         </td>
                         <td class="px-6 py-4">
-                            {{transaction.price}}
+                            {{transaction.price | number:'1.0-0'}}
                         </td>
                         <td class="px-6 py-4">
-                            {{transaction.balance}}
+                            {{transaction.balance | number:'1.0-0'}}
                         </td>
                     </tr>
                 </tbody>
