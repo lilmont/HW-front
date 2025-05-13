@@ -16,6 +16,14 @@ import { BlankLayoutComponent } from './components/blank-layout/blank-layout.com
 import { LoadingButtonComponent } from './components/loading-button/loading-button.component';
 import { FormsModule } from '@angular/forms';
 import { LoadingOverlayComponent } from './components/loading-overlay/loading-overlay.component';
+import { WebCourseIconComponent } from './svg-icons/web-course-icon/web-course-icon.component';
+import { CoursesIconComponent } from './svg-icons/courses-icon/courses-icon.component';
+import { SupportIconComponent } from './svg-icons/support-icon/support-icon.component';
+import { WalletIconComponent } from './svg-icons/wallet-icon/wallet-icon.component';
+import { ProjectIconComponent } from './svg-icons/project-icon/project-icon.component';
+import { HostIconComponent } from './svg-icons/host-icon/host-icon.component';
+import { ProfileIconComponent } from './svg-icons/profile-icon/profile-icon.component';
+import { CommentIconComponent } from './svg-icons/comment-icon/comment-icon.component';
 
 
 
@@ -35,6 +43,14 @@ import { LoadingOverlayComponent } from './components/loading-overlay/loading-ov
     BlankLayoutComponent,
     LoadingButtonComponent,
     LoadingOverlayComponent,
+    WebCourseIconComponent,
+    CoursesIconComponent,
+    SupportIconComponent,
+    WalletIconComponent,
+    ProjectIconComponent,
+    HostIconComponent,
+    ProfileIconComponent,
+    CommentIconComponent,
   ],
   imports: [
     CommonModule,
@@ -51,7 +67,15 @@ import { LoadingOverlayComponent } from './components/loading-overlay/loading-ov
     LayoutComponent,
     BlankLayoutComponent,
     LoadingButtonComponent,
-    LoadingOverlayComponent
+    LoadingOverlayComponent,
+    WebCourseIconComponent,
+    CoursesIconComponent,
+    SupportIconComponent,
+    WalletIconComponent,
+    ProjectIconComponent,
+    HostIconComponent,
+    ProfileIconComponent,
+    CommentIconComponent,
   ]
 })
 export class SharedModule { }
