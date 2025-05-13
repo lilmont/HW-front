@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SidebarService } from '../../../core/services/sidebar.service';
 
 @Component({
   selector: 'hw-dashboard-layout',
@@ -6,15 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './dashboard-layout.component.css'
 })
 export class DashboardLayoutComponent implements OnInit {
-  isSidebarOpen: boolean = false;
   layoutReady: boolean = false;
+  isOpen$ = this.sidebarService.isOpen$;
+  constructor(public sidebarService: SidebarService) { }
 
   ngOnInit(): void {
-    this.isSidebarOpen = window.innerWidth >= 1024;
     this.layoutReady = true;
-  }
-
-  onSidebarToggle(): void {
-    this.isSidebarOpen = !this.isSidebarOpen;
   }
 }

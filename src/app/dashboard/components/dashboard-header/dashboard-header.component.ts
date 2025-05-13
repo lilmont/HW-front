@@ -1,10 +1,11 @@
-import { Component, ElementRef, EventEmitter, HostListener, OnDestroy, OnInit, Output, output, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Messages } from '../../../texts/messages';
 import { JwtHelperService } from '../../../core/services/jwt.helper.service';
 import { environment } from '../../../../environments/environment';
 import { Subscription } from 'rxjs';
 import { UserInfoService } from '../../../core/services/user-info.service';
 import { IUserInfo } from '../../../models/IUserInfo';
+import { SidebarService } from '../../../core/services/sidebar.service';
 
 @Component({
   selector: 'hw-dashboard-header',
@@ -22,14 +23,15 @@ export class DashboardHeaderComponent implements OnInit, OnDestroy {
     avatarImage: ''
   }
 
-  @Output() toggleSidebar = new EventEmitter<void>();
   @ViewChild('dropdownButton') dropdownButton!: ElementRef;
   @ViewChild('dropdownMenu') dropdownMenu!: ElementRef;
 
   constructor(
     public jwtHelperService: JwtHelperService,
-    private userInfoService: UserInfoService) {
-
+    private userInfoService: UserInfoService,
+    private sidebarService: SidebarService
+  ) {
+    this.userInfoService.loadUser();
   }
 
   ngOnInit(): void {
@@ -52,13 +54,14 @@ export class DashboardHeaderComponent implements OnInit, OnDestroy {
   }
 
   onToggleSidebar(): void {
-    this.toggleSidebar.emit();
+    this.sidebarService.toggle();
   }
 
   closeDropdown() {
     this.showDropdown = false;
   }
 
+  // For closing the dropdown when clicking outside of it
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent) {
     const target = event.target as HTMLElement;
