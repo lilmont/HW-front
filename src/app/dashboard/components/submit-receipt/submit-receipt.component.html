@@ -54,6 +54,10 @@
                             [placeholder]="Messages.Labels.submitReceiptPlaceholder" required />
                     </div>
 
+                    <div *ngIf="transactionNumberInvalid" class="text-red-600 text-sm mt-1">
+                        {{Messages.Errors.emptyTransactionNumber}}
+                    </div>
+
                     <hw-loading-button [loading$]="buttonLoading$" label="{{ Messages.Buttons.confirm }}"
                         (click)="submitReceipt()" [disabled]="isConfirmButtonDisabled"></hw-loading-button>
 

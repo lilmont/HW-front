@@ -17,6 +17,7 @@ export class SubmitReceiptComponent {
   timer: number = 0;
   timerInterval: any;
   isConfirmButtonDisabled: boolean = false;
+  transactionNumberInvalid: boolean = false;
   private _buttonLoading = new BehaviorSubject<boolean>(false);
   readonly buttonLoading$ = this._buttonLoading.asObservable();
 
@@ -36,6 +37,13 @@ export class SubmitReceiptComponent {
   }
 
   submitReceipt() {
+    this.transactionNumberInvalid = false;
+
+    if (this.transactionNumber.trim() === '') {
+      this.transactionNumberInvalid = true;
+      return
+    }
+
     this._buttonLoading.next(true);
 
     this.paymentHttpService.ValidateTransaction(this.transactionNumber).subscribe({

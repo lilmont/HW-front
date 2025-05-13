@@ -17,6 +17,7 @@ export const Messages = {
         fileSizeTooLarge: 'حجم فایل انتخاب شده بیش از حد مجاز است. لطفا یک تصویر با حجم کمتر از 5 مگابایت انتخاب کنید',
         transactionNotFound: 'تراکنش یافت نشد',
         duplicateTransaction: 'این تراکنش قبلا ثبت شده است',
+        emptyTransactionNumber: 'شماره فیش نمی‌تواند خالی باشد',
     },
     Success: {
         loginSuccessful: 'ورود با موفقیت انجام شد',
