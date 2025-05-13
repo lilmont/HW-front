@@ -38,8 +38,11 @@
                         <td class="px-6 py-4">
                             {{transaction.transactionDate | jalaliDate}}
                         </td>
-                        <td class="px-6 py-4">
-                            {{transaction.price | number:'1.0-0'}}
+                        <td [ngClass]="{
+                        'text-red-500' : transaction.isCredit=== false,
+                        'text-green-500' : transaction.isCredit === true
+                    }" class="px-6 py-4" dir="ltr">
+                            {{ transaction.isCredit ? '+' : '-' }}{{transaction.price | number:'1.0-0'}}
                         </td>
                         <td class="px-6 py-4">
                             {{transaction.balance | number:'1.0-0'}}
