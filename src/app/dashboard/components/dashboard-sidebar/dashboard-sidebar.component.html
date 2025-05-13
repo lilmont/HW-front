@@ -5,84 +5,11 @@
     aria-label="Sidebar">
     <div class="h-full px-3 pb-4 overflow-y-auto bg-white">
         <ul class="space-y-2 font-medium">
-            <li [routerLink]="['/dashboard/web-course']" class="cursor-pointer"
-                [ngClass]="{ 'bg-gray-200': selectedItemIndex === 0 }" (click)="selectedItemIndex = 0">
+            <li *ngFor="let item of sidebarItems" class="cursor-pointer"
+                [ngClass]="{ 'bg-gray-200': isActive(item.path) }" (click)="navigate(item.path)">
                 <a class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
-                    <hw-web-course-icon></hw-web-course-icon>
-
-                    <span class="ms-3">
-                        {{Messages.Headers.webCourse}}
-                    </span>
-                </a>
-            </li>
-            <li [routerLink]="['/dashboard/my-courses']" class="cursor-pointer"
-                [ngClass]="{ 'bg-gray-200': selectedItemIndex === 1 }" (click)="selectedItemIndex = 1">
-                <a class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
-                    <hw-courses-icon></hw-courses-icon>
-
-                    <span class="flex-1 ms-3 whitespace-nowrap">
-                        {{Messages.Headers.myCourses}}
-                    </span>
-                </a>
-            </li>
-            <li [routerLink]="['/dashboard/support']" class="cursor-pointer"
-                [ngClass]="{ 'bg-gray-200': selectedItemIndex === 2 }" (click)="selectedItemIndex = 2">
-                <a class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
-                    <hw-support-icon></hw-support-icon>
-
-                    <span class="flex-1 ms-3 whitespace-nowrap">
-                        {{Messages.Headers.support}}
-                    </span>
-                </a>
-            </li>
-            <li [routerLink]="['/dashboard/wallet']" class="cursor-pointer"
-                [ngClass]="{ 'bg-gray-200': selectedItemIndex === 3 }" (click)="selectedItemIndex = 3">
-                <a class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
-                    <hw-wallet-icon></hw-wallet-icon>
-
-                    <span class="flex-1 ms-3 whitespace-nowrap">
-                        {{Messages.Headers.wallet}}
-                    </span>
-                </a>
-            </li>
-            <li [routerLink]="['/dashboard/my-projects']" class="cursor-pointer"
-                [ngClass]="{ 'bg-gray-200': selectedItemIndex === 4 }" (click)="selectedItemIndex = 4">
-                <a class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
-                    <hw-project-icon></hw-project-icon>
-
-                    <span class="flex-1 ms-3 whitespace-nowrap">
-                        {{Messages.Headers.myProjects}}
-                    </span>
-                </a>
-            </li>
-            <li [routerLink]="['/dashboard/hosting']" class="cursor-pointer"
-                [ngClass]="{ 'bg-gray-200': selectedItemIndex === 5 }" (click)="selectedItemIndex = 5">
-                <a class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
-                    <hw-host-icon></hw-host-icon>
-
-                    <span class="flex-1 ms-3 whitespace-nowrap">
-                        {{Messages.Headers.hosting}}
-                    </span>
-                </a>
-            </li>
-            <li [routerLink]="['/dashboard/user-info']" class="cursor-pointer"
-                [ngClass]="{ 'bg-gray-200': selectedItemIndex === 6 }" (click)="selectedItemIndex = 6">
-                <a class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
-                    <hw-profile-icon></hw-profile-icon>
-
-                    <span class="flex-1 ms-3 whitespace-nowrap">
-                        {{Messages.Headers.personalInfo}}
-                    </span>
-                </a>
-            </li>
-            <li [routerLink]="['/dashboard/comments']" class="cursor-pointer"
-                [ngClass]="{ 'bg-gray-200': selectedItemIndex === 7 }" (click)="selectedItemIndex = 6">
-                <a class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
-                    <hw-comment-icon></hw-comment-icon>
-
-                    <span class="flex-1 ms-3 whitespace-nowrap">
-                        {{Messages.Headers.comments}}
-                    </span>
+                    <ng-container *ngComponentOutlet="item.svgComponent"></ng-container>
+                    <span class="ms-3">{{ item.label }}</span>
                 </a>
             </li>
         </ul>

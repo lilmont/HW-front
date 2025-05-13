@@ -1,5 +1,7 @@
 import { Component, Input, input } from '@angular/core';
 import { Messages } from '../../../texts/messages';
+import { SIDEBAR_ITEMS } from './sidebar.config';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'hw-dashboard-sidebar',
@@ -9,6 +11,15 @@ import { Messages } from '../../../texts/messages';
 export class DashboardSidebarComponent {
   Messages = Messages;
   @Input() isOpen: boolean = false;
-  selectedItemIndex: number | null = 0;
+  sidebarItems = SIDEBAR_ITEMS;
 
+  constructor(private router: Router) { }
+
+  isActive(path: string): boolean {
+    return this.router.url.startsWith(path);
+  }
+
+  navigate(path: string) {
+    this.router.navigateByUrl(path);
+  }
 }
