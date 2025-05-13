@@ -39,6 +39,7 @@ export const Messages = {
         increaseBalance: 'افزایش موجودی',
         submitTransaction: 'ثبت فیش',
         increaseBalanceGuide: 'راهنمای افزایش موجودی',
+        pay: 'پرداخت',
     },
     Labels: {
         enterPhoneNumber: 'لطفا شماره موبایل خود را وارد کنید',
@@ -64,6 +65,9 @@ export const Messages = {
         fiveHundredChars: '500 کاراکتر',
         submitReceiptPlaceholder: 'شماره فیش (تراکنش) را وارد کنید',
         transactionTimer: 'ثانیه تا امکان ثبت مجدد فیش',
+        increaseBalanceDesc: 'مبلغ مورد نظر جهت افزایش موجودی را وارد کنید',
+        desiredAmountPlaceholder: 'مبلغ مورد نظر به تومان',
+        selectAmount: 'یا یکی از مبالغ زیر را انتخاب کنید',
     },
     Headers: {
         signup: 'ثبت نام',

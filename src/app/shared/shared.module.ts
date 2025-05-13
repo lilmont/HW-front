@@ -24,6 +24,7 @@ import { ProjectIconComponent } from './svg-icons/project-icon/project-icon.comp
 import { HostIconComponent } from './svg-icons/host-icon/host-icon.component';
 import { ProfileIconComponent } from './svg-icons/profile-icon/profile-icon.component';
 import { CommentIconComponent } from './svg-icons/comment-icon/comment-icon.component';
+import { AmountDirective } from './directives/amount.directive';
 
 
 
@@ -51,6 +52,7 @@ import { CommentIconComponent } from './svg-icons/comment-icon/comment-icon.comp
     HostIconComponent,
     ProfileIconComponent,
     CommentIconComponent,
+    AmountDirective,
   ],
   imports: [
     CommonModule,
@@ -76,6 +78,7 @@ import { CommentIconComponent } from './svg-icons/comment-icon/comment-icon.comp
     HostIconComponent,
     ProfileIconComponent,
     CommentIconComponent,
+    AmountDirective
   ]
 })
 export class SharedModule { }

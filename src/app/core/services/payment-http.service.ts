@@ -5,6 +5,7 @@ import { ToastService } from './toast.service';
 import { IUserTransaction } from '../../models/IUserTransaction';
 import { catchError, Observable, throwError } from 'rxjs';
 import { Messages } from '../../texts/messages';
+import { ISuggestedWalletAmount } from '../../models/ISuggestedWalletAmount';
 
 @Injectable({
   providedIn: 'root'
@@ -52,6 +53,19 @@ export class PaymentHttpService {
           this.toastr.error(Messages.Errors.duplicateTransaction, Messages.Errors.error);
         }
         else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+        return throwError(() => error);
+      })
+    );
+  }
+
+  getSuggestedWalletAmounts(): Observable<ISuggestedWalletAmount[]> {
+    return this.http.get<ISuggestedWalletAmount[]>(`${this.baseUrl}/payment/suggested-wallet-amounts`).pipe(
+      catchError((error) => {
+        if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        } else {
           this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
         }
         return throwError(() => error);
