@@ -49,4 +49,15 @@ export class AddBalanceComponent implements OnInit {
   onAmountInputChange(): void {
     this.selectedAmount = null;
   }
+
+  goToPayment() {
+    const parsed = Number(this.amount.replaceAll(',', ''));
+    if (isNaN(parsed)) {
+      return;
+    }
+
+    const amountInRial = parsed * 10;
+    const url = `https://zarinp.al/mazwebprog?amount=${amountInRial}`;
+    window.open(url, '_blank');
+  }
 }
