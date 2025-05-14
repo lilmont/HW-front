@@ -21,16 +21,20 @@
     </div>
 
     <div class="text-center">
-        <p class="mb-3 font-normal text-gray-100">
+        <p class="mb-3 font-semibold text-gray-100">
             {{Messages.Headers.balance}} : {{balance | number:'1.0-0'}} {{Messages.Headers.toman}}
         </p>
     </div>
 
-    <div class="m-auto mt-6 lg:mt-10 w-full max-w-sm items-center justify-center">
-        <div class="flex justify-center gap-x-4">
+    <div class="m-auto mt-6 w-full max-w-sm items-center justify-center text-center">
+        <div class="flex justify-center gap-x-4 mb-4">
             <hw-add-balance></hw-add-balance>
 
             <hw-submit-receipt></hw-submit-receipt>
+        </div>
+
+        <div class="flex justify-center">
+            <hw-add-balance-tutorial></hw-add-balance-tutorial>
         </div>
     </div>
 </div>

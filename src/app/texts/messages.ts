@@ -38,8 +38,9 @@ export const Messages = {
         save: 'ذخیره',
         increaseBalance: 'افزایش موجودی',
         submitTransaction: 'ثبت فیش',
-        increaseBalanceGuide: 'راهنمای افزایش موجودی',
-        pay: 'پرداخت',
+        increaseBalanceTutorial: 'راهنمای افزایش موجودی',
+        pay: 'افزایش موجودی کیف پول',
+        cancel: 'انصراف'
     },
     Labels: {
         enterPhoneNumber: 'لطفا شماره موبایل خود را وارد کنید',

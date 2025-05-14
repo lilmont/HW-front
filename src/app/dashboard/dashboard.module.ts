@@ -19,6 +19,7 @@ import { AddBalanceComponent } from './components/add-balance/add-balance.compon
 import { SubmitReceiptComponent } from './components/submit-receipt/submit-receipt.component';
 import { UserTransactionsTableComponent } from './components/user-transactions-table/user-transactions-table.component';
 import { WalletCardComponent } from './components/wallet-card/wallet-card.component';
+import { AddBalanceTutorialComponent } from './components/add-balance-tutorial/add-balance-tutorial.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { WalletCardComponent } from './components/wallet-card/wallet-card.compon
     SubmitReceiptComponent,
     UserTransactionsTableComponent,
     WalletCardComponent,
+    AddBalanceTutorialComponent,
   ],
   imports: [
     CommonModule,
