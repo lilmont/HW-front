@@ -1,0 +1,114 @@
+<div class="flex flex-wrap gap-4 justify-center text-center">
+    <div *ngFor="let plan of hostingPlans"
+        class="w-full sm:w-[300px] p-4 pt-8 bg-custom-100 border border-gray-100 rounded-2xl shadow-2xl hover:shadow-3xl hover:-translate-y-1 transition-shadow transform duration-300 ease-in-out">
+
+        <h5 class="mb-4 text-2xl font-semibold text-gray-900">
+            {{ plan.title }}
+        </h5>
+
+        <div class="flex flex-wrap items-baseline text-gray-500 text-center pb-6 justify-center leading-tight">
+            <div class="flex items-baseline">
+                <span class="text-xl font-medium tracking-tight">
+                    {{ plan.price | number:'1.0-0' }}
+                </span>
+                <span class="text-xl font-medium mr-2">
+                    {{Messages.Headers.toman}}
+                </span>
+            </div>
+            <span class="text-sm w-full mt-1">
+                {{Messages.Labels.yearly}}
+            </span>
+        </div>
+
+        <button type="button"
+            class="mb-2 cursor-pointer text-white bg-custom-600 hover:bg-custom-800 focus:ring-4 focus:outline-none focus:ring-custom-200 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center">
+            {{Messages.Buttons.submitHost}}
+        </button>
+
+        <ul role="list" [ngClass]="{
+            'my-5':isShowMoreExpanded,
+            'my-1':!isShowMoreExpanded
+        }" class="space-y-5 px-4">
+            <div [@expandCollapse]="isShowMoreExpanded ? 'expanded' : 'collapsed'"
+                class="overflow-hidden transition-all duration-300">
+                <li class="flex items-center m-2 mt-3">
+                    <ng-container *ngComponentOutlet="LocationComponent"></ng-container>
+                    <span class="text-right text-base font-semibold leading-tight text-gray-500 ms-3">
+                        {{plan.serverLocation}}
+                    </span>
+                </li>
+
+                <li class="flex items-center m-2 mt-3">
+                    <ng-container *ngComponentOutlet="SettingComponent"></ng-container>
+                    <span class="text-right text-base font-semibold leading-tight text-gray-500 ms-3">
+                        {{plan.controlPanelTitle}}
+                    </span>
+                </li>
+
+                <li class="flex items-center m-2 mt-3">
+                    <ng-container *ngComponentOutlet="WebComponent"></ng-container>
+                    <span class="text-right text-base font-semibold leading-tight text-gray-500 ms-3">
+                        {{plan.domainNumber}}
+                    </span>
+                </li>
+
+                <li class="flex items-center m-2 mt-3">
+                    <ng-container *ngComponentOutlet="LayersComponent"></ng-container>
+                    <span class="text-right text-base font-semibold leading-tight text-gray-500 ms-3">
+                        {{plan.subdomainNumber}}
+                    </span>
+                </li>
+
+                <li class="flex items-center m-2 mt-3">
+                    <ng-container *ngComponentOutlet="EmailComponent"></ng-container>
+                    <span class="text-right text-base font-semibold leading-tight text-gray-500 ms-3">
+                        {{plan.emailLimit}}
+                    </span>
+                </li>
+
+                <li class="flex items-center m-2 mt-3">
+                    <ng-container *ngComponentOutlet="MemoryComponent"></ng-container>
+                    <span class="text-right text-base font-semibold leading-tight text-gray-500 ms-3">
+                        {{plan.storage}}
+                    </span>
+                </li>
+
+                <li class="flex m-2 mt-3">
+                    <ng-container *ngComponentOutlet="DatabaseComponent"></ng-container>
+                    <span class="text-right text-base font-semibold leading-tight text-gray-500 ms-3">
+                        {{plan.databaseNumber}}
+                    </span>
+                </li>
+
+                <li class="flex items-center m-2 mt-3">
+                    <ng-container *ngComponentOutlet="SpeedComponent"></ng-container>
+                    <span class="text-right text-base font-semibold leading-tight text-gray-500 ms-3">
+                        {{plan.bandwidth}}
+                    </span>
+                </li>
+
+                <li class="flex m-2 mt-4">
+                    <ng-container *ngComponentOutlet="RocketComponent"></ng-container>
+                    <span class="text-right font-semibold leading-tight text-gray-500 ms-3">
+                        {{plan.supportedTechnologies}}
+                    </span>
+                </li>
+            </div>
+        </ul>
+
+        <div class="flex justify-center">
+            <button (click)="toggleExpand()" type="button"
+                class="flex items-center gap-1 cursor-pointer text-sm font-semibold text-custom-500 hover:underline focus:outline-none">
+                {{isShowMoreExpanded ? Messages.Buttons.showLess : Messages.Buttons.showMore}}
+                <span>
+                    <ng-container *ngIf="!isShowMoreExpanded">
+                        <ng-container *ngComponentOutlet="DownComponent"></ng-container>
+                    </ng-container>
+                    <ng-container *ngIf="isShowMoreExpanded">
+                        <ng-container *ngComponentOutlet="UpComponent"></ng-container>
+                    </ng-container>
+                </span>
+            </button>
+        </div>
+    </div>
+</div>

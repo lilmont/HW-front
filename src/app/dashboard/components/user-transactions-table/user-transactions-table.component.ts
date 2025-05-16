@@ -52,7 +52,6 @@ export class UserTransactionsTableComponent implements OnInit, AfterViewInit, On
         this.loadingService.hide();
       },
       error: (error) => {
-        console.error(error);
         this.loadingService.hide();
       }
     });

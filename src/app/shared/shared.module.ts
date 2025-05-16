@@ -25,6 +25,17 @@ import { HostIconComponent } from './svg-icons/host-icon/host-icon.component';
 import { ProfileIconComponent } from './svg-icons/profile-icon/profile-icon.component';
 import { CommentIconComponent } from './svg-icons/comment-icon/comment-icon.component';
 import { AmountDirective } from './directives/amount.directive';
+import { RocketComponent } from './svg-icons/rocket/rocket.component';
+import { SpeedComponent } from './svg-icons/speed/speed.component';
+import { MemoryComponent } from './svg-icons/memory/memory.component';
+import { SettingComponent } from './svg-icons/setting/setting.component';
+import { LocationComponent } from './svg-icons/location/location.component';
+import { DatabaseComponent } from './svg-icons/database/database.component';
+import { EmailComponent } from './svg-icons/email/email.component';
+import { LayersComponent } from './svg-icons/layers/layers.component';
+import { WebComponent } from './svg-icons/web/web.component';
+import { UpComponent } from './svg-icons/up/up.component';
+import { DownComponent } from './svg-icons/down/down.component';
 
 
 
@@ -53,6 +64,17 @@ import { AmountDirective } from './directives/amount.directive';
     ProfileIconComponent,
     CommentIconComponent,
     AmountDirective,
+    RocketComponent,
+    SpeedComponent,
+    MemoryComponent,
+    SettingComponent,
+    LocationComponent,
+    DatabaseComponent,
+    EmailComponent,
+    LayersComponent,
+    WebComponent,
+    UpComponent,
+    DownComponent,
   ],
   imports: [
     CommonModule,
@@ -78,7 +100,18 @@ import { AmountDirective } from './directives/amount.directive';
     HostIconComponent,
     ProfileIconComponent,
     CommentIconComponent,
-    AmountDirective
+    AmountDirective,
+    RocketComponent,
+    SpeedComponent,
+    MemoryComponent,
+    SettingComponent,
+    LocationComponent,
+    DatabaseComponent,
+    EmailComponent,
+    LayersComponent,
+    WebComponent,
+    DownComponent,
+    UpComponent
   ]
 })
 export class SharedModule { }

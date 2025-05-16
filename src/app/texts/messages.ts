@@ -40,7 +40,10 @@ export const Messages = {
         submitTransaction: 'ثبت فیش',
         increaseBalanceTutorial: 'راهنمای افزایش موجودی',
         pay: 'افزایش موجودی کیف پول',
-        cancel: 'انصراف'
+        cancel: 'انصراف',
+        showMore: 'مشاهده بیشتر',
+        showLess: 'مشاهده کمتر',
+        submitHost: 'ثبت هاست',
     },
     Labels: {
         enterPhoneNumber: 'لطفا شماره موبایل خود را وارد کنید',
@@ -69,6 +72,7 @@ export const Messages = {
         increaseBalanceDesc: 'مبلغ مورد نظر جهت افزایش موجودی را وارد کنید',
         desiredAmountPlaceholder: 'مبلغ مورد نظر به تومان',
         selectAmount: 'یا یکی از مبالغ زیر را انتخاب کنید',
+        yearly: 'سالانه',
     },
     Headers: {
         signup: 'ثبت نام',

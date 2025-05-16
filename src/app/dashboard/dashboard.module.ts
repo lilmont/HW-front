@@ -20,6 +20,7 @@ import { SubmitReceiptComponent } from './components/submit-receipt/submit-recei
 import { UserTransactionsTableComponent } from './components/user-transactions-table/user-transactions-table.component';
 import { WalletCardComponent } from './components/wallet-card/wallet-card.component';
 import { AddBalanceTutorialComponent } from './components/add-balance-tutorial/add-balance-tutorial.component';
+import { HostingCardsComponent } from './components/hosting-cards/hosting-cards.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { AddBalanceTutorialComponent } from './components/add-balance-tutorial/a
     UserTransactionsTableComponent,
     WalletCardComponent,
     AddBalanceTutorialComponent,
+    HostingCardsComponent,
   ],
   imports: [
     CommonModule,
