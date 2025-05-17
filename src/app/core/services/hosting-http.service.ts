@@ -5,6 +5,7 @@ import { ToastService } from './toast.service';
 import { catchError, Observable, throwError } from 'rxjs';
 import { IHostingPlan } from '../../models/IHostingPlan';
 import { Messages } from '../../texts/messages';
+import { IHostPlanInfo } from '../../models/IHostPlanInfo';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,21 @@ export class HostingHttpService {
       catchError((error) => {
         if (error.status === 400) {
           this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+        return throwError(() => error);
+      })
+    );
+  }
+
+  SubmitHostingPlan(hostPlanInfo: IHostPlanInfo): Observable<void> {
+    return this.http.post<void>(`${this.baseUrl}/hosting/create-hosting-plan`, hostPlanInfo).pipe(
+      catchError((error) => {
+        if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
+        } else if (error.status === 401) {
+          this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
         } else {
           this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
         }

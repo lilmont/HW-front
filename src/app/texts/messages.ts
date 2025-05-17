@@ -18,6 +18,7 @@ export const Messages = {
         transactionNotFound: 'تراکنش یافت نشد',
         duplicateTransaction: 'این تراکنش قبلا ثبت شده است',
         emptyTransactionNumber: 'شماره فیش نمی‌تواند خالی باشد',
+        emptyFullName: 'نام و نام خانوادگی نمی‌تواند خالی باشد',
     },
     Success: {
         loginSuccessful: 'ورود با موفقیت انجام شد',
@@ -73,6 +74,7 @@ export const Messages = {
         desiredAmountPlaceholder: 'مبلغ مورد نظر به تومان',
         selectAmount: 'یا یکی از مبالغ زیر را انتخاب کنید',
         yearly: 'سالانه',
+        FullNameInEnglish: 'نام و نام خانوادگی به انگلیسی',
     },
     Headers: {
         signup: 'ثبت نام',
