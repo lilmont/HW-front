@@ -17,7 +17,6 @@ export class CreateHostModalComponent {
   hostingPlanInfo: HostPlanInfo = new HostPlanInfo('', '', '');
   emptyFullName: boolean = false;
   emailInvalid: boolean = false;
-  isEmailEditable: boolean = true;
 
   private _buttonLoading = new BehaviorSubject<boolean>(false);
   readonly buttonLoading$ = this._buttonLoading.asObservable();
@@ -44,8 +43,6 @@ export class CreateHostModalComponent {
     this.userHttpService.getUserInfo().subscribe({
       next: (data) => {
         this.hostingPlanInfo.email = data.email ?? '';
-        if (data.email)
-          this.isEmailEditable = false;
         this.loadingService.hide();
       },
       error: () => {
