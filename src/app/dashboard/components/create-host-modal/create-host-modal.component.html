@@ -49,7 +49,7 @@
                     <div>
                         <input type="text" name="email" id="email" dir="ltr" [(ngModel)]="hostingPlanInfo.email"
                             class="text-center bg-gray-50 border border-custom-300 text-gray-900 text-sm rounded-lg focus:ring-custom-500 focus:border-custom-500 block w-full p-2.5"
-                            [placeholder]="Messages.Labels.email" required />
+                            [placeholder]="Messages.Labels.email" [disabled]="!isEmailEditable" required />
                     </div>
 
                     <div *ngIf="emailInvalid" class="text-red-600 text-sm mt-1">

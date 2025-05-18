@@ -1,8 +1,10 @@
 import { Component, Input } from '@angular/core';
 import { Messages } from '../../../texts/messages';
-import { HostPlanInfo, IHostPlanInfo } from '../../../models/IHostPlanInfo';
+import { HostPlanInfo } from '../../../models/IHostPlanInfo';
 import { BehaviorSubject } from 'rxjs';
 import { HostingHttpService } from '../../../core/services/hosting-http.service';
+import { UserHttpService } from '../../../core/services/user-http.service';
+import { LoadingService } from '../../../core/services/loading.service';
 
 @Component({
   selector: 'hw-create-host-modal',
@@ -15,6 +17,7 @@ export class CreateHostModalComponent {
   hostingPlanInfo: HostPlanInfo = new HostPlanInfo('', '', '');
   emptyFullName: boolean = false;
   emailInvalid: boolean = false;
+  isEmailEditable: boolean = true;
 
   private _buttonLoading = new BehaviorSubject<boolean>(false);
   readonly buttonLoading$ = this._buttonLoading.asObservable();
@@ -22,14 +25,33 @@ export class CreateHostModalComponent {
   @Input() hostingPlanId: string = "";
   @Input() hostingPlanTitle: string = "";
 
-  constructor(private hostingHttpService: HostingHttpService) { }
+  constructor(private hostingHttpService: HostingHttpService,
+    private loadingService: LoadingService,
+    private userHttpService: UserHttpService
+  ) { }
 
   openModal() {
+    this.getUserInfo();
     this.isModalOpen = true;
   }
 
   closeModal() {
     this.isModalOpen = false;
+  }
+
+  getUserInfo() {
+    this.loadingService.show();
+    this.userHttpService.getUserInfo().subscribe({
+      next: (data) => {
+        this.hostingPlanInfo.email = data.email ?? '';
+        if (data.email)
+          this.isEmailEditable = false;
+        this.loadingService.hide();
+      },
+      error: () => {
+        this.loadingService.hide();
+      }
+    });
   }
 
   createHost() {
