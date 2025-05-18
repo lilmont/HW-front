@@ -14,7 +14,7 @@ import { LoadingService } from '../../../core/services/loading.service';
 export class CreateHostModalComponent {
   Messages = Messages;
   isModalOpen: boolean = false;
-  hostingPlanInfo: HostPlanInfo = new HostPlanInfo('', '', '');
+  hostingPlanInfo: HostPlanInfo = new HostPlanInfo();
   emptyFullName: boolean = false;
   emailInvalid: boolean = false;
 

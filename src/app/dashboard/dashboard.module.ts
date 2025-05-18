@@ -23,6 +23,7 @@ import { AddBalanceTutorialComponent } from './components/add-balance-tutorial/a
 import { HostingCardsComponent } from './components/hosting-cards/hosting-cards.component';
 import { CreateHostModalComponent } from './components/create-host-modal/create-host-modal.component';
 import { UserHostsTableComponent } from './components/user-hosts-table/user-hosts-table.component';
+import { SubmitDomainModalComponent } from './components/submit-domain-modal/submit-domain-modal.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { UserHostsTableComponent } from './components/user-hosts-table/user-host
     HostingCardsComponent,
     CreateHostModalComponent,
     UserHostsTableComponent,
+    SubmitDomainModalComponent,
   ],
   imports: [
     CommonModule,

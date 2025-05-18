@@ -50,11 +50,7 @@
                             </ng-container>
 
                             <ng-template #noDomain>
-                                <button type="button"
-                                    class="cursor-pointer text-blue-500 hover:text-custom-500 whitespace-nowrap"
-                                    (click)="submitDomain()">
-                                    ثبت دامنه
-                                </button>
+                                <hw-submit-domain-modal [userHostId]="host.id"></hw-submit-domain-modal>
                             </ng-template>
                         </td>
                         <td class="px-6 py-4">

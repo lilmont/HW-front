@@ -1,7 +1,7 @@
 <button type="button"
-    class="mb-2 cursor-pointer text-white bg-custom-600 hover:bg-custom-800 focus:ring-4 focus:outline-none focus:ring-custom-200 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center"
+    class="cursor-pointer text-white bg-custom-600 hover:bg-custom-800 focus:ring-4 focus:outline-none focus:ring-custom-200 font-medium rounded-lg text-sm px-3 py-2 inline-flex justify-center w-full text-center"
     (click)="openModal()">
-    {{Messages.Buttons.submitHost}}
+    {{Messages.Buttons.submitDomain}}
 </button>
 
 <div *ngIf="isModalOpen" class="fixed inset-0 z-50 flex items-center justify-center bg-[rgba(31,41,55,0.5)]"
@@ -11,8 +11,8 @@
         <div class="relative bg-white rounded-lg shadow-sm">
             <!-- Modal header -->
             <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t border-gray-200">
-                <h3 class="text-l text-gray-900">
-                    {{hostingPlanTitle}}
+                <h3 class="text-xl text-gray-900">
+                    {{Messages.Buttons.submitDomain}}
                 </h3>
                 <button type="button"
                     class="cursor-pointer end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
@@ -29,28 +29,17 @@
             <div class="p-4 md:p-5">
                 <form class="space-y-4" action="#">
                     <div>
-                        <input type="text" name="fullname" id="fullname" dir="ltr"
-                            [(ngModel)]="hostingPlanInfo.fullname"
+                        <input type="text" name="domain" id="domain" dir="ltr" [(ngModel)]="submitDomainInfo.domain"
                             class="text-center bg-gray-50 border border-custom-300 text-gray-900 text-sm rounded-lg focus:ring-custom-500 focus:border-custom-500 block w-full p-2.5"
-                            [placeholder]="Messages.Labels.FullNameInEnglish" required />
+                            [placeholder]="Messages.Labels.submitDomainPlaceholder" required />
                     </div>
 
-                    <div *ngIf="emptyFullName" class="text-red-600 text-sm mt-1">
-                        {{Messages.Errors.emptyFullName}}
+                    <div *ngIf="domainInvalid" class="text-red-600 text-sm mt-1">
+                        {{Messages.Errors.invalidDomain}}
                     </div>
 
-                    <div>
-                        <input type="text" name="email" id="email" dir="ltr" [(ngModel)]="hostingPlanInfo.email"
-                            class="text-center bg-gray-50 border border-custom-300 text-gray-900 text-sm rounded-lg focus:ring-custom-500 focus:border-custom-500 block w-full p-2.5"
-                            [placeholder]="Messages.Labels.email" required />
-                    </div>
-
-                    <div *ngIf="emailInvalid" class="text-red-600 text-sm mt-1">
-                        {{Messages.Errors.invalidEmail}}
-                    </div>
-
-                    <hw-loading-button [loading$]="buttonLoading$" label="{{ Messages.Buttons.submitHost }}"
-                        (click)="createHost()"></hw-loading-button>
+                    <hw-loading-button [loading$]="buttonLoading$" label="{{ Messages.Buttons.confirm }}"
+                        (click)="submitDomain()"></hw-loading-button>
                 </form>
             </div>
         </div>

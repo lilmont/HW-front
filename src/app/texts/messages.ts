@@ -19,6 +19,7 @@ export const Messages = {
         duplicateTransaction: 'این تراکنش قبلا ثبت شده است',
         emptyTransactionNumber: 'شماره فیش نمی‌تواند خالی باشد',
         emptyFullName: 'نام و نام خانوادگی نمی‌تواند خالی باشد',
+        invalidDomain: 'دامنه معتبر نیست'
     },
     Success: {
         loginSuccessful: 'ورود با موفقیت انجام شد',
@@ -45,6 +46,7 @@ export const Messages = {
         showMore: 'مشاهده بیشتر',
         showLess: 'مشاهده کمتر',
         submitHost: 'ثبت هاست',
+        submitDomain: 'ثبت دامنه'
     },
     Labels: {
         enterPhoneNumber: 'لطفا شماره موبایل خود را وارد کنید',
@@ -75,6 +77,7 @@ export const Messages = {
         selectAmount: 'یا یکی از مبالغ زیر را انتخاب کنید',
         yearly: 'سالانه',
         FullNameInEnglish: 'نام و نام خانوادگی به انگلیسی',
+        submitDomainPlaceholder: 'hardworker.ir مثلا'
     },
     Headers: {
         signup: 'ثبت نام',

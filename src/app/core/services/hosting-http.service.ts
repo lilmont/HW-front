@@ -7,6 +7,7 @@ import { IHostingPlan } from '../../models/IHostingPlan';
 import { Messages } from '../../texts/messages';
 import { IHostPlanInfo } from '../../models/IHostPlanInfo';
 import { IUserHost } from '../../models/IUserHost';
+import { ISubmitDomainInfo } from '../../models/ISubmitDomainInfo';
 
 @Injectable({
   providedIn: 'root'
@@ -52,6 +53,21 @@ export class HostingHttpService {
       catchError((error) => {
         if (error.status === 400) {
           this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+        return throwError(() => error);
+      })
+    );
+  }
+
+  submitDomain(submitDomainInfo: ISubmitDomainInfo): Observable<void> {
+    return this.http.post<void>(`${this.baseUrl}/hosting/submit-domain`, submitDomainInfo).pipe(
+      catchError((error) => {
+        if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
+        } else if (error.status === 401) {
+          this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
         } else {
           this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
         }
