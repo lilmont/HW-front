@@ -66,7 +66,6 @@ export class HostingCardsComponent implements OnInit {
   ) { }
   ngOnInit(): void {
     this.getHostingPlans();
-
   }
 
   toggleExpand() {
@@ -76,8 +75,8 @@ export class HostingCardsComponent implements OnInit {
   getHostingPlans() {
     this.loadingService.show();
     this.hostingHttpService.getUserTransactions().subscribe({
-      next: (date) => {
-        this.hostingPlans = date;
+      next: (data) => {
+        this.hostingPlans = data;
         this.loadingService.hide();
       },
       error: () => {

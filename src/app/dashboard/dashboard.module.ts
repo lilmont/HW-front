@@ -22,6 +22,7 @@ import { WalletCardComponent } from './components/wallet-card/wallet-card.compon
 import { AddBalanceTutorialComponent } from './components/add-balance-tutorial/add-balance-tutorial.component';
 import { HostingCardsComponent } from './components/hosting-cards/hosting-cards.component';
 import { CreateHostModalComponent } from './components/create-host-modal/create-host-modal.component';
+import { UserHostsTableComponent } from './components/user-hosts-table/user-hosts-table.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { CreateHostModalComponent } from './components/create-host-modal/create-
     AddBalanceTutorialComponent,
     HostingCardsComponent,
     CreateHostModalComponent,
+    UserHostsTableComponent,
   ],
   imports: [
     CommonModule,

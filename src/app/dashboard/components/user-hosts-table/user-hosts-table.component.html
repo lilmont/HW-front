@@ -1,0 +1,155 @@
+<div class="flex-1 overflow-x-auto mt-8">
+    <h1 class="text-xl lg:text-2xl font-bold mb-6">{{Messages.Headers.myHosts}}</h1>
+    <div class="flex flex-col h-full">
+        <div class="overflow-x-auto" #topScrollbar>
+            <div style="width: 100%; height: 1px;"></div>
+        </div>
+
+        <div class="overflow-x-auto mt-4 rounded-2xl" #tableContainer>
+            <table class="w-full text-sm text-left rtl:text-right text-gray-500 rounded-2xl">
+                <thead class="text-xs text-gray-700 uppercase bg-custom-300 text-center">
+                    <tr>
+                        <th scope="col" class="px-6 py-3 w-[90px]">
+                            {{Messages.Headers.number}}
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            {{Messages.Headers.domain}}
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            {{Messages.Headers.setupDate}}
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            {{Messages.Headers.extensionDate}}
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            {{Messages.Headers.expirationDate}}
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            {{Messages.Headers.fullPrice}}
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            {{Messages.Headers.paidAmount}}
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            {{Messages.Headers.status}}
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            {{Messages.Headers.actions}}
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let host of userHosts; let i = index"
+                        class="bg-white border-b border-gray-200 text-center">
+                        <td class="px-6 py-4">
+                            {{i + 1}}
+                        </td>
+                        <td class="px-6 py-4">
+                            <ng-container *ngIf="host.domain; else noDomain">
+                                {{ host.domain }}
+                            </ng-container>
+
+                            <ng-template #noDomain>
+                                <button type="button"
+                                    class="cursor-pointer text-blue-500 hover:text-custom-500 whitespace-nowrap"
+                                    (click)="submitDomain()">
+                                    ثبت دامنه
+                                </button>
+                            </ng-template>
+                        </td>
+                        <td class="px-6 py-4">
+                            {{host.setupDate | jalaliDate}}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{host.expirationDate | jalaliDate}}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{host.expirationDate | jalaliDate}}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{host.fullPrice}}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{host.paidAmount}}
+                        </td>
+                        <td class="px-6 py-4" [ngSwitch]="host.status">
+                            <div *ngSwitchCase="0" class="text-green-600 flex items-center gap-1 justify-center">
+                                <svg class="shrink-0 w-4 h-4 text-gray-500 transition duration-75 group-hover:text-gray-900"
+                                    viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#16a34a">
+                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                        <path d="M8.5 12.5L10.5 14.5L15.5 9.5" stroke="#16a34a" stroke-width="1.5"
+                                            stroke-linecap="round" stroke-linejoin="round"></path>
+                                        <path
+                                            d="M7 3.33782C8.47087 2.48697 10.1786 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 10.1786 2.48697 8.47087 3.33782 7"
+                                            stroke="#16a34a" stroke-width="1.5" stroke-linecap="round"></path>
+                                    </g>
+                                </svg>
+                                {{Messages.Headers.active}}
+                            </div>
+                            <div *ngSwitchCase="1" class="text-yellow-100 flex items-center gap-1 justify-center">
+                                <svg class="shrink-0 w-4 h-4 text-gray-500 transition duration-75 group-hover:text-gray-900"
+                                    viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                        <path
+                                            d="M6.30928 9C8.59494 5 9.96832 3 12 3C14.3107 3 15.7699 5.58716 18.6883 10.7615L19.0519 11.4063C21.4771 15.7061 22.6897 17.856 21.5937 19.428C20.4978 21 17.7864 21 12.3637 21H11.6363C6.21356 21 3.50217 21 2.40626 19.428C1.45498 18.0635 2.24306 16.2635 4.05373 13"
+                                            stroke="#FFC008" stroke-width="1.5" stroke-linecap="round"></path>
+                                        <path d="M12 8V13" stroke="#FFC008" stroke-width="1.5" stroke-linecap="round">
+                                        </path>
+                                        <circle cx="12" cy="16" r="1" fill="#FFC008"></circle>
+                                    </g>
+                                </svg>
+                                {{Messages.Headers.suspended}}
+                            </div>
+                            <div *ngSwitchCase="2" class="text-red-500 flex items-center gap-1 justify-center">
+                                <svg class="shrink-0 w-4 h-4 text-gray-500 transition duration-75 group-hover:text-gray-900"
+                                    viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" fill="#ef4444">
+                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                        <title>cross-circle</title>
+                                        <desc>Created with Sketch Beta.</desc>
+                                        <defs> </defs>
+                                        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"
+                                            sketch:type="MSPage">
+                                            <g id="Icon-Set" sketch:type="MSLayerGroup"
+                                                transform="translate(-568.000000, -1087.000000)" fill="#ef4444">
+                                                <path
+                                                    d="M584,1117 C576.268,1117 570,1110.73 570,1103 C570,1095.27 576.268,1089 584,1089 C591.732,1089 598,1095.27 598,1103 C598,1110.73 591.732,1117 584,1117 L584,1117 Z M584,1087 C575.163,1087 568,1094.16 568,1103 C568,1111.84 575.163,1119 584,1119 C592.837,1119 600,1111.84 600,1103 C600,1094.16 592.837,1087 584,1087 L584,1087 Z M589.717,1097.28 C589.323,1096.89 588.686,1096.89 588.292,1097.28 L583.994,1101.58 L579.758,1097.34 C579.367,1096.95 578.733,1096.95 578.344,1097.34 C577.953,1097.73 577.953,1098.37 578.344,1098.76 L582.58,1102.99 L578.314,1107.26 C577.921,1107.65 577.921,1108.29 578.314,1108.69 C578.708,1109.08 579.346,1109.08 579.74,1108.69 L584.006,1104.42 L588.242,1108.66 C588.633,1109.05 589.267,1109.05 589.657,1108.66 C590.048,1108.27 590.048,1107.63 589.657,1107.24 L585.42,1103.01 L589.717,1098.71 C590.11,1098.31 590.11,1097.68 589.717,1097.28 L589.717,1097.28 Z"
+                                                    id="cross-circle" sketch:type="MSShapeGroup"> </path>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                                {{Messages.Headers.deleted}}
+                            </div>
+                        </td>
+                        <td class="px-6 py-4  min-w-[160px]">
+                            <div class="flex flex-row flex-wrap gap-2 justify-center">
+                                <button *ngIf="showExtendBtn(host)"
+                                    class="cursor-pointer text-gray-200 items-center justify-center px-2 py-2 text-sm font-medium text-center bg-custom-500 rounded-lg hover:bg-custom-600">
+                                    تمدید
+                                </button>
+
+                                <button *ngIf="showInstallmentPayBtn(host)"
+                                    class="cursor-pointer text-gray-200 items-center justify-center px-2 py-2 text-sm font-medium text-center bg-custom-500 rounded-lg hover:bg-custom-600">
+                                    تسویه
+                                </button>
+
+                                <button *ngIf="showRestoreBtn(host)"
+                                    class="cursor-pointer text-gray-800 items-center justify-center px-2 py-2 text-sm font-medium text-center bg-yellow-100 rounded-lg hover:bg-yellow-200">
+                                    بازیابی
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

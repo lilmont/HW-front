@@ -6,6 +6,7 @@ import { catchError, Observable, throwError } from 'rxjs';
 import { IHostingPlan } from '../../models/IHostingPlan';
 import { Messages } from '../../texts/messages';
 import { IHostPlanInfo } from '../../models/IHostPlanInfo';
+import { IUserHost } from '../../models/IUserHost';
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +39,19 @@ export class HostingHttpService {
           this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
         } else if (error.status === 401) {
           this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+        return throwError(() => error);
+      })
+    );
+  }
+
+  getUserHostsForUser(): Observable<IUserHost[]> {
+    return this.http.get<IUserHost[]>(`${this.baseUrl}/hosting/user-host-list`).pipe(
+      catchError((error) => {
+        if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
         } else {
           this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
         }
