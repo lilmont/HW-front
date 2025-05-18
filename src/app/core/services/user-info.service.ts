@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { UserHttpService } from './user-http.service';
 import { IUserInfo } from '../../models/IUserInfo';
 import { JwtHelperService } from './jwt.helper.service';
 
@@ -12,8 +11,7 @@ export class UserInfoService {
   private userSubject = new BehaviorSubject<IUserInfo | null>(null);
   user$: Observable<IUserInfo | null> = this.userSubject.asObservable();
 
-  constructor(private userService: UserHttpService
-    , private jwtHelperService: JwtHelperService
+  constructor(private jwtHelperService: JwtHelperService
   ) { }
 
   loadUser() {
