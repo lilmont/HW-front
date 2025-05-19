@@ -45,3 +45,6 @@
         </div>
     </div>
 </div>
+
+<hw-password-modal *ngIf="showPasswordModal" [loginInfo]="loginInfo" (closed)="onPasswordModalClose()">
+</hw-password-modal>

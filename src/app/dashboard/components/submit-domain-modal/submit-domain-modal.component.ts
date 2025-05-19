@@ -3,6 +3,7 @@ import { Messages } from '../../../texts/messages';
 import { HostingHttpService } from '../../../core/services/hosting-http.service';
 import { BehaviorSubject } from 'rxjs';
 import { SubmitDomainInfo } from '../../../models/ISubmitDomainInfo';
+import { IPasswordRecovery, PasswordRecovery } from '../../../models/IPasswordRecovery';
 
 @Component({
   selector: 'hw-submit-domain-modal',
@@ -18,6 +19,9 @@ export class SubmitDomainModalComponent {
 
   private _buttonLoading = new BehaviorSubject<boolean>(false);
   readonly buttonLoading$ = this._buttonLoading.asObservable();
+
+  showPasswordModal: boolean = false;
+  loginInfo: IPasswordRecovery = new PasswordRecovery();
 
   constructor(
     private hostingHttpService: HostingHttpService) { }
@@ -43,8 +47,9 @@ export class SubmitDomainModalComponent {
     this._buttonLoading.next(true);
     this.hostingHttpService.submitDomain(this.submitDomainInfo).subscribe({
       next: (data) => {
-        console.log("data", data)
         this._buttonLoading.next(false);
+        this.loginInfo = data;
+        this.showPasswordModal = true;
         this.closeModal();
       },
       error: () => {
@@ -92,5 +97,10 @@ export class SubmitDomainModalComponent {
     if (this.submitDomainInfo.domain.length > 253) return false;
 
     return true;
+  }
+
+  onPasswordModalClose(): void {
+    this.showPasswordModal = false;
+    this.loginInfo = new PasswordRecovery();
   }
 }

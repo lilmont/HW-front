@@ -19,13 +19,18 @@ export const Messages = {
         duplicateTransaction: 'این تراکنش قبلا ثبت شده است',
         emptyTransactionNumber: 'شماره فیش نمی‌تواند خالی باشد',
         emptyFullName: 'نام و نام خانوادگی نمی‌تواند خالی باشد',
-        invalidDomain: 'دامنه معتبر نیست'
+        invalidDomain: 'دامنه معتبر نیست',
     },
     Success: {
         loginSuccessful: 'ورود با موفقیت انجام شد',
         saveUserInfoSuccessful: 'ویرایش با موفقیت انجام شد',
         profileAvatarUpdatedSuccessfully: 'عکس پروفایل با موفقیت به روز شد',
         submitTransactionSuccessful: 'تراکنش با موفقیت ثبت شد',
+        domainSubmittedSuccessfull: 'دامنه شما با موفقیت ثبت شد',
+        loginInfoCopied: 'اطلاعات هاست با موفقیت کپی شد'
+    },
+    Warnings: {
+        oneTimePassword: 'قبل از بستن این صفحه اطلاعات هاست خود را کپی کنید و در جای امنی نگداری کنید'
     },
     Buttons: {
         sendCode: 'ارسال کد یکبار مصرف',
@@ -46,7 +51,10 @@ export const Messages = {
         showMore: 'مشاهده بیشتر',
         showLess: 'مشاهده کمتر',
         submitHost: 'ثبت هاست',
-        submitDomain: 'ثبت دامنه'
+        submitDomain: 'ثبت دامنه',
+        copy: 'کپی',
+        close: 'بستن',
+        copied: 'کپی شد'
     },
     Labels: {
         enterPhoneNumber: 'لطفا شماره موبایل خود را وارد کنید',

@@ -24,6 +24,7 @@ import { HostingCardsComponent } from './components/hosting-cards/hosting-cards.
 import { CreateHostModalComponent } from './components/create-host-modal/create-host-modal.component';
 import { UserHostsTableComponent } from './components/user-hosts-table/user-hosts-table.component';
 import { SubmitDomainModalComponent } from './components/submit-domain-modal/submit-domain-modal.component';
+import { PasswordModalComponent } from './components/password-modal/password-modal.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { SubmitDomainModalComponent } from './components/submit-domain-modal/sub
     CreateHostModalComponent,
     UserHostsTableComponent,
     SubmitDomainModalComponent,
+    PasswordModalComponent,
   ],
   imports: [
     CommonModule,
