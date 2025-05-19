@@ -2,6 +2,7 @@ import { Component, EventEmitter, Inject, Input, Output } from '@angular/core';
 import { Messages } from '../../../texts/messages';
 import { IPasswordRecovery, PasswordRecovery } from '../../../models/IPasswordRecovery';
 import { ToastService } from '../../../core/services/toast.service';
+import { RefreshUserHostsListService } from '../../../core/services/refresh-user-hosts-list.service';
 
 @Component({
   selector: 'hw-password-modal',
@@ -16,7 +17,9 @@ export class PasswordModalComponent {
 
   Messages = Messages;
 
-  constructor(private toastr: ToastService) { }
+  constructor(private toastr: ToastService,
+    private refreshUserHostsListService: RefreshUserHostsListService
+  ) { }
 
   copyCredentials() {
     const textToCopy = `Url:${this.loginInfo.url}\nUsername:${this.loginInfo.login}\nPassword:${this.loginInfo.password}`;
@@ -29,5 +32,6 @@ export class PasswordModalComponent {
 
   close() {
     this.closed.emit();
+    this.refreshUserHostsListService.triggerRefreshHosts();
   }
 }

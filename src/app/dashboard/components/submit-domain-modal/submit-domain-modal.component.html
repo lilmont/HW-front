@@ -38,6 +38,10 @@
                         {{Messages.Errors.invalidDomain}}
                     </div>
 
+                    <div *ngIf="showWaitingMessage" class="text-custom-700 text-sm mt-1">
+                        {{Messages.Warnings.waitingTooLong}}
+                    </div>
+
                     <hw-loading-button [loading$]="buttonLoading$" label="{{ Messages.Buttons.confirm }}"
                         (click)="submitDomain()"></hw-loading-button>
                 </form>

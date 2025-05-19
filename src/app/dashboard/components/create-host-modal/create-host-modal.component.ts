@@ -5,6 +5,8 @@ import { BehaviorSubject } from 'rxjs';
 import { HostingHttpService } from '../../../core/services/hosting-http.service';
 import { UserHttpService } from '../../../core/services/user-http.service';
 import { LoadingService } from '../../../core/services/loading.service';
+import { ToastService } from '../../../core/services/toast.service';
+import { RefreshUserHostsListService } from '../../../core/services/refresh-user-hosts-list.service';
 
 @Component({
   selector: 'hw-create-host-modal',
@@ -26,7 +28,9 @@ export class CreateHostModalComponent {
 
   constructor(private hostingHttpService: HostingHttpService,
     private loadingService: LoadingService,
-    private userHttpService: UserHttpService
+    private userHttpService: UserHttpService,
+    private toastr: ToastService,
+    private refreshUserHostsListService: RefreshUserHostsListService
   ) { }
 
   openModal() {
@@ -62,6 +66,8 @@ export class CreateHostModalComponent {
     this._buttonLoading.next(true);
     this.hostingHttpService.SubmitHostingPlan(this.hostingPlanInfo).subscribe({
       next: () => {
+        this.toastr.success(Messages.Success.hostSubmittedSuccessfully, '');
+        this.refreshUserHostsListService.triggerRefreshHosts();
         this._buttonLoading.next(false);
         this.closeModal();
       },

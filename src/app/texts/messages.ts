@@ -27,10 +27,12 @@ export const Messages = {
         profileAvatarUpdatedSuccessfully: 'عکس پروفایل با موفقیت به روز شد',
         submitTransactionSuccessful: 'تراکنش با موفقیت ثبت شد',
         domainSubmittedSuccessfull: 'دامنه شما با موفقیت ثبت شد',
-        loginInfoCopied: 'اطلاعات هاست با موفقیت کپی شد'
+        loginInfoCopied: 'اطلاعات هاست با موفقیت کپی شد',
+        hostSubmittedSuccessfully: 'هاست شما با موفقیت ثبت شد'
     },
     Warnings: {
-        oneTimePassword: 'قبل از بستن این صفحه اطلاعات هاست خود را کپی کنید و در جای امنی نگداری کنید'
+        oneTimePassword: 'قبل از بستن این صفحه اطلاعات هاست خود را کپی کنید و در جای امنی نگداری کنید',
+        waitingTooLong: 'این مرحله ممکن است کمی طول بکشد، لطفا صبور باشید...'
     },
     Buttons: {
         sendCode: 'ارسال کد یکبار مصرف',

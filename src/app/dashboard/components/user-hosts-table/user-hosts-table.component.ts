@@ -17,10 +17,6 @@ export class UserHostsTableComponent implements AfterViewInit {
   @ViewChild('topScrollbar') topScrollbar!: ElementRef;
   @ViewChild('tableContainer') tableContainer!: ElementRef;
 
-  submitDomain() {
-
-  }
-
   showExtendBtn(host: IUserHost): boolean {
     if (host.status != 2 && host.paymentStatus == 2) {
       return true;

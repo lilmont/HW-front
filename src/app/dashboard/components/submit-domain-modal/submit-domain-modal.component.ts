@@ -15,6 +15,7 @@ export class SubmitDomainModalComponent {
   isModalOpen: boolean = false;
   submitDomainInfo: SubmitDomainInfo = new SubmitDomainInfo();
   domainInvalid: boolean = false;
+  showWaitingMessage: boolean = false;
   @Input() userHostId: string = ''
 
   private _buttonLoading = new BehaviorSubject<boolean>(false);
@@ -45,14 +46,17 @@ export class SubmitDomainModalComponent {
     this.submitDomainInfo.productId = this.userHostId;
 
     this._buttonLoading.next(true);
+    this.showWaitingMessage = true;
     this.hostingHttpService.submitDomain(this.submitDomainInfo).subscribe({
       next: (data) => {
         this._buttonLoading.next(false);
         this.loginInfo = data;
-        this.showPasswordModal = true;
+        this.showWaitingMessage = false;
         this.closeModal();
+        this.showPasswordModal = true;
       },
       error: () => {
+        this.showWaitingMessage = false;
         this._buttonLoading.next(false);
       }
     });

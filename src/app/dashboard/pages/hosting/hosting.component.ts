@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoadingService } from '../../../core/services/loading.service';
 import { HostingHttpService } from '../../../core/services/hosting-http.service';
 import { IUserHost } from '../../../models/IUserHost';
+import { RefreshUserHostsListService } from '../../../core/services/refresh-user-hosts-list.service';
 
 @Component({
   selector: 'hw-hosting',
@@ -12,12 +13,17 @@ export class HostingComponent implements OnInit {
   userHosts: IUserHost[] = [];
 
   constructor(private loadingService: LoadingService,
-    private hostingHttpService: HostingHttpService
+    private hostingHttpService: HostingHttpService,
+    private refreshUserHostsListService: RefreshUserHostsListService
   ) {
 
   }
   ngOnInit(): void {
-    this.getUserHostsForUser()
+    this.getUserHostsForUser();
+
+    this.refreshUserHostsListService.refreshHosts$.subscribe(() => {
+      this.getUserHostsForUser();
+    });
   }
 
   getUserHostsForUser() {
@@ -31,5 +37,8 @@ export class HostingComponent implements OnInit {
         this.loadingService.hide();
       }
     });
+  }
+  newDomainSubmitted() {
+    this.getUserHostsForUser()
   }
 }
