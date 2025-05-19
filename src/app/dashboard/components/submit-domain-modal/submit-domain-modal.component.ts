@@ -28,6 +28,7 @@ export class SubmitDomainModalComponent {
 
   closeModal() {
     this.isModalOpen = false;
+    this.submitDomainInfo = new SubmitDomainInfo();
   }
 
   submitDomain() {
@@ -41,7 +42,8 @@ export class SubmitDomainModalComponent {
 
     this._buttonLoading.next(true);
     this.hostingHttpService.submitDomain(this.submitDomainInfo).subscribe({
-      next: () => {
+      next: (data) => {
+        console.log("data", data)
         this._buttonLoading.next(false);
         this.closeModal();
       },

@@ -8,6 +8,7 @@ import { Messages } from '../../texts/messages';
 import { IHostPlanInfo } from '../../models/IHostPlanInfo';
 import { IUserHost } from '../../models/IUserHost';
 import { ISubmitDomainInfo } from '../../models/ISubmitDomainInfo';
+import { IPasswordRecovery } from '../../models/IPasswordRecovery';
 
 @Injectable({
   providedIn: 'root'
@@ -61,8 +62,8 @@ export class HostingHttpService {
     );
   }
 
-  submitDomain(submitDomainInfo: ISubmitDomainInfo): Observable<void> {
-    return this.http.post<void>(`${this.baseUrl}/hosting/submit-domain`, submitDomainInfo).pipe(
+  submitDomain(submitDomainInfo: ISubmitDomainInfo): Observable<IPasswordRecovery> {
+    return this.http.post<IPasswordRecovery>(`${this.baseUrl}/hosting/submit-domain`, submitDomainInfo).pipe(
       catchError((error) => {
         if (error.status === 400) {
           this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
