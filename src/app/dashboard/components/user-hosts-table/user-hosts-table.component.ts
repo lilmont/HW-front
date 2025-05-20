@@ -1,6 +1,10 @@
 import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { Messages } from '../../../texts/messages';
 import { IUserHost } from '../../../models/IUserHost';
+import { LoadingService } from '../../../core/services/loading.service';
+import { HostingHttpService } from '../../../core/services/hosting-http.service';
+import { IPasswordRecovery, PasswordRecovery } from '../../../models/IPasswordRecovery';
+import { RecoverPasswordRequest } from '../../../models/IRecoverPasswordRequest';
 
 @Component({
   selector: 'hw-user-hosts-table',
@@ -12,10 +16,18 @@ export class UserHostsTableComponent implements AfterViewInit {
     this.initializeScrollbars();
   }
   Messages = Messages;
+  showPasswordModal: boolean = false;
+  loginInfo: IPasswordRecovery = new PasswordRecovery();
   @Input() userHosts: IUserHost[] = [];
 
   @ViewChild('topScrollbar') topScrollbar!: ElementRef;
   @ViewChild('tableContainer') tableContainer!: ElementRef;
+
+  constructor(private loadingService: LoadingService,
+    private hostingHttpService: HostingHttpService
+  ) {
+
+  }
 
   showExtendBtn(host: IUserHost): boolean {
     if (host.status != 2 && host.paymentStatus == 2) {
@@ -53,5 +65,26 @@ export class UserHostsTableComponent implements AfterViewInit {
     tableContainerEl.addEventListener('scroll', () => {
       topScrollbarEl.scrollLeft = tableContainerEl.scrollLeft;
     });
+  }
+
+  recoverPassword(host: IUserHost) {
+    const recoverPasswordRequest = new RecoverPasswordRequest({ productId: host.id });;
+
+    this.loadingService.show();
+    this.hostingHttpService.recoverPassword(recoverPasswordRequest).subscribe({
+      next: (data) => {
+        this.loadingService.hide();
+        this.loginInfo = data;
+        this.showPasswordModal = true;
+      },
+      error: () => {
+        this.loadingService.hide();
+      }
+    });
+  }
+
+  onPasswordModalClose(): void {
+    this.showPasswordModal = false;
+    this.loginInfo = new PasswordRecovery();
   }
 }

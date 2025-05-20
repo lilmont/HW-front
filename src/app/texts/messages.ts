@@ -29,7 +29,8 @@ export const Messages = {
         submitTransactionSuccessful: 'تراکنش با موفقیت ثبت شد',
         domainSubmittedSuccessfull: 'دامنه شما با موفقیت ثبت شد',
         loginInfoCopied: 'اطلاعات هاست با موفقیت کپی شد',
-        hostSubmittedSuccessfully: 'هاست شما با موفقیت ثبت شد'
+        hostSubmittedSuccessfully: 'هاست شما با موفقیت ثبت شد',
+        passwordRecoverySuccessfull: 'اطلاعات ورود به هاست'
     },
     Warnings: {
         oneTimePassword: 'قبل از بستن این صفحه اطلاعات هاست خود را کپی کنید و در جای امنی نگداری کنید',

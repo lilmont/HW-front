@@ -11,6 +11,7 @@ import { RefreshUserHostsListService } from '../../../core/services/refresh-user
 })
 export class PasswordModalComponent {
   @Input() loginInfo: IPasswordRecovery = new PasswordRecovery();
+  @Input() title: string = '';
   @Output() closed = new EventEmitter<void>();
 
   copied = false;

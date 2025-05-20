@@ -9,6 +9,7 @@ import { IHostPlanInfo } from '../../models/IHostPlanInfo';
 import { IUserHost } from '../../models/IUserHost';
 import { ISubmitDomainInfo } from '../../models/ISubmitDomainInfo';
 import { IPasswordRecovery } from '../../models/IPasswordRecovery';
+import { IRecoverPasswordRequest } from '../../models/IRecoverPasswordRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -67,6 +68,21 @@ export class HostingHttpService {
 
   submitDomain(submitDomainInfo: ISubmitDomainInfo): Observable<IPasswordRecovery> {
     return this.http.post<IPasswordRecovery>(`${this.baseUrl}/hosting/submit-domain`, submitDomainInfo).pipe(
+      catchError((error) => {
+        if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
+        } else if (error.status === 401) {
+          this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+        return throwError(() => error);
+      })
+    );
+  }
+
+  recoverPassword(recoverPasswordRequest: IRecoverPasswordRequest): Observable<IPasswordRecovery> {
+    return this.http.post<IPasswordRecovery>(`${this.baseUrl}/hosting/recover-password`, recoverPasswordRequest).pipe(
       catchError((error) => {
         if (error.status === 400) {
           this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);

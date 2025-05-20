@@ -50,5 +50,6 @@
     </div>
 </div>
 
-<hw-password-modal *ngIf="showPasswordModal" [loginInfo]="loginInfo" (closed)="onPasswordModalClose()">
+<hw-password-modal *ngIf="showPasswordModal" [loginInfo]="loginInfo"
+    [title]="Messages.Success.domainSubmittedSuccessfull" (closed)="onPasswordModalClose()">
 </hw-password-modal>
