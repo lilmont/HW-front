@@ -1,5 +1,6 @@
 export interface IUserHost {
     id: string;
+    title: string;
     domain: string;
     setupDate: string;
     expirationDate: string;

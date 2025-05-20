@@ -148,7 +148,8 @@ export const Messages = {
         edit: 'ویرایش',
         active: 'فعال',
         suspended: 'مسدود',
-        deleted: 'حذف شده'
+        deleted: 'حذف شده',
+        title: 'عنوان'
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'

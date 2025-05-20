@@ -13,6 +13,9 @@
                             {{Messages.Headers.number}}
                         </th>
                         <th scope="col" class="px-6 py-3">
+                            {{Messages.Headers.title}}
+                        </th>
+                        <th scope="col" class="px-6 py-3">
                             {{Messages.Headers.domain}}
                         </th>
                         <th scope="col" class="px-6 py-3">
@@ -43,6 +46,9 @@
                         class="bg-white border-b border-gray-200 text-center">
                         <td class="px-6 py-4">
                             {{i + 1}}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{host.title}}
                         </td>
                         <td class="px-6 py-4">
                             <ng-container *ngIf="host.domain; else noDomain">
