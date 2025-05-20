@@ -84,7 +84,9 @@ export class HostingHttpService {
   recoverPassword(recoverPasswordRequest: IRecoverPasswordRequest): Observable<IPasswordRecovery> {
     return this.http.post<IPasswordRecovery>(`${this.baseUrl}/hosting/recover-password`, recoverPasswordRequest).pipe(
       catchError((error) => {
-        if (error.status === 400) {
+        if (error.status === 429) {
+          this.toastr.error(Messages.Errors.tooManyPasswordRecoveryRequests, Messages.Errors.error)
+        } else if (error.status === 400) {
           this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
         } else if (error.status === 401) {
           this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);

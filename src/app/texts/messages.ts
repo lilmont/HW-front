@@ -20,7 +20,8 @@ export const Messages = {
         emptyTransactionNumber: 'شماره فیش نمی‌تواند خالی باشد',
         emptyFullName: 'نام و نام خانوادگی نمی‌تواند خالی باشد',
         invalidDomain: 'دامنه معتبر نیست',
-        insufficientWalletBalance: 'موجود کیف پول شما کافی نیست'
+        insufficientWalletBalance: 'موجود کیف پول شما کافی نیست',
+        tooManyPasswordRecoveryRequests: 'امروز دو بار برای بازیابی اطلاعات اقدام کرده‌اید. لطفاً فردا دوباره امتحان کنید.'
     },
     Success: {
         loginSuccessful: 'ورود با موفقیت انجام شد',
