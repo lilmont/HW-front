@@ -23,7 +23,7 @@ export class CreateHostModalComponent {
   private _buttonLoading = new BehaviorSubject<boolean>(false);
   readonly buttonLoading$ = this._buttonLoading.asObservable();
 
-  @Input() hostingPlanId: string = "";
+  @Input() hostingPlanId: number = 0;
   @Input() hostingPlanTitle: string = "";
 
   constructor(private hostingHttpService: HostingHttpService,

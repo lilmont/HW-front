@@ -16,7 +16,7 @@ export class SubmitDomainModalComponent {
   submitDomainInfo: SubmitDomainInfo = new SubmitDomainInfo();
   domainInvalid: boolean = false;
   showWaitingMessage: boolean = false;
-  @Input() userHostId: string = ''
+  @Input() userHostId: number = 0;
 
   private _buttonLoading = new BehaviorSubject<boolean>(false);
   readonly buttonLoading$ = this._buttonLoading.asObservable();

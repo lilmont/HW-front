@@ -1,9 +1,9 @@
 export interface IRecoverPasswordRequest {
-    productId: string;
+    productId: number;
 }
 
 export class RecoverPasswordRequest implements IRecoverPasswordRequest {
-    productId: string = '';
+    productId: number = 0;
     constructor(init?: Partial<RecoverPasswordRequest>) {
         Object.assign(this, init);
     }

@@ -1,5 +1,5 @@
 export interface ICourseSession {
-    id: string;
+    id: number;
     title: string;
     number?: string;
     downloadLink?: string;

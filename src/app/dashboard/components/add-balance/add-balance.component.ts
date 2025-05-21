@@ -16,7 +16,7 @@ export class AddBalanceComponent implements OnInit {
   isModalOpen: boolean = false;
   amount: string = '';
   suggestedAmounts: ISuggestedWalletAmount[] = [];
-  selectedAmount: string | null = null;
+  selectedAmount: number | null = null;
   constructor(private decimalPipe: DecimalPipe,
     private paymentHttpService: PaymentHttpService,
     private loadingService: LoadingService

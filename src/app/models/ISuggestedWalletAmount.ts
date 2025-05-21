@@ -1,5 +1,5 @@
 export interface ISuggestedWalletAmount {
-    id: string;
+    id: number;
     description?: string;
     amount: string;
 }
