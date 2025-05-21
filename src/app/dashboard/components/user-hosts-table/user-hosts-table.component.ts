@@ -47,7 +47,8 @@ export class UserHostsTableComponent implements AfterViewInit {
   }
 
   showRestoreBtn(host: IUserHost): boolean {
-    if (host.status != 2) {
+    console.log(host.status)
+    if (host.status == 0) {
       return true;
     }
     return false;
