@@ -67,8 +67,8 @@ export class UserHostsTableComponent implements AfterViewInit {
     });
   }
 
-  recoverPassword(host: IUserHost) {
-    const recoverPasswordRequest = new RecoverPasswordRequest({ productId: host.id });;
+  recoverPassword(host: IUserHost): void {
+    const recoverPasswordRequest = new RecoverPasswordRequest({ productId: host.id });
 
     this.loadingService.show();
     this.hostingHttpService.recoverPassword(recoverPasswordRequest).subscribe({
@@ -78,6 +78,7 @@ export class UserHostsTableComponent implements AfterViewInit {
         this.showPasswordModal = true;
       },
       error: () => {
+        this.showPasswordModal = false;
         this.loadingService.hide();
       }
     });
@@ -86,5 +87,19 @@ export class UserHostsTableComponent implements AfterViewInit {
   onPasswordModalClose(): void {
     this.showPasswordModal = false;
     this.loginInfo = new PasswordRecovery();
+  }
+
+  extendHost(host: IUserHost): void {
+    const recoverPasswordRequest = new RecoverPasswordRequest({ productId: host.id });
+
+    this.loadingService.show();
+    this.hostingHttpService.extendHost(recoverPasswordRequest).subscribe({
+      next: () => {
+        this.loadingService.hide();
+      },
+      error: () => {
+        this.loadingService.hide();
+      }
+    });
   }
 }
