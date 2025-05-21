@@ -3,6 +3,7 @@ export interface IUserHost {
     title: string;
     domain: string;
     setupDate: string;
+    lastExtensionAt: string;
     expirationDate: string;
     fullPrice: string;
     paidAmount: string;

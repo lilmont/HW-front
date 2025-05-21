@@ -63,7 +63,7 @@
                             {{host.setupDate | jalaliDate}}
                         </td>
                         <td class="px-6 py-4">
-                            {{host.expirationDate | jalaliDate}}
+                            {{host.lastExtensionAt | jalaliDate}}
                         </td>
                         <td class="px-6 py-4">
                             {{host.expirationDate | jalaliDate}}
@@ -133,7 +133,7 @@
                         </td>
                         <td class="px-6 py-4  min-w-[160px]">
                             <div class="flex flex-row flex-wrap gap-2 justify-center">
-                                <button *ngIf="showExtendBtn(host)"
+                                <button *ngIf="showExtendBtn(host)" (click)="extendHost(host)"
                                     class="cursor-pointer text-gray-200 items-center justify-center px-2 py-2 text-sm font-medium text-center bg-custom-500 rounded-lg hover:bg-custom-600">
                                     تمدید
                                 </button>
