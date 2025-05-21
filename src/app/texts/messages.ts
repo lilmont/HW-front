@@ -59,7 +59,10 @@ export const Messages = {
         submitDomain: 'ثبت دامنه',
         copy: 'کپی',
         close: 'بستن',
-        copied: 'کپی شد'
+        copied: 'کپی شد',
+        settle: 'تسویه',
+        extend: 'تمدید',
+        passwordRecover: 'بازیابی'
     },
     Labels: {
         enterPhoneNumber: 'لطفا شماره موبایل خود را وارد کنید',

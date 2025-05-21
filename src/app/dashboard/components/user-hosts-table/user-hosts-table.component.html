@@ -135,17 +135,17 @@
                             <div class="flex flex-row flex-wrap gap-2 justify-center">
                                 <button *ngIf="showExtendBtn(host)" (click)="extendHost(host)"
                                     class="cursor-pointer text-gray-200 items-center justify-center px-2 py-2 text-sm font-medium text-center bg-custom-500 rounded-lg hover:bg-custom-600">
-                                    تمدید
+                                    {{Messages.Buttons.extend}}
                                 </button>
 
                                 <button *ngIf="showInstallmentPayBtn(host)"
                                     class="cursor-pointer text-gray-200 items-center justify-center px-2 py-2 text-sm font-medium text-center bg-custom-500 rounded-lg hover:bg-custom-600">
-                                    تسویه
+                                    {{Messages.Buttons.settle}}
                                 </button>
 
                                 <button *ngIf="showRestoreBtn(host)" (click)="recoverPassword(host)"
                                     class="cursor-pointer text-gray-800 items-center justify-center px-2 py-2 text-sm font-medium text-center bg-yellow-100 rounded-lg hover:bg-yellow-200">
-                                    بازیابی
+                                    {{Messages.Buttons.passwordRecover}}
                                 </button>
                             </div>
                         </td>
