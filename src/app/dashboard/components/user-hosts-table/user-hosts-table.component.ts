@@ -32,7 +32,7 @@ export class UserHostsTableComponent implements AfterViewInit {
   }
 
   showExtendBtn(host: IUserHost): boolean {
-    if (host.status != 2 && host.paymentStatus == 2 && this.isExpiringSoon(host.expirationDate)) {
+    if (host.status != 2 && host.paymentStatus == 2 && this.isExpiringSoon(host.expirationDate) && host.domain != null) {
       return true;
     }
     return false;
