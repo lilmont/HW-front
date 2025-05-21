@@ -30,10 +30,18 @@ export class UserHostsTableComponent implements AfterViewInit {
   }
 
   showExtendBtn(host: IUserHost): boolean {
-    if (host.status != 2 && host.paymentStatus == 2) {
+    if (host.status != 2 && host.paymentStatus == 2 && this.isExpiringSoon(host.expirationDate)) {
       return true;
     }
     return false;
+  }
+
+  isExpiringSoon(expirationDate: string | Date): boolean {
+    const today = new Date();
+    const expiry = new Date(expirationDate);
+    const timeDiff = expiry.getTime() - today.getTime();
+    const daysLeft = timeDiff / (1000 * 3600 * 24);
+    return daysLeft <= 10;
   }
 
   showRestoreBtn(host: IUserHost): boolean {
