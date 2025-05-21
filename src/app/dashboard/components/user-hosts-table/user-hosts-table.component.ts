@@ -5,6 +5,7 @@ import { LoadingService } from '../../../core/services/loading.service';
 import { HostingHttpService } from '../../../core/services/hosting-http.service';
 import { IPasswordRecovery, PasswordRecovery } from '../../../models/IPasswordRecovery';
 import { RecoverPasswordRequest } from '../../../models/IRecoverPasswordRequest';
+import { RefreshUserHostsListService } from '../../../core/services/refresh-user-hosts-list.service';
 
 @Component({
   selector: 'hw-user-hosts-table',
@@ -24,7 +25,8 @@ export class UserHostsTableComponent implements AfterViewInit {
   @ViewChild('tableContainer') tableContainer!: ElementRef;
 
   constructor(private loadingService: LoadingService,
-    private hostingHttpService: HostingHttpService
+    private hostingHttpService: HostingHttpService,
+    private refreshUserHostsListService: RefreshUserHostsListService
   ) {
 
   }
@@ -104,6 +106,7 @@ export class UserHostsTableComponent implements AfterViewInit {
     this.hostingHttpService.extendHost(recoverPasswordRequest).subscribe({
       next: () => {
         this.loadingService.hide();
+        this.refreshUserHostsListService.triggerRefreshHosts();
       },
       error: () => {
         this.loadingService.hide();
