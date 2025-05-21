@@ -1,4 +1,4 @@
-<div class="flex-1 overflow-x-auto mt-8" *ngIf="transactions.length > 0">
+<div class="flex-1 overflow-x-auto mt-8" [hidden]="transactions.length === 0">
     <h1 class="text-xl lg:text-2xl font-bold mb-6">{{Messages.Headers.myTransactions}}</h1>
     <div class="flex flex-col h-full">
         <div class="overflow-x-auto" #topScrollbar>
