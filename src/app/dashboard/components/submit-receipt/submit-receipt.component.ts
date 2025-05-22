@@ -18,6 +18,7 @@ export class SubmitReceiptComponent {
   timerInterval: any;
   isConfirmButtonDisabled: boolean = false;
   transactionNumberInvalid: boolean = false;
+  showWaitingMessage: boolean = false;
   private _buttonLoading = new BehaviorSubject<boolean>(false);
   readonly buttonLoading$ = this._buttonLoading.asObservable();
 
@@ -45,16 +46,18 @@ export class SubmitReceiptComponent {
     }
 
     this._buttonLoading.next(true);
-
+    this.showWaitingMessage = true;
     this.paymentHttpService.ValidateTransaction(this.transactionNumber).subscribe({
       next: () => {
         this.toastr.success(Messages.Success.submitTransactionSuccessful, '');
         this._buttonLoading.next(false);
         this.transactionService.emitTransactionSubmitted();
+        this.showWaitingMessage = false;
         this.closeModal();
       },
       error: () => {
         this.startTimer();
+        this.showWaitingMessage = false;
         this._buttonLoading.next(false);
       }
     });
