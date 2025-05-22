@@ -6,6 +6,7 @@ import { HostingHttpService } from '../../../core/services/hosting-http.service'
 import { IPasswordRecovery, PasswordRecovery } from '../../../models/IPasswordRecovery';
 import { RecoverPasswordRequest } from '../../../models/IRecoverPasswordRequest';
 import { RefreshUserHostsListService } from '../../../core/services/refresh-user-hosts-list.service';
+import { ToastService } from '../../../core/services/toast.service';
 
 @Component({
   selector: 'hw-user-hosts-table',
@@ -26,7 +27,8 @@ export class UserHostsTableComponent implements AfterViewInit {
 
   constructor(private loadingService: LoadingService,
     private hostingHttpService: HostingHttpService,
-    private refreshUserHostsListService: RefreshUserHostsListService
+    private refreshUserHostsListService: RefreshUserHostsListService,
+    private toastr: ToastService,
   ) {
 
   }
@@ -106,6 +108,7 @@ export class UserHostsTableComponent implements AfterViewInit {
     this.hostingHttpService.extendHost(recoverPasswordRequest).subscribe({
       next: () => {
         this.loadingService.hide();
+        this.toastr.success(Messages.Success.hostExtendedSuccessfully, '');
         this.refreshUserHostsListService.triggerRefreshHosts();
       },
       error: () => {
@@ -121,6 +124,7 @@ export class UserHostsTableComponent implements AfterViewInit {
     this.hostingHttpService.settleHost(recoverPasswordRequest).subscribe({
       next: () => {
         this.loadingService.hide();
+        this.toastr.success(Messages.Success.hostSettledSuccessfully, '');
         this.refreshUserHostsListService.triggerRefreshHosts();
       },
       error: () => {
