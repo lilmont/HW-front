@@ -51,12 +51,14 @@
                             {{host.title}}
                         </td>
                         <td class="px-6 py-4">
-                            <ng-container *ngIf="host.domain; else noDomain">
+                            <ng-container *ngIf="host.domain; else checkStatus">
                                 {{ host.domain }}
                             </ng-container>
 
-                            <ng-template #noDomain>
-                                <hw-submit-domain-modal [userHostId]="host.id"></hw-submit-domain-modal>
+                            <ng-template #checkStatus>
+                                <ng-container *ngIf="host.status !== 2">
+                                    <hw-submit-domain-modal [userHostId]="host.id"></hw-submit-domain-modal>
+                                </ng-container>
                             </ng-template>
                         </td>
                         <td class="px-6 py-4">
