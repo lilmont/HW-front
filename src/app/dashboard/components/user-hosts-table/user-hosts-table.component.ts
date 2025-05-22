@@ -47,14 +47,13 @@ export class UserHostsTableComponent implements AfterViewInit {
   }
 
   showRestoreBtn(host: IUserHost): boolean {
-    console.log(host.status)
-    if (host.status == 0) {
+    if (host.status == 0 && host.domain) {
       return true;
     }
     return false;
   }
 
-  showInstallmentPayBtn(host: IUserHost): boolean {
+  showSettlementBtn(host: IUserHost): boolean {
     if (host.status != 2 && host.paymentStatus == 1) {
       return true;
     }
