@@ -114,4 +114,19 @@ export class UserHostsTableComponent implements AfterViewInit {
       }
     });
   }
+
+  settleHost(host: IUserHost): void {
+    const recoverPasswordRequest = new RecoverPasswordRequest({ productId: host.id });
+
+    this.loadingService.show();
+    this.hostingHttpService.settleHost(recoverPasswordRequest).subscribe({
+      next: () => {
+        this.loadingService.hide();
+        this.refreshUserHostsListService.triggerRefreshHosts();
+      },
+      error: () => {
+        this.loadingService.hide();
+      }
+    });
+  }
 }
