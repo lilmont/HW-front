@@ -20,7 +20,8 @@
             </span>
         </div>
 
-        <hw-create-host-modal [hostingPlanId]="plan.id" [hostingPlanTitle]="plan.title"></hw-create-host-modal>
+        <hw-create-host-modal *ngIf="isCreatingHostAllowed" [hostingPlanId]="plan.id"
+            [hostingPlanTitle]="plan.title"></hw-create-host-modal>
 
         <ul role="list" [ngClass]="{
             'my-5':isShowMoreExpanded,

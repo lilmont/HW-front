@@ -11,6 +11,7 @@ import { RefreshUserHostsListService } from '../../../core/services/refresh-user
 })
 export class HostingComponent implements OnInit {
   userHosts: IUserHost[] = [];
+  hasActiveOrSuspendedHosts: boolean = false;
 
   constructor(private loadingService: LoadingService,
     private hostingHttpService: HostingHttpService,
@@ -31,6 +32,9 @@ export class HostingComponent implements OnInit {
     this.hostingHttpService.getUserHostsForUser().subscribe({
       next: (data) => {
         this.userHosts = data;
+
+        this.hasActiveOrSuspendedHosts = data.some(host => host.status === 0 || host.status === 1);
+
         this.loadingService.hide();
       },
       error: () => {

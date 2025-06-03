@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { HostingHttpService } from '../../../core/services/hosting-http.service';
 import { IHostingPlan } from '../../../models/IHostingPlan';
 import { LoadingService } from '../../../core/services/loading.service';
@@ -59,7 +59,9 @@ export class HostingCardsComponent implements OnInit {
   EmailComponent = EmailComponent
   LayersComponent = LayersComponent
   UpComponent = UpComponent;
-  DownComponent = DownComponent
+  DownComponent = DownComponent;
+
+  @Input() isCreatingHostAllowed: boolean = true;
 
   constructor(private hostingHttpService: HostingHttpService,
     private loadingService: LoadingService
