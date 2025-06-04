@@ -14,6 +14,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { registerLocaleData } from '@angular/common';
 import localeFa from '@angular/common/locales/fa';
+import { CoursesModule } from './courses/courses.module';
 
 
 registerLocaleData(localeFa);
@@ -32,6 +33,7 @@ registerLocaleData(localeFa);
     CoreModule,
     AuthModule,
     BrowserAnimationsModule,
+    CoursesModule,
     ToastrModule.forRoot({
       toastClass: 'ngx-toastr toast-enter',
       positionClass: 'toast-bottom-right',

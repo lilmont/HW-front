@@ -15,7 +15,16 @@ export class CardComponent {
   constructor(private router: Router) { }
 
   navigateToCardPage(): void {
-    console.log("card", this.card)
-    // this.router.navigateByUrl("/courses/web-course");
+
+    if (!this.card) return;
+    this.router.navigate(['/courses', this.card.id, this.toSlug(this.card.title)]);
+  }
+
+  toSlug(title: string): string {
+    return title
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, '-')
+      .replace(/\-\-+/g, '-');
   }
 }
