@@ -21,7 +21,10 @@ export const Messages = {
         emptyFullName: 'نام و نام خانوادگی نمی‌تواند خالی باشد',
         invalidDomain: 'دامنه معتبر نیست',
         insufficientWalletBalance: 'موجود کیف پول شما کافی نیست',
-        tooManyPasswordRecoveryRequests: 'امروز دو بار برای بازیابی اطلاعات اقدام کرده‌اید. لطفاً فردا دوباره امتحان کنید.'
+        tooManyPasswordRecoveryRequests: 'امروز دو بار برای بازیابی اطلاعات اقدام کرده‌اید. لطفاً فردا دوباره امتحان کنید.',
+        uploadSessionExercise: 'لطفا تمرین جلسه 4 را روی هاست خود آپلود کنید',
+        installmentNotPaid: 'شما قسط دوم هاست خود را پرداخت نکرده اید',
+        outOfDownloadCharge: 'شارژ دانلود شما تمام شده است'
     },
     Success: {
         loginSuccessful: 'ورود با موفقیت انجام شد',

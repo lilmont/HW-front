@@ -27,7 +27,28 @@ export class WebCourseComponent implements OnInit {
         this.sessions = data;
         this.loadingService.hide();
       },
-      error: (error) => {
+      error: () => {
+        this.loadingService.hide();
+      }
+    });
+  }
+
+  downloadSession(sessionId: number) {
+    this.loadingService.show();
+    this.courseHttpService.getSessionDownloadLink(sessionId).subscribe({
+      next: (data) => {
+        const anchor = document.createElement('a');
+        anchor.href = data;
+        anchor.download = '';
+        anchor.style.display = 'none';
+        document.body.appendChild(anchor);
+        anchor.click();
+        setTimeout(() => {
+          document.body.removeChild(anchor);
+        }, 1000);
+        this.loadingService.hide();
+      },
+      error: () => {
         this.loadingService.hide();
       }
     });
