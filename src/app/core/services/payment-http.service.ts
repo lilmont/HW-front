@@ -21,7 +21,10 @@ export class PaymentHttpService {
   getUserTransactions(): Observable<IUserTransaction[]> {
     return this.http.get<IUserTransaction[]>(`${this.baseUrl}/payment/user-transaction-list`).pipe(
       catchError((error) => {
-        if (error.status === 400) {
+        if (error.status === 431) {
+          localStorage.removeItem('token');
+          location.href = '/';
+        } else if (error.status === 400) {
           this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
         } else {
           this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
@@ -47,7 +50,10 @@ export class PaymentHttpService {
   ValidateTransaction(transactionNumber: string): Observable<void> {
     return this.http.post<void>(`${this.baseUrl}/payment/validate-transaction`, { transactionNumber: transactionNumber }).pipe(
       catchError((error) => {
-        if (error.status === 404) {
+        if (error.status === 431) {
+          localStorage.removeItem('token');
+          location.href = '/';
+        } else if (error.status === 404) {
           this.toastr.error(Messages.Errors.transactionNotFound, Messages.Errors.error);
         } else if (error.status === 409) {
           this.toastr.error(Messages.Errors.duplicateTransaction, Messages.Errors.error);

@@ -38,7 +38,10 @@ export class HostingHttpService {
   SubmitHostingPlan(hostPlanInfo: IHostPlanInfo): Observable<void> {
     return this.http.post<void>(`${this.baseUrl}/hosting/create-hosting-plan`, hostPlanInfo).pipe(
       catchError((error) => {
-        if (error.status === 450) {
+        if (error.status === 431) {
+          localStorage.removeItem('token');
+          location.href = '/';
+        } else if (error.status === 450) {
           this.toastr.error(Messages.Errors.insufficientWalletBalance, Messages.Errors.error);
         }
         else if (error.status === 400) {
@@ -101,7 +104,10 @@ export class HostingHttpService {
   extendHost(recoverPasswordRequest: IRecoverPasswordRequest): Observable<void> {
     return this.http.post<void>(`${this.baseUrl}/hosting/extend-hosting-plan`, recoverPasswordRequest).pipe(
       catchError((error) => {
-        if (error.status === 450) {
+        if (error.status === 431) {
+          localStorage.removeItem('token');
+          location.href = '/';
+        } else if (error.status === 450) {
           this.toastr.error(Messages.Errors.insufficientWalletBalance, Messages.Errors.error);
         } else if (error.status === 400) {
           this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
@@ -118,7 +124,10 @@ export class HostingHttpService {
   settleHost(recoverPasswordRequest: IRecoverPasswordRequest): Observable<void> {
     return this.http.post<void>(`${this.baseUrl}/hosting/settle-hosting-plan`, recoverPasswordRequest).pipe(
       catchError((error) => {
-        if (error.status === 450) {
+        if (error.status === 431) {
+          localStorage.removeItem('token');
+          location.href = '/';
+        } else if (error.status === 450) {
           this.toastr.error(Messages.Errors.insufficientWalletBalance, Messages.Errors.error);
         } else if (error.status === 400) {
           this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
