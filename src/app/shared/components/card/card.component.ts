@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Messages } from '../../../texts/messages';
+import { Router } from '@angular/router';
+import { ICourseCardInfo } from '../../../models/ICourseCardInfo';
 
 @Component({
   selector: 'hw-card',
@@ -8,4 +10,12 @@ import { Messages } from '../../../texts/messages';
 })
 export class CardComponent {
   Messages = Messages;
+  @Input() card: ICourseCardInfo | undefined;
+
+  constructor(private router: Router) { }
+
+  navigateToCardPage(): void {
+    console.log("card", this.card)
+    // this.router.navigateByUrl("/courses/web-course");
+  }
 }

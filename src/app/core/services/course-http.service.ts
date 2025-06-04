@@ -5,6 +5,7 @@ import { ToastService } from './toast.service';
 import { catchError, map, Observable, throwError } from 'rxjs';
 import { Messages } from '../../texts/messages';
 import { ICourseSession } from '../../models/ICourseSession';
+import { ICourseCardInfo } from '../../models/ICourseCardInfo';
 
 @Injectable({
   providedIn: 'root'
@@ -44,6 +45,21 @@ export class CourseHttpService {
           this.toastr.error(Messages.Errors.installmentNotPaid, Messages.Errors.error);
         } else if (error.status === 451) {
           this.toastr.error(Messages.Errors.outOfDownloadCharge, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+        return throwError(() => error);
+      })
+    );
+  }
+
+  getAllCourses(): Observable<ICourseCardInfo[]> {
+    return this.http.get<any>(`${this.baseUrl}/courses/courses-list`).pipe(
+      catchError((error) => {
+        if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
+        } else if (error.status === 401) {
+          this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
         } else {
           this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
         }
