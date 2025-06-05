@@ -1,1 +1,103 @@
-<p>course-detail works!</p>
+<div class="relative bg-custom-950 w-full py-20">
+    <div class="w-3/4 mx-auto text-white">
+        <h1 class="text-3xl font-bold mb-6">هوش مصنوعی</h1>
+        <h3 class="text-lg leading-relaxed max-w-3xl">
+            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است...
+        </h3>
+    </div>
+</div>
+
+<div class="relative w-full">
+    <div class="w-3/4 mx-auto mt-10">
+        <div class="max-w-3xl border-gray-200 rounded-lg shadow-lg p-10">
+            <h2 class="text-2xl font-bold mb-8">آنچه یاد خواهید گرفت</h2>
+            <ul class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm leading-relaxed list-disc list-inside ">
+                <li>مقدمه‌ای بر هوش مصنوعی</li>
+                <li>مبانی یادگیری ماشین</li>
+                <li>شبکه‌های عصبی و یادگیری عمیق</li>
+                <li>کاربردهای هوش مصنوعی در صنایع مختلف</li>
+                <li>پروژه عملی و پیاده‌سازی مدل‌ها</li>
+                <li>ارزیابی و بهینه‌سازی مدل‌های هوش مصنوعی</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<!-- Vertical card with better layout -->
+<div class="absolute top-40 left-30 w-1/4 rounded-2xl shadow-2xl overflow-hidden">
+    <div class="relative w-full h-60 cursor-pointer" (click)="openVideoModal()" aria-label="Play Course Preview"
+        role="button" tabindex="0" (keydown.enter)="openVideoModal()">
+        <img src="images/courses/ai.jpg" alt="Course preview" class="w-full h-full object-cover" />
+
+        <!-- Play button overlay -->
+        <div class="absolute inset-0 flex items-center justify-center bg-black/40 hover:bg-black/50 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M14.752 11.168l-6.286-3.657v7.314l6.286-3.657z" />
+            </svg>
+        </div>
+    </div>
+
+    <div class="p-4 flex flex-col gap-3 text-center bg-white">
+        <div class="text-custom-600 font-medium text-sm">
+            وضعیت دوره:
+            <span class="font-semibold text-custom-800">تکمیل شده</span>
+        </div>
+
+        <div class="text-custom-600 font-medium text-sm">
+            تعداد جلسات:
+            <span class="font-semibold text-custom-800">22</span>
+        </div>
+
+        <div class="text-custom-600 font-medium text-sm">
+            قیمت:
+            <span class="font-semibold text-custom-800">100,000</span>
+            <span class="mr-1">{{ Messages.Headers.toman }}</span>
+        </div>
+
+        <button class="mt-3 bg-custom-700 text-white text-sm py-2 px-4 rounded-md hover:bg-custom-800 transition">
+            خرید دوره
+        </button>
+    </div>
+</div>
+
+<!-- Modal -->
+<div *ngIf="isVideoModalOpen" class="fixed inset-0 z-50 flex items-center justify-center bg-[rgba(31,41,55,0.5)]"
+    (click)="closeVideoModal()">
+
+    <!-- Modal content container -->
+    <div class="relative p-4 w-full max-w-3xl max-h-full" (click)="$event.stopPropagation()">
+
+        <!-- Modal box -->
+        <div class="relative bg-white rounded-lg shadow-sm">
+
+            <!-- Modal header -->
+            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t border-gray-200">
+                <h3 class="text-xl text-gray-900">
+                    دوره هوش مصنوعی
+                </h3>
+                <button type="button"
+                    class="cursor-pointer text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 inline-flex justify-center items-center"
+                    (click)="closeVideoModal()">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    </svg>
+
+                    <span class="sr-only">Close modal</span>
+                </button>
+            </div>
+
+            <!-- Modal body: video -->
+            <div class="p-4 md:p-5">
+                <video #videoPlayer controls class="w-full rounded-md max-h-[480px]" [src]="videoUrl" autoplay muted>
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+        </div>
+    </div>
+</div>
