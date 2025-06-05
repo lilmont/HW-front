@@ -67,7 +67,8 @@ export const Messages = {
         copied: 'کپی شد',
         settle: 'تسویه',
         extend: 'تمدید',
-        passwordRecover: 'بازیابی'
+        passwordRecover: 'بازیابی',
+        purchaseCourse: 'خرید دوره',
     },
     Labels: {
         enterPhoneNumber: 'لطفا شماره موبایل خود را وارد کنید',
@@ -157,7 +158,16 @@ export const Messages = {
         active: 'فعال',
         suspended: 'مسدود',
         deleted: 'حذف شده',
-        title: 'عنوان'
+        title: 'عنوان',
+        youWillLearn: 'آنچه خواهید آموخت',
+        courseStatus: 'وضعیت دوره:',
+        SessionCount: 'تعداد جلسات:',
+        courseDuration: 'مدت دوره:',
+        hour: 'ساعت',
+        price: 'قیمت',
+        comingSoon: 'به زودی',
+        InProgress: 'در حال برگزاری',
+        completed: 'تکمیل شده',
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'

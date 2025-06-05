@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Messages } from '../../../texts/messages';
 import { Router } from '@angular/router';
 import { ICourseCardInfo } from '../../../models/ICourseCardInfo';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'hw-card',
@@ -10,6 +11,7 @@ import { ICourseCardInfo } from '../../../models/ICourseCardInfo';
 })
 export class CardComponent {
   Messages = Messages;
+  baseUrl = environment.apiBaseUrl;
   @Input() card: ICourseCardInfo | undefined;
 
   constructor(private router: Router) { }

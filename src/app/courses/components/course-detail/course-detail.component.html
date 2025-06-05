@@ -1,8 +1,10 @@
 <div class="relative bg-custom-950 w-full py-20">
     <div class="w-3/4 mx-auto text-white">
-        <h1 class="text-3xl font-bold mb-6">هوش مصنوعی</h1>
+        <h1 class="text-3xl font-bold mb-6">
+            {{courseDetail.title}}
+        </h1>
         <h3 class="text-lg leading-relaxed max-w-3xl">
-            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است...
+            {{courseDetail.fullDescription}}
         </h3>
     </div>
 </div>
@@ -10,15 +12,11 @@
 <div class="relative w-full">
     <div class="w-3/4 mx-auto mt-10">
         <div class="max-w-3xl border-gray-200 rounded-lg shadow-lg p-10">
-            <h2 class="text-2xl font-bold mb-8">آنچه یاد خواهید گرفت</h2>
-            <ul class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm leading-relaxed list-disc list-inside ">
-                <li>مقدمه‌ای بر هوش مصنوعی</li>
-                <li>مبانی یادگیری ماشین</li>
-                <li>شبکه‌های عصبی و یادگیری عمیق</li>
-                <li>کاربردهای هوش مصنوعی در صنایع مختلف</li>
-                <li>پروژه عملی و پیاده‌سازی مدل‌ها</li>
-                <li>ارزیابی و بهینه‌سازی مدل‌های هوش مصنوعی</li>
-            </ul>
+            <h2 class="text-2xl font-bold mb-8">
+                {{Messages.Headers.youWillLearn}}
+            </h2>
+            <!-- {{courseDetail.syllabus}} -->
+            <div [innerHTML]="courseDetail.syllabus"></div>
         </div>
     </div>
 </div>
@@ -28,7 +26,8 @@
 <div class="absolute top-40 left-30 w-1/4 rounded-2xl shadow-2xl overflow-hidden">
     <div class="relative w-full h-60 cursor-pointer" (click)="openVideoModal()" aria-label="Play Course Preview"
         role="button" tabindex="0" (keydown.enter)="openVideoModal()">
-        <img src="images/courses/ai.jpg" alt="Course preview" class="w-full h-full object-cover" />
+        <img [src]="baseUrl + '/uploads/courses/images/' + courseDetail.courseImage" alt="Course preview"
+            class="w-full h-full object-cover" />
 
         <!-- Play button overlay -->
         <div class="absolute inset-0 flex items-center justify-center bg-black/40 hover:bg-black/50 transition">
@@ -42,23 +41,38 @@
 
     <div class="p-4 flex flex-col gap-3 text-center bg-white">
         <div class="text-custom-600 font-medium text-sm">
-            وضعیت دوره:
-            <span class="font-semibold text-custom-800">تکمیل شده</span>
+            {{Messages.Headers.courseStatus}}
+            <span class="font-semibold text-custom-800" [ngSwitch]="courseDetail.courseStatus">
+                <span *ngSwitchCase="0">{{Messages.Headers.comingSoon}}</span>
+                <span *ngSwitchCase="1">{{Messages.Headers.InProgress}}</span>
+                <span *ngSwitchCase="2">{{Messages.Headers.completed}}</span>
+            </span>
         </div>
 
         <div class="text-custom-600 font-medium text-sm">
-            تعداد جلسات:
-            <span class="font-semibold text-custom-800">22</span>
+            {{Messages.Headers.SessionCount}}
+            <span class="font-semibold text-custom-800">
+                {{ courseDetail.courseSessionNumber }}
+            </span>
         </div>
 
         <div class="text-custom-600 font-medium text-sm">
-            قیمت:
-            <span class="font-semibold text-custom-800">100,000</span>
+            {{Messages.Headers.courseDuration}}
+            <span class="font-semibold text-custom-800">
+                {{ courseDetail.courseDurationInHours }}
+            </span>
+            <span class="mr-1">{{ Messages.Headers.hour }}</span>
+        </div>
+
+        <div class="text-custom-600 font-medium text-sm">
+            {{Messages.Headers.price}}
+            <span class="font-semibold text-custom-800">{{ courseDetail.price | number:'1.0-0'}}</span>
             <span class="mr-1">{{ Messages.Headers.toman }}</span>
         </div>
 
-        <button class="mt-3 bg-custom-700 text-white text-sm py-2 px-4 rounded-md hover:bg-custom-800 transition">
-            خرید دوره
+        <button
+            class="cursor-pointer mt-3 bg-custom-700 text-white text-sm py-2 px-4 rounded-md hover:bg-custom-800 transition">
+            {{Messages.Buttons.purchaseCourse}}
         </button>
     </div>
 </div>
@@ -76,7 +90,7 @@
             <!-- Modal header -->
             <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t border-gray-200">
                 <h3 class="text-xl text-gray-900">
-                    دوره هوش مصنوعی
+                    {{courseDetail.title}}
                 </h3>
                 <button type="button"
                     class="cursor-pointer text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 inline-flex justify-center items-center"
@@ -93,11 +107,11 @@
 
             <!-- Modal body: video -->
             <div class="p-4 md:p-5">
-                <video #videoPlayer controls class="w-full rounded-md max-h-[480px]" [src]="videoUrl" autoplay muted>
+                <video #videoPlayer controls class="w-full rounded-md max-h-[480px]"
+                    [src]="baseUrl + '/uploads/courses/videos/' + courseDetail.courseVideo" autoplay muted>
                     Your browser does not support the video tag.
                 </video>
             </div>
-
         </div>
     </div>
 </div>

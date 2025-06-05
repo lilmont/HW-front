@@ -1,6 +1,10 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Messages } from '../../../texts/messages';
+import { LoadingService } from '../../../core/services/loading.service';
+import { CourseHttpService } from '../../../core/services/course-http.service';
+import { ICourseDetail } from '../../../models/ICourseDetail';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'hw-course-detail',
@@ -9,19 +13,39 @@ import { Messages } from '../../../texts/messages';
 })
 export class CourseDetailComponent {
   Messages = Messages;
+  baseUrl = environment.apiBaseUrl;
   courseId!: number;
   courseSlug!: string;
+  courseDetail!: ICourseDetail;
   isVideoModalOpen = false;
-  videoUrl = 'videos/courses/1.mp4'; // your full video URL
 
   @ViewChild('videoPlayer') videoPlayer?: ElementRef<HTMLVideoElement>;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute,
+    private loadingService: LoadingService,
+    private courseHttpService: CourseHttpService
+  ) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.courseId = Number(params.get('id'));
       this.courseSlug = params.get('courseSlug') || '';
+    });
+
+    this.getCourseDetail(this.courseId);
+  }
+
+  getCourseDetail(id: number) {
+    console.log("id", id)
+    this.loadingService.show();
+    this.courseHttpService.getCourseDetail(id).subscribe({
+      next: (data) => {
+        this.courseDetail = data;
+        this.loadingService.hide();
+      },
+      error: () => {
+        this.loadingService.hide();
+      }
     });
   }
 
