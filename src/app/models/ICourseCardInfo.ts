@@ -3,4 +3,5 @@ export interface ICourseCardInfo {
     imagePath: string;
     title: string;
     shortDescription: string;
+    price: number;
 }
