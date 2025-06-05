@@ -36,7 +36,6 @@ export class CourseDetailComponent {
   }
 
   getCourseDetail(id: number) {
-    console.log("id", id)
     this.loadingService.show();
     this.courseHttpService.getCourseDetail(id).subscribe({
       next: (data) => {
