@@ -24,7 +24,10 @@ export const Messages = {
         tooManyPasswordRecoveryRequests: 'امروز دو بار برای بازیابی اطلاعات اقدام کرده‌اید. لطفاً فردا دوباره امتحان کنید.',
         uploadSessionExercise: 'لطفا تمرین جلسه 4 را روی هاست خود آپلود کنید',
         installmentNotPaid: 'شما قسط دوم هاست خود را پرداخت نکرده اید',
-        outOfDownloadCharge: 'شارژ دانلود شما تمام شده است'
+        outOfDownloadCharge: 'شارژ دانلود شما تمام شده است',
+        discountCodeNotFound: 'کد تخفیف وارد شده یافت نشد',
+        doscountCodeAlreadyUsed: 'کد تخفیف وارد شده قبلا استفاده شده است',
+        invalidDiscountCode: 'کد تخفیف نامعتبر است'
     },
     Success: {
         loginSuccessful: 'ورود با موفقیت انجام شد',
@@ -69,6 +72,7 @@ export const Messages = {
         extend: 'تمدید',
         passwordRecover: 'بازیابی',
         purchaseCourse: 'خرید دوره',
+        check: 'بررسی'
     },
     Labels: {
         enterPhoneNumber: 'لطفا شماره موبایل خود را وارد کنید',
@@ -99,7 +103,8 @@ export const Messages = {
         selectAmount: 'یا یکی از مبالغ زیر را انتخاب کنید',
         yearly: 'سالانه',
         FullNameInEnglish: 'نام و نام خانوادگی به انگلیسی',
-        submitDomainPlaceholder: 'hardworker.ir مثلا'
+        submitDomainPlaceholder: 'hardworker.ir مثلا',
+        discountCode: 'کد تخفیف (اختیاری)',
     },
     Headers: {
         signup: 'ثبت نام',
@@ -164,7 +169,7 @@ export const Messages = {
         SessionCount: 'تعداد جلسات:',
         courseDuration: 'مدت دوره:',
         hour: 'ساعت',
-        price: 'قیمت',
+        price: 'قیمت:',
         comingSoon: 'به زودی',
         InProgress: 'در حال برگزاری',
         completed: 'تکمیل شده',

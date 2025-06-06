@@ -54,8 +54,35 @@
 
             <div class="text-custom-600 font-medium text-sm">
                 {{Messages.Headers.price}}
-                <span class="font-semibold text-custom-800">{{ courseDetail?.price | number:'1.0-0'}}</span>
+                <span *ngIf="discountApplied; else normalPrice">
+                    <span class="line-through text-red-500 ml-2">
+                        {{ courseDetail?.price | number:'1.0-0' }}
+                    </span>
+                    <span class="font-semibold text-custom-800">
+                        {{ discountedPrice | number:'1.0-0' }}
+                    </span>
+                </span>
+                <ng-template #normalPrice>
+                    <span class="font-semibold text-custom-800">
+                        {{ courseDetail?.price | number:'1.0-0' }}
+                    </span>
+                </ng-template>
                 <span class="mr-1">{{ Messages.Headers.toman }}</span>
+            </div>
+
+            <div class="relative w-3/4 text-right mx-auto mt-6">
+                <input type="text" id="checkDiscountCodeRequest.code" [(ngModel)]="checkDiscountCodeRequest.code"
+                    name="code"
+                    class="block w-full p-4 text-sm text-gray-900 border border-custom-300 rounded-lg bg-custom-300 focus:ring-custom-500 focus:border-custom-500"
+                    [placeholder]="Messages.Labels.discountCode" [disabled]="discountApplied" />
+                <button (click)="checkDiscountCode()"
+                    class="cursor-pointer text-white absolute end-2.5 bottom-2.5 bg-custom-600 hover:bg-custom-700 focus:ring-4 focus:outline-none focus:ring-custom-300 font-medium rounded-lg text-sm px-4 py-2"
+                    [disabled]="discountApplied">
+                    {{Messages.Buttons.check}}
+                </button>
+            </div>
+            <div *ngIf="discountCodeInvalid" class="text-red-600 text-sm mt-1">
+                {{Messages.Errors.invalidDiscountCode}}
             </div>
 
             <button
