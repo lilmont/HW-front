@@ -10,6 +10,7 @@ import { IUserHost } from '../../models/IUserHost';
 import { ISubmitDomainInfo } from '../../models/ISubmitDomainInfo';
 import { IPasswordRecovery } from '../../models/IPasswordRecovery';
 import { IRecoverPasswordRequest } from '../../models/IRecoverPasswordRequest';
+import { JwtHelperService } from './jwt.helper.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,8 @@ export class HostingHttpService {
   private baseUrl = environment.apiBaseUrl;
   constructor(
     private http: HttpClient,
-    private toastr: ToastService
+    private toastr: ToastService,
+    private jwtHelperService: JwtHelperService
   ) { }
 
   getUserTransactions(): Observable<IHostingPlan[]> {
@@ -39,7 +41,7 @@ export class HostingHttpService {
     return this.http.post<void>(`${this.baseUrl}/hosting/create-hosting-plan`, hostPlanInfo).pipe(
       catchError((error) => {
         if (error.status === 431) {
-          localStorage.removeItem('token');
+          this.jwtHelperService.logout();
           location.href = '/';
         } else if (error.status === 450) {
           this.toastr.error(Messages.Errors.insufficientWalletBalance, Messages.Errors.error);
@@ -105,7 +107,7 @@ export class HostingHttpService {
     return this.http.post<void>(`${this.baseUrl}/hosting/extend-hosting-plan`, recoverPasswordRequest).pipe(
       catchError((error) => {
         if (error.status === 431) {
-          localStorage.removeItem('token');
+          this.jwtHelperService.logout();
           location.href = '/';
         } else if (error.status === 450) {
           this.toastr.error(Messages.Errors.insufficientWalletBalance, Messages.Errors.error);
@@ -125,7 +127,7 @@ export class HostingHttpService {
     return this.http.post<void>(`${this.baseUrl}/hosting/settle-hosting-plan`, recoverPasswordRequest).pipe(
       catchError((error) => {
         if (error.status === 431) {
-          localStorage.removeItem('token');
+          this.jwtHelperService.logout();
           location.href = '/';
         } else if (error.status === 450) {
           this.toastr.error(Messages.Errors.insufficientWalletBalance, Messages.Errors.error);

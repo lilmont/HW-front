@@ -9,6 +9,7 @@ import { ICourseCardInfo } from '../../models/ICourseCardInfo';
 import { ICourseDetail } from '../../models/ICourseDetail';
 import { ICheckDiscountCodeResponse } from '../../models/ICheckDiscountCodeResponse';
 import { ICheckDiscountCodeRequest } from '../../models/ICheckDiscountCodeRequest';
+import { JwtHelperService } from './jwt.helper.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,8 @@ export class CourseHttpService {
   private baseUrl = environment.apiBaseUrl;
   constructor(
     private http: HttpClient,
-    private toastr: ToastService
+    private toastr: ToastService,
+    private jwtHelperService: JwtHelperService
   ) { }
 
   getWebCourseSessions(): Observable<ICourseSession[]> {
@@ -40,7 +42,7 @@ export class CourseHttpService {
       map((response: any) => response.link),
       catchError((error) => {
         if (error.status === 431) {
-          localStorage.removeItem('token');
+          this.jwtHelperService.logout();
           location.href = '/';
         } else if (error.status === 430) {
           this.toastr.error(Messages.Errors.uploadSessionExercise, Messages.Errors.error);

@@ -6,6 +6,7 @@ import { IUserTransaction } from '../../models/IUserTransaction';
 import { catchError, Observable, throwError } from 'rxjs';
 import { Messages } from '../../texts/messages';
 import { ISuggestedWalletAmount } from '../../models/ISuggestedWalletAmount';
+import { JwtHelperService } from './jwt.helper.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,14 +16,15 @@ export class PaymentHttpService {
   private baseUrl = environment.apiBaseUrl;
   constructor(
     private http: HttpClient,
-    private toastr: ToastService
+    private toastr: ToastService,
+    private jwtHelperService: JwtHelperService
   ) { }
 
   getUserTransactions(): Observable<IUserTransaction[]> {
     return this.http.get<IUserTransaction[]>(`${this.baseUrl}/payment/user-transaction-list`).pipe(
       catchError((error) => {
         if (error.status === 431) {
-          localStorage.removeItem('token');
+          this.jwtHelperService.logout();
           location.href = '/';
         } else if (error.status === 400) {
           this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
@@ -51,7 +53,7 @@ export class PaymentHttpService {
     return this.http.post<void>(`${this.baseUrl}/payment/validate-transaction`, { transactionNumber: transactionNumber }).pipe(
       catchError((error) => {
         if (error.status === 431) {
-          localStorage.removeItem('token');
+          this.jwtHelperService.logout();
           location.href = '/';
         } else if (error.status === 404) {
           this.toastr.error(Messages.Errors.transactionNotFound, Messages.Errors.error);
