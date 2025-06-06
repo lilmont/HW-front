@@ -4,7 +4,7 @@ import { ISendSignupCodeRequest } from '../../../models/SendSignupCodeRequest';
 import { Messages } from '../../../texts/messages';
 import { ToastService } from '../../../core/services/toast.service';
 import { LoadingService } from '../../../core/services/loading.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserInfoService } from '../../../core/services/user-info.service';
 
 @Component({
@@ -18,6 +18,7 @@ export class SignupComponent implements OnInit {
     code: '',
     password: ''
   };
+  returnUrl: string = '/';
   Messages = Messages;
   step: 'phone' | 'code' = 'phone';
   phoneInvalid: boolean = false;
@@ -31,6 +32,7 @@ export class SignupComponent implements OnInit {
     private authHttpService: AuthHttpService,
     private toastr: ToastService,
     public loadingService: LoadingService,
+    private route: ActivatedRoute,
     private router: Router,
     private userInfoService: UserInfoService,
   ) {
@@ -66,6 +68,8 @@ export class SignupComponent implements OnInit {
 
   //#region Validate Code
   ngOnInit(): void {
+    this.returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
+
     if (this.step === 'code') {
       this.startTimer();
     }
@@ -114,7 +118,7 @@ export class SignupComponent implements OnInit {
         this.toastr.success(Messages.Success.loginSuccessful, '');
         this.loadingService.hide();
         this.userInfoService.loadUser();
-        this.router.navigate(['/']);
+        this.router.navigateByUrl(this.returnUrl);
       },
       error: () => {
         this.loadingService.hide();

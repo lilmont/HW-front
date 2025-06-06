@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Messages } from '../../../texts/messages';
 import { LoadingService } from '../../../core/services/loading.service';
 import { CourseHttpService } from '../../../core/services/course-http.service';
@@ -33,7 +33,8 @@ export class CourseDetailComponent {
   constructor(private route: ActivatedRoute,
     private loadingService: LoadingService,
     private courseHttpService: CourseHttpService,
-    private jwtHelperService: JwtHelperService
+    private jwtHelperService: JwtHelperService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -83,7 +84,7 @@ export class CourseDetailComponent {
   }
 
   goToLoginSignup(): void {
-    location.href = '/users/signup';
+    this.router.navigate(['/users/signup'], { queryParams: { returnUrl: this.router.url } });
   }
 
   checkDiscountCode(): void {
@@ -137,4 +138,16 @@ export class CourseDetailComponent {
 
     return sanitizedCode;
   }
+
+  purchaseCourse(): void {
+
+
+    if (!this.jwtHelperService.isLoggedIn()) {
+      this.openLoginModal();
+      return;
+    }
+
+
+  }
+
 }
