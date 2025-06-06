@@ -7,6 +7,7 @@ import { ICourseDetail } from '../../../models/ICourseDetail';
 import { environment } from '../../../../environments/environment';
 import { CheckDiscountCodeRequest, ICheckDiscountCodeRequest } from '../../../models/ICheckDiscountCodeRequest';
 import { ICheckDiscountCodeResponse } from '../../../models/ICheckDiscountCodeResponse';
+import { JwtHelperService } from '../../../core/services/jwt.helper.service';
 
 @Component({
   selector: 'hw-course-detail',
@@ -20,6 +21,7 @@ export class CourseDetailComponent {
   courseSlug?: string = undefined;
   courseDetail?: ICourseDetail = undefined;
   isVideoModalOpen = false;
+  isLoginModalOpen = false;
   checkDiscountCodeRequest: ICheckDiscountCodeRequest = new CheckDiscountCodeRequest();
   checkDiscountCodeResponse!: ICheckDiscountCodeResponse;
   discountApplied = false;
@@ -30,7 +32,8 @@ export class CourseDetailComponent {
 
   constructor(private route: ActivatedRoute,
     private loadingService: LoadingService,
-    private courseHttpService: CourseHttpService
+    private courseHttpService: CourseHttpService,
+    private jwtHelperService: JwtHelperService
   ) { }
 
   ngOnInit() {
@@ -71,7 +74,24 @@ export class CourseDetailComponent {
     }
   }
 
+  openLoginModal(): void {
+    this.isLoginModalOpen = true;
+  }
+
+  closeLoginModal(): void {
+    this.isLoginModalOpen = false;
+  }
+
+  goToLoginSignup(): void {
+    location.href = '/users/signup';
+  }
+
   checkDiscountCode(): void {
+    if (!this.jwtHelperService.isLoggedIn()) {
+      this.openLoginModal();
+      return;
+    }
+
     if (!this.courseId || this.courseId <= 0)
       return;
 

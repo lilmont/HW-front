@@ -27,7 +27,9 @@ export const Messages = {
         outOfDownloadCharge: 'شارژ دانلود شما تمام شده است',
         discountCodeNotFound: 'کد تخفیف وارد شده یافت نشد',
         doscountCodeAlreadyUsed: 'کد تخفیف وارد شده قبلا استفاده شده است',
-        invalidDiscountCode: 'کد تخفیف نامعتبر است'
+        invalidDiscountCode: 'کد تخفیف نامعتبر است',
+        youNeedToLogin: 'برای انجام این عملیات ابتدا وارد حساب کاربری خود شوید',
+        needAccount: 'نیاز به حساب کاربری دارید'
     },
     Success: {
         loginSuccessful: 'ورود با موفقیت انجام شد',
@@ -173,6 +175,7 @@ export const Messages = {
         comingSoon: 'به زودی',
         InProgress: 'در حال برگزاری',
         completed: 'تکمیل شده',
+        LoginOrSignup: 'ورود / ثبت نام',
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'
