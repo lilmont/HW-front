@@ -74,8 +74,8 @@ export class CourseHttpService {
     );
   }
 
-  getCourseDetail(id: number): Observable<ICourseDetail> {
-    return this.http.get<any>(`${this.baseUrl}/courses/course-detail`, { params: { id: id.toString() } }).pipe(
+  getCourseDetail(id: number, title: string): Observable<ICourseDetail> {
+    return this.http.get<any>(`${this.baseUrl}/courses/course-detail`, { params: { id: id.toString(), title: title } }).pipe(
       catchError((error) => {
         if (error.status === 400) {
           this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);

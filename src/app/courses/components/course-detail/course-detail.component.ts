@@ -46,13 +46,13 @@ export class CourseDetailComponent {
       this.courseSlug = params.get('courseSlug') || '';
     });
 
-    if (this.courseId)
-      this.getCourseDetail(this.courseId);
+    if (this.courseId && this.courseSlug)
+      this.getCourseDetail(this.courseId, this.courseSlug.replaceAll('-', ' '));
   }
 
-  getCourseDetail(id: number): void {
+  getCourseDetail(id: number, title: string): void {
     this.loadingService.show();
-    this.courseHttpService.getCourseDetail(id).subscribe({
+    this.courseHttpService.getCourseDetail(id, title).subscribe({
       next: (data) => {
         this.courseDetail = data;
         this.loadingService.hide();
