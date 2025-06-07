@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './shared/components/layout/layout.component';
 import { BlankLayoutComponent } from './shared/components/blank-layout/blank-layout.component';
 import { AuthGuard } from './auth/auth.guard';
+import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -30,10 +31,8 @@ const routes: Routes = [
     path: 'courses',
     loadChildren: () => import('./courses/courses.module').then(m => m.CoursesModule), // Courses
   },
-  {
-    path: '**',
-    redirectTo: ''
-  }
+  { path: '404', component: NotFoundComponent },
+  { path: '**', redirectTo: '404' }
 ];
 
 @NgModule({

@@ -36,6 +36,7 @@ import { LayersComponent } from './svg-icons/layers/layers.component';
 import { WebComponent } from './svg-icons/web/web.component';
 import { UpComponent } from './svg-icons/up/up.component';
 import { DownComponent } from './svg-icons/down/down.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 
 
@@ -75,6 +76,7 @@ import { DownComponent } from './svg-icons/down/down.component';
     WebComponent,
     UpComponent,
     DownComponent,
+    NotFoundComponent,
   ],
   imports: [
     CommonModule,
@@ -111,7 +113,8 @@ import { DownComponent } from './svg-icons/down/down.component';
     LayersComponent,
     WebComponent,
     DownComponent,
-    UpComponent
+    UpComponent,
+    NotFoundComponent
   ]
 })
 export class SharedModule { }
