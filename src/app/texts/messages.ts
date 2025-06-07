@@ -26,10 +26,13 @@ export const Messages = {
         installmentNotPaid: 'شما قسط دوم هاست خود را پرداخت نکرده اید',
         outOfDownloadCharge: 'شارژ دانلود شما تمام شده است',
         discountCodeNotFound: 'کد تخفیف وارد شده یافت نشد',
-        doscountCodeAlreadyUsed: 'کد تخفیف وارد شده قبلا استفاده شده است',
+        discountCodeAlreadyUsed: 'کد تخفیف وارد شده قبلا استفاده شده است',
         invalidDiscountCode: 'کد تخفیف نامعتبر است',
         youNeedToLogin: 'برای انجام این عملیات ابتدا وارد حساب کاربری خود شوید',
-        needAccount: 'نیاز به حساب کاربری دارید'
+        needAccount: 'نیاز به حساب کاربری دارید',
+        notEnoughWalletBalance: ' موجودی کیف پول شما کافی نیست',
+        icreaseWalletBalance1: 'برای شارژ حساب خود به میزان ',
+        icreaseWalletBalance2: ' تومان، روی دکمه زیر کلیک کنید'
     },
     Success: {
         loginSuccessful: 'ورود با موفقیت انجام شد',
@@ -41,7 +44,8 @@ export const Messages = {
         hostSubmittedSuccessfully: 'هاست شما با موفقیت ثبت شد',
         passwordRecoverySuccessfull: 'اطلاعات ورود به هاست',
         hostExtendedSuccessfully: 'هاست شما با موفقیت تمدید شد',
-        hostSettledSuccessfully: 'هاست شما با موفقیت تسویه شد'
+        hostSettledSuccessfully: 'هاست شما با موفقیت تسویه شد',
+        purchaseCourseSuccessful: 'دوره خریداری شد. برای مشاهده به قسمت دوره های من در پروفایل خود مراجعه کنید.'
     },
     Warnings: {
         oneTimePassword: 'قبل از بستن این صفحه اطلاعات هاست خود را کپی کنید و در جای امنی نگداری کنید',
@@ -176,6 +180,8 @@ export const Messages = {
         InProgress: 'در حال برگزاری',
         completed: 'تکمیل شده',
         LoginOrSignup: 'ورود / ثبت نام',
+
+
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'

@@ -8,6 +8,7 @@ import { environment } from '../../../../environments/environment';
 import { CheckDiscountCodeRequest, ICheckDiscountCodeRequest } from '../../../models/ICheckDiscountCodeRequest';
 import { ICheckDiscountCodeResponse } from '../../../models/ICheckDiscountCodeResponse';
 import { JwtHelperService } from '../../../core/services/jwt.helper.service';
+import { ToastService } from '../../../core/services/toast.service';
 
 @Component({
   selector: 'hw-course-detail',
@@ -22,6 +23,7 @@ export class CourseDetailComponent {
   courseDetail?: ICourseDetail = undefined;
   isVideoModalOpen = false;
   isLoginModalOpen = false;
+  isChargeWalletModalOpen = false;
   checkDiscountCodeRequest: ICheckDiscountCodeRequest = new CheckDiscountCodeRequest();
   checkDiscountCodeResponse!: ICheckDiscountCodeResponse;
   discountApplied = false;
@@ -34,7 +36,8 @@ export class CourseDetailComponent {
     private loadingService: LoadingService,
     private courseHttpService: CourseHttpService,
     private jwtHelperService: JwtHelperService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastService
   ) { }
 
   ngOnInit() {
@@ -96,11 +99,12 @@ export class CourseDetailComponent {
     if (!this.courseId || this.courseId <= 0)
       return;
 
-    this.checkDiscountCodeRequest.code = this.sanitizeAndValidateDiscountCode(this.checkDiscountCodeRequest.code, 3);
-    if (!this.checkDiscountCodeRequest.code) {
+    const sanitizedCode = this.sanitizeAndValidateDiscountCode(this.checkDiscountCodeRequest.code, 3);
+    if (!sanitizedCode) {
       this.discountCodeInvalid = true;
       return;
     }
+    this.checkDiscountCodeRequest.code = sanitizedCode;
 
     this.checkDiscountCodeRequest.productId = this.courseId;
 
@@ -140,14 +144,67 @@ export class CourseDetailComponent {
   }
 
   purchaseCourse(): void {
-
-
     if (!this.jwtHelperService.isLoggedIn()) {
       this.openLoginModal();
       return;
     }
 
+    if (!this.courseId || this.courseId <= 0)
+      return;
 
+    this.checkDiscountCodeRequest.productId = this.courseId;
+
+    if (this.checkDiscountCodeRequest.code) {
+      const sanitizedCode = this.sanitizeAndValidateDiscountCode(this.checkDiscountCodeRequest.code, 3);
+      if (!sanitizedCode) {
+        this.discountCodeInvalid = true;
+        return;
+      }
+      this.checkDiscountCodeRequest.code = sanitizedCode;
+
+      this.courseHttpService.checkDiscountCode(this.checkDiscountCodeRequest).subscribe({
+        next: (response) => {
+          this.discountedPrice = response.discountedPrice;
+          this.discountApplied = true;
+          this.checkDiscountCodeResponse = response;
+          this.discountCodeInvalid = false;
+        },
+        error: () => {
+        }
+      });
+    }
+
+    this.loadingService.show();
+    this.courseHttpService.purchaseCourse(this.checkDiscountCodeRequest).subscribe({
+      next: () => {
+        this.loadingService.hide();
+        this.toastr.success(Messages.Success.purchaseCourseSuccessful, '');
+      },
+      error: (error) => {
+        if (error.status === 450) {
+          this.openChgargeWalletModal();
+        }
+        this.loadingService.hide();
+      }
+    });
   }
 
+  openChgargeWalletModal(): void {
+    this.isChargeWalletModalOpen = true;
+  }
+
+  closeChgargeWalletModal(): void {
+    this.isChargeWalletModalOpen = false;
+  }
+
+  goToPayment() {
+    const price = this.discountApplied ? this.discountedPrice : this.courseDetail?.price;
+    if (!price || isNaN(price)) {
+      return;
+    }
+
+    const amountInRial = price * 10;
+    const url = `https://zarinp.al/mazwebprog?amount=${amountInRial}`;
+    window.open(url, '_blank');
+  }
 }

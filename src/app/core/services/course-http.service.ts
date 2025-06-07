@@ -10,6 +10,7 @@ import { ICourseDetail } from '../../models/ICourseDetail';
 import { ICheckDiscountCodeResponse } from '../../models/ICheckDiscountCodeResponse';
 import { ICheckDiscountCodeRequest } from '../../models/ICheckDiscountCodeRequest';
 import { JwtHelperService } from './jwt.helper.service';
+import { IPurchaseCourseRequest } from '../../models/IPurchaseCourseRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -94,10 +95,29 @@ export class CourseHttpService {
         if (error.status === 404) {
           this.toastr.error(Messages.Errors.discountCodeNotFound, Messages.Errors.error);
         } else if (error.status === 409) {
-          this.toastr.error(Messages.Errors.doscountCodeAlreadyUsed, Messages.Errors.error);
+          this.toastr.error(Messages.Errors.discountCodeAlreadyUsed, Messages.Errors.error);
         } else if (error.status === 401) {
           this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
         } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+        return throwError(() => error);
+      })
+    );
+  }
+
+  purchaseCourse(purchaseCourseRequest: IPurchaseCourseRequest) {
+    return this.http.post<any>(`${this.baseUrl}/courses/purchase-course`, purchaseCourseRequest).pipe(
+      catchError((error) => {
+        if (error.status === 404) {
+          this.toastr.error(Messages.Errors.discountCodeNotFound, Messages.Errors.error);
+        } else if (error.status === 409) {
+          this.toastr.error(Messages.Errors.discountCodeAlreadyUsed, Messages.Errors.error);
+        } else if (error.status === 401) {
+          this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
+        } else if (error.status === 450) {
+        }
+        else {
           this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
         }
         return throwError(() => error);
