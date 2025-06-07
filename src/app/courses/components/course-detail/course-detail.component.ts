@@ -9,6 +9,7 @@ import { CheckDiscountCodeRequest, ICheckDiscountCodeRequest } from '../../../mo
 import { ICheckDiscountCodeResponse } from '../../../models/ICheckDiscountCodeResponse';
 import { JwtHelperService } from '../../../core/services/jwt.helper.service';
 import { ToastService } from '../../../core/services/toast.service';
+import { ErrorNavigationService } from '../../../core/services/error-navigation-service.service';
 
 @Component({
   selector: 'hw-course-detail',
@@ -37,7 +38,8 @@ export class CourseDetailComponent {
     private courseHttpService: CourseHttpService,
     private jwtHelperService: JwtHelperService,
     private router: Router,
-    private toastr: ToastService
+    private toastr: ToastService,
+    private errorNavigationService: ErrorNavigationService
   ) { }
 
   ngOnInit() {
@@ -57,10 +59,11 @@ export class CourseDetailComponent {
         this.courseDetail = data;
         this.loadingService.hide();
       },
-      error: () => {
+      error: (error) => {
         this.discountApplied = false;
         this.discountedPrice = null;
         this.loadingService.hide();
+        this.errorNavigationService.handleHttpError(error);
       }
     });
   }

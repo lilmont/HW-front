@@ -81,6 +81,7 @@ export class CourseHttpService {
           this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
         } else if (error.status === 401) {
           this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
+        } else if (error.status === 404) {
         } else {
           this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
         }
