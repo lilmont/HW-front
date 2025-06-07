@@ -109,7 +109,10 @@ export class CourseHttpService {
   purchaseCourse(purchaseCourseRequest: IPurchaseCourseRequest) {
     return this.http.post<any>(`${this.baseUrl}/courses/purchase-course`, purchaseCourseRequest).pipe(
       catchError((error) => {
-        if (error.status === 404) {
+        if (error.status === 431) {
+          this.jwtHelperService.logout();
+          location.href = '/';
+        } else if (error.status === 404) {
           this.toastr.error(Messages.Errors.discountCodeNotFound, Messages.Errors.error);
         } else if (error.status === 409) {
           this.toastr.error(Messages.Errors.discountCodeAlreadyUsed, Messages.Errors.error);
