@@ -11,6 +11,7 @@ import { ICheckDiscountCodeResponse } from '../../models/ICheckDiscountCodeRespo
 import { ICheckDiscountCodeRequest } from '../../models/ICheckDiscountCodeRequest';
 import { JwtHelperService } from './jwt.helper.service';
 import { IPurchaseCourseRequest } from '../../models/IPurchaseCourseRequest';
+import { IUserCourseCard } from '../../models/IUserCourseCard';
 
 @Injectable({
   providedIn: 'root'
@@ -122,6 +123,21 @@ export class CourseHttpService {
         } else if (error.status === 450) {
         }
         else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+        return throwError(() => error);
+      })
+    );
+  }
+
+  getAllUserCourses(): Observable<IUserCourseCard[]> {
+    return this.http.get<any>(`${this.baseUrl}/courses/user-courses`).pipe(
+      catchError((error) => {
+        if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
+        } else if (error.status === 401) {
+          this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
+        } else {
           this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
         }
         return throwError(() => error);

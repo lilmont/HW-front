@@ -1,1 +1,4 @@
-<p>user-courses works!</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <hw-course-card *ngFor="let courseCard of courseCards" [courseCard]="courseCard">
+    </hw-course-card>
+</div>

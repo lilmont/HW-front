@@ -78,7 +78,8 @@ export const Messages = {
         extend: 'تمدید',
         passwordRecover: 'بازیابی',
         purchaseCourse: 'خرید دوره',
-        check: 'بررسی'
+        check: 'بررسی',
+        viewCourse: 'مشاهده دوره',
     },
     Labels: {
         enterPhoneNumber: 'لطفا شماره موبایل خود را وارد کنید',
@@ -111,6 +112,7 @@ export const Messages = {
         FullNameInEnglish: 'نام و نام خانوادگی به انگلیسی',
         submitDomainPlaceholder: 'hardworker.ir مثلا',
         discountCode: 'کد تخفیف (اختیاری)',
+        copylicenseCommand: 'کد زیر را کپی کنید و در نرم افزار اسپات پلیر ثبت کنید',
     },
     Headers: {
         signup: 'ثبت نام',
