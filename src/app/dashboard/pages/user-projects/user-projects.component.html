@@ -1,1 +1,112 @@
-<p>user-projects works!</p>
+<h1 class="text-xl lg:text-2xl font-bold mb-6">{{Messages.Headers.myProjects}}</h1>
+
+<div class="pt-2 space-y-6">
+    <!-- Add Project Button -->
+    <div class="flex justify-end">
+        <button (click)="onAddClick()"
+            class="cursor-pointer bg-custom-600 text-white px-4 py-2 rounded-lg hover:bg-custom-700 transition ml-2">
+            {{Messages.Buttons.addProject}}
+        </button>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div *ngFor="let project of projects" class="flex flex-col justify-between">
+            <hw-project-card [project]="project" (edit)="onEditClick($event)"></hw-project-card>
+        </div>
+    </div>
+</div>
+
+<!-- Project Modal -->
+<div *ngIf="isModalOpen" class="fixed inset-0 z-50 flex items-center justify-center bg-[rgba(31,41,55,0.5)]"
+    (click)="closeModal()">
+    <div class="relative w-full max-w-md max-h-full mx-auto" (click)="$event.stopPropagation()">
+        <div class="relative bg-white rounded-lg shadow p-6">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-xl font-semibold text-gray-900">
+                    {{ selectedProject.id ? Messages.Headers.editProject : Messages.Headers.addProject }}
+                </h3>
+                <button type="button"
+                    class="cursor-pointer end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
+                    (click)="closeModal()">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+            </div>
+
+            <!-- Modal Form -->
+            <form #projectForm="ngForm" (ngSubmit)="onSave(projectForm.value)">
+                <!-- Title -->
+                <div class="mb-4">
+                    <label for="title" class="block text-sm font-medium">{{Messages.Labels.title}}</label>
+                    <input type="text" id="title" name="title" [(ngModel)]="selectedProject.title" required
+                        class="w-full border border-custom-300 rounded-lg px-3 py-2 mt-1 focus:ring-custom-500 focus:border-custom-500" />
+
+                    <div *ngIf="titleInvalid" class="text-red-600 text-sm mt-1">
+                        {{Messages.Errors.projectTitleInvalid}}
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <div class="mb-4">
+                    <label for="description" class="block text-sm font-medium">{{Messages.Labels.description}}</label>
+                    <textarea id="description" name="description" [(ngModel)]="selectedProject.description" required
+                        class="w-full border border-custom-300 rounded-lg px-3 py-2 mt-1 focus:ring-custom-500 focus:border-custom-500"
+                        rows="3"></textarea>
+
+                    <div *ngIf="descriptionInvalid" class="text-red-600 text-sm mt-1">
+                        {{Messages.Errors.projectDescriptionInvalid}}
+                    </div>
+                </div>
+
+                <!-- Preview Link -->
+                <div class="mb-4">
+                    <label for="previewLink" class="block text-sm font-medium">{{Messages.Labels.previewLink}}</label>
+                    <input type="url" id="previewLink" name="previewLink" [(ngModel)]="selectedProject.previewLink"
+                        class="w-full border border-custom-300 rounded-lg px-3 py-2 mt-1 focus:ring-custom-500 focus:border-custom-500"
+                        dir="ltr" />
+
+                    <div *ngIf="previewLinkInvalid" class="text-red-600 text-sm mt-1">
+                        {{Messages.Errors.projectPreviewLinkInvalid}}
+                    </div>
+                </div>
+
+                <!-- Download Link -->
+                <div class="mb-4">
+                    <label for="downloadLink" class="block text-sm font-medium">{{Messages.Labels.downloadLink}}</label>
+                    <input type="url" id="downloadLink" name="downloadLink" [(ngModel)]="selectedProject.downloadLink"
+                        class="w-full border border-custom-300 rounded-lg px-3 py-2 mt-1 focus:ring-custom-500 focus:border-custom-500"
+                        dir="ltr" />
+
+                    <div *ngIf="downloadLinkInvalid" class="text-red-600 text-sm mt-1">
+                        {{Messages.Errors.projectDownloadLinkInvalid}}
+                    </div>
+                </div>
+
+                <!-- Image Upload -->
+                <div class="mb-4">
+                    <label for="projectImage" class="block text-sm font-medium">{{Messages.Labels.projectImage}}</label>
+                    <input type="file" id="projectImage" name="projectImage" (change)="onImageSelected($event)"
+                        accept="image/*"
+                        class="w-full border border-custom-300 rounded-lg px-3 py-2 mt-1 focus:ring-custom-500 focus:border-custom-500" />
+
+                    <div *ngIf="imageInvalid" class="text-red-600 text-sm mt-1">
+                        {{Messages.Errors.projectImageInvalid}}
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="flex justify-end">
+                    <button type="submit"
+                        class="bg-custom-600 text-white px-4 py-2 rounded-lg hover:bg-custom-700 focus:ring focus:ring-custom-300">
+                        {{ selectedProject.id ? Messages.Headers.edit : Messages.Buttons.add }}
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

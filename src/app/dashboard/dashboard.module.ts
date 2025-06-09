@@ -27,6 +27,7 @@ import { SubmitDomainModalComponent } from './components/submit-domain-modal/sub
 import { PasswordModalComponent } from './components/password-modal/password-modal.component';
 import { CourseCardComponent } from './components/course-card/course-card.component';
 import { SpotplayerTutorialComponent } from './components/spotplayer-tutorial/spotplayer-tutorial.component';
+import { ProjectCardComponent } from './components/project-card/project-card.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { SpotplayerTutorialComponent } from './components/spotplayer-tutorial/sp
     PasswordModalComponent,
     CourseCardComponent,
     SpotplayerTutorialComponent,
+    ProjectCardComponent,
   ],
   imports: [
     CommonModule,

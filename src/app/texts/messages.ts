@@ -32,7 +32,14 @@ export const Messages = {
         needAccount: 'نیاز به حساب کاربری دارید',
         notEnoughWalletBalance: ' موجودی کیف پول شما کافی نیست',
         icreaseWalletBalance1: 'برای شارژ حساب خود به میزان ',
-        icreaseWalletBalance2: ' تومان، روی دکمه زیر کلیک کنید'
+        icreaseWalletBalance2: ' تومان، روی دکمه زیر کلیک کنید',
+        cannotEditConfirmedProject: 'شما نمیتوانید پروژه تایید شده را ویرایش کنید',
+        projectTitleInvalid: 'عنوان پروژه نمیتواند خالی باشد',
+        projectDescriptionInvalid: 'توضیحات پروژه نمیتواند خالی باشد',
+        projectPreviewLinkInvalid: 'لینک پیش نمایش نامعتبر است',
+        projectDownloadLinkInvalid: 'لینک دانلود نامعتبر است',
+        projectImageInvalid: 'تصویر پروژه نمیتواند خالی باشد',
+
     },
     Success: {
         loginSuccessful: 'ورود با موفقیت انجام شد',
@@ -82,6 +89,9 @@ export const Messages = {
         viewCourse: 'مشاهده دوره',
         useCoursesTutorial: 'راهنمای استفاده از دوره ها',
         downloadSpotPlayer: 'دانلود اسپات پلیر',
+        edit: 'ویرایش',
+        addProject: 'افزودن پروژه',
+        add: 'افزودن',
     },
     Labels: {
         enterPhoneNumber: 'لطفا شماره موبایل خود را وارد کنید',
@@ -115,6 +125,16 @@ export const Messages = {
         submitDomainPlaceholder: 'hardworker.ir مثلا',
         discountCode: 'کد تخفیف (اختیاری)',
         copylicenseCommand: 'کد زیر را کپی کنید و در نرم افزار اسپات پلیر ثبت کنید',
+        confirmed: 'تایید شده',
+        inProgress: 'در حال بررسی',
+        title: 'عنوان',
+        previewLink: 'لینک پیش نمایش',
+        downloadLink: 'لینک دانلود',
+        price: 'قیمت',
+        status: 'وضعیت',
+        purchasedCount: 'تعداد خریداری شده',
+        totalPurchased: 'درآمد کل از این پروژه',
+        projectImage: 'تصویر پروژه'
     },
     Headers: {
         signup: 'ثبت نام',
@@ -184,8 +204,8 @@ export const Messages = {
         InProgress: 'در حال برگزاری',
         completed: 'تکمیل شده',
         LoginOrSignup: 'ورود / ثبت نام',
-
-
+        addProject: 'افزودن پروژه',
+        editProject: 'ویرایش پروژه',
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'
