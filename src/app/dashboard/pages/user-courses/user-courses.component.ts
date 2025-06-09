@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IUserCourseCard } from '../../../models/IUserCourseCard';
 import { CourseHttpService } from '../../../core/services/course-http.service';
 import { LoadingService } from '../../../core/services/loading.service';
+import { Messages } from '../../../texts/messages';
 
 @Component({
   selector: 'hw-user-courses',
@@ -9,6 +10,7 @@ import { LoadingService } from '../../../core/services/loading.service';
   styleUrl: './user-courses.component.css'
 })
 export class UserCoursesComponent implements OnInit {
+  Messages = Messages;
   courseCards: IUserCourseCard[] = [];
   constructor(private loadingService: LoadingService,
     private courseHttpService: CourseHttpService) { }

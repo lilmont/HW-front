@@ -26,6 +26,7 @@ import { UserHostsTableComponent } from './components/user-hosts-table/user-host
 import { SubmitDomainModalComponent } from './components/submit-domain-modal/submit-domain-modal.component';
 import { PasswordModalComponent } from './components/password-modal/password-modal.component';
 import { CourseCardComponent } from './components/course-card/course-card.component';
+import { SpotplayerTutorialComponent } from './components/spotplayer-tutorial/spotplayer-tutorial.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { CourseCardComponent } from './components/course-card/course-card.compon
     SubmitDomainModalComponent,
     PasswordModalComponent,
     CourseCardComponent,
+    SpotplayerTutorialComponent,
   ],
   imports: [
     CommonModule,

@@ -80,6 +80,8 @@ export const Messages = {
         purchaseCourse: 'خرید دوره',
         check: 'بررسی',
         viewCourse: 'مشاهده دوره',
+        useCoursesTutorial: 'راهنمای استفاده از دوره ها',
+        downloadSpotPlayer: 'دانلود اسپات پلیر',
     },
     Labels: {
         enterPhoneNumber: 'لطفا شماره موبایل خود را وارد کنید',
