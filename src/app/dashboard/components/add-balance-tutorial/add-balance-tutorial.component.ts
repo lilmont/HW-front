@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Messages } from '../../../texts/messages';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'hw-add-balance-tutorial',
@@ -8,6 +9,7 @@ import { Messages } from '../../../texts/messages';
 })
 export class AddBalanceTutorialComponent {
   Messages = Messages;
+  baseUrl = environment.apiBaseUrl;
   isModalOpen: boolean = false;
 
   openModal() {
