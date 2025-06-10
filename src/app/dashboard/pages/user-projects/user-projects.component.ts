@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IProject, Project } from '../../../models/IProject';
+import { IProject, IProjectList, Project, ProjectList } from '../../../models/IProject';
 import { ProjectHttpService } from '../../../core/services/project-http.service';
 import { Messages } from '../../../texts/messages';
 
@@ -10,7 +10,7 @@ import { Messages } from '../../../texts/messages';
 })
 export class UserProjectsComponent implements OnInit {
   Messages = Messages;
-  projects: IProject[] = [];
+  projectList: IProjectList = new ProjectList();
   isModalOpen: boolean = false;
   titleInvalid = false;
   descriptionInvalid = false;
@@ -25,7 +25,8 @@ export class UserProjectsComponent implements OnInit {
   ngOnInit(): void {
     this.projectHttpService.getAllUserProjects().subscribe({
       next: (data) => {
-        this.projects = data
+        this.projectList = data
+        console.log('data:', data);
       },
       error: () => { }
     });
@@ -79,10 +80,10 @@ export class UserProjectsComponent implements OnInit {
       next: (savedProject) => {
         if (project.id) {
           // Replace in list
-          const index = this.projects.findIndex(p => p.id === savedProject.id);
-          if (index > -1) this.projects[index] = savedProject;
+          const index = this.projectList.userProjects.findIndex(p => p.id === savedProject.id);
+          if (index > -1) this.projectList.userProjects[index] = savedProject;
         } else {
-          this.projects.push(savedProject);
+          this.projectList.userProjects.push(savedProject);
         }
         this.closeModal();
       },

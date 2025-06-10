@@ -1,3 +1,16 @@
+export interface IProjectList {
+    userProjects: Project[];
+    canAddProject: boolean;
+}
+
+export class ProjectList implements IProjectList {
+    userProjects: Project[] = [];
+    canAddProject: boolean = false;
+    constructor(init?: Partial<ProjectList>) {
+        Object.assign(this, init);
+    }
+}
+
 export interface IProject {
     id?: number;
     title: string;

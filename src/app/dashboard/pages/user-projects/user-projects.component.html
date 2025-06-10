@@ -3,7 +3,7 @@
 <div class="pt-2 space-y-6">
     <!-- Add Project Button -->
     <div class="flex justify-end">
-        <button (click)="onAddClick()"
+        <button (click)="onAddClick()" *ngIf="projectList.canAddProject"
             class="cursor-pointer bg-custom-600 text-white px-4 py-2 rounded-lg hover:bg-custom-700 transition ml-2">
             {{Messages.Buttons.addProject}}
         </button>
@@ -11,7 +11,7 @@
 
     <!-- Projects Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div *ngFor="let project of projects" class="flex flex-col justify-between">
+        <div *ngFor="let project of projectList.userProjects" class="flex flex-col justify-between">
             <hw-project-card [project]="project" (edit)="onEditClick($event)"></hw-project-card>
         </div>
     </div>
