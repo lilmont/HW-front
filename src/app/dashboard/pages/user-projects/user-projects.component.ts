@@ -3,6 +3,7 @@ import { IProject, IProjectList, Project, ProjectList } from '../../../models/IP
 import { ProjectHttpService } from '../../../core/services/project-http.service';
 import { Messages } from '../../../texts/messages';
 import { LoadingService } from '../../../core/services/loading.service';
+import { ToastService } from '../../../core/services/toast.service';
 
 @Component({
   selector: 'hw-user-projects',
@@ -22,7 +23,8 @@ export class UserProjectsComponent implements OnInit {
   selectedProject: IProject = new Project();
 
   constructor(private projectHttpService: ProjectHttpService,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    private toastr: ToastService
   ) { }
 
   ngOnInit(): void {
@@ -40,12 +42,23 @@ export class UserProjectsComponent implements OnInit {
 
   onAddClick(): void {
     this.selectedProject = new Project();
+    this.resetValidationFlags();
     this.openModal();
   }
 
   onEditClick(project: IProject): void {
     this.selectedProject = { ...project };
+    this.resetValidationFlags();
     this.openModal();
+  }
+
+  resetValidationFlags() {
+    this.titleInvalid = false;
+    this.descriptionInvalid = false;
+    this.previewLinkInvalid = false;
+    this.downloadLinkInvalid = false;
+    this.imageInvalid = false;
+    this.selectedImage = null;
   }
 
   onSave(project: IProject): void {
@@ -63,7 +76,7 @@ export class UserProjectsComponent implements OnInit {
       return;
     }
 
-    if (!project.id && !this.selectedImage) {
+    if (project.id != undefined && !this.selectedImage) {
       this.imageInvalid = true;
       return;
     }
@@ -78,6 +91,7 @@ export class UserProjectsComponent implements OnInit {
     if (this.selectedImage) {
       formData.append('ProjectImageFile', this.selectedImage, this.selectedImage.name);
     }
+
     const request$ = project.id
       ? this.projectHttpService.editProject(formData)
       : this.projectHttpService.addProject(formData);
@@ -115,8 +129,16 @@ export class UserProjectsComponent implements OnInit {
   }
 
   onImageSelected(event: Event): void {
+    const validImageTypes = ['image/jpeg', 'image/png', 'image/jpg'];
+
     const input = event.target as HTMLInputElement;
     const file = input.files?.[0] || null;
+
+    if (file && !validImageTypes.includes(file.type)) {
+      this.toastr.error(Messages.Errors.invalidImage, Messages.Errors.error);
+      return;
+    }
+
     this.selectedImage = file;
 
     if (input.files?.length) {
