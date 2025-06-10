@@ -66,8 +66,8 @@
         <hr class="mb-4 mt-1 border-gray-200" />
 
         <!-- Footer Section -->
-        <div class="min-h-[30px]">
-            <div class="h-full flex flex-col md:flex-row md:justify-between text-sm text-gray-600 gap-2 md:gap-6"
+        <div class="min-h-[35px]">
+            <div class="h-full flex flex-col md:flex-row md:justify-between text-sm text-gray-600 gap-2 md:gap-6 items-center"
                 *ngIf="project.projectStatus == 1;  else noPurchaseInfo">
                 <div>
                     <span class="font-medium">{{ Messages.Labels.purchasedCount }}:</span>
@@ -81,9 +81,8 @@
             </div>
 
             <ng-template #noPurchaseInfo>
-                <div
-                    class="h-full flex w-full text-yellow-800 bg-yellow-50 text-xs lg:text-sm p-2 rounded-md items-center">
-                    <svg class="shrink-0 w-5 h-5 self-center ml-1" viewBox="0 0 24 24" fill="none"
+                <div class="h-full flex w-full text-yellow-800 bg-yellow-50 text-xs p-2 rounded-md items-center">
+                    <svg class="shrink-0 w-4 h-4 self-center ml-1" viewBox="0 0 24 24" fill="none"
                         xmlns="http://www.w3.org/2000/svg" stroke="#92400E">
                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                         <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
