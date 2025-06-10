@@ -56,7 +56,8 @@ export const Messages = {
     },
     Warnings: {
         oneTimePassword: 'قبل از بستن این صفحه اطلاعات هاست خود را کپی کنید و در جای امنی نگداری کنید',
-        waitingTooLong: 'این مرحله ممکن است کمی طول بکشد، لطفا صبور باشید...'
+        waitingTooLong: 'این مرحله ممکن است کمی طول بکشد، لطفا صبور باشید...',
+        projectInfoShownAfterConfirmation: 'این قسمت پس از تایید پروژه قابل مشاهده است.'
     },
     Buttons: {
         sendCode: 'ارسال کد یکبار مصرف',
@@ -132,8 +133,8 @@ export const Messages = {
         downloadLink: 'لینک دانلود',
         price: 'قیمت',
         status: 'وضعیت',
-        purchasedCount: 'تعداد خریداری شده',
-        totalPurchased: 'درآمد کل از این پروژه',
+        purchasedCount: 'تعداد فروش',
+        totalPurchased: 'درآمد کل پروژه',
         projectImage: 'تصویر پروژه'
     },
     Headers: {
