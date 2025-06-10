@@ -11,10 +11,11 @@
             <h3 class="text-xl font-bold text-gray-900">{{ project.title }}</h3>
 
             <!-- Description -->
-            <p class="text-gray-600 mt-2">{{ project.description }}</p>
+            <p class="text-gray-600 mt-2 line-clamp-2 text-sm min-h-[45px]">{{ project.description }}</p>
 
+            <hr class="mb-4 mt-3 border-gray-300" />
             <!-- Info Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-gray-700 mt-3">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-gray-700 pt-1">
                 <div>
                     <span class="font-medium text-gray-900">{{ Messages.Labels.price }}: </span>
                     <span *ngIf="project.projectStatus == 1; else noPriceInfo">{{ project.price | number: '1.0-0' }} {{
@@ -63,7 +64,7 @@
             </button>
         </div>
 
-        <hr class="mb-4 mt-1 border-gray-200" />
+        <hr class="mb-4 mt-1 border-gray-300" />
 
         <!-- Footer Section -->
         <div class="min-h-[35px]">
