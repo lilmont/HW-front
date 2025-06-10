@@ -1,11 +1,17 @@
 export interface IProjectList {
     userProjects: Project[];
     canAddProject: boolean;
+    totalProjectCount: number;
+    totalPurchaseCount: number;
+    totalProjectIncome: number;
 }
 
 export class ProjectList implements IProjectList {
     userProjects: Project[] = [];
     canAddProject: boolean = false;
+    totalProjectCount: number = 0;
+    totalPurchaseCount: number = 0;
+    totalProjectIncome: number = 0;
     constructor(init?: Partial<ProjectList>) {
         Object.assign(this, init);
     }
@@ -22,7 +28,7 @@ export interface IProject {
     projectStatus: number;
     isShown: boolean;
     purchasedCount: number;
-    totalPurchased: number;
+    totalPurchasedUserShare: number;
 }
 
 export class Project implements IProject {
@@ -36,7 +42,7 @@ export class Project implements IProject {
     projectStatus: number = 0;
     isShown: boolean = false;
     purchasedCount: number = 0;
-    totalPurchased: number = 0;
+    totalPurchasedUserShare: number = 0;
     constructor(init?: Partial<Project>) {
         Object.assign(this, init);
     }

@@ -39,7 +39,7 @@
             </div>
 
             <!-- Links -->
-            <div class="flex gap-3 flex-wrap mt-4">
+            <div class="flex gap-3 flex-wrap pt-6">
                 <a *ngIf="project.previewLink" [href]="project.previewLink" target="_blank"
                     class="inline-block px-4 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded transition">
                     {{ Messages.Buttons.preview }}
@@ -76,7 +76,7 @@
                 </div>
                 <div>
                     <span class="font-medium">{{ Messages.Labels.totalPurchased }}:</span>
-                    {{ project.totalPurchased | number:'1.0-0' }}
+                    {{ project.totalPurchasedUserShare | number:'1.0-0' }}
                     <span class="ml-1">{{ Messages.Headers.toman }}</span>
                 </div>
             </div>

@@ -137,7 +137,10 @@ export const Messages = {
         status: 'وضعیت',
         purchasedCount: 'تعداد فروش',
         totalPurchased: 'درآمد کل پروژه',
-        projectImage: 'تصویر پروژه'
+        projectImage: 'تصویر پروژه',
+        totalProjectCount: 'تعداد پروژه ها',
+        totalPurchaseCount: 'تعداد فروش',
+        totalProjectIncome: 'درآمد کل',
     },
     Headers: {
         signup: 'ثبت نام',
