@@ -40,6 +40,10 @@ export class ProjectHttpService {
         if (error.status === 431) {
           this.jwtHelperService.logout();
           location.href = '/';
+        } else if (error.status === 440) {
+          this.toastr.error(Messages.Errors.fileSizeTooLarge, Messages.Errors.error);
+        } else if (error.status === 441) {
+          this.toastr.error(Messages.Errors.invalidImage, Messages.Errors.error);
         } else if (error.status === 400) {
           this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
         } else if (error.status === 401) {
