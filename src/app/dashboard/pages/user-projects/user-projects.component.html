@@ -130,7 +130,7 @@
     <!-- Project Modal -->
     <div *ngIf="isModalOpen" class="fixed inset-0 z-50 flex items-center justify-center bg-[rgba(31,41,55,0.5)]"
         (click)="closeModal()">
-        <div class="relative w-full max-w-md max-h-full mx-auto" (click)="$event.stopPropagation()">
+        <div class="relative p-4 w-full max-w-md max-h-full" (click)="$event.stopPropagation()">
             <div class="relative bg-white rounded-lg shadow p-6">
                 <div class="flex items-center justify-between mb-4">
                     <h3 class="text-xl font-semibold text-gray-900">
@@ -154,7 +154,7 @@
                     <div class="mb-4">
                         <label for="title" class="block text-sm font-medium">{{Messages.Labels.title}}</label>
                         <input type="text" id="title" name="title" [(ngModel)]="selectedProject.title" required
-                            class="w-full border border-custom-300 rounded-lg px-3 py-2 mt-1 focus:ring-custom-500 focus:border-custom-500" />
+                            class="mt-2 w-full bg-gray-50 border border-custom-300 text-gray-900 text-sm rounded-lg focus:ring-custom-500 focus:border-custom-500 block p-2.5" />
 
                         <div *ngIf="titleInvalid" class="text-red-600 text-sm mt-1">
                             {{Messages.Errors.projectTitleInvalid}}
@@ -166,7 +166,7 @@
                         <label for="description"
                             class="block text-sm font-medium">{{Messages.Labels.description}}</label>
                         <textarea id="description" name="description" [(ngModel)]="selectedProject.description" required
-                            class="w-full border border-custom-300 rounded-lg px-3 py-2 mt-1 focus:ring-custom-500 focus:border-custom-500"
+                            class="mt-2 bg-gray-50 border border-custom-300 text-gray-900 text-sm rounded-lg focus:ring-custom-500 focus:border-custom-500 block w-full p-2.5"
                             rows="3"></textarea>
 
                         <div *ngIf="descriptionInvalid" class="text-red-600 text-sm mt-1">
@@ -179,7 +179,7 @@
                         <label for="previewLink"
                             class="block text-sm font-medium">{{Messages.Labels.previewLink}}</label>
                         <input type="url" id="previewLink" name="previewLink" [(ngModel)]="selectedProject.previewLink"
-                            class="w-full border border-custom-300 rounded-lg px-3 py-2 mt-1 focus:ring-custom-500 focus:border-custom-500"
+                            class="mt-2 bg-gray-50 border border-custom-300 text-gray-900 text-sm rounded-lg focus:ring-custom-500 focus:border-custom-500 block w-full p-2.5"
                             dir="ltr" />
 
                         <div *ngIf="previewLinkInvalid" class="text-red-600 text-sm mt-1">
@@ -193,7 +193,7 @@
                             class="block text-sm font-medium">{{Messages.Labels.downloadLink}}</label>
                         <input type="url" id="downloadLink" name="downloadLink"
                             [(ngModel)]="selectedProject.downloadLink"
-                            class="w-full border border-custom-300 rounded-lg px-3 py-2 mt-1 focus:ring-custom-500 focus:border-custom-500"
+                            class="mt-2 bg-gray-50 border border-custom-300 text-gray-900 text-sm rounded-lg focus:ring-custom-500 focus:border-custom-500 block w-full p-2.5"
                             dir="ltr" />
 
                         <div *ngIf="downloadLinkInvalid" class="text-red-600 text-sm mt-1">
@@ -203,11 +203,17 @@
 
                     <!-- Image Upload -->
                     <div class="mb-4">
-                        <label for="projectImage"
-                            class="block text-sm font-medium">{{Messages.Labels.projectImage}}</label>
+                        <div class="flex items-center space-x-4">
+                            <label for="projectImage"
+                                class="cursor-pointer px-4 py-2 bg-custom-500 text-white rounded-lg text-sm font-medium hover:bg-custom-400">
+                                {{Messages.Buttons.selectImage}}
+                            </label>
+                            <span id="fileName" class="text-gray-700 text-sm"></span>
+                        </div>
+
+
                         <input type="file" id="projectImage" name="projectImage" (change)="onImageSelected($event)"
-                            accept="image/*"
-                            class="w-full border border-custom-300 rounded-lg px-3 py-2 mt-1 focus:ring-custom-500 focus:border-custom-500" />
+                            accept="image/*" class="hidden" />
 
                         <div *ngIf="imageInvalid" class="text-red-600 text-sm mt-1">
                             {{Messages.Errors.projectImageInvalid}}
@@ -217,7 +223,7 @@
                     <!-- Submit Button -->
                     <div class="flex justify-end">
                         <button type="submit"
-                            class="bg-custom-600 text-white px-4 py-2 rounded-lg hover:bg-custom-700 focus:ring focus:ring-custom-300">
+                            class="cursor-pointer w-full bg-custom-600 text-white px-4 py-2 rounded-lg hover:bg-custom-700 focus:ring focus:ring-custom-300">
                             {{ selectedProject.id ? Messages.Headers.edit : Messages.Buttons.add }}
                         </button>
                     </div>

@@ -95,6 +95,7 @@ export const Messages = {
         edit: 'ویرایش',
         addProject: 'افزودن پروژه',
         add: 'افزودن',
+        selectImage: 'انتخاب تصویر پروژه',
     },
     Labels: {
         enterPhoneNumber: 'لطفا شماره موبایل خود را وارد کنید',

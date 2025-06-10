@@ -118,5 +118,12 @@ export class UserProjectsComponent implements OnInit {
     const input = event.target as HTMLInputElement;
     const file = input.files?.[0] || null;
     this.selectedImage = file;
+
+    if (input.files?.length) {
+      const fileNameElement = document.getElementById("fileName");
+      if (fileNameElement) {
+        fileNameElement.textContent = input.files[0].name;
+      }
+    }
   }
 }
