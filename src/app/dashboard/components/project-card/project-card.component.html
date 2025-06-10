@@ -16,8 +16,14 @@
             <!-- Info Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-gray-700 mt-3">
                 <div>
-                    <span class="font-medium text-gray-900">{{ Messages.Labels.price }}:</span>
-                    {{ project.price | number: '1.0-0' }} {{ Messages.Headers.toman }}
+                    <span class="font-medium text-gray-900">{{ Messages.Labels.price }}: </span>
+                    <span *ngIf="project.projectStatus == 1; else noPriceInfo">{{ project.price | number: '1.0-0' }} {{
+                        Messages.Headers.toman }}
+                    </span>
+                    <ng-template #noPriceInfo>
+                        <span class="px-2 py-0.5 rounded text-sm font-medium text-yellow-700 bg-yellow-100">{{
+                            Messages.Labels.inProgress }}</span>
+                    </ng-template>
                 </div>
 
                 <div>
