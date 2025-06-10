@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IProject, IProjectList, Project, ProjectList } from '../../../models/IProject';
 import { ProjectHttpService } from '../../../core/services/project-http.service';
 import { Messages } from '../../../texts/messages';
+import { LoadingService } from '../../../core/services/loading.service';
 
 @Component({
   selector: 'hw-user-projects',
@@ -20,15 +21,20 @@ export class UserProjectsComponent implements OnInit {
   imageInvalid = false;
   selectedProject: IProject = new Project();
 
-  constructor(private projectHttpService: ProjectHttpService) { }
+  constructor(private projectHttpService: ProjectHttpService,
+    private loadingService: LoadingService
+  ) { }
 
   ngOnInit(): void {
+    this.loadingService.show();
     this.projectHttpService.getAllUserProjects().subscribe({
       next: (data) => {
         this.projectList = data
-        console.log('data:', data);
+        this.loadingService.hide();
       },
-      error: () => { }
+      error: () => {
+        this.loadingService.hide();
+      }
     });
   }
 

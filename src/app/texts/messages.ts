@@ -57,7 +57,9 @@ export const Messages = {
     Warnings: {
         oneTimePassword: 'قبل از بستن این صفحه اطلاعات هاست خود را کپی کنید و در جای امنی نگداری کنید',
         waitingTooLong: 'این مرحله ممکن است کمی طول بکشد، لطفا صبور باشید...',
-        projectInfoShownAfterConfirmation: 'این قسمت پس از تایید پروژه قابل مشاهده است.'
+        projectInfoShownAfterConfirmation: 'این قسمت پس از تایید پروژه قابل مشاهده است.',
+        noCoursesYet: 'هنوز دوره‌ای برای شما ثبت نشده است.',
+        noProjectsYet: 'هنوز پروژه‌ای برای شما ثبت نشده است.',
     },
     Buttons: {
         sendCode: 'ارسال کد یکبار مصرف',
