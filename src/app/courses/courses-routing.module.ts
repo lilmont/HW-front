@@ -4,13 +4,7 @@ import { CourseDetailComponent } from './components/course-detail/course-detail.
 import { LayoutComponent } from '../shared/components/layout/layout.component';
 
 const routes: Routes = [
-    {
-        path: '',
-        component: LayoutComponent,
-        children: [
-            { path: ':id/:courseSlug', component: CourseDetailComponent }
-        ]
-    }
+    { path: ':id/:courseSlug', component: CourseDetailComponent }
 ];
 
 @NgModule({
