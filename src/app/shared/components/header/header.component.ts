@@ -29,6 +29,7 @@ export class HeaderComponent implements OnInit {
   ) {
   }
   ngOnInit(): void {
+    this.userInfoService.loadUser();
     this.subscription = this.userInfoService.user$.subscribe(user => {
       if (user) {
         this.userInfo.avatarImage = user.avatarImage ?? '';

@@ -1,3 +1,5 @@
+import { IJwtResponse } from "./IJwtResponse";
+
 export interface IUserInfo {
     firstName?: string;
     lastName?: string;
@@ -19,6 +21,7 @@ export class UserInfo implements IUserInfo {
     }
 }
 
-export interface IUserAvatar {
+export interface IUserAvatarUpdateResponse {
     fileName: string;
+    JwtResponse: IJwtResponse;
 }

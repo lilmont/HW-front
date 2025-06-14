@@ -2,9 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ToastService } from './toast.service';
 import { catchError, Observable, tap, throwError } from 'rxjs';
-import { IUserAvatar, IUserInfo } from '../../models/IUserInfo';
+import { IUserAvatarUpdateResponse, IUserInfo } from '../../models/IUserInfo';
 import { environment } from '../../../environments/environment';
 import { Messages } from '../../texts/messages';
+import { IJwtResponse } from '../../models/IJwtResponse';
+import { JwtHelperService } from './jwt.helper.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,10 +15,16 @@ export class UserHttpService {
   private baseUrl = environment.apiBaseUrl;
   constructor(
     private http: HttpClient,
-    private toastr: ToastService) { }
+    private toastr: ToastService,
+    private jwtHelperService: JwtHelperService) { }
 
-  updateUserInfo(data: IUserInfo): Observable<void> {
+  updateUserInfo(data: IUserInfo): Observable<IJwtResponse> {
     return this.http.post<any>(`${this.baseUrl}/users/update`, data).pipe(
+      tap((res) => {
+        if (res && res.token) {
+          this.jwtHelperService.setToken(res.token);
+        }
+      }),
       catchError((error) => {
         if (error.status === 400) {
           this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
@@ -45,8 +53,13 @@ export class UserHttpService {
     );
   }
 
-  uploadAvatar(data: FormData): Observable<IUserAvatar> {
+  uploadAvatar(data: FormData): Observable<IUserAvatarUpdateResponse> {
     return this.http.post<any>(`${this.baseUrl}/users/update-avatar`, data).pipe(
+      tap((res) => {
+        if (res && res.jwtResponse && res.jwtResponse.token) {
+          this.jwtHelperService.setToken(res.jwtResponse.token);
+        }
+      }),
       catchError((error) => {
         if (error.status === 400) {
           this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
