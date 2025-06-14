@@ -31,7 +31,7 @@ export class UserProjectsComponent implements OnInit {
     this.loadingService.show();
     this.projectHttpService.getAllUserProjects().subscribe({
       next: (data) => {
-        this.projectList = data
+        this.projectList = data;
         this.loadingService.hide();
       },
       error: () => {
