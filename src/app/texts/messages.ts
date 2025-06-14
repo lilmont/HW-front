@@ -215,6 +215,7 @@ export const Messages = {
         addProject: 'افزودن پروژه',
         editProject: 'ویرایش پروژه',
         areYouSure: 'آیا مطمئن هستید؟',
+        discountCodes: 'کدهای تخفیف',
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'

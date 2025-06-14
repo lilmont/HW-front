@@ -10,6 +10,7 @@ import { HostingComponent } from './pages/hosting/hosting.component';
 import { CommentsComponent } from './pages/comments/comments.component';
 import { UserInfoComponent } from './pages/user-info/user-info.component';
 import { AuthGuard } from '../auth/auth.guard';
+import { DiscountCodesComponent } from './pages/discount-codes/discount-codes.component';
 
 const routes: Routes = [
     {
@@ -25,6 +26,7 @@ const routes: Routes = [
             { path: 'hosting', component: HostingComponent, canActivate: [AuthGuard] },
             { path: 'comments', component: CommentsComponent, canActivate: [AuthGuard] },
             { path: 'user-info', component: UserInfoComponent, canActivate: [AuthGuard] },
+            { path: 'discount-codes', component: DiscountCodesComponent, canActivate: [AuthGuard] },
         ],
     },
 ];

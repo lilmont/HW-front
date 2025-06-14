@@ -28,6 +28,7 @@ import { PasswordModalComponent } from './components/password-modal/password-mod
 import { CourseCardComponent } from './components/course-card/course-card.component';
 import { SpotplayerTutorialComponent } from './components/spotplayer-tutorial/spotplayer-tutorial.component';
 import { ProjectCardComponent } from './components/project-card/project-card.component';
+import { DiscountCodesComponent } from './pages/discount-codes/discount-codes.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { ProjectCardComponent } from './components/project-card/project-card.com
     CourseCardComponent,
     SpotplayerTutorialComponent,
     ProjectCardComponent,
+    DiscountCodesComponent,
   ],
   imports: [
     CommonModule,

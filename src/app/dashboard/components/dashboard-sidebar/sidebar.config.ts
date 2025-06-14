@@ -6,6 +6,7 @@ export interface SidebarItem {
 
 import { CommentIconComponent } from '../../../shared/svg-icons/comment-icon/comment-icon.component';
 import { CoursesIconComponent } from '../../../shared/svg-icons/courses-icon/courses-icon.component';
+import { DiscountIconComponent } from '../../../shared/svg-icons/discount-icon/discount-icon.component';
 import { HostIconComponent } from '../../../shared/svg-icons/host-icon/host-icon.component';
 import { ProfileIconComponent } from '../../../shared/svg-icons/profile-icon/profile-icon.component';
 import { ProjectIconComponent } from '../../../shared/svg-icons/project-icon/project-icon.component';
@@ -54,5 +55,10 @@ export const SIDEBAR_ITEMS: SidebarItem[] = [
         label: Messages.Headers.comments,
         path: '/dashboard/comments',
         svgComponent: CommentIconComponent,
+    },
+    {
+        label: Messages.Headers.discountCodes,
+        path: '/dashboard/discount-codes',
+        svgComponent: DiscountIconComponent,
     }
 ];

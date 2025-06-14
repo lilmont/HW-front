@@ -37,6 +37,7 @@ import { WebComponent } from './svg-icons/web/web.component';
 import { UpComponent } from './svg-icons/up/up.component';
 import { DownComponent } from './svg-icons/down/down.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { DiscountIconComponent } from './svg-icons/discount-icon/discount-icon.component';
 
 
 
@@ -64,6 +65,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     HostIconComponent,
     ProfileIconComponent,
     CommentIconComponent,
+    DiscountIconComponent,
     AmountDirective,
     RocketComponent,
     SpeedComponent,
@@ -102,6 +104,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     HostIconComponent,
     ProfileIconComponent,
     CommentIconComponent,
+    DiscountIconComponent,
     AmountDirective,
     RocketComponent,
     SpeedComponent,
