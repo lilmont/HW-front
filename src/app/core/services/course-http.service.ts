@@ -144,4 +144,20 @@ export class CourseHttpService {
       })
     );
   }
+
+  getPurchaseStatus(productId: number): Observable<boolean> {
+    return this.http.get<any>(`${this.baseUrl}/courses/purchase-status`, { params: { productId: productId.toString() } }).pipe(
+      map((response: any) => response.hasPurchased),
+      catchError((error) => {
+        if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
+        } else if (error.status === 401) {
+          this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+        return throwError(() => error);
+      })
+    );
+  }
 }

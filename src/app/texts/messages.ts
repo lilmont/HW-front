@@ -60,6 +60,7 @@ export const Messages = {
         projectInfoShownAfterConfirmation: 'این قسمت پس از تایید پروژه قابل مشاهده است.',
         noCoursesYet: 'هنوز دوره‌ای برای شما ثبت نشده است.',
         noProjectsYet: 'هنوز پروژه‌ای برای شما ثبت نشده است.',
+        alreadyPurchased: 'شما قبلا این دوره را خریداری کرده‌اید. آیا از خریداری مجدد اطمینان دارید؟',
     },
     Buttons: {
         sendCode: 'ارسال کد یکبار مصرف',
@@ -213,6 +214,7 @@ export const Messages = {
         LoginOrSignup: 'ورود / ثبت نام',
         addProject: 'افزودن پروژه',
         editProject: 'ویرایش پروژه',
+        areYouSure: 'آیا مطمئن هستید؟',
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'

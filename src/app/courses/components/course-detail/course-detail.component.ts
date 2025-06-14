@@ -25,6 +25,7 @@ export class CourseDetailComponent {
   isVideoModalOpen = false;
   isLoginModalOpen = false;
   isChargeWalletModalOpen = false;
+  isPurchaseConfirmationModalOpen = false;
   checkDiscountCodeRequest: ICheckDiscountCodeRequest = new CheckDiscountCodeRequest();
   checkDiscountCodeResponse!: ICheckDiscountCodeResponse;
   discountApplied = false;
@@ -74,11 +75,6 @@ export class CourseDetailComponent {
 
   closeVideoModal(): void {
     this.isVideoModalOpen = false;
-    // pause video when modal closes
-    if (this.videoPlayer?.nativeElement) {
-      this.videoPlayer.nativeElement.pause();
-      this.videoPlayer.nativeElement.currentTime = 0;
-    }
   }
 
   openLoginModal(): void {
@@ -146,7 +142,7 @@ export class CourseDetailComponent {
     return sanitizedCode;
   }
 
-  purchaseCourse(): void {
+  purchaseCoursePrep(): void {
     if (!this.jwtHelperService.isLoggedIn()) {
       this.openLoginModal();
       return;
@@ -165,6 +161,8 @@ export class CourseDetailComponent {
       }
       this.checkDiscountCodeRequest.code = sanitizedCode;
 
+      this.loadingService.show();
+
       this.courseHttpService.checkDiscountCode(this.checkDiscountCodeRequest).subscribe({
         next: (response) => {
           this.discountedPrice = response.discountedPrice;
@@ -177,19 +175,46 @@ export class CourseDetailComponent {
       });
     }
 
+    this.courseHttpService.getPurchaseStatus(this.courseId).subscribe({
+      next: (hasPurchased) => {
+        if (hasPurchased) {
+          this.isPurchaseConfirmationModalOpen = true;
+          this.loadingService.hide();
+        }
+        else {
+          this.purchaseCourse();
+        }
+      },
+      error: () => {
+        this.loadingService.hide();
+      }
+    });
+  }
+
+  purchaseCourse(): void {
     this.loadingService.show();
     this.courseHttpService.purchaseCourse(this.checkDiscountCodeRequest).subscribe({
       next: () => {
         this.loadingService.hide();
         this.toastr.success(Messages.Success.purchaseCourseSuccessful, '');
+        this.isPurchaseConfirmationModalOpen = false;
       },
       error: (error) => {
         if (error.status === 450) {
           this.openChgargeWalletModal();
         }
+        this.isPurchaseConfirmationModalOpen = false;
         this.loadingService.hide();
       }
     });
+  }
+
+  openPurchaseConfirmationModal(): void {
+    this.isPurchaseConfirmationModalOpen = true;
+  }
+
+  closePurchaseConfirmationModal(): void {
+    this.isPurchaseConfirmationModalOpen = false;
   }
 
   openChgargeWalletModal(): void {
