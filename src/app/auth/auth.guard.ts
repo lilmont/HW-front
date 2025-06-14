@@ -9,7 +9,7 @@ export class AuthGuard implements CanActivate {
     canActivate(): boolean {
         if (this.jwtHelper.isLoggedIn()) return true;
 
-        this.router.navigate(['/login']);
+        this.router.navigate(['/users/signup']);
         return false;
     }
 }
