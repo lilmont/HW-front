@@ -1,14 +1,17 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Messages } from '../../../texts/messages';
+import { ProjectHttpService } from '../../../core/services/project-http.service';
+import { LoadingService } from '../../../core/services/loading.service';
+import { IProjectCategory } from '../../../models/IProjectCategory';
 
 @Component({
   selector: 'hw-filtered-cards',
   templateUrl: './filtered-cards.component.html',
   styleUrl: './filtered-cards.component.css'
 })
-export class FilteredCardsComponent {
+export class FilteredCardsComponent implements OnInit {
   Messages = Messages;
-  labels = ['همه', 'متفرقه', 'رستوران', 'فروشگاهی', 'ساختمان', 'زیبایی', 'صنعت', 'شرکتی'];
+  labels: IProjectCategory[] = [];
   cards = [
     { title: 'پروژه آرایشگاه مردانه شارپنر', description: 'پروژه آرایگاه مردانه شارپنر با امکان رزرو آنلاین نوبت به همراه ده ساعت برنامه نویسی اختصاصی', category: 'همه' },
     { title: 'پروژه طراحی و دکوراسیون داخلی ونوم', description: 'وبسایت طراحی و دکوراسیون داخلی به همراه پکیج 10 ساعت برنامه نویسی اختصاصی', category: 'متفرقه' },
@@ -19,14 +22,35 @@ export class FilteredCardsComponent {
   ];
 
   filteredCards = [...this.cards]; // Initially, show all cards
-  selectedLabel: string = 'همه';
+  selectedLabelId: number = 0;
 
-  filterCards(label: string) {
-    this.selectedLabel = label;
-    if (label === 'همه') {
+  constructor(private projectHttpService: ProjectHttpService,
+    private loadingService: LoadingService
+  ) { }
+
+  ngOnInit(): void {
+    this.getCategories();
+  }
+
+  getCategories(): void {
+    this.loadingService.show();
+    this.projectHttpService.getAllProjectCategories().subscribe({
+      next: (data) => {
+        this.labels = data;
+        this.loadingService.hide();
+      },
+      error: () => {
+        this.loadingService.hide();
+      }
+    });
+  }
+
+  filterCards(labelId: number) {
+    this.selectedLabelId = labelId;
+    if (labelId === 0) {
       this.filteredCards = [...this.cards];
     } else {
-      this.filteredCards = this.cards.filter(card => card.category === label);
+      // this.filteredCards = this.cards.filter(card => card.category === label);
     }
   }
 }

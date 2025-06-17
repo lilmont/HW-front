@@ -6,6 +6,7 @@ import { JwtHelperService } from './jwt.helper.service';
 import { IProject, IProjectList } from '../../models/IProject';
 import { catchError, Observable, throwError } from 'rxjs';
 import { Messages } from '../../texts/messages';
+import { IProjectCategory } from '../../models/IProjectCategory';
 
 @Injectable({
   providedIn: 'root'
@@ -67,6 +68,21 @@ export class ProjectHttpService {
         } else if (error.status === 441) {
           this.toastr.error(Messages.Errors.invalidImage, Messages.Errors.error);
         } else if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
+        } else if (error.status === 401) {
+          this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+        return throwError(() => error);
+      })
+    );
+  }
+
+  getAllProjectCategories(): Observable<IProjectCategory[]> {
+    return this.http.get<IProjectCategory[]>(`${this.baseUrl}/projects/project-category-list`).pipe(
+      catchError((error) => {
+        if (error.status === 400) {
           this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
         } else if (error.status === 401) {
           this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
