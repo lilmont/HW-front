@@ -3,6 +3,8 @@ import { Messages } from '../../../texts/messages';
 import { ProjectHttpService } from '../../../core/services/project-http.service';
 import { LoadingService } from '../../../core/services/loading.service';
 import { IProjectCategory } from '../../../models/IProjectCategory';
+import { IProjectCard } from '../../../models/IProjectCard';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'hw-filtered-cards',
@@ -11,18 +13,12 @@ import { IProjectCategory } from '../../../models/IProjectCategory';
 })
 export class FilteredCardsComponent implements OnInit {
   Messages = Messages;
+  baseUrl = environment.apiBaseUrl;
   labels: IProjectCategory[] = [];
-  cards = [
-    { title: 'پروژه آرایشگاه مردانه شارپنر', description: 'پروژه آرایگاه مردانه شارپنر با امکان رزرو آنلاین نوبت به همراه ده ساعت برنامه نویسی اختصاصی', category: 'همه' },
-    { title: 'پروژه طراحی و دکوراسیون داخلی ونوم', description: 'وبسایت طراحی و دکوراسیون داخلی به همراه پکیج 10 ساعت برنامه نویسی اختصاصی', category: 'متفرقه' },
-    { title: 'سایت فروشگاهی یراق آلات', description: 'فروشگاه اینترنتی جذاب، پنل ادمین پیشرفته همراه با مدیریت اپراتورهای بخش‌های مختلف، متصل به پنل پیامکی، مدیریت خودکار خریدهای ناموفق، دارای بلاگ اختصاصی و...', category: 'رستوران' },
-    { title: 'پروژه فست فود', description: 'پروژه تخصصی برای کلیه فست فودها. همراه با 10 ساعت برنامه نویسی اختصاصی بدون مدیریت محتوا', category: 'فروشگاهی' },
-    { title: 'سایت شرکتی', description: 'سایت دو زبانه شرکتی همراه با کنترل پنل ادمین', category: 'ساختمان' },
-    // Add more cards as needed
-  ];
-
-  filteredCards = [...this.cards]; // Initially, show all cards
+  cards: IProjectCard[] = [];
   selectedLabelId: number = 0;
+
+  @Input() isRecentProjects: boolean = false;
 
   constructor(private projectHttpService: ProjectHttpService,
     private loadingService: LoadingService
@@ -30,6 +26,7 @@ export class FilteredCardsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCategories();
+    this.getRecentProjects();
   }
 
   getCategories(): void {
@@ -37,6 +34,23 @@ export class FilteredCardsComponent implements OnInit {
     this.projectHttpService.getAllProjectCategories().subscribe({
       next: (data) => {
         this.labels = data;
+        this.labels.unshift({ id: 0, title: Messages.Buttons.all });
+        this.loadingService.hide();
+      },
+      error: () => {
+        this.loadingService.hide();
+      }
+    });
+  }
+
+  getRecentProjects(): void {
+    const count = this.isRecentProjects == true ? 5 : 0;
+    const categoryId = this.selectedLabelId === 0 ? null : this.selectedLabelId;
+
+    this.loadingService.show();
+    this.projectHttpService.getRecentProjects(count, categoryId).subscribe({
+      next: (data) => {
+        this.cards = data;
         this.loadingService.hide();
       },
       error: () => {
@@ -47,10 +61,6 @@ export class FilteredCardsComponent implements OnInit {
 
   filterCards(labelId: number) {
     this.selectedLabelId = labelId;
-    if (labelId === 0) {
-      this.filteredCards = [...this.cards];
-    } else {
-      // this.filteredCards = this.cards.filter(card => card.category === label);
-    }
+    this.getRecentProjects();
   }
 }

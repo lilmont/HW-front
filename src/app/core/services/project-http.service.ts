@@ -7,6 +7,7 @@ import { IProject, IProjectList } from '../../models/IProject';
 import { catchError, Observable, throwError } from 'rxjs';
 import { Messages } from '../../texts/messages';
 import { IProjectCategory } from '../../models/IProjectCategory';
+import { IProjectCard } from '../../models/IProjectCard';
 
 @Injectable({
   providedIn: 'root'
@@ -81,6 +82,26 @@ export class ProjectHttpService {
 
   getAllProjectCategories(): Observable<IProjectCategory[]> {
     return this.http.get<IProjectCategory[]>(`${this.baseUrl}/projects/project-category-list`).pipe(
+      catchError((error) => {
+        if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
+        } else if (error.status === 401) {
+          this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+        return throwError(() => error);
+      })
+    );
+  }
+
+  getRecentProjects(count: number, categoryId: number | null): Observable<IProjectCard[]> {
+    const params: any = { count: count.toString() };
+    if (categoryId !== null) {
+      params.categoryId = categoryId.toString();
+    }
+
+    return this.http.get<IProjectCard[]>(`${this.baseUrl}/projects/recent-projects`, { params }).pipe(
       catchError((error) => {
         if (error.status === 400) {
           this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
