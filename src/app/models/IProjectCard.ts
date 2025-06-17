@@ -3,6 +3,5 @@ export interface IProjectCard {
     title: string;
     description: string;
     previewLink: string;
-    downloadLink: string;
     projectImage: string;
 }

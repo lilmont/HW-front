@@ -63,4 +63,8 @@ export class FilteredCardsComponent implements OnInit {
     this.selectedLabelId = labelId;
     this.getRecentProjects();
   }
+
+  PurchaseProject() {
+
+  }
 }
