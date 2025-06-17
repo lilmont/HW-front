@@ -104,6 +104,7 @@ export class UserProjectsComponent implements OnInit {
           if (index > -1) this.projectList.userProjects[index] = savedProject;
         } else {
           this.projectList.userProjects.push(savedProject);
+          this.projectList.totalProjectCount = this.projectList.totalProjectCount + 1;
         }
         this.closeModal();
       },
