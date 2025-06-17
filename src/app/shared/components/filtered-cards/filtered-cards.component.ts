@@ -17,6 +17,7 @@ export class FilteredCardsComponent implements OnInit {
   labels: IProjectCategory[] = [];
   cards: IProjectCard[] = [];
   selectedLabelId: number = 0;
+  isInquiryModalOpen: boolean = false;
 
   @Input() isRecentProjects: boolean = false;
 
@@ -64,7 +65,11 @@ export class FilteredCardsComponent implements OnInit {
     this.getRecentProjects();
   }
 
-  PurchaseProject() {
+  openInquiryModal(): void {
+    this.isInquiryModalOpen = true;
+  }
 
+  closeInquiryModal(): void {
+    this.isInquiryModalOpen = false;
   }
 }

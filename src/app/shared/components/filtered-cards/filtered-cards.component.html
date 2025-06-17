@@ -27,9 +27,9 @@
                                     class="px-4 py-2 text-white bg-custom-700 rounded-lg hover:bg-custom-800 cursor-pointer ml-2">
                                     {{Messages.Buttons.preview}}
                                 </a>
-                                <button (click)="PurchaseProject"
+                                <button (click)="openInquiryModal()"
                                     class="px-4 py-2 text-white bg-custom-400 rounded-lg hover:bg-custom-500 cursor-pointer">
-                                    {{Messages.Buttons.purchase}}
+                                    {{Messages.Buttons.inquiry}}
                                 </button>
                             </div>
 
@@ -37,6 +37,60 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+<!-- Inquiry Modal -->
+<div *ngIf="isInquiryModalOpen" class="fixed inset-0 z-50 flex items-center justify-center bg-[rgba(31,41,55,0.6)]"
+    (click)="closeInquiryModal()" dir="rtl">
+    <!-- Modal content container -->
+    <div class="relative p-6 w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl bg-white rounded-2xl shadow-xl"
+        (click)="$event.stopPropagation()">
+
+        <!-- Modal header -->
+        <div class="flex items-center justify-between border-b border-gray-200 pb-3 mb-5">
+            <h2 class="text-2xl font-bold text-gray-800">
+                {{Messages.Headers.priceInquiry}}
+            </h2>
+            <button type="button" class="text-gray-400 hover:text-gray-900 rounded-lg focus:outline-none"
+                (click)="closeInquiryModal()" aria-label="Close modal">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Modal description -->
+        <p class="text-center text-gray-600 mb-6 leading-relaxed">
+            {{Messages.Labels.priceInquiryText}}
+        </p>
+
+        <!-- QR Code Section -->
+        <div class="bg-gray-50 p-4 rounded-xl flex flex-col md:flex-row justify-around items-center gap-6">
+            <!-- WhatsApp -->
+            <a href="https://wa.me/09126598716" target="_blank" rel="noopener"
+                class="flex flex-col items-center hover:scale-105 transition-transform duration-200">
+                <img [src]="baseUrl + '/uploads/utilities/wp.png'" alt="WhatsApp QR Code"
+                    class="w-28 h-28 rounded-md shadow" />
+                <span class="text-green-600 font-semibold mt-2">{{Messages.Labels.whatsapp}}</span>
+            </a>
+
+            <!-- Telegram -->
+            <a href="https://t.me/hw_res" target="_blank" rel="noopener"
+                class="flex flex-col items-center hover:scale-105 transition-transform duration-200">
+                <img [src]="baseUrl + '/uploads/utilities/tel.png'" alt="Telegram QR Code"
+                    class="w-28 h-28 rounded-md shadow" />
+                <span class="text-blue-500 font-semibold mt-2">{{Messages.Labels.telegram}}</span>
+            </a>
+
+            <!-- Soroush -->
+            <a href="https://splus.ir/hw_res" target="_blank" rel="noopener"
+                class="flex flex-col items-center hover:scale-105 transition-transform duration-200">
+                <img [src]="baseUrl + '/uploads/utilities/sp.png'" alt="Soroush QR Code"
+                    class="w-28 h-28 rounded-md shadow" />
+                <span class="text-blue-700 font-semibold mt-2">{{Messages.Labels.soroush}}</span>
+            </a>
         </div>
     </div>
 </div>

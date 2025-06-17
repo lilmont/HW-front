@@ -97,7 +97,8 @@ export const Messages = {
         addProject: 'افزودن پروژه',
         add: 'افزودن',
         selectImage: 'انتخاب تصویر پروژه',
-        all: 'همه'
+        all: 'همه',
+        inquiry: 'استعلام'
     },
     Labels: {
         enterPhoneNumber: 'لطفا شماره موبایل خود را وارد کنید',
@@ -144,6 +145,10 @@ export const Messages = {
         totalProjectCount: 'تعداد پروژه ها',
         totalPurchaseCount: 'تعداد فروش',
         totalProjectIncome: 'درآمد کل',
+        priceInquiryText: 'در یکی از پیامرسان های زیر با ما ارتباط بگیرید. (کلیک یا اسکن کنید)',
+        whatsapp: 'واتس اپ',
+        telegram: 'تلگرام',
+        soroush: 'سروش'
     },
     Headers: {
         signup: 'ثبت نام',
@@ -217,6 +222,7 @@ export const Messages = {
         editProject: 'ویرایش پروژه',
         areYouSure: 'آیا مطمئن هستید؟',
         discountCodes: 'کدهای تخفیف',
+        priceInquiry: 'استعلام مبلغ پروژه'
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'
