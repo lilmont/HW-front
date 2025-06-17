@@ -57,21 +57,24 @@ export class ProjectHttpService {
   }
 
   editProject(project: FormData): Observable<IProject> {
-    return this.http.put<IProject>(`${this.baseUrl}/projects/edit-project`, project).pipe(
+    return this.http.post<IProject>(`${this.baseUrl}/projects/edit-project`, project).pipe(
       catchError((error) => {
-        this.handleError(error);
+        if (error.status === 431) {
+          this.jwtHelperService.logout();
+          location.href = '/';
+        } else if (error.status === 440) {
+          this.toastr.error(Messages.Errors.fileSizeTooLarge, Messages.Errors.error);
+        } else if (error.status === 441) {
+          this.toastr.error(Messages.Errors.invalidImage, Messages.Errors.error);
+        } else if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
+        } else if (error.status === 401) {
+          this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
         return throwError(() => error);
       })
     );
-  }
-
-  private handleError(error: any): void {
-    if (error.status === 400) {
-      this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
-    } else if (error.status === 401) {
-      this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
-    } else {
-      this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
-    }
   }
 }

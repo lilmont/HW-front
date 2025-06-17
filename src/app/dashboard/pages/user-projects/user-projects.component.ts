@@ -76,7 +76,7 @@ export class UserProjectsComponent implements OnInit {
       return;
     }
 
-    if (project.id != undefined && !this.selectedImage) {
+    if (!project.id && !this.selectedImage) {
       this.imageInvalid = true;
       return;
     }
@@ -88,9 +88,8 @@ export class UserProjectsComponent implements OnInit {
     formData.append('PreviewLink', project.previewLink);
     formData.append('DownloadLink', project.downloadLink);
 
-    if (this.selectedImage) {
+    if (this.selectedImage)
       formData.append('ProjectImageFile', this.selectedImage, this.selectedImage.name);
-    }
 
     const request$ = project.id
       ? this.projectHttpService.editProject(formData)
@@ -108,7 +107,7 @@ export class UserProjectsComponent implements OnInit {
         }
         this.closeModal();
       },
-      error: () => { } // toast already handled
+      error: () => { }
     });
   }
 

@@ -149,6 +149,8 @@
 
             <!-- Modal Form -->
             <form #projectForm="ngForm" (ngSubmit)="onSave(projectForm.value)">
+                <!-- Id -->
+                <input type="text" id="id" name="id" [(ngModel)]="selectedProject.id" class="hidden" />
                 <!-- Title -->
                 <div class="mb-4">
                     <label for="title" class="block text-sm font-medium">{{Messages.Labels.title}}</label>
