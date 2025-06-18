@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { environment } from '../../../../environments/environment';
+import { Messages } from '../../../texts/messages';
 
 @Component({
   selector: 'hw-not-found',
@@ -6,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrl: './not-found.component.css'
 })
 export class NotFoundComponent {
-
+  Messages = Messages;
+  baseUrl = environment.apiBaseUrl;
 }

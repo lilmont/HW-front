@@ -39,7 +39,8 @@ export const Messages = {
         projectPreviewLinkInvalid: 'لینک پیش نمایش نامعتبر است',
         projectDownloadLinkInvalid: 'لینک دانلود نامعتبر است',
         projectImageInvalid: 'تصویر پروژه نمیتواند خالی باشد',
-
+        notFoundTitle: 'به نظر می رسد گم شده اید!',
+        notFoundMessage: 'صفحه مورد نظرتون پیدا نشد!'
     },
     Success: {
         loginSuccessful: 'ورود با موفقیت انجام شد',
@@ -99,7 +100,8 @@ export const Messages = {
         add: 'افزودن',
         selectImage: 'انتخاب تصویر پروژه',
         all: 'همه',
-        inquiry: 'استعلام'
+        inquiry: 'استعلام',
+        returnHome: 'بازگشت به خانه'
     },
     Labels: {
         enterPhoneNumber: 'لطفا شماره موبایل خود را وارد کنید',
