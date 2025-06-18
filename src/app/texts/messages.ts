@@ -61,6 +61,7 @@ export const Messages = {
         noCoursesYet: 'هنوز دوره‌ای برای شما ثبت نشده است.',
         noProjectsYet: 'هنوز پروژه‌ای برای شما ثبت نشده است.',
         alreadyPurchased: 'شما قبلا این دوره را خریداری کرده‌اید. آیا از خریداری مجدد اطمینان دارید؟',
+        noDiscountCodesYet: 'هنوز کد تخفیفی ندارید'
     },
     Buttons: {
         sendCode: 'ارسال کد یکبار مصرف',
@@ -148,7 +149,9 @@ export const Messages = {
         priceInquiryText: 'در یکی از پیامرسان های زیر با ما ارتباط بگیرید. (کلیک یا اسکن کنید)',
         whatsapp: 'واتس اپ',
         telegram: 'تلگرام',
-        soroush: 'سروش'
+        soroush: 'سروش',
+        percentDiscount: 'درصد تخفیف',
+        course: 'دوره'
     },
     Headers: {
         signup: 'ثبت نام',
@@ -222,7 +225,8 @@ export const Messages = {
         editProject: 'ویرایش پروژه',
         areYouSure: 'آیا مطمئن هستید؟',
         discountCodes: 'کدهای تخفیف',
-        priceInquiry: 'استعلام مبلغ پروژه'
+        priceInquiry: 'استعلام مبلغ پروژه',
+        myDiscountCodes: 'کدهای تخفیف من'
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'
