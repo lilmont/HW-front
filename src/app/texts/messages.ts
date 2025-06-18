@@ -101,7 +101,8 @@ export const Messages = {
         selectImage: 'انتخاب تصویر پروژه',
         all: 'همه',
         inquiry: 'استعلام',
-        returnHome: 'بازگشت به خانه'
+        returnHome: 'بازگشت به خانه',
+        view: 'مشاهده',
     },
     Labels: {
         enterPhoneNumber: 'لطفا شماره موبایل خود را وارد کنید',
