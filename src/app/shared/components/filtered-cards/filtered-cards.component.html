@@ -6,7 +6,7 @@
                             'cursor-pointer bg-custom-800 text-white hover:bg-custom-700': selectedLabelId === label.id, 
                             'cursor-pointer bg-custom-100 text-black hover:bg-custom-400 hover:text-white': selectedLabelId !== label.id 
                         }"
-                    class="px-6 py-2 rounded-full bg-custom-100 hover:bg-custom-400 hover:text-white focus:outline-none flex-shrink-0 ml-4 last:mr-0">
+                    class="px-6 py-2 rounded-full bg-custom-100 hover:bg-custom-400 hover:text-white focus:outline-none flex-shrink-0 ml-4 last:mr-0 text-sm md:text-md">
                     {{ label.title }}
                 </button>
             </div>
@@ -15,20 +15,20 @@
                 <div *ngFor="let card of cards" class="w-full p-4">
                     <div
                         class="flex flex-col w-full items-center bg-white border border-gray-200 rounded-lg shadow-sm md:flex-row hover:bg-custom-200">
-                        <img class="object-cover w-full rounded-t-lg h-96 md:h-48 md:w-48 md:rounded-none md:rounded-s-lg"
+                        <img class="object-cover w-full rounded-t-lg h-42 md:h-48 md:w-48 md:rounded-none md:rounded-s-lg"
                             [src]="baseUrl + '/uploads/projects/images/' + card.projectImage" alt="{{ card.title }}">
-                        <div class="flex flex-col w-full justify-between p-4 leading-normal pl-10">
-                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">{{
+                        <div class="flex flex-col w-full justify-between p-4 leading-normal pl-4 md:pl-8 pr-4 md:pr-6">
+                            <h5 class="mb-2 text-lg lg:text-xl font-bold tracking-tight text-gray-900">{{
                                 card.title }}</h5>
-                            <p class="mb-3 font-normal text-gray-700">{{ card.description }}</p>
+                            <p class="mb-3 font-normal text-gray-700 text-sm lg:text-md">{{ card.description }}</p>
 
                             <div class="flex justify-end mt-4">
                                 <a [href]="card.previewLink" target="_blank"
-                                    class="px-4 py-2 text-white bg-custom-700 rounded-lg hover:bg-custom-800 cursor-pointer ml-2">
+                                    class="px-2 md:px-4 py-2 text-white bg-custom-700 rounded-lg hover:bg-custom-800 cursor-pointer ml-2 text-sm md:text-md font-semibold">
                                     {{Messages.Buttons.preview}}
                                 </a>
                                 <button (click)="openInquiryModal()"
-                                    class="px-4 py-2 text-white bg-custom-400 rounded-lg hover:bg-custom-500 cursor-pointer">
+                                    class="px-2 md:px-4 py-2 text-white bg-custom-400 rounded-lg hover:bg-custom-500 cursor-pointer text-sm md:text-md font-semibold">
                                     {{Messages.Buttons.inquiry}}
                                 </button>
                             </div>
