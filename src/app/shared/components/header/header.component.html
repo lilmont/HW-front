@@ -27,10 +27,11 @@
                 class="z-50 absolute top-full mt-2 left-0 min-w-fit w-auto whitespace-nowrap list-none bg-white divide-y divide-gray-100 rounded-lg shadow-sm"
                 id="user-dropdown">
                 <div class="px-4 py-3">
-                    <span class="block text-sm text-gray-900 mb-2">
+                    <span class="block text-sm text-custom-700 mb-2">
                         {{userInfo.firstName}} {{userInfo.lastName?? ''}}
                     </span>
-                    <span class="block text-sm text-gray-500 truncate">{{jwtHelperService.getUser()?.username}}</span>
+                    <span
+                        class="block text-sm truncate font-semibold text-custom-700">{{jwtHelperService.getUser()?.username}}</span>
                 </div>
                 <ul class="py-2" aria-labelledby="user-menu-button">
                     <li>
