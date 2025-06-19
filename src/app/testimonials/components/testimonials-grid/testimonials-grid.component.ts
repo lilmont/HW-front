@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'hw-testimonials-grid',
@@ -6,6 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './testimonials-grid.component.css'
 })
 export class TestimonialsGridComponent {
+  baseUrl = environment.apiBaseUrl;
   testimonialsList: TestimonialModel[] = [
     {
       Image: "https://flowbite.com/docs/images/people/profile-picture-3.jpg",

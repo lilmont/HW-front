@@ -43,7 +43,6 @@ export class AuthHttpService {
         }
       }),
       catchError((error) => {
-        console.log("error", error)
         if (error.status === 429) {
           this.toastr.error(Messages.Errors.wrongValidationCode, Messages.Errors.error);
         } else if (error.status === 400) {
