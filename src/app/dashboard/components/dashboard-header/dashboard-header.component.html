@@ -28,7 +28,7 @@
                             aria-expanded="false" (click)="toggleDropdown()">
                             <span class="sr-only">Open user menu</span>
                             <img class="w-8 h-8 rounded-full bg-white"
-                                [src]="userInfo.avatarImage && userInfo.avatarImage.trim() !== '' ? baseUrl + '/uploads/avatars/' + userInfo.avatarImage : 'images/avatar.png'"
+                                [src]="userInfo.avatarImage && userInfo.avatarImage.trim() !== '' ? baseUrl + '/uploads/avatars/' + userInfo.avatarImage : baseUrl + '/uploads/utilities/avatar.png'"
                                 alt="user photo">
                         </button>
                     </div>

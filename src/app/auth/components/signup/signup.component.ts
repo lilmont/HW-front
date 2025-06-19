@@ -6,6 +6,7 @@ import { ToastService } from '../../../core/services/toast.service';
 import { LoadingService } from '../../../core/services/loading.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserInfoService } from '../../../core/services/user-info.service';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'hw-signup',
@@ -20,6 +21,7 @@ export class SignupComponent implements OnInit {
   };
   returnUrl: string = '/';
   Messages = Messages;
+  baseUrl = environment.apiBaseUrl;
   step: 'phone' | 'code' = 'phone';
   phoneInvalid: boolean = false;
   codeInvalid: boolean = false;
