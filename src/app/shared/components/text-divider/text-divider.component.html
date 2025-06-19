@@ -1,8 +1,8 @@
 <div class="flex items-center my-4 w-3/4 mx-auto mt-12">
-    <span class="px-4 font-bol text-custom-700">{{title}}</span>
+    <span class="pl-2 pr-0 sm:pl-5 font-bol text-custom-700">{{title}}</span>
     <div class="flex-grow border-t border-gray-300"></div>
-    <span class="px-4 text-gray-500" *ngIf="hasLink">
-        <a [href]="linkRoute" class="block px-4 py-2 text-sm text-custom-500 font-bold">
+    <span class="text-gray-500" *ngIf="hasLink">
+        <a [href]="linkRoute" class="block pl-0 pr-2 sm:pr-5 py-2 text-sm text-custom-500 font-bold">
             {{linkText}}
         </a>
     </span>

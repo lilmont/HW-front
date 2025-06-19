@@ -1,4 +1,4 @@
-<div class="relative w-3/4 max-w-6xl mx-auto overflow-hidden py-2">
+<div class="relative w-3/4 max-w-6xl mx-auto overflow-hidden py-2 pb-10">
     <!-- Carousel Wrapper -->
     <div class="flex transition-transform duration-500 ease-out" #carousel [ngStyle]="{
             'transform': index === 0 ? 'translateX(0%)' : 
@@ -12,11 +12,11 @@
 
     <!-- Navigation Buttons -->
     <button (click)="next()"
-        class="absolute bottom-0 right-12 transform -translate-y-1/2 bg-gray-300 p-2 rounded-full shadow-md hover:bg-gray-400 text-gray-900 hover:text-white cursor-pointer">
+        class="absolute -bottom-3 md:-bottom-4 right-12 transform -translate-y-1/2 bg-gray-300 p-2 rounded-full shadow-md hover:bg-gray-400 text-gray-900 hover:text-white cursor-pointer">
         ❯
     </button>
     <button (click)="prev()"
-        class="absolute bottom-0 right-4 transform -translate-y-1/2 bg-gray-300 p-2 rounded-full shadow-md hover:bg-gray-400 text-gray-900 hover:text-white cursor-pointer">
+        class="absolute -bottom-3 md:-bottom-4 right-4 transform -translate-y-1/2 bg-gray-300 p-2 rounded-full shadow-md hover:bg-gray-400 text-gray-900 hover:text-white cursor-pointer">
         ❮
     </button>
 </div>
