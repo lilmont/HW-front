@@ -1,15 +1,15 @@
 <div class="flex items-center justify-center w-3/4 mx-auto">
-    <div class="w-1/2">
-        <blockquote class="text-l font-semibold text-gray-900 mr-6">
-            <svg class="w-8 h-8 text-custom-400 mb-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor" viewBox="0 0 18 14">
+    <div class="w-full md:w-1/2">
+        <blockquote class="text-l font-semibold text-gray-900 mr-0">
+            <svg class="w-6 md:w-8 lg:w-10 h-6 md:h-8 lg:h-10 text-custom-400 mb-4" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 14">
                 <path
                     d="M6 0H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3H2a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Zm10 0h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3h-1a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Z" />
             </svg>
-            <p>{{Messages.Headers.orderProjectDesc}}</p>
+            <p class="text-sm md:text-md lg:text-lg">{{Messages.Headers.orderProjectDesc}}</p>
         </blockquote>
 
-        <form class="max-w-lg mx-auto mt-10">
+        <form class="mx-auto mt-10">
             <div class="mb-5">
                 <label for="fullname" class="block mb-2 text-sm font-medium text-gray-900">
                     {{Messages.Labels.fullName}}
@@ -44,12 +44,12 @@
                     [placeholder]="Messages.Labels.descriptionPlaceholder"></textarea>
             </div>
             <button type="submit"
-                class="cursor-pointer text-white bg-custom-700 hover:bg-custom-800 focus:ring-4 focus:outline-none focus:ring-custom-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                class="cursor-pointer text-white bg-custom-700 hover:bg-custom-800 focus:ring-4 focus:outline-none focus:ring-custom-300 rounded-lg text-sm md:text-md font-semibold px-5 py-2.5 text-center">
                 {{Messages.Buttons.submitOrder}}
             </button>
         </form>
     </div>
-    <div class="w-full md:w-1/2 mt-5">
+    <div class="w-full md:w-1/2 mt-5 hidden md:block">
         <img src="images/order.jpg" alt="Descriptive Alt Text" class="w-full h-auto rounded-lg">
     </div>
 </div>
