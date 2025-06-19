@@ -1,21 +1,21 @@
 <nav class="bg-white border-gray-200 sticky top-0 z-50 shadow-sm">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a [routerLink]="['/']" class="flex items-center">
-            <img [src]="baseUrl + '/uploads/utilities/logo.png'" class="h-8 ml-3" alt="Hardworker Logo" />
-            <span class="self-center text-2xl font-semibold whitespace-nowrap text-custom-900">
+            <img [src]="baseUrl + '/uploads/utilities/logo.png'" class="h-6 lg:h-8 ml-3" alt="Hardworker Logo" />
+            <span class="self-center text-lg sm:text-xl lg:text-2xl font-semibold whitespace-nowrap text-custom-900">
                 {{Messages.Headers.hardworker}}
             </span>
         </a>
         <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x relative">
-            <span *ngIf="!jwtHelperService.isLoggedIn()">
+            <span *ngIf="!jwtHelperService.isLoggedIn()" class="ml-1 sm:ml-3">
                 <a [routerLink]="['/users/signup']"
-                    class="py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-custom-600 md:p-0">
+                    class="py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-custom-600 md:p-0 text-sm md:text-md">
                     {{Messages.Headers.signup}} / {{Messages.Headers.login}}
                 </a>
             </span>
 
             <button *ngIf="jwtHelperService.isLoggedIn()" type="button"
-                class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300"
+                class="cursor-pointer flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300"
                 id="user-menu-button" aria-expanded="false" (click)="toggleDropdown()">
                 <span class="sr-only">Open user menu</span>
                 <img class="w-8 h-8 rounded-full bg-white"
@@ -61,35 +61,35 @@
             'translate-x-0': isNavbarOpen,
             'translate-x-full': !isNavbarOpen,
             'md:static md:flex md:translate-x-0 md:shadow-none md:w-auto md:h-auto md:bg-transparent': true
-        }" class="items-center justify-between md:order-1">
+        }" class="items-center justify-between md:order-1 text-sm md:text-md">
             <ul
                 class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:mt-0 md:border-0 md:bg-white">
-                <li class="md:mr-8 mb-4 md:mb-0">
+                <li class="md:mr-6 lg:mr-8 mb-4 md:mb-0">
                     <a [routerLink]="['/']"
                         class="block py-2 px-3 text-white bg-blue-700 rounded-sm md:bg-transparent md:text-custom-700 md:p-0"
                         aria-current="page">
                         {{Messages.Headers.home}}
                     </a>
                 </li>
-                <li class="md:mr-8 mb-4 md:mb-0">
+                <li class="md:mr-6 lg:mr-8 mb-4 md:mb-0">
                     <a [routerLink]="['/']" fragment="courses"
                         class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-custom-600 md:p-0">
                         {{Messages.Headers.courses}}
                     </a>
                 </li>
-                <li class="md:mr-8 mb-4 md:mb-0">
+                <li class="md:mr-6 lg:mr-8 mb-4 md:mb-0">
                     <a [routerLink]="['/testimonials']"
                         class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-custom-600 md:p-0">
                         {{Messages.Headers.students}}
                     </a>
                 </li>
-                <li class="md:mr-8 mb-4 md:mb-0">
+                <li class="md:mr-6 lg:mr-8 mb-4 md:mb-0">
                     <a [routerLink]="['/projects']"
                         class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-custom-600 md:p-0">
                         {{Messages.Headers.shop}}
                     </a>
                 </li>
-                <li class="md:mr-8 mb-4 md:mb-0">
+                <li class="md:mr-6 lg:mr-8 mb-4 md:mb-0">
                     <a [routerLink]="['/']" fragment="order-project"
                         class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-custom-600 md:p-0">
                         {{Messages.Headers.order}}
