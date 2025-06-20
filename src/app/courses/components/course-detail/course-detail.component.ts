@@ -27,10 +27,6 @@ export class CourseDetailComponent {
   isChargeWalletModalOpen = false;
   isPurchaseConfirmationModalOpen = false;
   checkDiscountCodeRequest: ICheckDiscountCodeRequest = new CheckDiscountCodeRequest();
-  checkDiscountCodeResponse!: ICheckDiscountCodeResponse;
-  discountApplied = false;
-  discountedPrice: number | null = null;
-  discountCodeInvalid: boolean = false;
 
   @ViewChild('videoPlayer') videoPlayer?: ElementRef<HTMLVideoElement>;
 
@@ -61,8 +57,6 @@ export class CourseDetailComponent {
         this.loadingService.hide();
       },
       error: (error) => {
-        this.discountApplied = false;
-        this.discountedPrice = null;
         this.loadingService.hide();
         this.errorNavigationService.handleHttpError(error);
       }
@@ -89,59 +83,6 @@ export class CourseDetailComponent {
     this.router.navigate(['/users/signup'], { queryParams: { returnUrl: this.router.url } });
   }
 
-  checkDiscountCode(): void {
-    if (!this.jwtHelperService.isLoggedIn()) {
-      this.openLoginModal();
-      return;
-    }
-
-    if (!this.courseId || this.courseId <= 0)
-      return;
-
-    const sanitizedCode = this.sanitizeAndValidateDiscountCode(this.checkDiscountCodeRequest.code, 3);
-    if (!sanitizedCode) {
-      this.discountCodeInvalid = true;
-      return;
-    }
-    this.checkDiscountCodeRequest.code = sanitizedCode;
-
-    this.checkDiscountCodeRequest.productId = this.courseId;
-
-    this.loadingService.show();
-    this.courseHttpService.checkDiscountCode(this.checkDiscountCodeRequest).subscribe({
-      next: (response) => {
-        this.discountedPrice = response.discountedPrice;
-        this.discountApplied = true;
-        this.checkDiscountCodeResponse = response;
-        this.discountCodeInvalid = false;
-        this.loadingService.hide();
-      },
-      error: () => {
-        this.loadingService.hide();
-      }
-    });
-  }
-
-  sanitizeAndValidateDiscountCode(code: string, minLength = 3): string {
-    if (!code) return '';
-
-    // Trim whitespace
-    let sanitizedCode = code.trim();
-
-    // Convert to uppercase
-    sanitizedCode = sanitizedCode.toUpperCase();
-
-    // Remove any non-alphanumeric characters
-    sanitizedCode = sanitizedCode.replace(/[^A-Z0-9]/g, '');
-
-    // Validate length
-    if (sanitizedCode.length < minLength) {
-      return '';
-    }
-
-    return sanitizedCode;
-  }
-
   purchaseCoursePrep(): void {
     if (!this.jwtHelperService.isLoggedIn()) {
       this.openLoginModal();
@@ -151,29 +92,7 @@ export class CourseDetailComponent {
     if (!this.courseId || this.courseId <= 0)
       return;
 
-    this.checkDiscountCodeRequest.productId = this.courseId;
-
-    if (this.checkDiscountCodeRequest.code) {
-      const sanitizedCode = this.sanitizeAndValidateDiscountCode(this.checkDiscountCodeRequest.code, 3);
-      if (!sanitizedCode) {
-        this.discountCodeInvalid = true;
-        return;
-      }
-      this.checkDiscountCodeRequest.code = sanitizedCode;
-
-      this.loadingService.show();
-
-      this.courseHttpService.checkDiscountCode(this.checkDiscountCodeRequest).subscribe({
-        next: (response) => {
-          this.discountedPrice = response.discountedPrice;
-          this.discountApplied = true;
-          this.checkDiscountCodeResponse = response;
-          this.discountCodeInvalid = false;
-        },
-        error: () => {
-        }
-      });
-    }
+    this.loadingService.show();
 
     this.courseHttpService.getPurchaseStatus(this.courseId).subscribe({
       next: (hasPurchased) => {
@@ -192,6 +111,11 @@ export class CourseDetailComponent {
   }
 
   purchaseCourse(): void {
+    if (!this.courseId || this.courseId <= 0)
+      return;
+
+    this.checkDiscountCodeRequest.productId = this.courseId;
+
     this.loadingService.show();
     this.courseHttpService.purchaseCourse(this.checkDiscountCodeRequest).subscribe({
       next: () => {
@@ -226,7 +150,7 @@ export class CourseDetailComponent {
   }
 
   goToPayment() {
-    const price = this.discountApplied ? this.discountedPrice : this.courseDetail?.price;
+    const price = this.courseDetail?.hasDiscountCode ? this.courseDetail.discountedPrice : this.courseDetail?.price;
     if (!price || isNaN(price)) {
       return;
     }

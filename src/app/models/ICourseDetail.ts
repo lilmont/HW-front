@@ -10,4 +10,7 @@ export interface ICourseDetail {
     courseSessionNumber: number;
     courseDurationInHours: number;
     price: number;
+    hasDiscountCode: boolean;
+    discountPercentage: number;
+    discountedPrice: number;
 }
