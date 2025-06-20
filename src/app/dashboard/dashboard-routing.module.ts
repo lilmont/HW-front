@@ -26,7 +26,7 @@ const routes: Routes = [
             { path: 'hosting', component: HostingComponent, canActivate: [AuthGuard] },
             { path: 'comments', component: CommentsComponent, canActivate: [AuthGuard] },
             { path: 'user-info', component: UserInfoComponent, canActivate: [AuthGuard] },
-            { path: 'discount-codes', component: DiscountCodesComponent, canActivate: [AuthGuard] },
+            // { path: 'discount-codes', component: DiscountCodesComponent, canActivate: [AuthGuard] },
         ],
     },
 ];

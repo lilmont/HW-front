@@ -56,9 +56,9 @@ export const SIDEBAR_ITEMS: SidebarItem[] = [
         path: '/dashboard/comments',
         svgComponent: CommentIconComponent,
     },
-    {
-        label: Messages.Headers.discountCodes,
-        path: '/dashboard/discount-codes',
-        svgComponent: DiscountIconComponent,
-    }
+    // {
+    //     label: Messages.Headers.discountCodes,
+    //     path: '/dashboard/discount-codes',
+    //     svgComponent: DiscountIconComponent,
+    // }
 ];
