@@ -1,6 +1,17 @@
 <div class="flex flex-wrap gap-4 justify-center text-center">
-    <div *ngFor="let plan of hostingPlans"
-        class="w-full sm:w-[300px] p-4 pt-8 bg-custom-100 border border-gray-100 rounded-2xl shadow-2xl hover:shadow-3xl">
+    <div *ngFor="let plan of hostingPlans" [ngClass]="{
+            'pt-12':anyDiscounted,
+            'pt-8':!anyDiscounted,
+        }"
+        class="relative w-full sm:w-[300px] p-4 bg-custom-100 border border-gray-100 rounded-2xl shadow-2xl hover:shadow-3xl">
+        <div *ngIf="plan.hasDiscountCode" class="absolute top-0 right-0">
+            <div class="relative w-full sm:w-[300px] h-8 z-10">
+                <div
+                    class="absolute inset-0 bg-green-600 text-white text-sm font-bold flex items-center justify-center shadow-md rounded-tr-md rounded-tl-lg">
+                    {{Messages.Labels.discounted || 'Discounted!!'}}
+                </div>
+            </div>
+        </div>
 
         <h5 class="mb-4 text-2xl font-semibold text-gray-900">
             {{ plan.title }}

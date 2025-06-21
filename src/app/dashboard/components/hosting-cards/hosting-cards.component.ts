@@ -86,4 +86,8 @@ export class HostingCardsComponent implements OnInit {
       }
     });
   }
+
+  anyDiscounted(): boolean {
+    return this.hostingPlans.some(plan => plan.hasDiscountCode);
+  }
 }
