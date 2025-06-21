@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Messages } from '../../../texts/messages';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'hw-jumbotron',
@@ -8,4 +9,5 @@ import { Messages } from '../../../texts/messages';
 })
 export class JumbotronComponent {
   Messages = Messages;
+  baseUrl = environment.apiBaseUrl;
 }
