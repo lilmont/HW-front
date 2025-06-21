@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Messages } from '../../../texts/messages';
 import { HostPlanInfo } from '../../../models/IHostPlanInfo';
 import { BehaviorSubject } from 'rxjs';
@@ -25,6 +25,7 @@ export class CreateHostModalComponent {
 
   @Input() hostingPlanId: number = 0;
   @Input() hostingPlanTitle: string = "";
+  @Output() hostPurchased = new EventEmitter<void>();
 
   constructor(private hostingHttpService: HostingHttpService,
     private loadingService: LoadingService,
@@ -69,6 +70,7 @@ export class CreateHostModalComponent {
         this.toastr.success(Messages.Success.hostSubmittedSuccessfully, '');
         this.refreshUserHostsListService.triggerRefreshHosts();
         this._buttonLoading.next(false);
+        this.hostPurchased.emit();
         this.closeModal();
       },
       error: () => {

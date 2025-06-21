@@ -76,7 +76,7 @@ export class HostingCardsComponent implements OnInit {
 
   getHostingPlans() {
     this.loadingService.show();
-    this.hostingHttpService.getUserTransactions().subscribe({
+    this.hostingHttpService.getHostingPlans().subscribe({
       next: (data) => {
         this.hostingPlans = data;
         this.loadingService.hide();

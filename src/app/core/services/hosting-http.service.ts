@@ -24,7 +24,7 @@ export class HostingHttpService {
     private jwtHelperService: JwtHelperService
   ) { }
 
-  getUserTransactions(): Observable<IHostingPlan[]> {
+  getHostingPlans(): Observable<IHostingPlan[]> {
     return this.http.get<IHostingPlan[]>(`${this.baseUrl}/hosting/plan-list`).pipe(
       catchError((error) => {
         if (error.status === 400) {

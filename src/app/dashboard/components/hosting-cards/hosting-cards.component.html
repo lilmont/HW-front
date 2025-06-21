@@ -7,21 +7,30 @@
         </h5>
 
         <div class="flex flex-wrap items-baseline text-gray-500 text-center pb-6 justify-center leading-tight">
-            <div class="flex items-baseline">
-                <span class="text-xl font-medium tracking-tight">
-                    {{ plan.price | number:'1.0-0' }}
-                </span>
-                <span class="text-xl font-medium mr-2">
-                    {{Messages.Headers.toman}}
-                </span>
+            <div class="flex-col" *ngIf="plan.hasDiscountCode; else normalPrice">
+                <div class="flex items-baseline">
+                    <span class="text-lg font-medium tracking-tight line-through text-red-500">
+                        {{ plan.price | number:'1.0-0' }} {{Messages.Headers.toman}}
+                    </span>
+                </div>
+                <div class="flex items-baseline">
+                    <span class="text-xl font-medium tracking-tight">
+                        {{ plan.discountedPrice | number:'1.0-0' }} {{Messages.Headers.toman}}
+                    </span>
+                </div>
             </div>
+            <ng-template #normalPrice>
+                <span class="text-xl font-medium tracking-tight">
+                    {{ plan.price | number:'1.0-0' }} {{Messages.Headers.toman}}
+                </span>
+            </ng-template>
             <span class="text-sm w-full mt-1">
                 {{Messages.Labels.yearly}}
             </span>
         </div>
 
-        <hw-create-host-modal *ngIf="isCreatingHostAllowed" [hostingPlanId]="plan.id"
-            [hostingPlanTitle]="plan.title"></hw-create-host-modal>
+        <hw-create-host-modal *ngIf="isCreatingHostAllowed" [hostingPlanId]="plan.id" [hostingPlanTitle]="plan.title"
+            (hostPurchased)="getHostingPlans()"></hw-create-host-modal>
 
         <ul role="list" [ngClass]="{
             'my-5':isShowMoreExpanded,

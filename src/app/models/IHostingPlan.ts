@@ -13,4 +13,7 @@ export interface IHostingPlan {
     supportedTechnologies: string;
     bandwidth: string;
     subscriptionDurationInMonths: string;
+    hasDiscountCode: boolean;
+    discountPercentage: number;
+    discountedPrice: number;
 }

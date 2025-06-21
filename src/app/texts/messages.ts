@@ -154,7 +154,8 @@ export const Messages = {
         telegram: 'تلگرام',
         soroush: 'سروش',
         percentDiscount: 'درصد تخفیف',
-        course: 'دوره'
+        course: 'دوره',
+        discounted: 'تخفیف دار'
     },
     Headers: {
         signup: 'ثبت نام',
