@@ -1,4 +1,5 @@
 import { Component, ElementRef, Input, Renderer2, ViewChild } from '@angular/core';
+import { IUserCommentList } from '../../../models/IUserCommentList';
 
 @Component({
   selector: 'hw-card-carousel',
@@ -6,7 +7,7 @@ import { Component, ElementRef, Input, Renderer2, ViewChild } from '@angular/cor
   styleUrl: './card-carousel.component.css'
 })
 export class CardCarouselComponent {
-  @Input() cards: { name: string; avatar: string; text: string }[] = [];
+  @Input() cards: IUserCommentList[] = [];
 
   @ViewChild('carousel') carousel!: ElementRef;
   index = 0;

@@ -6,7 +6,8 @@
           }">
         <div *ngFor="let card of cards; let i = index"
             class="w-[65%] mx-2 shrink-0 bg-white p-6 text-center rounded-2xl -md">
-            <hw-testimonial-card [avatar]="card.avatar" [name]="card.name" [text]="card.text"></hw-testimonial-card>
+            <hw-testimonial-card [avatar]="card.avatarImage" [name]="card.firstName + card.lastName"
+                [text]="card.commentText"></hw-testimonial-card>
         </div>
     </div>
 
