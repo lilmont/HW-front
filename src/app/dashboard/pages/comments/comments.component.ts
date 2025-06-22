@@ -108,6 +108,6 @@ export class CommentsComponent implements OnInit {
   }
 
   private isCommentTextValid(biography: string): boolean {
-    return biography.length <= 500;
+    return biography.length >= 40 && biography.length <= 500;
   }
 }

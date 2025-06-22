@@ -41,7 +41,8 @@ export const Messages = {
         projectImageInvalid: 'تصویر پروژه نمیتواند خالی باشد',
         notFoundTitle: 'به نظر می رسد گم شده اید!',
         notFoundMessage: 'صفحه مورد نظرتون پیدا نشد!',
-        commentAlreadySubmitted: 'شما قبلا نظر ثبت کرده اید!'
+        commentAlreadySubmitted: 'شما قبلا نظر ثبت کرده اید!',
+        invalidCommentText: 'متن نظر باید حداقل 40 و حداکثر 500 کاراکتر باشد.'
     },
     Success: {
         loginSuccessful: 'ورود با موفقیت انجام شد',

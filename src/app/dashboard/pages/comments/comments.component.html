@@ -46,8 +46,8 @@
                     {{ userComment.commentText.length || 0 }} / {{Messages.Labels.fiveHundredChars}}
                 </div>
 
-                <div *ngIf="commentTextInvalid" class="text-red-600 text-sm mt-1">
-                    {{Messages.Errors.invalidBiography}}
+                <div *ngIf="commentTextInvalid" class="text-red-600 text-sm mt-2">
+                    {{Messages.Errors.invalidCommentText}}
                 </div>
             </div>
         </div>
