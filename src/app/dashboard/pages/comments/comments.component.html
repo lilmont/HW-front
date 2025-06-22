@@ -1,1 +1,55 @@
-<p>comments works!</p>
+<div *ngIf="hasUserAlreaduSubmittedComment; else showComment">
+    <div class="border border-gray-200 rounded-lg shadow-md shadow-custom-400 bg-custom-300 flex flex-col">
+        <div class="relative flex-grow flex flex-col">
+            <!-- Quote icon (top-right corner) -->
+            <img [src]="baseUrl + '/uploads/utilities/quote-sign.jpg'" alt="quote icon"
+                class="absolute -top-5 right-5 w-12 h-12 opacity-100 z-10 rounded-lg" />
+            <figure
+                class="flex flex-col items-center justify-center p-8 text-center bg-custom-300 rounded-t-lg flex-grow z-0">
+                <blockquote class="max-w-2xl mx-auto mb-4 text-gray-500">
+                    <p class="my-4">{{ userComment.commentText }}</p>
+                </blockquote>
+                <figcaption class="flex items-center justify-center">
+                    <img *ngIf="userInfo.avatarImage" class="rounded-full w-9 h-9"
+                        [src]="userInfo.avatarImage.trim() ? baseUrl + '/uploads/avatars/' + userInfo.avatarImage : baseUrl + '/uploads/utilities/avatar.png'"
+                        alt="profile picture">
+                    <div class="space-y-0.5 font-medium text-left rtl:text-right ms-3">
+                        <div>{{ userInfo.firstName}} {{userInfo.lastName}}</div>
+                    </div>
+                </figcaption>
+
+            </figure>
+        </div>
+    </div>
+</div>
+
+<ng-template #showComment>
+    <form class="mx-auto">
+        <!-- Form Fields -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div class="mb-2 sm:col-span-2">
+                <label for="biography" class="block mb-2 text-sm font-medium text-gray-900">
+                    {{Messages.Labels.userComment}}
+                </label>
+                <textarea id="biography" rows="4" name="commentText" [(ngModel)]="userComment.commentText"
+                    class="block p-2.5 w-full text-sm bg-white rounded-lg border border-gray-300 focus:ring-custom-500 focus:border-custom-500"
+                    [placeholder]="Messages.Labels.typeYourComment" maxlength="500"></textarea>
+
+                <div class="text-sm text-gray-600 mt-1">
+                    {{ userComment.commentText.length || 0 }} / {{Messages.Labels.fiveHundredChars}}
+                </div>
+
+                <div *ngIf="commentTextInvalid" class="text-red-600 text-sm mt-1">
+                    {{Messages.Errors.invalidBiography}}
+                </div>
+            </div>
+        </div>
+
+        <!-- Save Button -->
+        <div class="text-left">
+            <button
+                class="w-auto text-white bg-custom-700 hover:bg-custom-800 focus:ring-4 focus:outline-none focus:ring-custom-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer mt-3"
+                (click)="addUserComment()">{{ Messages.Buttons.submit }}</button>
+        </div>
+    </form>
+</ng-template>

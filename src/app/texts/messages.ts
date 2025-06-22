@@ -40,7 +40,8 @@ export const Messages = {
         projectDownloadLinkInvalid: 'لینک دانلود نامعتبر است',
         projectImageInvalid: 'تصویر پروژه نمیتواند خالی باشد',
         notFoundTitle: 'به نظر می رسد گم شده اید!',
-        notFoundMessage: 'صفحه مورد نظرتون پیدا نشد!'
+        notFoundMessage: 'صفحه مورد نظرتون پیدا نشد!',
+        commentAlreadySubmitted: 'شما قبلا نظر ثبت کرده اید!'
     },
     Success: {
         loginSuccessful: 'ورود با موفقیت انجام شد',
@@ -53,7 +54,8 @@ export const Messages = {
         passwordRecoverySuccessfull: 'اطلاعات ورود به هاست',
         hostExtendedSuccessfully: 'هاست شما با موفقیت تمدید شد',
         hostSettledSuccessfully: 'هاست شما با موفقیت تسویه شد',
-        purchaseCourseSuccessful: 'دوره خریداری شد. برای مشاهده به قسمت دوره های من در پروفایل خود مراجعه کنید.'
+        purchaseCourseSuccessful: 'دوره خریداری شد. برای مشاهده به قسمت دوره های من در پروفایل خود مراجعه کنید.',
+        commentSubmittedSuccessfully: 'نظر شما با موفقیت ثبت شد.'
     },
     Warnings: {
         oneTimePassword: 'قبل از بستن این صفحه اطلاعات هاست خود را کپی کنید و در جای امنی نگداری کنید',
@@ -103,6 +105,7 @@ export const Messages = {
         inquiry: 'استعلام',
         returnHome: 'بازگشت به خانه',
         view: 'مشاهده',
+        submit: 'ثبت'
     },
     Labels: {
         enterPhoneNumber: 'لطفا شماره موبایل خود را وارد کنید',
@@ -155,7 +158,9 @@ export const Messages = {
         soroush: 'سروش',
         percentDiscount: 'درصد تخفیف',
         course: 'دوره',
-        discounted: 'تخفیف دار'
+        discounted: 'تخفیف دار',
+        typeYourComment: 'نظر خود را تایپ کنید',
+        userComment: 'متن نظر (حداکثر 500 کاراکتر)'
     },
     Headers: {
         signup: 'ثبت نام',
