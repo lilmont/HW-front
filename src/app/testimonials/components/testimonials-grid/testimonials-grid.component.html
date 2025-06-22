@@ -9,14 +9,15 @@
             <figure
                 class="flex flex-col items-center justify-center p-8 text-center bg-custom-300 rounded-t-lg flex-grow z-0">
                 <blockquote class="max-w-2xl mx-auto mb-4 text-gray-500">
-                    <p class="my-4">{{ testimonial.Text }}</p>
+                    <p class="my-4">{{ testimonial.commentText }}</p>
                 </blockquote>
                 <figcaption class="flex items-center justify-center">
                     <img class="rounded-full w-9 h-9"
-                        src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/karen-nelson.png"
+                        [src]="testimonial.avatarImage ? baseUrl + '/uploads/avatars/' + testimonial.avatarImage : baseUrl + '/uploads/utilities/avatar.png'"
                         alt="profile picture">
-                    <div class="space-y-0.5 font-medium text-left rtl:text-right ms-3">
-                        <div>{{ testimonial.FullName }}</div>
+                    <div *ngIf="testimonial.firstName || testimonial.lastName"
+                        class="space-y-0.5 font-medium text-left rtl:text-right ms-3">
+                        <div>{{ testimonial.firstName }} {{ testimonial.lastName }}</div>
                     </div>
                 </figcaption>
             </figure>
