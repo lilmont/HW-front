@@ -24,6 +24,8 @@ export class CommentsComponent implements OnInit {
     avatarImage: ''
   }
   hasUserAlreaduSubmittedComment: boolean = false;
+  showEditButton: boolean = false;
+  isEditMode: boolean = false;
   commentTextInvalid: boolean = false;
   private subscription!: Subscription;
 
@@ -51,10 +53,10 @@ export class CommentsComponent implements OnInit {
     this.loadingService.show();
     this.userHttpService.getUserComment().subscribe({
       next: (data) => {
-        console.log("data", data);
         if (data != null) {
           this.userComment = data;
           this.hasUserAlreaduSubmittedComment = true;
+          this.showEditButton = !data.isApproved;
         }
 
         this.loadingService.hide();
@@ -65,17 +67,47 @@ export class CommentsComponent implements OnInit {
     });
   }
 
-  addUserComment() {
+  addEditUserComment(): void {
+    this.commentTextInvalid = !this.isCommentTextValid(this.userComment.commentText ?? '');
+
+    if (this.commentTextInvalid) {
+      return;
+    }
+
     this.loadingService.show();
-    this.userHttpService.addUserComment(this.userComment).subscribe({
-      next: () => {
-        this.hasUserAlreaduSubmittedComment = true;
-        this.loadingService.hide();
-        this.toastr.success(Messages.Success.commentSubmittedSuccessfully, '');
-      },
-      error: () => {
-        this.loadingService.hide();
-      }
-    });
+    if (this.isEditMode) {
+      this.userHttpService.editUserComment(this.userComment).subscribe({
+        next: () => {
+          this.hasUserAlreaduSubmittedComment = true;
+          this.isEditMode = false;
+          this.loadingService.hide();
+          this.toastr.success(Messages.Success.commentEditedSuccessfully, '');
+        },
+        error: () => {
+          this.loadingService.hide();
+        }
+      });
+    }
+    else {
+      this.userHttpService.addUserComment(this.userComment).subscribe({
+        next: () => {
+          this.hasUserAlreaduSubmittedComment = true;
+          this.showEditButton = true;
+          this.loadingService.hide();
+          this.toastr.success(Messages.Success.commentSubmittedSuccessfully, '');
+        },
+        error: () => {
+          this.loadingService.hide();
+        }
+      });
+    }
+  }
+
+  activateEditMode(): void {
+    this.isEditMode = true;
+  }
+
+  private isCommentTextValid(biography: string): boolean {
+    return biography.length <= 500;
   }
 }

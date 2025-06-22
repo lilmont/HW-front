@@ -55,7 +55,8 @@ export const Messages = {
         hostExtendedSuccessfully: 'هاست شما با موفقیت تمدید شد',
         hostSettledSuccessfully: 'هاست شما با موفقیت تسویه شد',
         purchaseCourseSuccessful: 'دوره خریداری شد. برای مشاهده به قسمت دوره های من در پروفایل خود مراجعه کنید.',
-        commentSubmittedSuccessfully: 'نظر شما با موفقیت ثبت شد.'
+        commentSubmittedSuccessfully: 'نظر شما با موفقیت ثبت شد.',
+        commentEditedSuccessfully: 'نظر شما با موفقیت ویرایش شد.'
     },
     Warnings: {
         oneTimePassword: 'قبل از بستن این صفحه اطلاعات هاست خود را کپی کنید و در جای امنی نگداری کنید',
