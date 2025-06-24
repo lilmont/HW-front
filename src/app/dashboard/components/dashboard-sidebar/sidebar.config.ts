@@ -40,7 +40,7 @@ export const SIDEBAR_ITEMS: ISidebarItem[] = [
     {
         label: Messages.Headers.sampleSupport,
         path: '/dashboard/sample-support-videos',
-        svgComponent: VideoChatIconComponent,
+        svgComponent: VideoIconComponent,
     },
     {
         label: Messages.Headers.hosting,
