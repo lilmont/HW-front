@@ -5,6 +5,7 @@ import { HostIconComponent } from '../../../shared/svg-icons/host-icon/host-icon
 import { ProfileIconComponent } from '../../../shared/svg-icons/profile-icon/profile-icon.component';
 import { ProjectIconComponent } from '../../../shared/svg-icons/project-icon/project-icon.component';
 import { SupportIconComponent } from '../../../shared/svg-icons/support-icon/support-icon.component';
+import { VideoChatIconComponent } from '../../../shared/svg-icons/video-chat-icon/video-chat-icon.component';
 import { VideoIconComponent } from '../../../shared/svg-icons/video-icon/video-icon.component';
 import { WalletIconComponent } from '../../../shared/svg-icons/wallet-icon/wallet-icon.component';
 import { WebCourseIconComponent } from '../../../shared/svg-icons/web-course-icon/web-course-icon.component';
@@ -35,6 +36,11 @@ export const SIDEBAR_ITEMS: ISidebarItem[] = [
         label: Messages.Headers.supportVideos,
         path: '/dashboard/support-videos',
         svgComponent: VideoIconComponent,
+    },
+    {
+        label: Messages.Headers.sampleSupport,
+        path: '/dashboard/sample-support-videos',
+        svgComponent: VideoChatIconComponent,
     },
     {
         label: Messages.Headers.hosting,

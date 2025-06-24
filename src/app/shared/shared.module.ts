@@ -45,6 +45,7 @@ import { WhatsappIconComponent } from './svg-icons/whatsapp-icon/whatsapp-icon.c
 import { TelegramIconComponent } from './svg-icons/telegram-icon/telegram-icon.component';
 import { SoroushIconComponent } from './svg-icons/soroush-icon/soroush-icon.component';
 import { VideoIconComponent } from './svg-icons/video-icon/video-icon.component';
+import { VideoChatIconComponent } from './svg-icons/video-chat-icon/video-chat-icon.component';
 
 
 
@@ -93,6 +94,7 @@ import { VideoIconComponent } from './svg-icons/video-icon/video-icon.component'
     TelegramIconComponent,
     SoroushIconComponent,
     VideoIconComponent,
+    VideoChatIconComponent,
   ],
   imports: [
     CommonModule,
@@ -138,7 +140,8 @@ import { VideoIconComponent } from './svg-icons/video-icon/video-icon.component'
     WhatsappIconComponent,
     TelegramIconComponent,
     SoroushIconComponent,
-    VideoIconComponent
+    VideoIconComponent,
+    VideoChatIconComponent
   ]
 })
 export class SharedModule { }

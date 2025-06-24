@@ -30,6 +30,7 @@ import { SpotplayerTutorialComponent } from './components/spotplayer-tutorial/sp
 import { ProjectCardComponent } from './components/project-card/project-card.component';
 import { DiscountCodesComponent } from './pages/discount-codes/discount-codes.component';
 import { SupportVideosComponent } from './pages/support-videos/support-videos.component';
+import { SampleSupportVideosComponent } from './pages/sample-support-videos/sample-support-videos.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { SupportVideosComponent } from './pages/support-videos/support-videos.co
     ProjectCardComponent,
     DiscountCodesComponent,
     SupportVideosComponent,
+    SampleSupportVideosComponent,
   ],
   imports: [
     CommonModule,

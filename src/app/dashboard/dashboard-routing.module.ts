@@ -10,8 +10,8 @@ import { HostingComponent } from './pages/hosting/hosting.component';
 import { CommentsComponent } from './pages/comments/comments.component';
 import { UserInfoComponent } from './pages/user-info/user-info.component';
 import { AuthGuard } from '../auth/auth.guard';
-import { DiscountCodesComponent } from './pages/discount-codes/discount-codes.component';
 import { SupportVideosComponent } from './pages/support-videos/support-videos.component';
+import { SampleSupportVideosComponent } from './pages/sample-support-videos/sample-support-videos.component';
 
 const routes: Routes = [
     {
@@ -28,6 +28,7 @@ const routes: Routes = [
             { path: 'comments', component: CommentsComponent, canActivate: [AuthGuard] },
             { path: 'user-info', component: UserInfoComponent, canActivate: [AuthGuard] },
             { path: 'support-videos', component: SupportVideosComponent, canActivate: [AuthGuard] },
+            { path: 'sample-support-videos', component: SampleSupportVideosComponent, canActivate: [AuthGuard] },
             // { path: 'discount-codes', component: DiscountCodesComponent, canActivate: [AuthGuard] },
         ],
     },
