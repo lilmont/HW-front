@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Messages } from '../../../texts/messages';
 import { environment } from '../../../../environments/environment';
 import { SupportHttpService } from '../../../core/services/support-http.service';
@@ -17,6 +17,8 @@ export class SupportVideosComponent implements OnInit {
   selectedVideoUrl: string = '';
   selectedVideoTitle: string = '';
   videoList: ISupportVideo[] = []
+
+  @ViewChild('videoPlayer') videoPlayerRef!: ElementRef<HTMLVideoElement>;
 
   constructor(private supportHttpService: SupportHttpService,
     private loadingService: LoadingService
@@ -41,8 +43,16 @@ export class SupportVideosComponent implements OnInit {
 
   openVideoModal(title: string, videoUrl: string): void {
     this.selectedVideoTitle = title;
-    this.selectedVideoUrl = videoUrl;
+    this.selectedVideoUrl = this.baseUrl + '/uploads/support/videos/' + videoUrl;
     this.isVideoModalOpen = true;
+
+    setTimeout(() => {
+      const videoEl = this.videoPlayerRef?.nativeElement;
+      if (videoEl) {
+        videoEl.load(); // Make sure video is reloaded with new source
+        videoEl.addEventListener('contextmenu', e => e.preventDefault()); // optional: prevent right-click
+      }
+    }, 0);
   }
 
   closeVideoModal(): void {

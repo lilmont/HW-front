@@ -76,8 +76,9 @@
 
                 <!-- Modal body: video -->
                 <div class="p-4 md:p-5">
-                    <video controls class="w-full rounded-md max-h-[480px]"
-                        [src]="baseUrl + '/uploads/support/videos/' + selectedVideoUrl" type="video/mp4">
+                    <video #videoPlayer controls controlsList="nodownload noremoteplayback" disablePictureInPicture
+                        class="w-full rounded-md max-h-[480px]">
+                        <source [attr.src]="selectedVideoUrl" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                 </div>
