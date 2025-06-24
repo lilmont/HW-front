@@ -32,6 +32,9 @@ export class DashboardSidebarComponent implements OnInit, OnDestroy {
           if (item.path === '/dashboard/support-videos') {
             return data.hasAccess;
           }
+          if (item.path === '/dashboard/sample-support-videos') {
+            return !data.hasAccess;
+          }
           return true;
         });
         this.loadingService.hide();
