@@ -162,7 +162,13 @@ export const Messages = {
         course: 'دوره',
         discounted: 'تخفیف دار',
         typeYourComment: 'نظر خود را تایپ کنید',
-        userComment: 'متن نظر (حداکثر 500 کاراکتر)'
+        userComment: 'متن نظر (حداکثر 500 کاراکتر)',
+        earlySessions: 'جلسات 1 تا 4 وب (خانم منتظری)',
+        remainingSessions: 'سایر جلسات وب (علیرضا مزروعی)',
+        phoneNumber1: '09126598716',
+        phoneNumber2: '09050959182',
+        phoneNumber3: '09939921204',
+        phoneNumber4: '09923225573',
     },
     Headers: {
         signup: 'ثبت نام',
@@ -237,7 +243,13 @@ export const Messages = {
         areYouSure: 'آیا مطمئن هستید؟',
         discountCodes: 'کدهای تخفیف',
         priceInquiry: 'استعلام مبلغ پروژه',
-        myDiscountCodes: 'کدهای تخفیف من'
+        myDiscountCodes: 'کدهای تخفیف من',
+        supportNumbers: 'شماره های پشتیبانی',
+        supportMessengers: 'پیامرسان ها',
+        workingHours: 'ساعات پشتیبانی',
+        SaturdayToThursday: 'شنبه تا پنجشنبه',
+        workingHour: '10 صبح تا 4 بعدازظهر',
+        FridaysAreOff: 'جمعه ها آفلاین هستیم'
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'

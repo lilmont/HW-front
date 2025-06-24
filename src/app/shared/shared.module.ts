@@ -38,6 +38,12 @@ import { UpComponent } from './svg-icons/up/up.component';
 import { DownComponent } from './svg-icons/down/down.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { DiscountIconComponent } from './svg-icons/discount-icon/discount-icon.component';
+import { TimeIconComponent } from './svg-icons/time-icon/time-icon.component';
+import { PhoneIconComponent } from './svg-icons/phone-icon/phone-icon.component';
+import { MessengerIconComponent } from './svg-icons/messenger-icon/messenger-icon.component';
+import { WhatsappIconComponent } from './svg-icons/whatsapp-icon/whatsapp-icon.component';
+import { TelegramIconComponent } from './svg-icons/telegram-icon/telegram-icon.component';
+import { SoroushIconComponent } from './svg-icons/soroush-icon/soroush-icon.component';
 
 
 
@@ -79,6 +85,12 @@ import { DiscountIconComponent } from './svg-icons/discount-icon/discount-icon.c
     UpComponent,
     DownComponent,
     NotFoundComponent,
+    TimeIconComponent,
+    PhoneIconComponent,
+    MessengerIconComponent,
+    WhatsappIconComponent,
+    TelegramIconComponent,
+    SoroushIconComponent,
   ],
   imports: [
     CommonModule,
@@ -117,7 +129,13 @@ import { DiscountIconComponent } from './svg-icons/discount-icon/discount-icon.c
     WebComponent,
     DownComponent,
     UpComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    TimeIconComponent,
+    PhoneIconComponent,
+    MessengerIconComponent,
+    WhatsappIconComponent,
+    TelegramIconComponent,
+    SoroushIconComponent,
   ]
 })
 export class SharedModule { }
