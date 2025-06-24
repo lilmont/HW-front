@@ -66,7 +66,8 @@ export const Messages = {
         noCoursesYet: 'هنوز دوره‌ای برای شما ثبت نشده است.',
         noProjectsYet: 'هنوز پروژه‌ای برای شما ثبت نشده است.',
         alreadyPurchased: 'شما قبلا این دوره را خریداری کرده‌اید. آیا از خریداری مجدد اطمینان دارید؟',
-        noDiscountCodesYet: 'هنوز کد تخفیفی ندارید'
+        noDiscountCodesYet: 'هنوز کد تخفیفی ندارید',
+        noAccessToVideos: 'به نظر میرسد شما به ویدیوهای پشتیبانی دسترسی ندارید.'
     },
     Buttons: {
         sendCode: 'ارسال کد یکبار مصرف',
@@ -249,7 +250,8 @@ export const Messages = {
         workingHours: 'ساعات پشتیبانی',
         SaturdayToThursday: 'شنبه تا پنجشنبه',
         workingHour: '10 صبح تا 4 بعدازظهر',
-        FridaysAreOff: 'جمعه ها آفلاین هستیم'
+        FridaysAreOff: 'جمعه ها آفلاین هستیم',
+        supportVideos: 'ویدیوهای پشتیبانی'
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'

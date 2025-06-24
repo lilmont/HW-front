@@ -10,6 +10,7 @@ import { JwtHelperService } from './jwt.helper.service';
 import { IDiscountCodeCard } from '../../models/IDiscountCodeCard';
 import { IUserComment } from '../../models/IUserComment';
 import { IUserCommentList } from '../../models/IUserCommentList';
+import { ISupportVideoAccess } from '../../models/ISupportVideoAccess';
 
 @Injectable({
   providedIn: 'root'
@@ -151,6 +152,24 @@ export class UserHttpService {
     return this.http.get<IUserCommentList[]>(`${this.baseUrl}/users/user-comments-list`, { params }).pipe(
       catchError((error) => {
         if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
+        } else if (error.status === 401) {
+          this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+        return throwError(() => error);
+      })
+    );
+  }
+
+  hasSupportVideoAccess(): Observable<ISupportVideoAccess> {
+    return this.http.get<ISupportVideoAccess>(`${this.baseUrl}/users/support-videos-access`).pipe(
+      catchError((error) => {
+        if (error.status === 431) {
+          this.jwtHelperService.logout();
+          location.href = '/';
+        } else if (error.status === 400) {
           this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
         } else if (error.status === 401) {
           this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);

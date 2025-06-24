@@ -29,6 +29,7 @@ import { CourseCardComponent } from './components/course-card/course-card.compon
 import { SpotplayerTutorialComponent } from './components/spotplayer-tutorial/spotplayer-tutorial.component';
 import { ProjectCardComponent } from './components/project-card/project-card.component';
 import { DiscountCodesComponent } from './pages/discount-codes/discount-codes.component';
+import { SupportVideosComponent } from './pages/support-videos/support-videos.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { DiscountCodesComponent } from './pages/discount-codes/discount-codes.co
     SpotplayerTutorialComponent,
     ProjectCardComponent,
     DiscountCodesComponent,
+    SupportVideosComponent,
   ],
   imports: [
     CommonModule,
