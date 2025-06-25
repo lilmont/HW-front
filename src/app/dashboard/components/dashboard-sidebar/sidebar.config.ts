@@ -5,7 +5,6 @@ import { HostIconComponent } from '../../../shared/svg-icons/host-icon/host-icon
 import { ProfileIconComponent } from '../../../shared/svg-icons/profile-icon/profile-icon.component';
 import { ProjectIconComponent } from '../../../shared/svg-icons/project-icon/project-icon.component';
 import { SupportIconComponent } from '../../../shared/svg-icons/support-icon/support-icon.component';
-import { VideoChatIconComponent } from '../../../shared/svg-icons/video-chat-icon/video-chat-icon.component';
 import { VideoIconComponent } from '../../../shared/svg-icons/video-icon/video-icon.component';
 import { WalletIconComponent } from '../../../shared/svg-icons/wallet-icon/wallet-icon.component';
 import { WebCourseIconComponent } from '../../../shared/svg-icons/web-course-icon/web-course-icon.component';
@@ -16,16 +15,6 @@ export const SIDEBAR_ITEMS: ISidebarItem[] = [
         label: Messages.Headers.webCourse,
         path: '/dashboard/web-course',
         svgComponent: WebCourseIconComponent,
-    },
-    {
-        label: Messages.Headers.myCourses,
-        path: '/dashboard/my-courses',
-        svgComponent: CoursesIconComponent,
-    },
-    {
-        label: Messages.Headers.wallet,
-        path: '/dashboard/wallet',
-        svgComponent: WalletIconComponent,
     },
     {
         label: Messages.Headers.support,
@@ -43,14 +32,9 @@ export const SIDEBAR_ITEMS: ISidebarItem[] = [
         svgComponent: VideoIconComponent,
     },
     {
-        label: Messages.Headers.hosting,
-        path: '/dashboard/hosting',
-        svgComponent: HostIconComponent,
-    },
-    {
-        label: Messages.Headers.myProjects,
-        path: '/dashboard/my-projects',
-        svgComponent: ProjectIconComponent,
+        label: Messages.Headers.myCourses,
+        path: '/dashboard/my-courses',
+        svgComponent: CoursesIconComponent,
     },
     {
         label: Messages.Headers.personalInfo,
@@ -58,9 +42,24 @@ export const SIDEBAR_ITEMS: ISidebarItem[] = [
         svgComponent: ProfileIconComponent,
     },
     {
+        label: Messages.Headers.myProjects,
+        path: '/dashboard/my-projects',
+        svgComponent: ProjectIconComponent,
+    },
+    {
         label: Messages.Headers.comments,
         path: '/dashboard/comments',
         svgComponent: CommentIconComponent,
+    },
+    {
+        label: Messages.Headers.wallet,
+        path: '/dashboard/wallet',
+        svgComponent: WalletIconComponent,
+    },
+    {
+        label: Messages.Headers.hosting,
+        path: '/dashboard/hosting',
+        svgComponent: HostIconComponent,
     },
     // {
     //     label: Messages.Headers.discountCodes,
