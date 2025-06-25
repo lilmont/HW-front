@@ -10,6 +10,7 @@ import { ICheckDiscountCodeResponse } from '../../../models/ICheckDiscountCodeRe
 import { JwtHelperService } from '../../../core/services/jwt.helper.service';
 import { ToastService } from '../../../core/services/toast.service';
 import { ErrorNavigationService } from '../../../core/services/error-navigation-service.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'hw-course-detail',
@@ -36,7 +37,8 @@ export class CourseDetailComponent {
     private jwtHelperService: JwtHelperService,
     private router: Router,
     private toastr: ToastService,
-    private errorNavigationService: ErrorNavigationService
+    private errorNavigationService: ErrorNavigationService,
+    private titleService: Title,
   ) { }
 
   ngOnInit() {
@@ -54,6 +56,7 @@ export class CourseDetailComponent {
     this.courseHttpService.getCourseDetail(id, title).subscribe({
       next: (data) => {
         this.courseDetail = data;
+        this.titleService.setTitle(`${Messages.Titles.hardworker} - ${data.title}`);
         this.loadingService.hide();
       },
       error: (error) => {

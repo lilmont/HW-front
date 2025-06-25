@@ -4,6 +4,7 @@ import { LayoutComponent } from './shared/components/layout/layout.component';
 import { BlankLayoutComponent } from './shared/components/blank-layout/blank-layout.component';
 import { AuthGuard } from './auth/auth.guard';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
+import { Messages } from './texts/messages';
 
 const routes: Routes = [
   {
@@ -28,8 +29,8 @@ const routes: Routes = [
     loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule), // Dashboard
     canActivate: [AuthGuard]
   },
-  { path: '404', component: NotFoundComponent },
-  { path: '**', redirectTo: '404' }
+  { path: '404', component: NotFoundComponent, data: { title: Messages.Titles.hardworker + ' - ' + Messages.Titles.notFound } },
+  { path: '**', redirectTo: '404', data: { title: Messages.Titles.hardworker + ' - ' + Messages.Titles.notFound } }
 ];
 
 @NgModule({

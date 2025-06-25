@@ -258,5 +258,23 @@ export const Messages = {
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'
+    },
+    Titles: {
+        dashboard: 'داشبورد',
+        webCourse: 'دوره وب',
+        myCourses: 'دوره های من',
+        support: 'پشتیبانی',
+        wallet: 'کیف پول',
+        myProjects: 'پروژه های من',
+        hosting: 'مدیریت هاست',
+        comments: 'ثبت نظر',
+        userInfo: 'اطلاعات شخصی',
+        supportVideos: 'ویدیوهای پشتیبانی',
+        sampleSupportVideos: 'نمونه جلسات آنلاین',
+        hardworker: 'Hardworker.ir',
+        testimonials: 'نظرات کاربران',
+        projects: 'پروژه های کارآموزان',
+        LoginOrSignup: 'ورود / ثبت نام',
+        notFound: '404 - صفحه یافت نشد'
     }
 };
