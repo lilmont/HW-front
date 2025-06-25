@@ -42,7 +42,10 @@ export const Messages = {
         notFoundTitle: 'به نظر می رسد گم شده اید!',
         notFoundMessage: 'صفحه مورد نظرتون پیدا نشد!',
         commentAlreadySubmitted: 'شما قبلا نظر ثبت کرده اید!',
-        invalidCommentText: 'متن نظر باید حداقل 40 و حداکثر 500 کاراکتر باشد.'
+        invalidCommentText: 'متن نظر باید حداقل 40 و حداکثر 500 کاراکتر باشد.',
+        fullNameInvalid: 'نام و نام خانوادگی نمیتواند خالی باشد',
+        phoneNumberInvalid: 'شماره موبایل معتبر نیست',
+        messageTextInvalid: 'متن پیام باید بین 40 تا 500 کاراکتر باشد'
     },
     Success: {
         loginSuccessful: 'ورود با موفقیت انجام شد',
@@ -57,7 +60,8 @@ export const Messages = {
         hostSettledSuccessfully: 'هاست شما با موفقیت تسویه شد',
         purchaseCourseSuccessful: 'دوره خریداری شد. برای مشاهده به قسمت دوره های من در پروفایل خود مراجعه کنید.',
         commentSubmittedSuccessfully: 'نظر شما با موفقیت ثبت شد.',
-        commentEditedSuccessfully: 'نظر شما با موفقیت ویرایش شد.'
+        commentEditedSuccessfully: 'نظر شما با موفقیت ویرایش شد.',
+        orderMessageSubmittedSuccessfully: 'پیام شما با موفقیت ثبت شد'
     },
     Warnings: {
         oneTimePassword: 'قبل از بستن این صفحه اطلاعات هاست خود را کپی کنید و در جای امنی نگداری کنید',

@@ -5,6 +5,7 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import { SharedModule } from '../shared/shared.module';
 import { ProjectsSectionComponent } from './components/projects-section/projects-section.component';
 import { HomeRoutingModule } from './home-routing.module';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -17,7 +18,8 @@ import { HomeRoutingModule } from './home-routing.module';
   imports: [
     CommonModule,
     SharedModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    FormsModule,
   ],
   exports: [
     OrderProjectFormComponent,
