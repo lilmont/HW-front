@@ -193,7 +193,7 @@ export const Messages = {
         about: 'درباره ما',
         contact: 'تماس با ما',
         disclaimer: 'هرگونه کپی برداری از این سایت پیگرد قانونی دارد',
-        disclaimerYear: '2015',
+        disclaimerYear: '2025',
         hardworkerHeader: 'آموزش برنامه نویسی وب سایت | hardworker.ir',
         hardworker: 'Hardworker',
         enterConfirmationCode: 'لطفا کد تایید را وارد کنید',
