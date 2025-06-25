@@ -1,47 +1,59 @@
-<div class="w-full relative overflow-hidden shadow-xl mb-8">
-    <img [src]="baseUrl + '/uploads/utilities/contact.jpg'" alt="Contact Banner"
-        class="w-full h-56 md:h-80 object-cover">
-</div>
-
-<div class="p-8 mt-5 bg-custom-300 rounded-xl shadow-2xl border border-gray-100 max-w-3/4 mx-auto">
+<div class="p-8 mt-5 bg-gray-50 rounded-xl shadow-2xl border border-gray-100 w-full mx-auto max-w-3/4">
 
     <!-- Header -->
     <div class="text-center mb-10">
         <h2 class="text-2xl md:text-3xl font-extrabold text-custom-800 mb-2">
             {{Messages.Headers.contact}}
         </h2>
-        <p class="text-gray-600 max-w-2xl mx-auto leading-relaxed mt-10">
+        <p class="text-gray-600 max-w-3xl mx-auto leading-relaxed mt-10">
             {{Messages.Labels.priceInquiryText}}
         </p>
     </div>
 
-    <div class="p-6 w-full bg-gray-50 rounded-2xl">
+    <div class="p-6 w-full bg-gray-50 rounded-2xl pt-14">
 
         <!-- QR Code Section -->
-        <div class="bg-gray-50 p-4 rounded-xl flex flex-col md:flex-row justify-around items-center gap-6">
-            <!-- WhatsApp -->
-            <a href="https://wa.me/09126598716" target="_blank" rel="noopener"
-                class="flex flex-col items-center hover:scale-105 transition-transform duration-200">
-                <img [src]="baseUrl + '/uploads/utilities/wp.png'" alt="WhatsApp QR Code"
-                    class="w-28 h-28 rounded-md shadow" />
-                <span class="text-green-600 font-semibold mt-2">{{Messages.Labels.whatsapp}}</span>
-            </a>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
 
-            <!-- Telegram -->
+            <!-- Telegram Card -->
             <a href="https://t.me/hw_res" target="_blank" rel="noopener"
-                class="flex flex-col items-center hover:scale-105 transition-transform duration-200">
-                <img [src]="baseUrl + '/uploads/utilities/tel.png'" alt="Telegram QR Code"
-                    class="w-28 h-28 rounded-md shadow" />
-                <span class="text-blue-500 font-semibold mt-2">{{Messages.Labels.telegram}}</span>
+                class="flex flex-col items-center gap-2 rounded-xl p-1 hover:scale-105 transition-transform duration-200">
+                <div
+                    class="relative bg-gradient-to-tr from-telegram-300 via-telegram-200 to-telegram-100 rounded-xl w-full p-4 pt-16 pb-10 flex flex-col items-center">
+                    <img [src]="baseUrl + '/uploads/utilities/telegram.png'" alt="Telegram Icon"
+                        class="w-20 h-20 rounded-full border-4 border-white shadow absolute -top-10 left-1/2 -translate-x-1/2">
+                    <h3 class="text-lg font-semibold text-white mt-3">{{Messages.Labels.telegram}}</h3>
+                    <img [src]="baseUrl + '/uploads/utilities/telegram.jpg'" alt="Telegram QR Code"
+                        class="w-28 h-28 rounded-md shadow mt-6" />
+                </div>
             </a>
 
-            <!-- Soroush -->
-            <a href="https://splus.ir/hw_res" target="_blank" rel="noopener"
-                class="flex flex-col items-center hover:scale-105 transition-transform duration-200">
-                <img [src]="baseUrl + '/uploads/utilities/sp.png'" alt="Soroush QR Code"
-                    class="w-28 h-28 rounded-md shadow" />
-                <span class="text-blue-700 font-semibold mt-2">{{Messages.Labels.soroush}}</span>
+            <!-- WhatsApp Card -->
+            <a href="https://wa.me/09126598716" target="_blank" rel="noopener"
+                class="flex flex-col items-center gap-2 rounded-xl p-1 hover:scale-105 transition-transform duration-200">
+                <div
+                    class="relative bg-gradient-to-tr from-whatsapp-300 via-whatsapp-200 to-whatsapp-100 rounded-xl w-full p-4 pt-16 pb-10 flex flex-col items-center">
+                    <img [src]="baseUrl + '/uploads/utilities/whatsapp.png'" alt="WhatsApp Icon"
+                        class="w-20 h-20 rounded-full border-4 border-white shadow absolute -top-10 left-1/2 -translate-x-1/2">
+                    <h3 class="text-lg font-semibold text-white mt-3">{{Messages.Labels.whatsapp}}</h3>
+                    <img [src]="baseUrl + '/uploads/utilities/whatsapp.jpg'" alt="WhatsApp QR Code"
+                        class="w-28 h-28 rounded-md shadow mt-6" />
+                </div>
             </a>
+
+            <!-- Soroush Plus Card -->
+            <a href="https://splus.ir/hw_res" target="_blank" rel="noopener"
+                class="flex flex-col items-center gap-2 rounded-xl p-1 hover:scale-105 transition-transform duration-200">
+                <div
+                    class="relative bg-gradient-to-tr from-[#003366] via-[#0054a6] to-[#00b0f0] rounded-xl w-full p-4 pt-16 pb-10 flex flex-col items-center">
+                    <img [src]="baseUrl + '/uploads/utilities/soroush.png'" alt="Soroush Plus Icon"
+                        class="w-20 h-20 rounded-full border-4 border-white shadow absolute -top-10 left-1/2 -translate-x-1/2">
+                    <h3 class="text-lg font-semibold text-white mt-3">{{Messages.Labels.soroush}}</h3>
+                    <img [src]="baseUrl + '/uploads/utilities/soroush.jpg'" alt="Soroush Plus QR Code"
+                        class="w-28 h-28 rounded-md shadow mt-6" />
+                </div>
+            </a>
+
         </div>
     </div>
 </div>
