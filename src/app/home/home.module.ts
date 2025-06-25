@@ -6,6 +6,7 @@ import { SharedModule } from '../shared/shared.module';
 import { ProjectsSectionComponent } from './components/projects-section/projects-section.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { FormsModule } from '@angular/forms';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
 
 
 
@@ -13,7 +14,8 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     OrderProjectFormComponent,
     HomePageComponent,
-    ProjectsSectionComponent
+    ProjectsSectionComponent,
+    ContactUsComponent
   ],
   imports: [
     CommonModule,

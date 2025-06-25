@@ -279,6 +279,7 @@ export const Messages = {
         testimonials: 'نظرات کاربران',
         projects: 'پروژه های کارآموزان',
         LoginOrSignup: 'ورود / ثبت نام',
-        notFound: '404 - صفحه یافت نشد'
+        notFound: '404 - صفحه یافت نشد',
+        contactUs: 'تماس با ما'
     }
 };
