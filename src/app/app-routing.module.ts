@@ -29,6 +29,10 @@ const routes: Routes = [
     loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule), // Dashboard
     canActivate: [AuthGuard]
   },
+  {
+    path: 'mazmon',
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule), // Admin
+  },
   { path: '404', component: NotFoundComponent, data: { title: Messages.Titles.hardworker + ' - ' + Messages.Titles.notFound } },
   { path: '**', redirectTo: '404', data: { title: Messages.Titles.hardworker + ' - ' + Messages.Titles.notFound } }
 ];
