@@ -31,7 +31,7 @@ const routes: Routes = [
   },
   {
     path: 'mazmon',
-    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule), // Admin
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
   },
   { path: '404', component: NotFoundComponent, data: { title: Messages.Titles.hardworker + ' - ' + Messages.Titles.notFound } },
   { path: '**', redirectTo: '404', data: { title: Messages.Titles.hardworker + ' - ' + Messages.Titles.notFound } }

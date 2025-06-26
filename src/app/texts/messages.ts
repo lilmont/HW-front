@@ -45,7 +45,8 @@ export const Messages = {
         invalidCommentText: 'متن نظر باید حداقل 40 و حداکثر 500 کاراکتر باشد.',
         fullNameInvalid: 'نام و نام خانوادگی نمیتواند خالی باشد',
         phoneNumberInvalid: 'شماره موبایل معتبر نیست',
-        messageTextInvalid: 'متن پیام باید بین 40 تا 500 کاراکتر باشد'
+        messageTextInvalid: 'متن پیام باید بین 40 تا 500 کاراکتر باشد',
+        invalidCredentials: 'یوزرنیم یا پسورد نادرست'
     },
     Success: {
         loginSuccessful: 'ورود با موفقیت انجام شد',
@@ -175,6 +176,7 @@ export const Messages = {
         phoneNumber2: '09050959182',
         phoneNumber3: '09939921204',
         phoneNumber4: '09923225573',
+        password: 'لطفا رمز عبور خود را وارد کنید'
     },
     Headers: {
         signup: 'ثبت نام',

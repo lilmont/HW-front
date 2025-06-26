@@ -1,16 +1,8 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-
-const routes: Routes = [
-    {
-        path: '',
-        //component: DashboardLayoutComponent,
-        children: [
-            //{ path: 'web-course', component: WebCourseComponent, canActivate: [AuthGuard], data: { title: Messages.Titles.dashboard + ' - ' + Messages.Titles.webCourse } },
-            // { path: 'discount-codes', component: DiscountCodesComponent, canActivate: [AuthGuard] },
-        ],
-    },
-];
+import { LoginComponent } from "./pages/login/login.component";
+import { DashboardLayoutComponent } from "./components/dashboard-layout/dashboard-layout.component";
+import { WebCourseComponent } from "../dashboard/pages/web-course/web-course.component";
 
 // const routes: Routes = [
 //   { path: 'login', component: AdminLoginComponent }, // no guard here
@@ -25,6 +17,10 @@ const routes: Routes = [
 //     ]
 //   }
 // ];
+
+const routes: Routes = [
+    { path: 'login', component: LoginComponent }
+];
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],
