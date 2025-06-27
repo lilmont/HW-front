@@ -47,7 +47,8 @@ export const Messages = {
         phoneNumberInvalid: 'شماره موبایل معتبر نیست',
         messageTextInvalid: 'متن پیام باید بین 40 تا 500 کاراکتر باشد',
         invalidCredentials: 'یوزرنیم یا پسورد نادرست',
-        negativeDownloadCount: 'شارژ دانلود نباید کمتر از صفر باشد'
+        negativeDownloadCount: 'شارژ دانلود نباید کمتر از صفر باشد',
+        duplicatePhoneNumber: 'شماره موبایل وارد شده تکراری است'
     },
     Success: {
         loginSuccessful: 'ورود با موفقیت انجام شد',
@@ -184,7 +185,12 @@ export const Messages = {
         phoneNumber4: '09923225573',
         password: 'لطفا رمز عبور خود را وارد کنید',
         active: 'فعال',
-        inactive: 'غیرفعال'
+        inactive: 'غیرفعال',
+        downloadCount: 'تعداد دانلود',
+        canAddProject: 'مجوز پروژه دارد؟',
+        hasExternalHosting: 'خودش هاست گرفته؟',
+        signupDate: 'تاریخ ثبت نام',
+        deactivationDescription: 'علت غیرفعال کردن'
     },
     Headers: {
         signup: 'ثبت نام',

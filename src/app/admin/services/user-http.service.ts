@@ -74,7 +74,10 @@ export class UserHttpService {
   updateUser(data: IUserDetail): Observable<IApiResponse<null>> {
     return this.http.post<IApiResponse<null>>(`${this.baseUrl}/api/mazmon/users/update-user`, data).pipe(
       catchError((error) => {
-        if (error.status === 400) {
+        if (error.status == 409) {
+          this.toastr.error(Messages.Errors.duplicatePhoneNumber, Messages.Errors.error);
+        }
+        else if (error.status === 400) {
           this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
         } else if (error.status === 401) {
           this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);

@@ -2,6 +2,7 @@ export interface IUserDetail {
     id: number;
     firstName?: string;
     lastName?: string;
+    phoneNumber: string;
     email?: string;
     cardNumber?: string;
     biography?: string;
@@ -19,6 +20,7 @@ export class UserDetail implements IUserDetail {
     id: number = 0;
     firstName?: string;
     lastName?: string;
+    phoneNumber: string = '';
     email?: string;
     cardNumber?: string;
     biography?: string;
