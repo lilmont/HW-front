@@ -32,7 +32,7 @@ export class DashboardSidebarComponent {
     const isClickInside = this.eRef.nativeElement.contains(event.target);
     const isSmallScreen = window.innerWidth < 1024;
 
-    const headerElement = document.querySelector('hw-dashboard-header');
+    const headerElement = document.querySelector('hw-admin-dashboard-header');
     const isHeaderClick = headerElement?.contains(event.target as Node);
 
     if (!isClickInside && isSmallScreen && !isHeaderClick) {
