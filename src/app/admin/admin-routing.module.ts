@@ -4,20 +4,7 @@ import { LoginComponent } from "./pages/login/login.component";
 import { DashboardLayoutComponent } from "./components/dashboard-layout/dashboard-layout.component";
 import { AdminAuthGuard } from "./admin-auth.guard";
 import { UserListComponent } from "./pages/user-list/user-list.component";
-
-// const routes: Routes = [
-//     { path: 'login', component: LoginComponent },
-//     {
-//         path: '',
-//         component: DashboardLayoutComponent,
-//         canActivate: [AdminAuthGuard], // protect all other admin routes
-//         children: [
-//             { path: '', redirectTo: 'users', pathMatch: 'full' },
-//             { path: 'users', component: UserListComponent },
-//             // other admin routes
-//         ]
-//     }
-// ];
+import { UserDetailComponent } from "./pages/user-detail/user-detail.component";
 
 const routes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -29,14 +16,10 @@ const routes: Routes = [
         children: [
             { path: '', redirectTo: 'users', pathMatch: 'full' }, // default dashboard redirect
             { path: 'users', component: UserListComponent },
-            // Add more admin routes here
+            { path: 'users/:id', component: UserDetailComponent }
         ]
     }
 ];
-
-// const routes: Routes = [
-//     { path: 'login', component: LoginComponent }
-// ];
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],

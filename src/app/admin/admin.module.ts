@@ -9,6 +9,8 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AdminRoutingModule } from './admin-routing.module';
 import { PaginationComponent } from './shared/pagination/pagination.component';
+import { UserDetailComponent } from './pages/user-detail/user-detail.component';
+import { CoreModule } from '../core/core.module';
 
 
 
@@ -19,13 +21,15 @@ import { PaginationComponent } from './shared/pagination/pagination.component';
     DashboardLayoutComponent,
     UserListComponent,
     LoginComponent,
-    PaginationComponent
+    PaginationComponent,
+    UserDetailComponent
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    CoreModule
   ]
 })
 export class AdminModule { }

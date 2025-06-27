@@ -267,7 +267,8 @@ export const Messages = {
         supportVideos: 'ویدیوهای پشتیبانی',
         sampleSupport: 'نمونه جلسات آنلاین',
         sampleSupportVideos: 'نمونه جلسات پشتیبانی آنلاین',
-        userManagement: 'مدیریت کاربران'
+        userManagement: 'مدیریت کاربران',
+        editUser: 'ویرایش کاربر'
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'
@@ -298,5 +299,6 @@ export const Messages = {
         phoneNumber: 'شماره موبایل',
         domain: 'دامنه',
         status: 'وضعیت',
+        edit: 'ویرایش',
     }
 };

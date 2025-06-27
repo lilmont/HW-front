@@ -1,0 +1,112 @@
+<form (ngSubmit)="editUser()" class="max-w-3xl mx-auto p-6 bg-white rounded shadow space-y-6">
+    <!-- ID (readonly) -->
+    <div>
+        <label class="block mb-1 font-semibold text-gray-700">User ID</label>
+        <input type="text" [value]="userDetail.id" readonly
+            class="border rounded px-3 py-2 w-full bg-gray-100 cursor-not-allowed" />
+    </div>
+
+    <!-- First & Last Name -->
+    <div class="grid grid-cols-2 gap-4">
+        <div>
+            <label class="block mb-1 font-semibold text-gray-700">First Name</label>
+            <input type="text" [(ngModel)]="userDetail.firstName" name="firstName"
+                class="border rounded px-3 py-2 w-full" />
+        </div>
+        <div>
+            <label class="block mb-1 font-semibold text-gray-700">Last Name</label>
+            <input type="text" [(ngModel)]="userDetail.lastName" name="lastName"
+                class="border rounded px-3 py-2 w-full" />
+        </div>
+    </div>
+
+    <!-- Email -->
+    <div>
+        <label class="block mb-1 font-semibold text-gray-700">Email</label>
+        <input type="email" [(ngModel)]="userDetail.email" name="email" class="border rounded px-3 py-2 w-full" />
+    </div>
+
+    <!-- Card Number -->
+    <div>
+        <label class="block mb-1 font-semibold text-gray-700">Card Number</label>
+        <input type="text" [(ngModel)]="userDetail.cardNumber" name="cardNumber"
+            class="border rounded px-3 py-2 w-full" />
+    </div>
+
+    <!-- Biography -->
+    <div>
+        <label class="block mb-1 font-semibold text-gray-700">Biography</label>
+        <textarea [(ngModel)]="userDetail.biography" name="biography" rows="4"
+            class="border rounded px-3 py-2 w-full"></textarea>
+    </div>
+
+    <!-- Wallet Balance -->
+    <div>
+        <label class="block mb-1 font-semibold text-gray-700">Wallet Balance</label>
+        <input type="text" [value]="userDetail.walletBalance | number:'1.0-0'" readonly
+            class="border rounded px-3 py-2 w-full bg-gray-100 cursor-not-allowed" />
+
+    </div>
+
+    <!-- Is Active -->
+    <div class="flex items-center space-x-2">
+        <input type="checkbox" [(ngModel)]="userDetail.isActive" name="isActive" id="isActive" class="h-5 w-5" />
+        <label for="isActive" class="font-semibold text-gray-700">Is Active</label>
+    </div>
+
+    <!-- Deactivation Description -->
+    <div>
+        <label class="block mb-1 font-semibold text-gray-700">Deactivation Description</label>
+        <textarea [(ngModel)]="userDetail.deactivationDescription" name="deactivationDescription" rows="2"
+            class="border rounded px-3 py-2 w-full"></textarea>
+    </div>
+
+    <!-- Can Add Project -->
+    <div class="flex items-center space-x-2">
+        <input type="checkbox" [(ngModel)]="userDetail.canAddProject" name="canAddProject" id="canAddProject"
+            class="h-5 w-5" />
+        <label for="canAddProject" class="font-semibold text-gray-700">Can Add Project</label>
+    </div>
+
+    <!-- Date Created (readonly) -->
+    <div>
+        <label class="block mb-1 font-semibold text-gray-700">Date Created</label>
+        <input type="text" [value]="userDetail.dateCreated | jalaliDate" readonly
+            class="border rounded px-3 py-2 w-full bg-gray-100 cursor-not-allowed" />
+    </div>
+
+    <!-- Download Count (readonly) -->
+    <div>
+        <label class="block mb-1 font-semibold text-gray-700">Download Count</label>
+        <input type="number" [value]="userDetail.downloadCount" class="border rounded px-3 py-2 w-full" />
+    </div>
+
+    <!-- Has External Hosting Plan (readonly) -->
+    <div>
+        <label class="block mb-1 font-semibold text-gray-700">Has External Hosting Plan</label>
+        <input type="checkbox" [checked]="userDetail.hasExternalHostingPlan" class="h-5 w-5" />
+    </div>
+
+    <div class="pt-4">
+        <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">
+            {{Messages.TableHeaders.edit}}
+        </button>
+    </div>
+
+    <div class="flex flex-col items-center mb-10">
+        <div class="relative w-28 h-28">
+            <img [src]="userDetail.avatarImage && userDetail.avatarImage.trim() !== '' ? baseUrl + '/uploads/avatars/' + userDetail.avatarImage : baseUrl + '/uploads/utilities/avatar.png'"
+                alt="Avatar" class="rounded-full w-full h-full object-cover border-2 border-gray-300">
+            <label for="avatarUpload"
+                class="absolute bottom-0 right-0 bg-custom-600 hover:bg-custom-700 text-white p-2 rounded-full cursor-pointer">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L7 21H3v-4L16.732 3.732z">
+                    </path>
+                </svg>
+            </label>
+            <input id="avatarUpload" type="file" (change)="onAvatarSelect($event)" class="hidden" />
+        </div>
+    </div>
+</form>

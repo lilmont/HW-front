@@ -8,6 +8,7 @@ import { IPagedResult } from '../models/IPagedResult';
 import { catchError, Observable, throwError } from 'rxjs';
 import { Messages } from '../../texts/messages';
 import { IApiResponse } from '../models/IApiResponse';
+import { IUserDetail } from '../models/IUserDetail';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,40 @@ export class UserHttpService {
           this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
         } else if (error.status === 401) {
           this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+        return throwError(() => error);
+      })
+    );
+  }
+
+  getUserDetail(id: number): Observable<IApiResponse<IUserDetail>> {
+    return this.http.get<IApiResponse<IUserDetail>>(`${this.baseUrl}/api/mazmon/users/user-detail`, { params: { id: id.toString() } }).pipe(
+      catchError((error) => {
+        if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
+        } else if (error.status === 401) {
+          this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+        return throwError(() => error);
+      })
+    );
+  }
+
+  uploadAvatar(formData: FormData): Observable<IApiResponse<string>> {
+    return this.http.post<IApiResponse<string>>(`${this.baseUrl}/api/mazmon/users/update-avatar`, formData).pipe(
+      catchError((error) => {
+        if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
+        } else if (error.status === 401) {
+          this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
+        } else if (error.status === 440) {
+          this.toastr.error(Messages.Errors.fileSizeTooLarge, Messages.Errors.error);
+        } else if (error.status === 441) {
+          this.toastr.error(Messages.Errors.invalidImage, Messages.Errors.error);
         } else {
           this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
         }

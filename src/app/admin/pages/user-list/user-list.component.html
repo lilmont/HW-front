@@ -50,6 +50,7 @@
                     <th class="px-4 py-2 border">{{Messages.TableHeaders.phoneNumber}}</th>
                     <th class="px-4 py-2 border">{{Messages.TableHeaders.domain}}</th>
                     <th class="px-4 py-2 border">{{Messages.TableHeaders.status}}</th>
+                    <th class="px-4 py-2 border">{{Messages.TableHeaders.edit}}</th>
                 </tr>
             </thead>
             <tbody>
@@ -64,6 +65,7 @@
                             {{ user.isActive ? Messages.Labels.active : Messages.Labels.inactive }}
                         </span>
                     </td>
+                    <td class="px-4 py-2 border"><a [routerLink]="[user.id]">{{Messages.TableHeaders.edit}}</a></td>
                 </tr>
             </tbody>
         </table>
