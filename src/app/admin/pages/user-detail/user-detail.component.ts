@@ -87,5 +87,56 @@ export class UserDetailComponent implements OnInit {
     }
   }
 
-  editUser(): void { }
+  editUser(): void {
+    if (!this.isEmailValid(this.userDetail.email ?? '')) {
+      this.toastr.error(Messages.Errors.invalidEmail, Messages.Errors.error);
+      return;
+    }
+
+    if (!this.isCardNumberValid(this.userDetail.cardNumber ?? '')) {
+      this.toastr.error(Messages.Errors.invalidCardNumber, Messages.Errors.error);
+      return;
+    }
+
+    if (!this.isBiographyValid(this.userDetail.biography ?? '')) {
+      this.toastr.error(Messages.Errors.invalidBiography, Messages.Errors.error);
+      return;
+    }
+
+    if (this.userDetail.downloadCount < 0) {
+      this.toastr.error(Messages.Errors.negativeDownloadCount, Messages.Errors.error);
+      return;
+    }
+    this.loadingService.show();
+
+    this.userHttpService.updateUser(this.userDetail).subscribe({
+      next: (response) => {
+        if (response.success) {
+          this.toastr.success(Messages.Success.userUpdatedSuccessfully, '');
+        } else {
+          this.toastr.error(response.data ?? Messages.Errors.invalidRequest, Messages.Errors.error)
+        }
+        this.loadingService.hide();
+      },
+      error: () => {
+        this.loadingService.hide();
+      }
+    });
+  }
+
+  private isEmailValid(email: string): boolean {
+    if (!email) return true;
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return emailRegex.test(email);
+  }
+
+  private isCardNumberValid(cardNumber: string): boolean {
+    if (!cardNumber) return true;
+    const cardNumberRegex = /^\d{16}$/;
+    return cardNumberRegex.test(cardNumber);
+  }
+
+  private isBiographyValid(biography: string): boolean {
+    return biography.length <= 500;
+  }
 }

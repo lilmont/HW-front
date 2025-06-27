@@ -71,6 +71,22 @@ export class UserHttpService {
     );
   }
 
+  updateUser(data: IUserDetail): Observable<IApiResponse<null>> {
+    return this.http.post<IApiResponse<null>>(`${this.baseUrl}/api/mazmon/users/update-user`, data).pipe(
+      catchError((error) => {
+        if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
+        } else if (error.status === 401) {
+          this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+
+        return throwError(() => error);
+      })
+    );
+  }
+
   private buildHttpParams(data: IUserQueryParameters): HttpParams {
     let params = new HttpParams();
 
@@ -79,7 +95,6 @@ export class UserHttpService {
         params = params.set(key, value.toString());
       }
     });
-
     return params;
   }
 }

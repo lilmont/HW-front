@@ -46,7 +46,8 @@ export const Messages = {
         fullNameInvalid: 'نام و نام خانوادگی نمیتواند خالی باشد',
         phoneNumberInvalid: 'شماره موبایل معتبر نیست',
         messageTextInvalid: 'متن پیام باید بین 40 تا 500 کاراکتر باشد',
-        invalidCredentials: 'یوزرنیم یا پسورد نادرست'
+        invalidCredentials: 'یوزرنیم یا پسورد نادرست',
+        negativeDownloadCount: 'شارژ دانلود نباید کمتر از صفر باشد'
     },
     Success: {
         loginSuccessful: 'ورود با موفقیت انجام شد',
@@ -62,7 +63,8 @@ export const Messages = {
         purchaseCourseSuccessful: 'دوره خریداری شد. برای مشاهده به قسمت دوره های من در پروفایل خود مراجعه کنید.',
         commentSubmittedSuccessfully: 'نظر شما با موفقیت ثبت شد.',
         commentEditedSuccessfully: 'نظر شما با موفقیت ویرایش شد.',
-        orderMessageSubmittedSuccessfully: 'پیام شما با موفقیت ثبت شد'
+        orderMessageSubmittedSuccessfully: 'پیام شما با موفقیت ثبت شد',
+        userUpdatedSuccessfully: 'کاربر با موفقیت ویرایش شد'
     },
     Warnings: {
         oneTimePassword: 'قبل از بستن این صفحه اطلاعات هاست خود را کپی کنید و در جای امنی نگداری کنید',
