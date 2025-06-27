@@ -3,7 +3,7 @@ import { ISidebarItem } from "../../models/ISidebarItem";
 
 export const SIDEBAR_ITEMS: ISidebarItem[] = [
     {
-        label: Messages.Headers.webCourse,
-        path: '/mazmon/web-course',
+        label: Messages.Headers.userManagement,
+        path: '/mazmon/users',
     },
 ];

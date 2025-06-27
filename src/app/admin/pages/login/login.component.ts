@@ -6,6 +6,7 @@ import { AuthHttpService } from '../../services/auth-http.service';
 import { LoadingService } from '../../../core/services/loading.service';
 import { ToastrService } from 'ngx-toastr';
 import { UserInfoService } from '../../../core/services/user-info.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'hw-login',
@@ -21,6 +22,7 @@ export class LoginComponent {
     private loadingService: LoadingService,
     private toastr: ToastrService,
     private userInfoService: UserInfoService,
+    private router: Router,
   ) { }
 
   loginUser() {
@@ -31,6 +33,7 @@ export class LoginComponent {
         this.toastr.success(Messages.Success.loginSuccessful, '');
         this.loadingService.hide();
         this.userInfoService.loadUser();
+        this.router.navigateByUrl("/mazmon/users");
       },
       error: () => {
         this.loadingService.hide();

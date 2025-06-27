@@ -8,7 +8,6 @@
             <li *ngFor="let item of sidebarItems" class="cursor-pointer"
                 [ngClass]="{ 'bg-gray-200': isActive(item.path) }" (click)="navigate(item.path)">
                 <a class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
-                    <ng-container *ngComponentOutlet="item.svgComponent"></ng-container>
                     <span class="ms-3">{{ item.label }}</span>
                 </a>
             </li>

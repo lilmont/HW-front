@@ -2,25 +2,41 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { LoginComponent } from "./pages/login/login.component";
 import { DashboardLayoutComponent } from "./components/dashboard-layout/dashboard-layout.component";
-import { WebCourseComponent } from "../dashboard/pages/web-course/web-course.component";
+import { AdminAuthGuard } from "./admin-auth.guard";
+import { UserListComponent } from "./pages/user-list/user-list.component";
 
 // const routes: Routes = [
-//   { path: 'login', component: AdminLoginComponent }, // no guard here
-//   { 
-//     path: '', 
-//     canActivate: [AuthGuard, AdminGuard], // protect all other admin routes
-//     children: [
-//       { path: 'dashboard', component: AdminDashboardComponent },
-//       { path: 'users', component: AdminUsersComponent },
-//       { path: 'courses', component: AdminCoursesComponent },
-//       // other admin routes
-//     ]
-//   }
+//     { path: 'login', component: LoginComponent },
+//     {
+//         path: '',
+//         component: DashboardLayoutComponent,
+//         canActivate: [AdminAuthGuard], // protect all other admin routes
+//         children: [
+//             { path: '', redirectTo: 'users', pathMatch: 'full' },
+//             { path: 'users', component: UserListComponent },
+//             // other admin routes
+//         ]
+//     }
 // ];
 
 const routes: Routes = [
-    { path: 'login', component: LoginComponent }
+    { path: 'login', component: LoginComponent },
+
+    {
+        path: '',
+        component: DashboardLayoutComponent,
+        canActivate: [AdminAuthGuard],
+        children: [
+            { path: '', redirectTo: 'users', pathMatch: 'full' }, // default dashboard redirect
+            { path: 'users', component: UserListComponent },
+            // Add more admin routes here
+        ]
+    }
 ];
+
+// const routes: Routes = [
+//     { path: 'login', component: LoginComponent }
+// ];
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],

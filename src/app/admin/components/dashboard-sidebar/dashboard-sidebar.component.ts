@@ -4,6 +4,7 @@ import { ISidebarItem } from '../../models/ISidebarItem';
 import { Router } from '@angular/router';
 import { SidebarService } from '../../../core/services/sidebar.service';
 import { LoadingService } from '../../../core/services/loading.service';
+import { SIDEBAR_ITEMS } from './sidebar.config';
 
 @Component({
   selector: 'hw-admin-dashboard-sidebar',
@@ -12,7 +13,7 @@ import { LoadingService } from '../../../core/services/loading.service';
 })
 export class DashboardSidebarComponent {
   Messages = Messages;
-  sidebarItems: ISidebarItem[] = [];
+  sidebarItems: ISidebarItem[] = SIDEBAR_ITEMS;
 
   constructor(private router: Router,
     private eRef: ElementRef,

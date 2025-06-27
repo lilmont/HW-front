@@ -1,16 +1,15 @@
 <div *ngIf="layoutReady" class="dashboard-layout flex flex-col h-screen">
-    <hw-admin-dashboard-header class="h-16"></hw-dashboard-header>
+    <hw-admin-dashboard-header class="h-16"></hw-admin-dashboard-header>
 
-        <div class="flex flex-1">
-            <hw-admin-dashboard-sidebar></hw-dashboard-sidebar>
-                <main
-                    [ngClass]="{'lg:mr-0':!(sidebarService.isOpen$ | async), 'lg:mr-64': (sidebarService.isOpen$ | async)}"
-                    class="w-full bg-gray-50">
-                    <div class="h-[calc(100vh-4rem)] overflow-auto p-4">
-                        <div class="relative shadow-md sm:rounded-lg px-6 lg:px-10 py-6 lg:py-10 h-full overflow-auto">
-                            <router-outlet></router-outlet>
-                        </div>
-                    </div>
-                </main>
-        </div>
+    <div class="flex flex-1">
+        <hw-admin-dashboard-sidebar></hw-admin-dashboard-sidebar>
+        <main [ngClass]="{'lg:mr-0':!(sidebarService.isOpen$ | async), 'lg:mr-64': (sidebarService.isOpen$ | async)}"
+            class="w-full bg-gray-50">
+            <div class="h-[calc(100vh-4rem)] overflow-auto p-4">
+                <div class="relative shadow-md sm:rounded-lg px-6 lg:px-10 py-6 lg:py-10 h-full overflow-auto">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+        </main>
+    </div>
 </div>

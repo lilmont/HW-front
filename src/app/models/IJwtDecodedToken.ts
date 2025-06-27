@@ -6,4 +6,5 @@ export interface IJWTDecodedToken {
   firstName?: string;
   lastName?: string;
   avatarImage?: string;
+  role: string;
 }
