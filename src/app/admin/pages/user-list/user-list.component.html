@@ -1,0 +1,76 @@
+<div class="p-6 space-y-6">
+
+    <!-- 🔍 Filters -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <input type="text" [placeholder]="Messages.TableHeaders.id" class="border rounded p-2 w-full"
+            [(ngModel)]="filters.id" />
+
+        <input type="text" [placeholder]="Messages.TableHeaders.firstName" class="border rounded p-2 w-full"
+            [(ngModel)]="filters.firstName" />
+
+        <input type="text" [placeholder]="Messages.TableHeaders.lastName" class="border rounded p-2 w-full"
+            [(ngModel)]="filters.lastName" />
+
+        <input type="text" [placeholder]="Messages.TableHeaders.phoneNumber" class="border rounded p-2 w-full"
+            [(ngModel)]="filters.phoneNumber" />
+
+        <input type="text" [placeholder]="Messages.TableHeaders.domain" class="border rounded p-2 w-full"
+            [(ngModel)]="filters.domain" />
+
+        <div>
+            <label for="isActiveSelect" class="text-sm block mb-1">{{Messages.TableHeaders.status}}</label>
+            <select id="isActiveSelect" [(ngModel)]="filters.isActive" class="border rounded p-2 w-full">
+                <option [ngValue]="undefined">{{Messages.Buttons.all}}</option>
+                <option [ngValue]="true">{{Messages.Labels.active}}</option>
+                <option [ngValue]="false">{{Messages.Labels.inactive}}</option>
+            </select>
+        </div>
+
+    </div>
+
+    <!-- 🔘 Buttons -->
+    <div class="flex space-x-4">
+        <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" (click)="loadUsers()">
+            {{Messages.Buttons.search}}
+        </button>
+
+        <button class="bg-gray-300 px-4 py-2 rounded hover:bg-gray-400" (click)="resetFilters()">
+            {{Messages.Buttons.reset}}
+        </button>
+    </div>
+
+    <!-- 📋 Table -->
+    <div class="overflow-x-auto">
+        <table class="min-w-full border border-gray-300">
+            <thead class="bg-gray-100">
+                <tr>
+                    <th class="px-4 py-2 border">{{Messages.TableHeaders.id}}</th>
+                    <th class="px-4 py-2 border">{{Messages.TableHeaders.firstName}}</th>
+                    <th class="px-4 py-2 border">{{Messages.TableHeaders.lastName}}</th>
+                    <th class="px-4 py-2 border">{{Messages.TableHeaders.phoneNumber}}</th>
+                    <th class="px-4 py-2 border">{{Messages.TableHeaders.domain}}</th>
+                    <th class="px-4 py-2 border">{{Messages.TableHeaders.status}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users" class="hover:bg-gray-50">
+                    <td class="px-4 py-2 border">{{ user.id }}</td>
+                    <td class="px-4 py-2 border">{{ user.firstName }}</td>
+                    <td class="px-4 py-2 border">{{ user.lastName }}</td>
+                    <td class="px-4 py-2 border">{{ user.phoneNumber }}</td>
+                    <td class="px-4 py-2 border">{{ user.domain }}</td>
+                    <td class="px-4 py-2 border">
+                        <span [ngClass]="user.isActive ? 'text-green-600' : 'text-red-600'">
+                            {{ user.isActive ? Messages.Labels.active : Messages.Labels.inactive }}
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 🔢 Pagination -->
+    <hw-pagination [pageNumber]="filters.pageNumber" [pageSize]="filters.pageSize" [totalCount]="totalCount"
+        (pageChange)="onPageChange($event)">
+    </hw-pagination>
+</div>

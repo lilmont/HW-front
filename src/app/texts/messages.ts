@@ -114,7 +114,11 @@ export const Messages = {
         inquiry: 'استعلام',
         returnHome: 'بازگشت به خانه',
         view: 'مشاهده',
-        submit: 'ثبت'
+        submit: 'ثبت',
+        next: 'بعدی',
+        previous: 'قبلی',
+        search: 'جستجو',
+        reset: 'ریست'
     },
     Labels: {
         enterPhoneNumber: 'لطفا شماره موبایل خود را وارد کنید',
@@ -176,7 +180,9 @@ export const Messages = {
         phoneNumber2: '09050959182',
         phoneNumber3: '09939921204',
         phoneNumber4: '09923225573',
-        password: 'لطفا رمز عبور خود را وارد کنید'
+        password: 'لطفا رمز عبور خود را وارد کنید',
+        active: 'فعال',
+        inactive: 'غیرفعال'
     },
     Headers: {
         signup: 'ثبت نام',
@@ -260,7 +266,8 @@ export const Messages = {
         FridaysAreOff: 'جمعه ها آفلاین هستیم',
         supportVideos: 'ویدیوهای پشتیبانی',
         sampleSupport: 'نمونه جلسات آنلاین',
-        sampleSupportVideos: 'نمونه جلسات پشتیبانی آنلاین'
+        sampleSupportVideos: 'نمونه جلسات پشتیبانی آنلاین',
+        userManagement: 'مدیریت کاربران'
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'
@@ -283,5 +290,13 @@ export const Messages = {
         LoginOrSignup: 'ورود / ثبت نام',
         notFound: '404 - صفحه یافت نشد',
         contactUs: 'تماس با ما'
+    },
+    TableHeaders: {
+        id: 'ID',
+        firstName: 'نام',
+        lastName: 'نام خانوادگی',
+        phoneNumber: 'شماره موبایل',
+        domain: 'دامنه',
+        status: 'وضعیت',
     }
 };

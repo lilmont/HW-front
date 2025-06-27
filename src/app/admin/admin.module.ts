@@ -8,6 +8,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AdminRoutingModule } from './admin-routing.module';
+import { PaginationComponent } from './shared/pagination/pagination.component';
 
 
 
@@ -17,7 +18,8 @@ import { AdminRoutingModule } from './admin-routing.module';
     DashboardSidebarComponent,
     DashboardLayoutComponent,
     UserListComponent,
-    LoginComponent
+    LoginComponent,
+    PaginationComponent
   ],
   imports: [
     CommonModule,
