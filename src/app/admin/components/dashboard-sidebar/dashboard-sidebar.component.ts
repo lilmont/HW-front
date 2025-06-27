@@ -41,7 +41,7 @@ export class DashboardSidebarComponent {
   };
 
   isActive(path: string): boolean {
-    return this.router.url === path;
+    return this.router.url.startsWith(path);
   }
 
   navigate(path: string) {
