@@ -11,6 +11,7 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { PaginationComponent } from './shared/pagination/pagination.component';
 import { UserDetailComponent } from './pages/user-detail/user-detail.component';
 import { CoreModule } from '../core/core.module';
+import { CourseListComponent } from './pages/course-list/course-list.component';
 
 
 
@@ -22,7 +23,8 @@ import { CoreModule } from '../core/core.module';
     UserListComponent,
     LoginComponent,
     PaginationComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    CourseListComponent
   ],
   imports: [
     CommonModule,

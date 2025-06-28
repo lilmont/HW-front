@@ -277,7 +277,9 @@ export const Messages = {
         sampleSupportVideos: 'نمونه جلسات پشتیبانی آنلاین',
         userManagement: 'مدیریت کاربران',
         editUser: 'ویرایش کاربر',
-        userList: 'لیست کاربران'
+        userList: 'لیست کاربران',
+        courseList: 'لیست دوره ها',
+        courseManagement: 'مدیریت دوره ها'
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'
@@ -309,5 +311,7 @@ export const Messages = {
         domain: 'دامنه',
         status: 'وضعیت',
         edit: 'ویرایش',
+        title: 'عنوان',
+        price: 'قیمت'
     }
 };

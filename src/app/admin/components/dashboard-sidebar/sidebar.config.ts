@@ -6,4 +6,8 @@ export const SIDEBAR_ITEMS: ISidebarItem[] = [
         label: Messages.Headers.userManagement,
         path: '/mazmon/users',
     },
+    {
+        label: Messages.Headers.courseManagement,
+        path: '/mazmon/courses',
+    },
 ];

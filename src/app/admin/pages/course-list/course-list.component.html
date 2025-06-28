@@ -1,0 +1,30 @@
+<h1 class="text-xl lg:text-2xl font-bold mb-6">{{Messages.Headers.courseList}}</h1>
+
+<div class="p-6 space-y-6">
+    <div class="overflow-x-auto">
+        <table class="min-w-full border border-gray-300">
+            <thead class="bg-gray-100">
+                <tr>
+                    <th class="px-4 py-2 border">{{Messages.TableHeaders.id}}</th>
+                    <th class="px-4 py-2 border">{{Messages.TableHeaders.title}}</th>
+                    <th class="px-4 py-2 border">{{Messages.TableHeaders.price}}</th>
+                    <th class="px-4 py-2 border">{{Messages.TableHeaders.edit}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let course of courses" class="hover:bg-gray-50">
+                    <td class="px-4 py-2 border">{{ course.id }}</td>
+                    <td class="px-4 py-2 border">{{ course.title }}</td>
+                    <td class="px-4 py-2 border">{{ course.price | number:'1.0-0' }}</td>
+                    <td class="px-4 py-2 border border-gray-800 text-center text-blue-600"><a
+                            [routerLink]="[course.id]">{{Messages.TableHeaders.edit}}</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 🔢 Pagination -->
+    <hw-pagination [pageNumber]="filters.pageNumber" [pageSize]="filters.pageSize" [totalCount]="totalCount"
+        (pageChange)="onPageChange($event)">
+    </hw-pagination>
+</div>
