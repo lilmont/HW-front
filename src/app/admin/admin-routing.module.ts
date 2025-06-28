@@ -6,6 +6,7 @@ import { AdminAuthGuard } from "./admin-auth.guard";
 import { UserListComponent } from "./pages/user-list/user-list.component";
 import { UserDetailComponent } from "./pages/user-detail/user-detail.component";
 import { CourseListComponent } from "./pages/course-list/course-list.component";
+import { CourseDetailComponent } from "./pages/course-detail/course-detail.component";
 
 const routes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
             { path: 'users', component: UserListComponent },
             { path: 'users/:id', component: UserDetailComponent },
             { path: 'courses', component: CourseListComponent },
+            { path: 'courses/:id', component: CourseDetailComponent },
         ]
     }
 ];

@@ -12,6 +12,8 @@ import { PaginationComponent } from './shared/pagination/pagination.component';
 import { UserDetailComponent } from './pages/user-detail/user-detail.component';
 import { CoreModule } from '../core/core.module';
 import { CourseListComponent } from './pages/course-list/course-list.component';
+import { CourseDetailComponent } from './pages/course-detail/course-detail.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -24,14 +26,16 @@ import { CourseListComponent } from './pages/course-list/course-list.component';
     LoginComponent,
     PaginationComponent,
     UserDetailComponent,
-    CourseListComponent
+    CourseListComponent,
+    CourseDetailComponent
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     FormsModule,
     RouterModule,
-    CoreModule
+    CoreModule,
+    SharedModule
   ]
 })
 export class AdminModule { }

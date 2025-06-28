@@ -121,7 +121,9 @@ export const Messages = {
         next: 'بعدی',
         previous: 'قبلی',
         search: 'جستجو',
-        reset: 'ریست'
+        reset: 'ریست',
+        addSession: 'افزودن جلسه',
+        delete: 'حذف'
     },
     Labels: {
         enterPhoneNumber: 'لطفا شماره موبایل خود را وارد کنید',
@@ -190,7 +192,8 @@ export const Messages = {
         canAddProject: 'مجوز پروژه دارد؟',
         hasExternalHosting: 'خودش هاست گرفته؟',
         signupDate: 'تاریخ ثبت نام',
-        deactivationDescription: 'علت غیرفعال کردن'
+        deactivationDescription: 'علت غیرفعال کردن',
+        dateCreated: 'تاریخ ثبت دوره'
     },
     Headers: {
         signup: 'ثبت نام',
@@ -279,7 +282,14 @@ export const Messages = {
         editUser: 'ویرایش کاربر',
         userList: 'لیست کاربران',
         courseList: 'لیست دوره ها',
-        courseManagement: 'مدیریت دوره ها'
+        courseManagement: 'مدیریت دوره ها',
+        addCourse: 'افزودن دوره',
+        editCourse: 'ویرایش دوره',
+        courseDescription: 'توضیحات کوتاه (نمایش در کارت محصول)',
+        courseFullDescription: 'توضیحات کامل (نمای در صفحه محصول)',
+        syllabus: 'سرفصل های دوره',
+        spotPlayerProductId: 'کد شناسه اسپات پلیر',
+        sessions: 'جلسات'
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'
@@ -312,6 +322,9 @@ export const Messages = {
         status: 'وضعیت',
         edit: 'ویرایش',
         title: 'عنوان',
-        price: 'قیمت'
+        price: 'قیمت',
+        sessionNumber: 'شماره جلسه',
+        description: 'توضیحات',
+        downloadLink: 'لینک دانلود'
     }
 };
