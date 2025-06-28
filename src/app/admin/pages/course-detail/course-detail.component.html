@@ -38,14 +38,15 @@
         <!-- Full Description -->
         <div>
             <label class="block mb-1 font-semibold text-gray-700">{{Messages.Headers.courseFullDescription}}</label>
-            <input type="text" [(ngModel)]="courseDetail.fullDescription" name="fullDescription"
-                class="border rounded px-3 py-2 w-full" />
+            <quill-editor [(ngModel)]="courseDetail.fullDescription" name="fullDescription" [style]="{height: '200px'}"
+                dir="ltr"></quill-editor>
         </div>
         <!-- Syllabus -->
         <div>
             <label class="block mb-1 font-semibold text-gray-700">{{Messages.Headers.syllabus}}</label>
-            <input type="text" [(ngModel)]="courseDetail.syllabus" name="syllabus"
-                class="border rounded px-3 py-2 w-full" />
+            <quill-editor [(ngModel)]="courseDetail.syllabus" name="syllabus" [style]="{height: '200px'}"
+                dir="ltr"></quill-editor>
+
         </div>
     </div>
 

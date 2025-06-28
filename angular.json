@@ -38,7 +38,8 @@
             ],
             "styles": [
               "src/styles.css",
-              "public/fonts/fonts-vazirmatn.css"
+              "public/fonts/fonts-vazirmatn.css",
+              "node_modules/quill/dist/quill.snow.css"
             ],
             "scripts": []
           },
@@ -104,7 +105,8 @@
             ],
             "styles": [
               "src/styles.css",
-              "public/fonts/fonts-vazirmatn.css"
+              "public/fonts/fonts-vazirmatn.css",
+              "node_modules/quill/dist/quill.snow.css"
             ],
             "scripts": []
           }

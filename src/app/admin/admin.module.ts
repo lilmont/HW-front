@@ -14,7 +14,7 @@ import { CoreModule } from '../core/core.module';
 import { CourseListComponent } from './pages/course-list/course-list.component';
 import { CourseDetailComponent } from './pages/course-detail/course-detail.component';
 import { SharedModule } from '../shared/shared.module';
-
+import { QuillModule } from 'ngx-quill';
 
 
 @NgModule({
@@ -35,7 +35,8 @@ import { SharedModule } from '../shared/shared.module';
     FormsModule,
     RouterModule,
     CoreModule,
-    SharedModule
+    SharedModule,
+    QuillModule
   ]
 })
 export class AdminModule { }
