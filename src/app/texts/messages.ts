@@ -289,7 +289,10 @@ export const Messages = {
         courseFullDescription: 'توضیحات کامل (نمای در صفحه محصول)',
         syllabus: 'سرفصل های دوره',
         spotPlayerProductId: 'کد شناسه اسپات پلیر',
-        sessions: 'جلسات'
+        sessions: 'جلسات',
+        courseImage: 'عکس دوره (کارت دوره و صفحه دوره)',
+        courseCoverImage: 'عکس دوره (داشبورد کاربر)',
+        courseVideo: 'ویدیو دوره'
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'
