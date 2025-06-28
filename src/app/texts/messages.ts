@@ -276,7 +276,8 @@ export const Messages = {
         sampleSupport: 'نمونه جلسات آنلاین',
         sampleSupportVideos: 'نمونه جلسات پشتیبانی آنلاین',
         userManagement: 'مدیریت کاربران',
-        editUser: 'ویرایش کاربر'
+        editUser: 'ویرایش کاربر',
+        userList: 'لیست کاربران'
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'
