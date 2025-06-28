@@ -20,7 +20,7 @@ export class UserHttpService {
     private http: HttpClient,
     private toastr: ToastService) { }
 
-  getPagesUsers(data: IUserQueryParameters): Observable<IApiResponse<IPagedResult<IUserListItem>>> {
+  getPagedUsers(data: IUserQueryParameters): Observable<IApiResponse<IPagedResult<IUserListItem>>> {
     const params = this.buildHttpParams(data);
 
     return this.http.get<IApiResponse<IPagedResult<IUserListItem>>>(`${this.baseUrl}/api/mazmon/users/user-list`, { params }).pipe(

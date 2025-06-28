@@ -29,7 +29,7 @@ export class UserListComponent implements OnInit {
 
   loadUsers() {
     this.loadingService.show();
-    this.userHttpService.getPagesUsers(this.filters).subscribe({
+    this.userHttpService.getPagedUsers(this.filters).subscribe({
       next: (response) => {
         if (response.success) {
           this.users = response.data.items;
