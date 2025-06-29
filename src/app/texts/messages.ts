@@ -65,7 +65,9 @@ export const Messages = {
         commentSubmittedSuccessfully: 'نظر شما با موفقیت ثبت شد.',
         commentEditedSuccessfully: 'نظر شما با موفقیت ویرایش شد.',
         orderMessageSubmittedSuccessfully: 'پیام شما با موفقیت ثبت شد',
-        userUpdatedSuccessfully: 'کاربر با موفقیت ویرایش شد'
+        userUpdatedSuccessfully: 'کاربر با موفقیت ویرایش شد',
+        courseAddedSuccessfully: 'دوره با موفقیت اضافه شد.',
+        courseEditedSuccessfully: 'دوره با موفقیت ویرایش شد'
     },
     Warnings: {
         oneTimePassword: 'قبل از بستن این صفحه اطلاعات هاست خود را کپی کنید و در جای امنی نگداری کنید',
@@ -193,7 +195,9 @@ export const Messages = {
         hasExternalHosting: 'خودش هاست گرفته؟',
         signupDate: 'تاریخ ثبت نام',
         deactivationDescription: 'علت غیرفعال کردن',
-        dateCreated: 'تاریخ ثبت دوره'
+        dateCreated: 'تاریخ ثبت دوره',
+        courseSessionNumber: 'تعداد جلسات دوره',
+        courseDurationInHours: 'تعداد ساعات دوره'
     },
     Headers: {
         signup: 'ثبت نام',

@@ -36,7 +36,7 @@ import { QuillModule } from 'ngx-quill';
     RouterModule,
     CoreModule,
     SharedModule,
-    QuillModule
+    QuillModule,
   ]
 })
 export class AdminModule { }

@@ -151,5 +151,67 @@ export class CourseDetailComponent {
     }
   }
 
-  AddOrEditCourse(): void { }
+  AddOrEditCourse(): void {
+    const formData = new FormData();
+
+    if (this.courseDetail.id) {
+      formData.append('Id', this.courseDetail.id.toString());
+    }
+
+    formData.append('Title', this.courseDetail.title);
+    formData.append('Description', this.courseDetail.description);
+    formData.append('FullDescription', this.courseDetail.fullDescription);
+    formData.append('CourseSessionNumber', this.courseDetail.courseSessionNumber.toString());
+    formData.append('CourseDurationInHours', this.courseDetail.courseDurationInHours.toString());
+    formData.append('Price', this.courseDetail.price.toString().replace(/,/g, ''));
+    formData.append('Syllabus', this.courseDetail.syllabus);
+    formData.append('SpotPlayerProductId', this.courseDetail.spotPlayerProductId);
+    formData.append('CourseStatus', this.courseDetail.courseStatus.toString());
+
+    // Sessions (array)
+    this.courseDetail.sessions.forEach((session, index) => {
+      formData.append(`Sessions[${index}].Title`, session.title);
+      formData.append(`Sessions[${index}].Description`, session.description);
+      formData.append(`Sessions[${index}].Number`, session.number.toString());
+      formData.append(`Sessions[${index}].DownloadLink`, session.downloadLink);
+    });
+
+    // File uploads
+    if (this.selectedImageFile) {
+      formData.append('CourseImageFile', this.selectedImageFile);
+    }
+    if (this.selectedCoverImageFile) {
+      formData.append('CourseCoverImageFile', this.selectedCoverImageFile);
+    }
+    if (this.selectedVideoFile) {
+      formData.append('CourseVideoFile', this.selectedVideoFile);
+    }
+
+    const formDataEntries = (formData as any).entries();
+
+    for (const pair of formDataEntries) {
+      console.log(pair[0], pair[1]);
+    }
+
+    this.loadingService.show();
+
+    const apiCall = this.isAddMode
+      ? this.courseHttpService.addCourse(formData)
+      : this.courseHttpService.editCourse(formData);
+
+    apiCall.subscribe({
+      next: (response) => {
+        if (response.success) {
+          this.toastr.success(this.isAddMode ? Messages.Success.courseAddedSuccessfully : Messages.Success.courseEditedSuccessfully, '');
+        } else {
+          this.toastr.error(response.data ?? Messages.Errors.invalidRequest, Messages.Errors.error)
+        }
+        this.loadingService.hide();
+      },
+      error: () => {
+
+        this.loadingService.hide();
+      },
+    });
+  }
 }

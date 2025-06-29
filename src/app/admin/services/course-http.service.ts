@@ -62,4 +62,42 @@ export class CourseHttpService {
     });
     return params;
   }
+
+  addCourse(course: FormData): Observable<IApiResponse<null>> {
+    return this.http.post<IApiResponse<null>>(`${this.baseUrl}/api/mazmon/courses/add-course`, course).pipe(
+      catchError((error) => {
+        if (error.status === 440) {
+          this.toastr.error(Messages.Errors.fileSizeTooLarge, Messages.Errors.error);
+        } else if (error.status === 441) {
+          this.toastr.error(Messages.Errors.invalidImage, Messages.Errors.error);
+        } else if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
+        } else if (error.status === 401) {
+          this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+        return throwError(() => error);
+      })
+    );
+  }
+
+  editCourse(course: FormData): Observable<IApiResponse<null>> {
+    return this.http.post<IApiResponse<null>>(`${this.baseUrl}/api/mazmon/courses/edit-course`, course).pipe(
+      catchError((error) => {
+        if (error.status === 440) {
+          this.toastr.error(Messages.Errors.fileSizeTooLarge, Messages.Errors.error);
+        } else if (error.status === 441) {
+          this.toastr.error(Messages.Errors.invalidImage, Messages.Errors.error);
+        } else if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
+        } else if (error.status === 401) {
+          this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+        return throwError(() => error);
+      })
+    );
+  }
 }

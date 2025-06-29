@@ -2,6 +2,13 @@
 
 <div class="p-6 space-y-6">
     <div class="overflow-x-auto">
+        <div class="mb-2 p-4">
+            <a type="button" [routerLink]="['/mazmon/course-detail']"
+                class="bg-green-600 text-white px-4 py-1 rounded hover:bg-green-700">
+                + {{Messages.Buttons.addSession}}
+            </a>
+        </div>
+
         <table class="min-w-full border border-gray-300">
             <thead class="bg-gray-100">
                 <tr>
@@ -17,7 +24,7 @@
                     <td class="px-4 py-2 border">{{ course.title }}</td>
                     <td class="px-4 py-2 border">{{ course.price | number:'1.0-0' }}</td>
                     <td class="px-4 py-2 border border-gray-800 text-center text-blue-600"><a
-                            [routerLink]="[course.id]">{{Messages.TableHeaders.edit}}</a></td>
+                            [routerLink]="['/mazmon/course-detail', course.id]">{{Messages.TableHeaders.edit}}</a></td>
                 </tr>
             </tbody>
         </table>
