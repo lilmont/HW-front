@@ -2,21 +2,21 @@
 </h1>
 
 
-<form (ngSubmit)="AddOrEditCourse()" class="mx-auto p-6 bg-white rounded shadow space-y-6">
+<form [formGroup]="courseForm" (ngSubmit)="AddOrEditCourse()" class="mx-auto p-6 bg-white rounded shadow space-y-6">
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <!-- ID (readonly) -->
         <div>
             <label class="block mb-1 font-semibold text-gray-700">{{Messages.TableHeaders.id}}</label>
-            <input type="number" [value]="courseDetail.id" readonly
-                class="border rounded px-3 py-2 w-full bg-gray-100 cursor-not-allowed" />
+            <input formControlName="id" type="number" readonly
+                class="border rounded px-3 py-2 w-full bg-gray-100 cursor-not-allowed">
         </div>
 
         <!-- Date Created (readonly) -->
         <div>
             <label class="block mb-1 font-semibold text-gray-700">{{Messages.Labels.dateCreated}}</label>
-            <input type="text" [value]="courseDetail.dateCreated | jalaliDate" readonly
-                class="border rounded px-3 py-2 w-full bg-gray-100 cursor-not-allowed" />
+            <input [value]="courseForm.get('dateCreated')?.value | jalaliDate" type="text" readonly
+                class="border rounded px-3 py-2 w-full bg-gray-100 cursor-not-allowed">
         </div>
     </div>
 
@@ -24,13 +24,23 @@
         <!-- Title -->
         <div>
             <label class="block mb-1 font-semibold text-gray-700">{{Messages.TableHeaders.title}}</label>
-            <input type="text" [(ngModel)]="courseDetail.title" name="title" class="border rounded px-3 py-2 w-full" />
+            <input formControlName="title" class="border rounded px-3 py-2 w-full"
+                [class.border-red-500]="courseForm.get('title')?.invalid && courseForm.get('title')?.touched">
+            <div *ngIf="courseForm.get('title')?.invalid && courseForm.get('title')?.touched"
+                class="text-red-600 text-sm mt-1">
+                {{Messages.Errors.titleIsRequired}}
+            </div>
         </div>
+
         <!-- Description -->
         <div>
             <label class="block mb-1 font-semibold text-gray-700">{{Messages.Headers.courseDescription}}</label>
-            <textarea [(ngModel)]="courseDetail.description" name="description" rows="4"
-                class="border rounded px-3 py-2 w-full"></textarea>
+            <textarea formControlName="description" class="border rounded px-3 py-2 w-full" rows="4"
+                [class.border-red-500]="courseForm.get('description')?.invalid && courseForm.get('description')?.touched"></textarea>
+            <div *ngIf="courseForm.get('description')?.invalid && courseForm.get('description')?.touched"
+                class="text-red-600 text-sm mt-1">
+                {{Messages.Errors.descriptionIsRequired}}
+            </div>
         </div>
     </div>
 
@@ -38,15 +48,24 @@
         <!-- Full Description -->
         <div>
             <label class="block mb-1 font-semibold text-gray-700">{{Messages.Headers.courseFullDescription}}</label>
-            <textarea [(ngModel)]="courseDetail.fullDescription" name="fullDescription" rows="4"
-                class="border rounded px-3 py-2 w-full"></textarea>
+            <textarea formControlName="fullDescription" class="border rounded px-3 py-2 w-full" rows="4"
+                [class.border-red-500]="courseForm.get('fullDescription')?.invalid && courseForm.get('fullDescription')?.touched"></textarea>
+            <div *ngIf="courseForm.get('fullDescription')?.invalid && courseForm.get('fullDescription')?.touched"
+                class="text-red-600 text-sm mt-1">
+                {{Messages.Errors.fullDescriptionIsRequired}}
+            </div>
         </div>
+
         <!-- Syllabus -->
         <div>
             <label class="block mb-1 font-semibold text-gray-700">{{Messages.Headers.syllabus}}</label>
-            <quill-editor [(ngModel)]="courseDetail.syllabus" name="syllabus" [style]="{height: '200px'}"
-                dir="ltr"></quill-editor>
-
+            <quill-editor formControlName="syllabus" [style]="{height: '200px'}" dir="ltr"
+                [class.border-red-500]="courseForm.get('syllabus')?.invalid && courseForm.get('syllabus')?.touched">
+            </quill-editor>
+            <div *ngIf="courseForm.get('syllabus')?.invalid && courseForm.get('syllabus')?.touched"
+                class="text-red-600 text-sm mt-1">
+                {{Messages.Errors.syllabusIsRequired}}
+            </div>
         </div>
     </div>
 
@@ -56,14 +75,24 @@
             <label for="price" class="block mb-1 font-semibold text-gray-700">
                 {{Messages.Labels.courseSessionNumber}}
             </label>
-            <input type="number" [(ngModel)]="courseDetail.courseSessionNumber" name="courseSessionNumber"
-                class="border rounded px-3 py-2 w-full" dir="ltr" />
+            <input type="number" formControlName="courseSessionNumber" class="border rounded px-3 py-2 w-full" dir="ltr"
+                [class.border-red-500]="courseForm.get('courseSessionNumber')?.invalid && courseForm.get('courseSessionNumber')?.touched">
+            <div *ngIf="courseForm.get('courseSessionNumber')?.invalid && courseForm.get('courseSessionNumber')?.touched"
+                class="text-red-600 text-sm mt-1">
+                {{Messages.Errors.courseSessionNumberIsRequired}}
+            </div>
         </div>
+
         <!-- Course Duration -->
         <div>
             <label class="block mb-1 font-semibold text-gray-700">{{Messages.Labels.courseDurationInHours}}</label>
-            <input type="number" [(ngModel)]="courseDetail.courseDurationInHours" name="courseDurationInHours"
-                class="border rounded px-3 py-2 w-full" dir="ltr" />
+            <input type="number" formControlName="courseDurationInHours" class="border rounded px-3 py-2 w-full"
+                dir="ltr"
+                [class.border-red-500]="courseForm.get('courseDurationInHours')?.invalid && courseForm.get('courseDurationInHours')?.touched">
+            <div *ngIf="courseForm.get('courseDurationInHours')?.invalid && courseForm.get('courseDurationInHours')?.touched"
+                class="text-red-600 text-sm mt-1">
+                {{Messages.Errors.courseDurationInHoursIsRequired}}
+            </div>
         </div>
     </div>
 
@@ -73,14 +102,24 @@
             <label for="price" class="block mb-1 font-semibold text-gray-700">
                 {{Messages.TableHeaders.price}}
             </label>
-            <input type="text" hwAmount id="price" [(ngModel)]="courseDetail.price" name="price" dir="ltr"
-                class="border rounded px-3 py-2 w-full" [placeholder]="Messages.TableHeaders.price" />
+            <input type="text" hwAmount formControlName="price" class="w-full border rounded px-3 py-2"
+                [class.border-red-500]="courseForm.get('price')?.invalid && courseForm.get('price')?.touched" dir="ltr">
+            <div *ngIf="courseForm.get('price')?.invalid && courseForm.get('price')?.touched"
+                class="text-red-600 text-sm mt-1">
+                {{Messages.Errors.priceIsRequired}}
+            </div>
         </div>
+
         <!-- SpotPlayer Id -->
         <div>
             <label class="block mb-1 font-semibold text-gray-700">{{Messages.Headers.spotPlayerProductId}}</label>
-            <input type="text" [(ngModel)]="courseDetail.spotPlayerProductId" name="spotPlayerProductId"
-                class="border rounded px-3 py-2 w-full" dir="ltr" />
+            <input type="text" formControlName="spotPlayerProductId" class="w-full border rounded px-3 py-2"
+                [class.border-red-500]="courseForm.get('spotPlayerProductId')?.invalid && courseForm.get('spotPlayerProductId')?.touched"
+                dir="ltr">
+            <div *ngIf="courseForm.get('spotPlayerProductId')?.invalid && courseForm.get('spotPlayerProductId')?.touched"
+                class="text-red-600 text-sm mt-1">
+                {{Messages.Errors.spotPlayerProductIdIsRequired}}
+            </div>
         </div>
     </div>
 
@@ -88,107 +127,55 @@
         <!-- Status -->
         <div>
             <label for="courseStatus" class="text-sm block mb-1">{{Messages.TableHeaders.status}}</label>
-            <select id="courseStatus" [(ngModel)]="courseDetail.courseStatus" name="courseStatus"
-                class="border rounded p-2 w-full">
-                <option [ngValue]="0">{{Messages.Headers.comingSoon}}</option>
-                <option [ngValue]="1">{{Messages.Headers.InProgress}}</option>
-                <option [ngValue]="2">{{Messages.Headers.completed}}</option>
+            <select formControlName="courseStatus" class="w-full border rounded px-3 py-2">
+                <option [value]="0">{{Messages.Headers.comingSoon}}</option>
+                <option [value]="1">{{Messages.Headers.InProgress}}</option>
+                <option [value]="2">{{Messages.Headers.completed}}</option>
             </select>
         </div>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div class="flex flex-col items-center mb-10">
-            <div class="relative border border-gray-300 rounded overflow-hidden">
-                <label class="block mb-1 font-semibold text-gray-700">{{Messages.Headers.courseImage}}</label>
+        <div>
+            <label class="block mb-1">{{Messages.Headers.courseImage}}</label>
+            <input type="file" accept="image/*" (change)="onCourseImageSelect($event)">
+            <div *ngIf="courseForm.get('courseImage')?.value || imagePreviewUrl">
+                <img [src]="courseImageUrl" class="h-24 mt-2">
+            </div>
 
-                <!-- Image preview -->
-                <img *ngIf="imagePreviewUrl || (courseDetail.courseImage && courseDetail.courseImage.trim() !== '')"
-                    [src]="imagePreviewUrl ? imagePreviewUrl : baseUrl + '/uploads/courses/images/' + courseDetail.courseImage"
-                    class="w-full h-full object-cover bg-gray-100" alt="Course Image" />
-
-                <!-- Placeholder if no image -->
-                <div *ngIf="!imagePreviewUrl && (!courseDetail.courseImage || courseDetail.courseImage.trim() === '')"
-                    class="flex items-center justify-center bg-gray-100 text-gray-500 w-64 h-64">
-                    No image uploaded
-                </div>
-
-                <!-- Upload button -->
-                <label for="imageUpload"
-                    class="absolute bottom-0 right-0 bg-custom-600 hover:bg-custom-700 text-white p-2 rounded-full cursor-pointer"
-                    title="Upload Image">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L7 21H3v-4L16.732 3.732z">
-                        </path>
-                    </svg>
-                </label>
-                <input id="imageUpload" type="file" accept="image/*" (change)="onCourseImageSelect($event)"
-                    class="hidden" />
+            <div *ngIf="courseForm.get('courseImageFile')?.invalid && courseForm.get('courseImageFile')?.touched"
+                class="text-red-600 text-sm mt-1">
+                {{Messages.Errors.courseImageIsRequired}}
             </div>
         </div>
 
-        <div class="flex flex-col items-center mb-10">
-            <div class="relative border border-gray-300 rounded overflow-hidden">
-                <label class="block mb-1 font-semibold text-gray-700">{{Messages.Headers.courseCoverImage}}</label>
+        <div>
+            <label class="block mb-1">{{Messages.Headers.courseCoverImage}}</label>
+            <input type="file" accept="image/*" (change)="onCourseCoverImageSelect($event)">
+            <div *ngIf="courseForm.get('courseCoverImage')?.value || imageCoverPreviewUrl">
+                <img [src]="courseCoverImageUrl" class="h-24 mt-2">
+            </div>
 
-                <!-- Image preview -->
-                <img *ngIf="imageCoverPreviewUrl || (courseDetail.courseCoverImage && courseDetail.courseCoverImage.trim() !== '')"
-                    [src]="imageCoverPreviewUrl ? imageCoverPreviewUrl : baseUrl + '/uploads/courses/images/' + courseDetail.courseCoverImage"
-                    class="w-full h-full object-cover bg-gray-100" alt="Course Cover Image" />
-
-                <!-- Placeholder if no image -->
-                <div *ngIf="!imageCoverPreviewUrl && (!courseDetail.courseCoverImage || courseDetail.courseCoverImage.trim() === '')"
-                    class="flex items-center justify-center bg-gray-100 text-gray-500 w-64 h-64">
-                    No image uploaded
-                </div>
-
-                <!-- Upload button -->
-                <label for="imageCoverUpload"
-                    class="absolute bottom-0 right-0 bg-custom-600 hover:bg-custom-700 text-white p-2 rounded-full cursor-pointer"
-                    title="Upload Image">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L7 21H3v-4L16.732 3.732z">
-                        </path>
-                    </svg>
-                </label>
-                <input id="imageCoverUpload" type="file" accept="image/*" (change)="onCourseCoverImageSelect($event)"
-                    class="hidden" />
+            <div *ngIf="courseForm.get('courseCoverImageFile')?.invalid && courseForm.get('courseCoverImageFile')?.touched"
+                class="text-red-600 text-sm mt-1">
+                {{Messages.Errors.courseImageIsRequired}}
             </div>
         </div>
 
     </div>
 
-    <div class="flex flex-col items-center mb-10">
-        <div class="relative w-full h-64 border border-gray-300 rounded overflow-hidden">
-            <label class="block mb-1 font-semibold text-gray-700">{{Messages.Headers.courseVideo}}</label>
-
-            <!-- Video preview: show selected video preview if any, else existing video -->
-            <video *ngIf="videoPreviewUrl || (courseDetail.courseVideo && courseDetail.courseVideo.trim() !== '')"
-                [src]="videoPreviewUrl ? videoPreviewUrl : baseUrl + '/uploads/courses/videos/' + courseDetail.courseVideo"
-                controls class="w-full h-full object-contain bg-black"></video>
-
-            <!-- Placeholder if no video to show -->
-            <div *ngIf="!videoPreviewUrl && (!courseDetail.courseVideo || courseDetail.courseVideo.trim() === '')"
-                class="flex items-center justify-center w-full h-full bg-gray-100 text-gray-500">
-                No video uploaded
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+            <label class="block mb-1">{{Messages.Headers.courseVideo}}</label>
+            <input type="file" accept="video/*" (change)="onVideoSelect($event)">
+            <div *ngIf="courseForm.get('courseVideo')?.value || videoPreviewUrl">
+                <video [src]="courseVideoUrl" controls class="h-32 mt-2"></video>
             </div>
 
-            <!-- Upload button -->
-            <label for="videoUpload"
-                class="absolute bottom-0 right-0 bg-custom-600 hover:bg-custom-700 text-white p-2 rounded-full cursor-pointer"
-                title="Upload Video">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L7 21H3v-4L16.732 3.732z">
-                    </path>
-                </svg>
-            </label>
-            <input id="videoUpload" type="file" accept="video/*" (change)="onVideoSelect($event)" class="hidden" />
+            <div *ngIf="courseForm.get('courseVideoFile')?.invalid && courseForm.get('courseVideoFile')?.touched"
+                class="text-red-600 text-sm mt-1">
+                {{Messages.Errors.courseVideoFileIsRequired}}
+            </div>
         </div>
     </div>
 
@@ -203,48 +190,64 @@
             </button>
         </div>
 
-        <table class="min-w-full table-auto border border-gray-300">
-            <thead>
-                <tr class="bg-gray-100">
-                    <th class="border px-4 py-2 w-16">{{Messages.TableHeaders.id}}</th>
-                    <th class="border px-4 py-2 w-16">{{Messages.TableHeaders.sessionNumber}}</th>
-                    <th class="border px-4 py-2">{{Messages.TableHeaders.title}}</th>
-                    <th class="border px-4 py-2">{{Messages.TableHeaders.description}}</th>
-                    <th class="border px-4 py-2">{{Messages.TableHeaders.downloadLink}}</th>
-                    <th class="border px-4 py-2">{{Messages.Buttons.delete}}</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let session of courseDetail.sessions; let i = index">
-                    <td class="border px-2 py-1 w-16">
-                        <input type="number" [(ngModel)]="session.id" name="sessionId{{i}}"
-                            class="border rounded px-2 py-1 w-full text-center cursor-not-allowed" readonly />
-                    </td>
-                    <td class="border px-2 py-1 w-16">
-                        <input type="number" [(ngModel)]="session.number" name="sessionNumber{{i}}"
-                            class="border rounded px-2 py-1 w-full text-center" />
-                    </td>
-                    <td class="border px-2 py-1">
-                        <input type="text" [(ngModel)]="session.title" name="sessionTitle{{i}}"
-                            class="border rounded px-2 py-1 w-full" />
-                    </td>
-                    <td class="border px-2 py-1">
-                        <input type="text" [(ngModel)]="session.description" name="sessionDesc{{i}}"
-                            class="border rounded px-2 py-1 w-full" />
-                    </td>
-                    <td class="border px-2 py-1" dir="ltr">
-                        <input type="text" [(ngModel)]="session.downloadLink" name="sessionDownload{{i}}"
-                            class="border rounded px-2 py-1 w-full" />
-                    </td>
-                    <td class="border px-2 py-1 text-center">
-                        <button type="button" (click)="deleteSession(i)"
-                            class="cursor-pointer text-red-600 hover:text-red-800">
-                            {{Messages.Buttons.delete}}
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="overflow-x-auto">
+            <table class="w-full min-w-max table-auto border border-gray-300">
+                <thead class="bg-gray-100">
+                    <tr>
+                        <th class="border px-4 py-2 w-16">{{Messages.TableHeaders.id}}</th>
+                        <th class="border px-4 py-2 w-32">{{Messages.TableHeaders.sessionNumber}}</th>
+                        <th class="border px-4 py-2">{{Messages.TableHeaders.title}}</th>
+                        <th class="border px-4 py-2">{{Messages.TableHeaders.description}}</th>
+                        <th class="border px-4 py-2">{{Messages.TableHeaders.downloadLink}}</th>
+                        <th class="border px-4 py-2 w-16">{{Messages.Buttons.delete}}</th>
+                    </tr>
+                </thead>
+                <tbody formArrayName="sessions">
+                    <tr *ngFor="let session of sessions.controls; let i = index" [formGroupName]="i">
+                        <td class="border px-2 py-1">
+                            <input type="number" formControlName="id"
+                                class="w-20 border rounded px-2 py-1 text-center cursor-not-allowed" readonly>
+                        </td>
+                        <td class="border px-2 py-1">
+                            <input type="number" formControlName="number"
+                                class="w-20 border rounded px-2 py-1 text-center">
+                            <div *ngIf="session.get('number')?.invalid && session.get('number')?.touched"
+                                class="text-red-600 text-xs mt-1">
+                                {{Messages.Errors.sessionNumberIsRequired}}
+                            </div>
+                        </td>
+                        <td class="border px-2 py-1">
+                            <input type="text" formControlName="title" class="w-full border rounded px-2 py-1">
+                            <div *ngIf="session.get('title')?.invalid && session.get('title')?.touched"
+                                class="text-red-600 text-xs mt-1">
+                                {{Messages.Errors.sessionTitleIsRequired}}
+                            </div>
+                        </td>
+                        <td class="border px-2 py-1">
+                            <input type="text" formControlName="description" class="w-full border rounded px-2 py-1">
+                        </td>
+                        <td class="border px-2 py-1">
+                            <input type="text" formControlName="downloadLink" class="w-full border rounded px-2 py-1"
+                                dir="ltr">
+                            <div *ngIf="session.get('downloadLink')?.invalid && session.get('downloadLink')?.touched"
+                                class="text-red-600 text-xs mt-1">
+                                {{Messages.Errors.sessionDownloadLinkIsRequired}}
+                            </div>
+                        </td>
+                        <td class="border px-2 py-1">
+                            <button type="button" (click)="deleteSession(i)"
+                                class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600">
+                                {{Messages.Buttons.delete}}
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div *ngIf="hasDuplicateSessionNumber" class="text-red-600 text-sm mt-2">
+            {{Messages.Errors.duplicateSessionNumber}}
+        </div>
     </div>
 
     <div class="pt-4">

@@ -5,7 +5,7 @@ import { DashboardSidebarComponent } from './components/dashboard-sidebar/dashbo
 import { DashboardLayoutComponent } from './components/dashboard-layout/dashboard-layout.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
 import { LoginComponent } from './pages/login/login.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AdminRoutingModule } from './admin-routing.module';
 import { PaginationComponent } from './shared/pagination/pagination.component';
@@ -37,6 +37,7 @@ import { QuillModule } from 'ngx-quill';
     CoreModule,
     SharedModule,
     QuillModule,
+    ReactiveFormsModule
   ]
 })
 export class AdminModule { }

@@ -1,11 +1,12 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
-import { CourseDetail, CourseSession, ICourseDetail } from '../../models/ICourseDetail';
 import { Messages } from '../../../texts/messages';
 import { environment } from '../../../../environments/environment';
 import { CourseHttpService } from '../../services/course-http.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LoadingService } from '../../../core/services/loading.service';
 import { ToastrService } from 'ngx-toastr';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { uniqueSessionNumberValidator } from '../../validators/custom-validators';
 
 @Component({
   selector: 'hw-course-detail',
@@ -16,75 +17,176 @@ export class CourseDetailComponent {
   isAddMode: boolean = true;
   Messages = Messages;
   baseUrl = environment.apiBaseUrl;
+  courseForm!: FormGroup;
   courseId?: number = undefined;
-  courseDetail: ICourseDetail = new CourseDetail();
 
-  selectedVideoFile?: File;
   videoPreviewUrl?: string;
-
-  selectedCoverImageFile?: File;
   imageCoverPreviewUrl?: string;
-
-  selectedImageFile?: File;
   imagePreviewUrl?: string;
 
   constructor(private route: ActivatedRoute,
     private loadingService: LoadingService,
     private courseHttpService: CourseHttpService,
     private toastr: ToastrService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private fb: FormBuilder,
+    private router: Router
   ) { }
 
   ngOnInit() {
+    this.courseForm = this.fb.group({
+      id: [null],
+      title: ['', Validators.required],
+      description: ['', Validators.required],
+      fullDescription: ['', Validators.required],
+      courseSessionNumber: [1, [Validators.required, Validators.min(1)]],
+      courseDurationInHours: [1, [Validators.required, Validators.min(1)]],
+      price: [0, [Validators.required, Validators.min(0)]],
+      syllabus: ['', Validators.required],
+      spotPlayerProductId: ['', Validators.required],
+      courseStatus: [0, Validators.required],
+      sessions: this.fb.array([], uniqueSessionNumberValidator),
+      dateCreated: [null],
+
+      courseImage: [''],
+      courseImageFile: [null],
+      courseCoverImage: [''],
+      courseCoverImageFile: [null],
+      courseVideo: [''],
+      courseVideoFile: [null]
+    });
+
     this.route.paramMap.subscribe(params => {
       this.courseId = Number(params.get('id'));
-    });
-    if (this.courseId) {
-      this.isAddMode = false;
-      this.getCourseDetail(this.courseId);
-    }
-  }
+      this.isAddMode = !this.courseId;
 
+      const imgFileCtrl = this.courseForm.get('courseImageFile');
+      const coverFileCtrl = this.courseForm.get('courseCoverImageFile');
+      const videoFileCtrl = this.courseForm.get('courseVideoFile');
+
+      if (this.isAddMode) {
+        imgFileCtrl?.setValidators(Validators.required);
+        coverFileCtrl?.setValidators(Validators.required);
+        videoFileCtrl?.setValidators(Validators.required);
+      } else {
+        imgFileCtrl?.clearValidators();
+        coverFileCtrl?.clearValidators();
+        videoFileCtrl?.clearValidators();
+      }
+
+      imgFileCtrl?.updateValueAndValidity();
+      coverFileCtrl?.updateValueAndValidity();
+      videoFileCtrl?.updateValueAndValidity();
+
+      if (!this.isAddMode) {
+        this.getCourseDetail(this.courseId);
+      }
+    });
+  }
   getCourseDetail(id: number): void {
     this.loadingService.show();
     this.courseHttpService.getCourseDetail(id).subscribe({
       next: (response) => {
         if (response.success) {
-          this.courseDetail = response.data;
+          const course = response.data;
+
+          // Populate simple fields
+          this.courseForm.patchValue({
+            id: course.id,
+            title: course.title,
+            description: course.description,
+            fullDescription: course.fullDescription,
+            courseSessionNumber: course.courseSessionNumber,
+            courseDurationInHours: course.courseDurationInHours,
+            price: course.price,
+            syllabus: course.syllabus,
+            spotPlayerProductId: course.spotPlayerProductId,
+            courseStatus: course.courseStatus,
+            dateCreated: course.dateCreated,
+            courseImage: course.courseImage,
+            courseCoverImage: course.courseCoverImage,
+            courseVideo: course.courseVideo,
+          });
+
+          // Populate sessions
+          this.sessions.clear();
+          if (course.sessions?.length) {
+            course.sessions.forEach(session => {
+              this.sessions.push(this.fb.group({
+                id: [session.id],
+                title: [session.title, Validators.required],
+                description: [session.description],
+                number: [session.number, [Validators.required, Validators.min(1)]],
+                downloadLink: [session.downloadLink, Validators.required]
+              }));
+            });
+          }
         } else {
-          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error)
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
         }
         this.loadingService.hide();
       },
       error: () => {
         this.loadingService.hide();
       }
-    })
+    });
+  }
+
+  get courseImageUrl(): string {
+    return this.imagePreviewUrl
+      ? this.imagePreviewUrl
+      : `${this.baseUrl}/uploads/courses/images/${this.courseForm.get('courseImage')?.value}`;
+  }
+
+  get courseCoverImageUrl(): string {
+    return this.imageCoverPreviewUrl
+      ? this.imageCoverPreviewUrl
+      : `${this.baseUrl}/uploads/courses/images/${this.courseForm.get('courseCoverImage')?.value}`;
+  }
+
+  get courseVideoUrl(): string {
+    return this.videoPreviewUrl
+      ? this.videoPreviewUrl
+      : `${this.baseUrl}/uploads/courses/videos/${this.courseForm.get('courseVideo')?.value}`;
+  }
+
+  get sessions(): FormArray {
+    return this.courseForm.get('sessions') as FormArray;
   }
 
   addSession() {
-    const newSession = new CourseSession({
-      number: (this.courseDetail.sessions.length + 1),
-      title: '',
-      description: '',
-      downloadLink: ''
+    const numbers = this.sessions.controls
+      .map(control => control.get('number')?.value)
+      .filter(n => n != null);
+    const nextNumber = numbers.length != 0 ? Math.max(...numbers) + 1 : 1;
+
+    const sessionGroup = this.fb.group({
+      id: [null],
+      title: ['', Validators.required],
+      description: [''],
+      number: [nextNumber, [Validators.required, Validators.min(1)]],
+      downloadLink: ['', Validators.required]
     });
-    this.courseDetail.sessions.push(newSession);
+
+    this.sessions.push(sessionGroup);
   }
 
   deleteSession(index: number) {
-    this.courseDetail.sessions.splice(index, 1);
+    this.sessions.removeAt(index);
   }
+  get hasDuplicateSessionNumber() {
+    return this.sessions.errors?.['duplicateSessionNumber'];
+  }
+
   onCourseImageSelect(event: Event): void {
     const input = event.target as HTMLInputElement;
     if (!input.files || input.files.length === 0) {
       this.imagePreviewUrl = undefined;
+      this.courseForm.get('courseImageFile')?.setValue(null);
       return;
     }
 
     const file = input.files[0];
-
-    this.selectedImageFile = file;
 
     // Clean previous preview
     if (this.imagePreviewUrl) {
@@ -93,17 +195,17 @@ export class CourseDetailComponent {
 
     // Create preview URL
     this.imagePreviewUrl = URL.createObjectURL(file);
+    this.courseForm.get('courseImageFile')?.setValue(file);
   }
   onCourseCoverImageSelect(event: Event): void {
     const input = event.target as HTMLInputElement;
     if (!input.files || input.files.length === 0) {
       this.imageCoverPreviewUrl = undefined;
+      this.courseForm.get('courseCoverImageFile')?.setValue(null);
       return;
     }
 
     const file = input.files[0];
-
-    this.selectedCoverImageFile = file;
 
     // Clean previous preview
     if (this.imageCoverPreviewUrl) {
@@ -112,19 +214,18 @@ export class CourseDetailComponent {
 
     // Create preview URL
     this.imageCoverPreviewUrl = URL.createObjectURL(file);
+    this.courseForm.get('courseCoverImageFile')?.setValue(file);
   }
 
   onVideoSelect(event: Event): void {
     const input = event.target as HTMLInputElement;
     if (!input.files || input.files.length === 0) {
       this.videoPreviewUrl = undefined;
+      this.courseForm.get('courseVideoFile')?.setValue(null);
       return;
     }
 
     const file = input.files[0];
-    console.log('File selected:', file.name);
-
-    this.selectedVideoFile = file;
 
     // Revoke previous preview URL if it exists
     if (this.videoPreviewUrl) {
@@ -133,8 +234,7 @@ export class CourseDetailComponent {
 
     // Create a preview URL from the file
     this.videoPreviewUrl = URL.createObjectURL(file);
-
-    console.log('Video preview URL set:', this.videoPreviewUrl);
+    this.courseForm.get('courseVideoFile')?.setValue(file);
     this.cdr.detectChanges();
   }
 
@@ -152,24 +252,28 @@ export class CourseDetailComponent {
   }
 
   AddOrEditCourse(): void {
-    const formData = new FormData();
-
-    if (this.courseDetail.id) {
-      formData.append('Id', this.courseDetail.id.toString());
+    if (this.courseForm.invalid) {
+      this.courseForm.markAllAsTouched();
+      return;
     }
 
-    formData.append('Title', this.courseDetail.title);
-    formData.append('Description', this.courseDetail.description);
-    formData.append('FullDescription', this.courseDetail.fullDescription);
-    formData.append('CourseSessionNumber', this.courseDetail.courseSessionNumber.toString());
-    formData.append('CourseDurationInHours', this.courseDetail.courseDurationInHours.toString());
-    formData.append('Price', this.courseDetail.price.toString().replace(/,/g, ''));
-    formData.append('Syllabus', this.courseDetail.syllabus);
-    formData.append('SpotPlayerProductId', this.courseDetail.spotPlayerProductId);
-    formData.append('CourseStatus', this.courseDetail.courseStatus.toString());
+    const formValues = this.courseForm.value;
+    const formData = new FormData();
+
+    formData.append('Id', formValues.id ?? '');
+    formData.append('Title', formValues.title);
+    formData.append('Description', formValues.description);
+    formData.append('FullDescription', formValues.fullDescription);
+    formData.append('CourseSessionNumber', formValues.courseSessionNumber.toString());
+    formData.append('CourseDurationInHours', formValues.courseDurationInHours.toString());
+    formData.append('Price', formValues.price.toString().replace(/,/g, ''));
+    formData.append('Syllabus', formValues.syllabus);
+    formData.append('SpotPlayerProductId', formValues.spotPlayerProductId);
+    formData.append('CourseStatus', formValues.courseStatus.toString());
 
     // Sessions (array)
-    this.courseDetail.sessions.forEach((session, index) => {
+    formValues.sessions.forEach((session: any, index: number) => {
+      formData.append(`Sessions[${index}].Id`, session.id ?? '');
       formData.append(`Sessions[${index}].Title`, session.title);
       formData.append(`Sessions[${index}].Description`, session.description);
       formData.append(`Sessions[${index}].Number`, session.number.toString());
@@ -177,14 +281,14 @@ export class CourseDetailComponent {
     });
 
     // File uploads
-    if (this.selectedImageFile) {
-      formData.append('CourseImageFile', this.selectedImageFile);
+    if (this.courseForm.get('courseImageFile')) {
+      formData.append('CourseImageFile', this.courseForm.get('courseImageFile')?.value);
     }
-    if (this.selectedCoverImageFile) {
-      formData.append('CourseCoverImageFile', this.selectedCoverImageFile);
+    if (this.courseForm.get('courseCoverImageFile')) {
+      formData.append('CourseCoverImageFile', this.courseForm.get('courseCoverImageFile')?.value);
     }
-    if (this.selectedVideoFile) {
-      formData.append('CourseVideoFile', this.selectedVideoFile);
+    if (this.courseForm.get('courseVideoFile')) {
+      formData.append('CourseVideoFile', this.courseForm.get('courseVideoFile')?.value);
     }
 
     const formDataEntries = (formData as any).entries();
@@ -203,6 +307,8 @@ export class CourseDetailComponent {
       next: (response) => {
         if (response.success) {
           this.toastr.success(this.isAddMode ? Messages.Success.courseAddedSuccessfully : Messages.Success.courseEditedSuccessfully, '');
+          if (this.isAddMode)
+            this.router.navigate(['/mazmon/courses']);
         } else {
           this.toastr.error(response.data ?? Messages.Errors.invalidRequest, Messages.Errors.error)
         }
