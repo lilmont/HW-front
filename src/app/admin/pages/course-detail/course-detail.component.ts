@@ -309,6 +309,8 @@ export class CourseDetailComponent {
           this.toastr.success(this.isAddMode ? Messages.Success.courseAddedSuccessfully : Messages.Success.courseEditedSuccessfully, '');
           if (this.isAddMode)
             this.router.navigate(['/mazmon/courses']);
+          else
+            location.reload();
         } else {
           this.toastr.error(response.data ?? Messages.Errors.invalidRequest, Messages.Errors.error)
         }
