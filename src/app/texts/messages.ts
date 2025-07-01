@@ -63,7 +63,17 @@ export const Messages = {
         courseImageIsRequired: 'عکس دوره اجباری است',
         courseCoverImageFileIsRequired: 'کاور دوره اجباری است',
         courseVideoFileIsRequired: 'ویدیوی دوره اجباری است',
-        duplicateSessionNumber: 'شماره جلسه‌ها نباید تکراری باشند.'
+        duplicateSessionNumber: 'شماره جلسه‌ها نباید تکراری باشند.',
+        subscriptionDurationInMonthsIsRequired: 'مدت زمان اشتراک اجباری است',
+        pleskPlanTitleIsRequired: 'عنوان پلن در پلسک اجباری است',
+        serverLocationIsRequired: 'مکان سرور اجباری است',
+        storageIsRequired: 'فضای سرور اجباری است',
+        databaseNumberIsRequired: 'تعداد دیتابیس اجباری است',
+        subdomainNumberIsRequired: 'تعداد زیردامنه اجباری است',
+        domainNumberIsRequired: 'تعداد دامنه اجباری است',
+        emailLimitIsRequired: 'تعداد ایمیل',
+        supportedTechnologiesIsRequired: 'تکنولوژی ها اجباری است',
+        bandwidthIsRequired: 'پهنای باند اجباری است'
     },
     Success: {
         loginSuccessful: 'ورود با موفقیت انجام شد',
@@ -213,7 +223,18 @@ export const Messages = {
         deactivationDescription: 'علت غیرفعال کردن',
         dateCreated: 'تاریخ ثبت دوره',
         courseSessionNumber: 'تعداد جلسات دوره',
-        courseDurationInHours: 'تعداد ساعات دوره'
+        courseDurationInHours: 'تعداد ساعات دوره',
+        subscriptionDurationInMonths: 'طول اشتراک (به ماه)',
+        pleskPlanTitle: 'عنوان پلن در پلسک',
+        serverLocation: 'مکان سرور',
+        storage: 'فضا',
+        databaseNumber: 'تعداد دیتابیس',
+        subdomainNumber: 'تعداد زیردامنه',
+        domainNumber: 'تعداد دامنه',
+        emailLimit: 'تعداد ایمیل',
+        supportedTechnologies: 'تکنولوژی ها',
+        bandwidth: 'پهنای باند',
+        isInstallmentAvailable: 'امکان قسطی دارد؟'
     },
     Headers: {
         signup: 'ثبت نام',
@@ -315,7 +336,9 @@ export const Messages = {
         courseVideo: 'ویدیو دوره',
         projectManagement: 'مدیریت پروژه ها',
         hostManagement: 'مدیریت هاست',
-        hostList: 'لیست پلن ها'
+        hostList: 'لیست پلن ها',
+        addHostingPlan: 'افزودن پلن',
+        editHostingPlan: 'ویرایش پلن'
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'

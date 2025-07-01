@@ -16,6 +16,7 @@ import { CourseDetailComponent } from './pages/course-detail/course-detail.compo
 import { SharedModule } from '../shared/shared.module';
 import { QuillModule } from 'ngx-quill';
 import { HostListComponent } from './pages/host-list/host-list.component';
+import { HostDetailComponent } from './pages/host-detail/host-detail.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { HostListComponent } from './pages/host-list/host-list.component';
     UserDetailComponent,
     CourseListComponent,
     CourseDetailComponent,
-    HostListComponent
+    HostListComponent,
+    HostDetailComponent
   ],
   imports: [
     CommonModule,

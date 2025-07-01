@@ -1,0 +1,201 @@
+<h1 class="text-xl lg:text-2xl font-bold mb-6">
+    {{isAddMode ? Messages.Headers.addHostingPlan :Messages.Headers.editHostingPlan}}
+</h1>
+
+<form [formGroup]="hostingPlanForm" (ngSubmit)="AddOrEditHostingPlan()"
+    class="mx-auto p-6 bg-white rounded shadow space-y-6">
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- ID (readonly) -->
+        <div>
+            <label class="block mb-1 font-semibold text-gray-700">{{Messages.TableHeaders.id}}</label>
+            <input formControlName="id" type="number" readonly
+                class="border rounded px-3 py-2 w-full bg-gray-100 cursor-not-allowed">
+        </div>
+
+        <!-- Date Created (readonly) -->
+        <div>
+            <label class="block mb-1 font-semibold text-gray-700">{{Messages.Labels.dateCreated}}</label>
+            <input [value]="hostingPlanForm.get('dateCreated')?.value | jalaliDate" type="text" readonly
+                class="border rounded px-3 py-2 w-full bg-gray-100 cursor-not-allowed">
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Title -->
+        <div>
+            <label class="block mb-1 font-semibold text-gray-700">{{Messages.TableHeaders.title}}</label>
+            <input formControlName="title" class="border rounded px-3 py-2 w-full"
+                [class.border-red-500]="hostingPlanForm.get('title')?.invalid && hostingPlanForm.get('title')?.touched">
+            <div *ngIf="hostingPlanForm.get('title')?.invalid && hostingPlanForm.get('title')?.touched"
+                class="text-red-600 text-sm mt-1">
+                {{Messages.Errors.titleIsRequired}}
+            </div>
+        </div>
+
+        <!-- Description -->
+        <div>
+            <label class="block mb-1 font-semibold text-gray-700">{{Messages.TableHeaders.description}}</label>
+            <textarea formControlName="description" class="border rounded px-3 py-2 w-full" rows="4"
+                [class.border-red-500]="hostingPlanForm.get('description')?.invalid && hostingPlanForm.get('description')?.touched"></textarea>
+            <div *ngIf="hostingPlanForm.get('description')?.invalid && hostingPlanForm.get('description')?.touched"
+                class="text-red-600 text-sm mt-1">
+                {{Messages.Errors.descriptionIsRequired}}
+            </div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Price -->
+        <div>
+            <label for="price" class="block mb-1 font-semibold text-gray-700">
+                {{Messages.TableHeaders.price}}
+            </label>
+            <input type="text" hwAmount formControlName="price" class="w-full border rounded px-3 py-2"
+                [class.border-red-500]="hostingPlanForm.get('price')?.invalid && hostingPlanForm.get('price')?.touched"
+                dir="ltr">
+            <div *ngIf="hostingPlanForm.get('price')?.invalid && hostingPlanForm.get('price')?.touched"
+                class="text-red-600 text-sm mt-1">
+                {{Messages.Errors.priceIsRequired}}
+            </div>
+        </div>
+
+        <!-- Subscription Duration -->
+        <div>
+            <label
+                class="block mb-1 font-semibold text-gray-700">{{Messages.Labels.subscriptionDurationInMonths}}</label>
+            <input type="number" formControlName="subscriptionDurationInMonths" class="border rounded px-3 py-2 w-full"
+                dir="ltr"
+                [class.border-red-500]="hostingPlanForm.get('subscriptionDurationInMonths')?.invalid && hostingPlanForm.get('subscriptionDurationInMonths')?.touched">
+            <div *ngIf="hostingPlanForm.get('subscriptionDurationInMonths')?.invalid && hostingPlanForm.get('subscriptionDurationInMonths')?.touched"
+                class="text-red-600 text-sm mt-1">
+                {{Messages.Errors.subscriptionDurationInMonthsIsRequired}}
+            </div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Installment Status -->
+        <label class="inline-flex items-center">
+            <input type="checkbox" formControlName="isInstallmentAvailable"
+                class="form-checkbox h-5 w-5 text-blue-600" />
+            <span class="ml-2 text-gray-700 font-medium">
+                {{ Messages.Labels.isInstallmentAvailable }}
+            </span>
+        </label>
+
+        <!-- Plesk Plan Title -->
+        <div>
+            <label class="block mb-1 font-semibold text-gray-700">{{Messages.Labels.pleskPlanTitle}}</label>
+            <input formControlName="pleskPlanTitle" class="border rounded px-3 py-2 w-full"
+                [class.border-red-500]="hostingPlanForm.get('pleskPlanTitle')?.invalid && hostingPlanForm.get('pleskPlanTitle')?.touched"
+                dir="ltr">
+            <div *ngIf="hostingPlanForm.get('pleskPlanTitle')?.invalid && hostingPlanForm.get('pleskPlanTitle')?.touched"
+                class="text-red-600 text-sm mt-1">
+                {{Messages.Errors.pleskPlanTitleIsRequired}}
+            </div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Server Location -->
+        <div>
+            <label class="block mb-1 font-semibold text-gray-700">{{Messages.Labels.serverLocation}}</label>
+            <input formControlName="serverLocation" class="border rounded px-3 py-2 w-full"
+                [class.border-red-500]="hostingPlanForm.get('serverLocation')?.invalid && hostingPlanForm.get('serverLocation')?.touched">
+            <div *ngIf="hostingPlanForm.get('serverLocation')?.invalid && hostingPlanForm.get('serverLocation')?.touched"
+                class="text-red-600 text-sm mt-1">
+                {{Messages.Errors.serverLocationIsRequired}}
+            </div>
+        </div>
+
+        <!-- Storage -->
+        <div>
+            <label class="block mb-1 font-semibold text-gray-700">{{Messages.Labels.storage}}</label>
+            <input formControlName="storage" class="border rounded px-3 py-2 w-full"
+                [class.border-red-500]="hostingPlanForm.get('storage')?.invalid && hostingPlanForm.get('storage')?.touched">
+            <div *ngIf="hostingPlanForm.get('storage')?.invalid && hostingPlanForm.get('storage')?.touched"
+                class="text-red-600 text-sm mt-1">
+                {{Messages.Errors.storageIsRequired}}
+            </div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Database Number -->
+        <div>
+            <label class="block mb-1 font-semibold text-gray-700">{{Messages.Labels.databaseNumber}}</label>
+            <input formControlName="databaseNumber" class="border rounded px-3 py-2 w-full"
+                [class.border-red-500]="hostingPlanForm.get('databaseNumber')?.invalid && hostingPlanForm.get('databaseNumber')?.touched">
+            <div *ngIf="hostingPlanForm.get('databaseNumber')?.invalid && hostingPlanForm.get('databaseNumber')?.touched"
+                class="text-red-600 text-sm mt-1">
+                {{Messages.Errors.databaseNumberIsRequired}}
+            </div>
+        </div>
+
+        <!-- Subdomain Number -->
+        <div>
+            <label class="block mb-1 font-semibold text-gray-700">{{Messages.Labels.subdomainNumber}}</label>
+            <input formControlName="subdomainNumber" class="border rounded px-3 py-2 w-full"
+                [class.border-red-500]="hostingPlanForm.get('subdomainNumber')?.invalid && hostingPlanForm.get('subdomainNumber')?.touched">
+            <div *ngIf="hostingPlanForm.get('subdomainNumber')?.invalid && hostingPlanForm.get('subdomainNumber')?.touched"
+                class="text-red-600 text-sm mt-1">
+                {{Messages.Errors.subdomainNumberIsRequired}}
+            </div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Domain Number -->
+        <div>
+            <label class="block mb-1 font-semibold text-gray-700">{{Messages.Labels.domainNumber}}</label>
+            <input formControlName="domainNumber" class="border rounded px-3 py-2 w-full"
+                [class.border-red-500]="hostingPlanForm.get('domainNumber')?.invalid && hostingPlanForm.get('domainNumber')?.touched">
+            <div *ngIf="hostingPlanForm.get('domainNumber')?.invalid && hostingPlanForm.get('domainNumber')?.touched"
+                class="text-red-600 text-sm mt-1">
+                {{Messages.Errors.domainNumberIsRequired}}
+            </div>
+        </div>
+
+        <!-- Email Limit -->
+        <div>
+            <label class="block mb-1 font-semibold text-gray-700">{{Messages.Labels.emailLimit}}</label>
+            <input formControlName="emailLimit" class="border rounded px-3 py-2 w-full"
+                [class.border-red-500]="hostingPlanForm.get('emailLimit')?.invalid && hostingPlanForm.get('emailLimit')?.touched">
+            <div *ngIf="hostingPlanForm.get('emailLimit')?.invalid && hostingPlanForm.get('emailLimit')?.touched"
+                class="text-red-600 text-sm mt-1">
+                {{Messages.Errors.emailLimitIsRequired}}
+            </div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Supported Technologies -->
+        <div>
+            <label class="block mb-1 font-semibold text-gray-700">{{Messages.Labels.supportedTechnologies}}</label>
+            <input formControlName="supportedTechnologies" class="border rounded px-3 py-2 w-full"
+                [class.border-red-500]="hostingPlanForm.get('supportedTechnologies')?.invalid && hostingPlanForm.get('supportedTechnologies')?.touched">
+            <div *ngIf="hostingPlanForm.get('supportedTechnologies')?.invalid && hostingPlanForm.get('supportedTechnologies')?.touched"
+                class="text-red-600 text-sm mt-1">
+                {{Messages.Errors.supportedTechnologiesIsRequired}}
+            </div>
+        </div>
+
+        <!-- Bandwidth -->
+        <div>
+            <label class="block mb-1 font-semibold text-gray-700">{{Messages.Labels.bandwidth}}</label>
+            <input formControlName="bandwidth" class="border rounded px-3 py-2 w-full"
+                [class.border-red-500]="hostingPlanForm.get('bandwidth')?.invalid && hostingPlanForm.get('bandwidth')?.touched">
+            <div *ngIf="hostingPlanForm.get('bandwidth')?.invalid && hostingPlanForm.get('bandwidth')?.touched"
+                class="text-red-600 text-sm mt-1">
+                {{Messages.Errors.bandwidthIsRequired}}
+            </div>
+        </div>
+    </div>
+
+    <div class="pt-4">
+        <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">
+            {{Messages.Buttons.save}}
+        </button>
+    </div>
+</form>
