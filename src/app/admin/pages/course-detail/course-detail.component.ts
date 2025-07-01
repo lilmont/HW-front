@@ -291,12 +291,6 @@ export class CourseDetailComponent {
       formData.append('CourseVideoFile', this.courseForm.get('courseVideoFile')?.value);
     }
 
-    const formDataEntries = (formData as any).entries();
-
-    for (const pair of formDataEntries) {
-      console.log(pair[0], pair[1]);
-    }
-
     this.loadingService.show();
 
     const apiCall = this.isAddMode
