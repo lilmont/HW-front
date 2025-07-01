@@ -140,7 +140,8 @@ export const Messages = {
         search: 'جستجو',
         reset: 'ریست',
         addSession: 'افزودن جلسه',
-        delete: 'حذف'
+        delete: 'حذف',
+        addPlan: 'افزودن پلن'
     },
     Labels: {
         enterPhoneNumber: 'لطفا شماره موبایل خود را وارد کنید',
@@ -311,7 +312,10 @@ export const Messages = {
         sessions: 'جلسات',
         courseImage: 'عکس دوره (کارت دوره و صفحه دوره)',
         courseCoverImage: 'عکس دوره (داشبورد کاربر)',
-        courseVideo: 'ویدیو دوره'
+        courseVideo: 'ویدیو دوره',
+        projectManagement: 'مدیریت پروژه ها',
+        hostManagement: 'مدیریت هاست',
+        hostList: 'لیست پلن ها'
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'

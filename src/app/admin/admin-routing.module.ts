@@ -7,6 +7,7 @@ import { UserListComponent } from "./pages/user-list/user-list.component";
 import { UserDetailComponent } from "./pages/user-detail/user-detail.component";
 import { CourseListComponent } from "./pages/course-list/course-list.component";
 import { CourseDetailComponent } from "./pages/course-detail/course-detail.component";
+import { HostListComponent } from "./pages/host-list/host-list.component";
 
 const routes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -19,9 +20,18 @@ const routes: Routes = [
             { path: '', redirectTo: 'users', pathMatch: 'full' }, // default dashboard redirect
             { path: 'users', component: UserListComponent },
             { path: 'users/:id', component: UserDetailComponent },
+
             { path: 'courses', component: CourseListComponent },
             { path: 'courses/course-detail', component: CourseDetailComponent },
             { path: 'courses/course-detail/:id', component: CourseDetailComponent },
+
+            { path: 'projects', component: CourseListComponent },
+            { path: 'projects/project-detail', component: CourseDetailComponent },
+            { path: 'projects/project-detail/:id', component: CourseDetailComponent },
+
+            { path: 'hosting', component: HostListComponent },
+            { path: 'hosting/host-detail/', component: CourseDetailComponent },
+            { path: 'hosting/host-detail/:id', component: CourseDetailComponent },
         ]
     }
 ];
