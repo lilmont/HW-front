@@ -23,10 +23,10 @@ export class CourseListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.loadUsers();
+    this.loadCourses();
   }
 
-  loadUsers() {
+  loadCourses() {
     this.loadingService.show();
     this.courseHttpService.getPagedCourses(this.filters).subscribe({
       next: (response) => {
@@ -48,6 +48,6 @@ export class CourseListComponent implements OnInit {
 
   onPageChange(page: any) {
     this.filters.pageNumber = page;
-    this.loadUsers();
+    this.loadCourses();
   }
 }
