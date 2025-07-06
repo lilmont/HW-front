@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Messages } from '../../../texts/messages';
 import { environment } from '../../../../environments/environment';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -13,7 +13,7 @@ import { IHostingDetail } from '../../models/IHostingDetail';
   templateUrl: './host-detail.component.html',
   styleUrl: './host-detail.component.css'
 })
-export class HostDetailComponent {
+export class HostDetailComponent implements OnInit {
   isAddMode: boolean = true;
   Messages = Messages;
   baseUrl = environment.apiBaseUrl;

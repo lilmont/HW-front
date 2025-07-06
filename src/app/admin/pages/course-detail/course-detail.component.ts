@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { Messages } from '../../../texts/messages';
 import { environment } from '../../../../environments/environment';
 import { CourseHttpService } from '../../services/course-http.service';
@@ -13,7 +13,7 @@ import { uniqueSessionNumberValidator } from '../../validators/custom-validators
   templateUrl: './course-detail.component.html',
   styleUrl: './course-detail.component.css'
 })
-export class CourseDetailComponent {
+export class CourseDetailComponent implements OnInit, OnDestroy {
   isAddMode: boolean = true;
   Messages = Messages;
   baseUrl = environment.apiBaseUrl;
