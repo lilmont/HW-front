@@ -31,7 +31,7 @@ const routes: Routes = [
             { path: 'projects/project-detail/:id', component: CourseDetailComponent },
 
             { path: 'hosting', component: HostListComponent },
-            { path: 'hosting/host-detail/', component: HostDetailComponent },
+            { path: 'hosting/host-detail', component: HostDetailComponent },
             { path: 'hosting/host-detail/:id', component: HostDetailComponent },
         ]
     }

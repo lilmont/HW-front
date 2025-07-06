@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { LoadingService } from '../../../core/services/loading.service';
 import { HostHttpService } from '../../services/host-http.service';
 import { ToastrService } from 'ngx-toastr';
+import { IHostingDetail } from '../../models/IHostingDetail';
 
 @Component({
   selector: 'hw-host-detail',
@@ -98,6 +99,55 @@ export class HostDetailComponent {
   }
 
   AddOrEditHostingPlan(): void {
+    if (this.hostingPlanForm.invalid) {
+      this.hostingPlanForm.markAllAsTouched();
+      return;
+    }
 
+    const formValues = this.hostingPlanForm.value;
+
+    const payload: IHostingDetail = {
+      id: formValues.id ?? null,
+      title: formValues.title,
+      description: formValues.description,
+      price: +formValues.price.toString().replace(/,/g, ''),
+      pleskPlanTitle: formValues.pleskPlanTitle,
+      controlPanelTitle: formValues.controlPanelTitle,
+      serverLocation: formValues.serverLocation,
+      storage: formValues.storage,
+      databaseNumber: formValues.databaseNumber,
+      subdomainNumber: formValues.subdomainNumber,
+      domainNumber: formValues.domainNumber,
+      emailLimit: formValues.emailLimit,
+      supportedTechnologies: formValues.supportedTechnologies,
+      bandwidth: formValues.bandwidth,
+      subscriptionDurationInMonths: +formValues.subscriptionDurationInMonths,
+      isInstallmentAvailable: formValues.isInstallmentAvailable,
+    };
+
+    this.loadingService.show();
+
+    const apiCall = this.isAddMode
+      ? this.hostHttpService.addHostingPlan(payload)
+      : this.hostHttpService.editHostingPlan(payload);
+
+    apiCall.subscribe({
+      next: (response) => {
+        if (response.success) {
+          this.toastr.success(this.isAddMode ? Messages.Success.hostingPlanAddedSuccessfully : Messages.Success.hostingPlanEditedSuccessfully, '');
+          if (this.isAddMode)
+            this.router.navigate(['/mazmon/hosting']);
+          else
+            location.reload();
+        } else {
+          this.toastr.error(response.data ?? Messages.Errors.invalidRequest, Messages.Errors.error)
+        }
+        this.loadingService.hide();
+      },
+      error: () => {
+
+        this.loadingService.hide();
+      },
+    });
   }
 }

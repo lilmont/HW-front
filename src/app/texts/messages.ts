@@ -71,9 +71,10 @@ export const Messages = {
         databaseNumberIsRequired: 'تعداد دیتابیس اجباری است',
         subdomainNumberIsRequired: 'تعداد زیردامنه اجباری است',
         domainNumberIsRequired: 'تعداد دامنه اجباری است',
-        emailLimitIsRequired: 'تعداد ایمیل',
+        emailLimitIsRequired: 'تعداد ایمیل اجباری است',
         supportedTechnologiesIsRequired: 'تکنولوژی ها اجباری است',
-        bandwidthIsRequired: 'پهنای باند اجباری است'
+        bandwidthIsRequired: 'پهنای باند اجباری است',
+        controlPanelTitleIsRequired: 'نام کنترل پنل اجباری است'
     },
     Success: {
         loginSuccessful: 'ورود با موفقیت انجام شد',
@@ -92,7 +93,9 @@ export const Messages = {
         orderMessageSubmittedSuccessfully: 'پیام شما با موفقیت ثبت شد',
         userUpdatedSuccessfully: 'کاربر با موفقیت ویرایش شد',
         courseAddedSuccessfully: 'دوره با موفقیت اضافه شد.',
-        courseEditedSuccessfully: 'دوره با موفقیت ویرایش شد'
+        courseEditedSuccessfully: 'دوره با موفقیت ویرایش شد',
+        hostingPlanAddedSuccessfully: 'هاست با موفقیت اضافه شد.',
+        hostingPlanEditedSuccessfully: 'هاست با موفقیت ویرایش شد',
     },
     Warnings: {
         oneTimePassword: 'قبل از بستن این صفحه اطلاعات هاست خود را کپی کنید و در جای امنی نگداری کنید',
@@ -234,7 +237,8 @@ export const Messages = {
         emailLimit: 'تعداد ایمیل',
         supportedTechnologies: 'تکنولوژی ها',
         bandwidth: 'پهنای باند',
-        isInstallmentAvailable: 'امکان قسطی دارد؟'
+        isInstallmentAvailable: 'امکان قسطی دارد؟',
+        controlPanelTitle: 'نام کنترل پنل'
     },
     Headers: {
         signup: 'ثبت نام',
