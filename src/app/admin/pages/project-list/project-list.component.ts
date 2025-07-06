@@ -1,0 +1,59 @@
+import { Component, OnInit } from '@angular/core';
+import { Messages } from '../../../texts/messages';
+import { IProjectListItem } from '../../models/IProjectListItem';
+import { ProjectQueryParameters } from '../../models/IProjectQueryParameters';
+import { ToastrService } from 'ngx-toastr';
+import { LoadingService } from '../../../core/services/loading.service';
+import { ProjectHttpService } from '../../services/project-http.service';
+
+@Component({
+  selector: 'hw-project-list',
+  templateUrl: './project-list.component.html',
+  styleUrl: './project-list.component.css'
+})
+export class ProjectListComponent implements OnInit {
+  Messages = Messages;
+  projects: IProjectListItem[] = [];
+  totalCount = 0;
+
+  filters: ProjectQueryParameters = new ProjectQueryParameters();
+
+  constructor(private projectHttpService: ProjectHttpService,
+    private toastr: ToastrService,
+    private loadingService: LoadingService
+  ) { }
+
+  ngOnInit() {
+    this.loadProjects();
+  }
+
+  loadProjects() {
+    this.loadingService.show();
+    this.projectHttpService.getPagedProjects(this.filters).subscribe({
+      next: (response) => {
+        if (response.success) {
+          this.projects = response.data.items;
+          console.log(this.projects)
+          this.totalCount = response.data.totalCount;
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error)
+        }
+        this.loadingService.hide();
+      },
+      error: () => {
+        this.loadingService.hide();
+      }
+    });
+
+  }
+
+  onPageChange(page: any) {
+    this.filters.pageNumber = page;
+    this.loadProjects();
+  }
+
+  resetFilters() {
+    this.filters.reset();
+    this.loadProjects();
+  }
+}

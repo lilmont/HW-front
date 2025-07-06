@@ -342,7 +342,8 @@ export const Messages = {
         hostManagement: 'مدیریت هاست',
         hostList: 'لیست پلن ها',
         addHostingPlan: 'افزودن پلن',
-        editHostingPlan: 'ویرایش پلن'
+        editHostingPlan: 'ویرایش پلن',
+        projectList: 'لیست پروژه ها'
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'
@@ -378,6 +379,9 @@ export const Messages = {
         price: 'قیمت (تومان)',
         sessionNumber: 'شماره جلسه',
         description: 'توضیحات',
-        downloadLink: 'لینک دانلود'
+        downloadLink: 'لینک دانلود',
+        userId: 'آیدی کاربر',
+        userPhoneNumber: 'شماره موبایل کاربر',
+
     }
 };

@@ -1,0 +1,63 @@
+<h1 class="text-xl lg:text-2xl font-bold mb-6">{{Messages.Headers.projectList}}</h1>
+
+<div class="p-6 space-y-6">
+    <!-- 🔍 Filters -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <input type="text" [placeholder]="Messages.TableHeaders.id" class="border rounded p-2 w-full"
+            [(ngModel)]="filters.userId" />
+
+        <input type="text" [placeholder]="Messages.TableHeaders.phoneNumber" class="border rounded p-2 w-full"
+            [(ngModel)]="filters.userPhoneNumber" />
+    </div>
+
+    <!-- 🔘 Buttons -->
+    <div class="flex space-x-4">
+        <button class="cursor-pointer bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            (click)="loadProjects()">
+            {{Messages.Buttons.search}}
+        </button>
+
+        <button class="cursor-pointer bg-gray-300 px-4 py-2 rounded hover:bg-gray-400" (click)="resetFilters()">
+            {{Messages.Buttons.reset}}
+        </button>
+    </div>
+
+    <!-- 📋 Table -->
+    <div class="overflow-x-auto">
+        <table class="min-w-full border border-gray-300">
+            <thead class="bg-gray-100">
+                <tr>
+                    <th class="px-4 py-2 border">{{Messages.TableHeaders.id}}</th>
+                    <th class="px-4 py-2 border">{{Messages.TableHeaders.title}}</th>
+                    <th class="px-4 py-2 border">{{Messages.TableHeaders.userId}}</th>
+                    <th class="px-4 py-2 border">{{Messages.TableHeaders.userPhoneNumber}}</th>
+                    <th class="px-4 py-2 border">{{Messages.TableHeaders.price}}</th>
+                    <th class="px-4 py-2 border">{{Messages.TableHeaders.status}}</th>
+                    <th class="px-4 py-2 border">{{Messages.TableHeaders.edit}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let project of projects" class="hover:bg-gray-50">
+                    <td class="px-4 py-2 border">{{ project.id }}</td>
+                    <td class="px-4 py-2 border">{{ project.title }}</td>
+                    <td class="px-4 py-2 border">{{ project.userId }}</td>
+                    <td class="px-4 py-2 border">{{ project.userPhoneNumber }}</td>
+                    <td class="px-4 py-2 border">{{ project.price | number:'1.0-0' }}</td>
+                    <td class="px-4 py-2 border">
+                        <span [ngSwitch]="project.projectStatus">
+                            <span *ngSwitchCase="0" class="text-yellow-500">{{Messages.Labels.inProgress}}</span>
+                            <span *ngSwitchCase="1" class="text-green-800">{{Messages.Labels.confirmed}}</span>
+                        </span>
+                    </td>
+                    <td class="px-4 py-2 border border-gray-800 text-center text-blue-600"><a
+                            [routerLink]="[project.id]">{{Messages.TableHeaders.edit}}</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 🔢 Pagination -->
+    <hw-pagination [pageNumber]="filters.pageNumber" [pageSize]="filters.pageSize" [totalCount]="totalCount"
+        (pageChange)="onPageChange($event)">
+    </hw-pagination>
+</div>
