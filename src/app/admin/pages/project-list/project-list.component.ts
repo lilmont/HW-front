@@ -5,6 +5,7 @@ import { ProjectQueryParameters } from '../../models/IProjectQueryParameters';
 import { ToastrService } from 'ngx-toastr';
 import { LoadingService } from '../../../core/services/loading.service';
 import { ProjectHttpService } from '../../services/project-http.service';
+import { IPurchaseProjectRequest, PurchaseProjectRequest } from '../../models/IPurchaseProjectRequest';
 
 @Component({
   selector: 'hw-project-list',
@@ -17,6 +18,9 @@ export class ProjectListComponent implements OnInit {
   totalCount = 0;
 
   filters: ProjectQueryParameters = new ProjectQueryParameters();
+
+  purchaseProjectRequest: IPurchaseProjectRequest = new PurchaseProjectRequest();
+  isPurchaseConfirmationModalOpen: boolean = false;
 
   constructor(private projectHttpService: ProjectHttpService,
     private toastr: ToastrService,
@@ -54,5 +58,33 @@ export class ProjectListComponent implements OnInit {
   resetFilters() {
     this.filters.reset();
     this.loadProjects();
+  }
+
+  openPurchaseConfirmationModal(id: number): void {
+    this.purchaseProjectRequest.projectId = id;
+    this.isPurchaseConfirmationModalOpen = true;
+  }
+
+  closePurchaseConfirmationModal(): void {
+    this.isPurchaseConfirmationModalOpen = false;
+  }
+
+  purchaseProject(): void {
+    this.loadingService.show();
+    this.projectHttpService.purchaseCourse(this.purchaseProjectRequest).subscribe({
+      next: (response) => {
+        if (response.success) {
+          this.toastr.success(Messages.Success.purchaseProjectSuccessful, '');
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+        this.closePurchaseConfirmationModal();
+        this.loadingService.hide();
+      },
+      error: () => {
+        this.loadingService.hide();
+        this.closePurchaseConfirmationModal();
+      }
+    });
   }
 }

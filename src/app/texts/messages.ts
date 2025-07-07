@@ -81,7 +81,8 @@ export const Messages = {
         userPercentageIsRequired: 'درصد کاربر اجباری است',
         userIdIsRequired: 'آیدی کاربر اجباری است',
         projectCategoryIsRequired: 'یک دسته بندی انتخاب کنید',
-        noUserWithThisUserId: 'کاربری با این آیدی وجود ندارد'
+        noUserWithThisUserId: 'کاربری با این آیدی وجود ندارد',
+        projectNotConfirmed: 'این پروژه هنوز تایید نشده است'
     },
     Success: {
         loginSuccessful: 'ورود با موفقیت انجام شد',
@@ -105,6 +106,7 @@ export const Messages = {
         hostingPlanEditedSuccessfully: 'هاست با موفقیت ویرایش شد',
         projectAddedSuccessfully: 'پروژه با موفقیت اضافه شد',
         projectEditedSuccessfully: 'پروژه با موفقیت ویرایش شد',
+        purchaseProjectSuccessful: 'پروژه با موفقیت خریداری شد'
     },
     Warnings: {
         oneTimePassword: 'قبل از بستن این صفحه اطلاعات هاست خود را کپی کنید و در جای امنی نگداری کنید',
@@ -116,6 +118,7 @@ export const Messages = {
         noDiscountCodesYet: 'هنوز کد تخفیفی ندارید',
         noAccessToVideos: 'به نظر میرسد شما به ویدیوهای پشتیبانی دسترسی ندارید.',
         noVideosYet: 'هنوز ویدیویی وجود ندارد.',
+        confirmBuyProject: 'آیا از خرید این پروژه مطمئن هستید؟'
     },
     Buttons: {
         sendCode: 'ارسال کد یکبار مصرف',
@@ -163,7 +166,8 @@ export const Messages = {
         reset: 'ریست',
         addSession: 'افزودن جلسه',
         delete: 'حذف',
-        addPlan: 'افزودن پلن'
+        addPlan: 'افزودن پلن',
+        purchaseProject: 'خرید پروژه'
     },
     Labels: {
         enterPhoneNumber: 'لطفا شماره موبایل خود را وارد کنید',
@@ -400,5 +404,6 @@ export const Messages = {
         userId: 'آیدی کاربر',
         userPhoneNumber: 'شماره موبایل کاربر',
         previewLink: 'لینک پیش نمایش',
+        purchase: 'خرید'
     }
 };

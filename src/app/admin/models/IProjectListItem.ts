@@ -1,8 +1,8 @@
 export interface IProjectListItem {
-    id: string;
+    id: number;
     title: string;
     userId: number;
     userPhoneNumber: string;
     price: number;
-    projectStatus: boolean;
+    projectStatus: number;
 }

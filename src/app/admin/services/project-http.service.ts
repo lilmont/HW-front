@@ -10,6 +10,7 @@ import { ToastService } from '../../core/services/toast.service';
 import { environment } from '../../../environments/environment';
 import { IProjectDetail } from '../models/IProjectDetail';
 import { IProjectCategory } from '../models/IProjectCategory';
+import { IPurchaseProjectRequest } from '../models/IPurchaseProjectRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -97,6 +98,23 @@ export class ProjectHttpService {
           this.toastr.error(Messages.Errors.fileSizeTooLarge, Messages.Errors.error);
         } else if (error.status === 441) {
           this.toastr.error(Messages.Errors.invalidImage, Messages.Errors.error);
+        } else if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
+        } else if (error.status === 401) {
+          this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+        return throwError(() => error);
+      })
+    );
+  }
+
+  purchaseCourse(purchaseProjectRequest: IPurchaseProjectRequest): Observable<IApiResponse<null>> {
+    return this.http.post<any>(`${this.baseUrl}/api/mazmon/projects/purchase-project`, purchaseProjectRequest).pipe(
+      catchError((error) => {
+        if (error.status === 409) {
+          this.toastr.error(Messages.Errors.projectNotConfirmed, Messages.Errors.error);
         } else if (error.status === 400) {
           this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
         } else if (error.status === 401) {
