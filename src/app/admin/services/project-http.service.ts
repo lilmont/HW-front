@@ -90,8 +90,8 @@ export class ProjectHttpService {
     );
   }
 
-  editProject(course: FormData): Observable<IApiResponse<null>> {
-    return this.http.post<IApiResponse<null>>(`${this.baseUrl}/api/mazmon/courses/edit-course`, course).pipe(
+  editProject(project: FormData): Observable<IApiResponse<null>> {
+    return this.http.post<IApiResponse<null>>(`${this.baseUrl}/api/mazmon/projects/edit-project`, project).pipe(
       catchError((error) => {
         if (error.status === 440) {
           this.toastr.error(Messages.Errors.fileSizeTooLarge, Messages.Errors.error);
