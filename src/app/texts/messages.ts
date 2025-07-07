@@ -74,7 +74,11 @@ export const Messages = {
         emailLimitIsRequired: 'تعداد ایمیل اجباری است',
         supportedTechnologiesIsRequired: 'تکنولوژی ها اجباری است',
         bandwidthIsRequired: 'پهنای باند اجباری است',
-        controlPanelTitleIsRequired: 'نام کنترل پنل اجباری است'
+        controlPanelTitleIsRequired: 'نام کنترل پنل اجباری است',
+        previewLinkIsRequired: 'لینک پیشنمایش اجباری است',
+        downloadLinkIsRequired: 'لینک دانلود اجباری است',
+        projectImageIsRequired: 'عکس پروژه اجباری است',
+        userPercentageIsRequired: 'درصد کاربر اجباری است'
     },
     Success: {
         loginSuccessful: 'ورود با موفقیت انجام شد',
@@ -238,7 +242,13 @@ export const Messages = {
         supportedTechnologies: 'تکنولوژی ها',
         bandwidth: 'پهنای باند',
         isInstallmentAvailable: 'امکان قسطی دارد؟',
-        controlPanelTitle: 'نام کنترل پنل'
+        controlPanelTitle: 'نام کنترل پنل',
+        isProjectShown: 'نمایش پروژه در سایت',
+        select: '-- انتخاب کنید --',
+        category: 'دسته بندی',
+        confirmDate: 'تاریخ تایید',
+        userPercentage: 'درصد کاربر از پروژه',
+        userShareOfTotalPurchased: 'سهم کاربر از فروش کل'
     },
     Headers: {
         signup: 'ثبت نام',
@@ -343,7 +353,9 @@ export const Messages = {
         hostList: 'لیست پلن ها',
         addHostingPlan: 'افزودن پلن',
         editHostingPlan: 'ویرایش پلن',
-        projectList: 'لیست پروژه ها'
+        projectList: 'لیست پروژه ها',
+        projectDescription: 'توضیحات',
+        projectSaleReport: 'گزارش فروش پروژه'
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'
@@ -382,6 +394,6 @@ export const Messages = {
         downloadLink: 'لینک دانلود',
         userId: 'آیدی کاربر',
         userPhoneNumber: 'شماره موبایل کاربر',
-
+        previewLink: 'لینک پیش نمایش',
     }
 };

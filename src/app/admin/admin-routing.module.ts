@@ -10,6 +10,7 @@ import { CourseDetailComponent } from "./pages/course-detail/course-detail.compo
 import { HostListComponent } from "./pages/host-list/host-list.component";
 import { HostDetailComponent } from "./pages/host-detail/host-detail.component";
 import { ProjectListComponent } from "./pages/project-list/project-list.component";
+import { ProjectDetailComponent } from "./pages/project-detail/project-detail.component";
 
 const routes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -28,8 +29,8 @@ const routes: Routes = [
             { path: 'courses/course-detail/:id', component: CourseDetailComponent },
 
             { path: 'projects', component: ProjectListComponent },
-            { path: 'projects/project-detail', component: CourseDetailComponent },
-            { path: 'projects/project-detail/:id', component: CourseDetailComponent },
+            { path: 'projects/project-detail', component: ProjectDetailComponent },
+            { path: 'projects/project-detail/:id', component: ProjectDetailComponent },
 
             { path: 'hosting', component: HostListComponent },
             { path: 'hosting/host-detail', component: HostDetailComponent },

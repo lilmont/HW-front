@@ -33,7 +33,6 @@ export class ProjectListComponent implements OnInit {
       next: (response) => {
         if (response.success) {
           this.projects = response.data.items;
-          console.log(this.projects)
           this.totalCount = response.data.totalCount;
         } else {
           this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error)

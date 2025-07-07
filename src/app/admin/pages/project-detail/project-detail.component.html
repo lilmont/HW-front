@@ -1,0 +1,204 @@
+<h1 class="text-xl lg:text-2xl font-bold mb-6">{{isAddMode ? Messages.Headers.addProject :Messages.Headers.editProject}}
+</h1>
+
+<form [formGroup]="projectForm" (ngSubmit)="AddOrEditProject()" class="mx-auto p-6 bg-white rounded shadow space-y-6">
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- ID (readonly) -->
+        <div>
+            <label class="block mb-1 font-semibold text-gray-700">{{Messages.TableHeaders.id}}</label>
+            <input formControlName="id" type="number" readonly
+                class="border rounded px-3 py-2 w-full bg-gray-100 cursor-not-allowed">
+        </div>
+
+        <!-- Date Created (readonly) -->
+        <div>
+            <label class="block mb-1 font-semibold text-gray-700">{{Messages.Labels.dateCreated}}</label>
+            <input [value]="projectForm.get('dateCreated')?.value | jalaliDate" type="text" readonly
+                class="border rounded px-3 py-2 w-full bg-gray-100 cursor-not-allowed">
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- User Id -->
+        <div>
+            <label class="block mb-1 font-semibold text-gray-700">{{Messages.TableHeaders.userId}}</label>
+            <input formControlName="userId" class="border rounded px-3 py-2 w-full"
+                [class.border-red-500]="projectForm.get('userId')?.invalid && projectForm.get('userId')?.touched">
+            <div *ngIf="projectForm.get('userId')?.invalid && projectForm.get('userId')?.touched"
+                class="text-red-600 text-sm mt-1">
+                {{Messages.Errors.titleIsRequired}}
+            </div>
+        </div>
+
+        <!-- User Phone Number -->
+        <div>
+            <label class="block mb-1 font-semibold text-gray-700">{{Messages.TableHeaders.userPhoneNumber}}</label>
+            <input formControlName="userPhoneNumber" class="border rounded px-3 py-2 w-full"
+                [class.border-red-500]="projectForm.get('userPhoneNumber')?.invalid && projectForm.get('userPhoneNumber')?.touched">
+            <div *ngIf="projectForm.get('userPhoneNumber')?.invalid && projectForm.get('userPhoneNumber')?.touched"
+                class="text-red-600 text-sm mt-1">
+                {{Messages.Errors.titleIsRequired}}
+            </div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Title -->
+        <div>
+            <label class="block mb-1 font-semibold text-gray-700">{{Messages.TableHeaders.title}}</label>
+            <input formControlName="title" class="border rounded px-3 py-2 w-full"
+                [class.border-red-500]="projectForm.get('title')?.invalid && projectForm.get('title')?.touched">
+            <div *ngIf="projectForm.get('title')?.invalid && projectForm.get('title')?.touched"
+                class="text-red-600 text-sm mt-1">
+                {{Messages.Errors.titleIsRequired}}
+            </div>
+        </div>
+
+        <!-- Description -->
+        <div>
+            <label class="block mb-1 font-semibold text-gray-700">{{Messages.Headers.projectDescription}}</label>
+            <textarea formControlName="description" class="border rounded px-3 py-2 w-full" rows="4"
+                [class.border-red-500]="projectForm.get('description')?.invalid && projectForm.get('description')?.touched"></textarea>
+            <div *ngIf="projectForm.get('description')?.invalid && projectForm.get('description')?.touched"
+                class="text-red-600 text-sm mt-1">
+                {{Messages.Errors.descriptionIsRequired}}
+            </div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Preview Link -->
+        <div>
+            <label class="block mb-1 font-semibold text-gray-700">{{Messages.TableHeaders.previewLink}}</label>
+            <input formControlName="title" class="border rounded px-3 py-2 w-full"
+                [class.border-red-500]="projectForm.get('previewLink')?.invalid && projectForm.get('previewLink')?.touched">
+            <div *ngIf="projectForm.get('previewLink')?.invalid && projectForm.get('previewLink')?.touched"
+                class="text-red-600 text-sm mt-1">
+                {{Messages.Errors.previewLinkIsRequired}}
+            </div>
+        </div>
+
+        <!-- Download Link -->
+        <div>
+            <label class="block mb-1 font-semibold text-gray-700">{{Messages.TableHeaders.downloadLink}}</label>
+            <input formControlName="title" class="border rounded px-3 py-2 w-full"
+                [class.border-red-500]="projectForm.get('downloadLink')?.invalid && projectForm.get('downloadLink')?.touched">
+            <div *ngIf="projectForm.get('downloadLink')?.invalid && projectForm.get('downloadLink')?.touched"
+                class="text-red-600 text-sm mt-1">
+                {{Messages.Errors.downloadLinkIsRequired}}
+            </div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Is Shown -->
+        <label class="inline-flex items-center">
+            <input type="checkbox" formControlName="isShown" class="form-checkbox h-5 w-5 text-blue-600" />
+            <span class="mr-2 text-gray-700 font-medium">
+                {{ Messages.Labels.isProjectShown }}
+            </span>
+        </label>
+
+        <!-- Project Category -->
+        <div>
+            <label for="projectCategoryId">{{Messages.Labels.category}}</label>
+            <select id="projectCategoryId" formControlName="projectCategoryId" class="mr-2 min-w-1/2">
+                <option [ngValue]="null" disabled selected hidden>{{Messages.Labels.select}}</option>
+                <option *ngFor="let category of projectCategoryList" [ngValue]="category.id">
+                    {{ category.title }}
+                </option>
+            </select>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Price -->
+        <div>
+            <label for="price" class="block mb-1 font-semibold text-gray-700">
+                {{Messages.TableHeaders.price}}
+            </label>
+            <input type="text" hwAmount formControlName="price" class="w-full border rounded px-3 py-2"
+                [class.border-red-500]="projectForm.get('price')?.invalid && projectForm.get('price')?.touched"
+                dir="ltr">
+            <div *ngIf="projectForm.get('price')?.invalid && projectForm.get('price')?.touched"
+                class="text-red-600 text-sm mt-1">
+                {{Messages.Errors.priceIsRequired}}
+            </div>
+        </div>
+
+        <!-- Project Image -->
+        <div>
+            <label class="block mb-1">{{Messages.Labels.projectImage}}</label>
+            <input type="file" accept="image/*" (change)="onProjectImageSelect($event)">
+            <div *ngIf="projectForm.get('projectImage')?.value || imagePreviewUrl">
+                <img [src]="projectImageUrl" class="h-24 mt-2">
+            </div>
+
+            <div *ngIf="projectForm.get('projectImageFile')?.invalid && projectForm.get('projectImageFile')?.touched"
+                class="text-red-600 text-sm mt-1">
+                {{Messages.Errors.projectImageIsRequired}}
+            </div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <!-- User Percentage -->
+        <div>
+            <label for="price" class="block mb-1 font-semibold text-gray-700">
+                {{Messages.Labels.userPercentage}}
+            </label>
+            <input type="number" formControlName="userPercentage" class="border rounded px-3 py-2 w-full" dir="ltr"
+                [class.border-red-500]="projectForm.get('userPercentage')?.invalid && projectForm.get('userPercentage')?.touched">
+            <div *ngIf="projectForm.get('userPercentage')?.invalid && projectForm.get('userPercentage')?.touched"
+                class="text-red-600 text-sm mt-1">
+                {{Messages.Errors.userPercentageIsRequired}}
+            </div>
+        </div>
+
+        <!-- Status -->
+        <div>
+            <label for="projectStatus" class="text-sm block mb-1">{{Messages.TableHeaders.status}}</label>
+            <select formControlName="projectStatus" class="w-full border rounded px-3 py-2">
+                <option [value]="0">{{Messages.Labels.inProgress}}</option>
+                <option [value]="1">{{Messages.Labels.confirmed}}</option>
+            </select>
+        </div>
+
+        <!-- Confirm Date (readonly) -->
+        <div>
+            <label class="block mb-1 font-semibold text-gray-700">{{Messages.Labels.confirmDate}}</label>
+            <input [value]="projectForm.get('confirmDate')?.value | jalaliDate" type="text" readonly
+                class="border rounded px-3 py-2 w-full bg-gray-100 cursor-not-allowed">
+        </div>
+    </div>
+
+    <div class="pt-4">
+        <button type="submit" class="cursor-pointer bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">
+            {{Messages.Buttons.save}}
+        </button>
+    </div>
+</form>
+
+<div class="mx-auto p-6 bg-white rounded shadow space-y-6">
+    <h2 class="text-مل lg:text-xl font-bold mb-6">{{Messages.Headers.projectSaleReport}}
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="p-6 bg-gray-100 rounded-xl shadow-lg h-full flex flex-col justify-center">
+            <h3 class="lg:text-lg font-bold text-gray-800 mb-6">{{Messages.Labels.purchasedCount}}</h3>
+            <p class="font-semibold text-custom-800 mb-1">{{purchasedCount}}</p>
+        </div>
+
+        <div class="p-6 bg-gray-100 rounded-xl shadow-lg h-full flex flex-col justify-center">
+            <h3 class="lg:text-lg font-bold text-gray-800 mb-6">{{Messages.Labels.totalPurchased}}</h3>
+            <p class="font-semibold text-custom-800 mb-1">{{totalPurchased | number: '1.0-0' }} {{Messages.Headers.toman
+                }}</p>
+        </div>
+
+        <div class="p-6 bg-gray-100 rounded-xl shadow-lg h-full flex flex-col justify-center">
+            <h3 class="lg:text-lg font-bold text-gray-800 mb-6">{{Messages.Labels.userShareOfTotalPurchased}}</h3>
+            <p class="font-semibold text-custom-800 mb-1">{{userShareOfTotalPurchased| number: '1.0-0' }}
+                {{Messages.Headers.toman }}</p>
+        </div>
+    </div>
+</div>
