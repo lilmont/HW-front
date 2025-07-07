@@ -32,7 +32,7 @@
         </div>
 
         <table class="min-w-full border border-gray-300">
-            <thead class="bg-gray-100">
+            <thead class="bg-gray-200">
                 <tr>
                     <th class="px-4 py-2 border">{{Messages.TableHeaders.id}}</th>
                     <th class="px-4 py-2 border">{{Messages.TableHeaders.title}}</th>
@@ -40,11 +40,13 @@
                     <th class="px-4 py-2 border">{{Messages.TableHeaders.userPhoneNumber}}</th>
                     <th class="px-4 py-2 border">{{Messages.TableHeaders.price}}</th>
                     <th class="px-4 py-2 border">{{Messages.TableHeaders.status}}</th>
+                    <th class="px-4 py-2 border">{{Messages.TableHeaders.purchase}}</th>
                     <th class="px-4 py-2 border">{{Messages.TableHeaders.edit}}</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let project of projects" class="hover:bg-gray-50">
+                <tr *ngFor="let project of projects; let i = index" class="hover:bg-gray-300"
+                    [ngClass]="{ 'bg-white': i % 2 === 0, 'bg-gray-100': i % 2 !== 0 }">
                     <td class="px-4 py-2 border">{{ project.id }}</td>
                     <td class="px-4 py-2 border">{{ project.title }}</td>
                     <td class="px-4 py-2 border">{{ project.userId }}</td>
