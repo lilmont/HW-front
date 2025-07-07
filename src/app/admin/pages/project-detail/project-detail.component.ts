@@ -45,13 +45,13 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
       previewLink: ['', Validators.required],
       downloadLink: ['', Validators.required],
       price: [0, [Validators.required, Validators.min(0)]],
-      projectStatus: [undefined, Validators.required],
+      projectStatus: [0, Validators.required],
       isShown: [false],
       confirmDate: [null],
       dateCreated: [null],
       projectCategoryId: [null, Validators.required],
-      userPercentage: [null],
-      userId: [null],
+      userPercentage: [null, Validators.required],
+      userId: [null, Validators.required],
       userPhoneNumber: [null],
 
       projectImage: [''],
@@ -101,7 +101,6 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
       next: (response) => {
         if (response.success) {
           const project = response.data;
-
           // Populate simple fields
           this.projectForm.patchValue({
             id: project.id,
@@ -172,5 +171,50 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
       this.projectForm.markAllAsTouched();
       return;
     }
+
+    const formValues = this.projectForm.value;
+    const formData = new FormData();
+
+    formData.append('Id', formValues.id ?? '');
+    formData.append('Title', formValues.title);
+    formData.append('Description', formValues.description);
+    formData.append('previewLink', formValues.previewLink);
+    formData.append('downloadLink', formValues.downloadLink);
+    formData.append('Price', formValues.price.toString().replace(/,/g, ''));
+    formData.append('projectStatus', formValues.projectStatus.toString());
+    formData.append('isShown', formValues.isShown);
+    formData.append('userPercentage', formValues.userPercentage.toString());
+    formData.append('userId', formValues.userId.toString());
+    formData.append('projectCategoryId', formValues.projectCategoryId.toString());
+
+    // File uploads
+    if (this.projectForm.get('projectImageFile')) {
+      formData.append('projectImageFile', this.projectForm.get('projectImageFile')?.value);
+    }
+
+    this.loadingService.show();
+
+    const apiCall = this.isAddMode
+      ? this.projectHttpService.addProject(formData)
+      : this.projectHttpService.editProject(formData);
+
+    apiCall.subscribe({
+      next: (response) => {
+        if (response.success) {
+          this.toastr.success(this.isAddMode ? Messages.Success.projectAddedSuccessfully : Messages.Success.projectEditedSuccessfully, '');
+          if (this.isAddMode)
+            this.router.navigate(['/mazmon/projects']);
+          else
+            location.reload();
+        } else {
+          this.toastr.error(response.data ?? Messages.Errors.invalidRequest, Messages.Errors.error)
+        }
+        this.loadingService.hide();
+      },
+      error: () => {
+
+        this.loadingService.hide();
+      },
+    });
   }
 }

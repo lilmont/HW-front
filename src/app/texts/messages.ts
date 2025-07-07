@@ -75,10 +75,13 @@ export const Messages = {
         supportedTechnologiesIsRequired: 'تکنولوژی ها اجباری است',
         bandwidthIsRequired: 'پهنای باند اجباری است',
         controlPanelTitleIsRequired: 'نام کنترل پنل اجباری است',
-        previewLinkIsRequired: 'لینک پیشنمایش اجباری است',
+        previewLinkIsRequired: 'لینک پیش نمایش اجباری است',
         downloadLinkIsRequired: 'لینک دانلود اجباری است',
         projectImageIsRequired: 'عکس پروژه اجباری است',
-        userPercentageIsRequired: 'درصد کاربر اجباری است'
+        userPercentageIsRequired: 'درصد کاربر اجباری است',
+        userIdIsRequired: 'آیدی کاربر اجباری است',
+        projectCategoryIsRequired: 'یک دسته بندی انتخاب کنید',
+        noUserWithThisUserId: 'کاربری با این آیدی وجود ندارد'
     },
     Success: {
         loginSuccessful: 'ورود با موفقیت انجام شد',
@@ -100,6 +103,8 @@ export const Messages = {
         courseEditedSuccessfully: 'دوره با موفقیت ویرایش شد',
         hostingPlanAddedSuccessfully: 'هاست با موفقیت اضافه شد.',
         hostingPlanEditedSuccessfully: 'هاست با موفقیت ویرایش شد',
+        projectAddedSuccessfully: 'پروژه با موفقیت اضافه شد',
+        projectEditedSuccessfully: 'پروژه با موفقیت ویرایش شد',
     },
     Warnings: {
         oneTimePassword: 'قبل از بستن این صفحه اطلاعات هاست خود را کپی کنید و در جای امنی نگداری کنید',
