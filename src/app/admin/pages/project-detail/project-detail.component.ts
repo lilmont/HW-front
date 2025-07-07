@@ -7,6 +7,7 @@ import { LoadingService } from '../../../core/services/loading.service';
 import { ToastrService } from 'ngx-toastr';
 import { ProjectHttpService } from '../../services/project-http.service';
 import { IProjectCategory } from '../../models/IProjectCategory';
+import { IPurchaseProjectRequest, PurchaseProjectRequest } from '../../models/IPurchaseProjectRequest';
 
 @Component({
   selector: 'hw-project-detail',
@@ -26,6 +27,9 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
   purchasedCount: number = 0;
   totalPurchased: number = 0;
   userShareOfTotalPurchased: number = 0;
+
+  purchaseProjectRequest: IPurchaseProjectRequest = new PurchaseProjectRequest();
+  isPurchaseConfirmationModalOpen: boolean = false;
 
   constructor(private route: ActivatedRoute,
     private loadingService: LoadingService,
@@ -215,6 +219,38 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
 
         this.loadingService.hide();
       },
+    });
+  }
+
+  openPurchaseConfirmationModal(): void {
+    this.isPurchaseConfirmationModalOpen = true;
+  }
+
+  closePurchaseConfirmationModal(): void {
+    this.isPurchaseConfirmationModalOpen = false;
+  }
+
+  purchaseProject(): void {
+    if (this.projectId)
+      this.purchaseProjectRequest.projectId = this.projectId;
+
+
+    this.loadingService.show();
+    this.projectHttpService.purchaseCourse(this.purchaseProjectRequest).subscribe({
+      next: (response) => {
+        if (response.success) {
+          this.toastr.success(Messages.Success.purchaseProjectSuccessful, '');
+          location.reload();
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+        this.closePurchaseConfirmationModal();
+        this.loadingService.hide();
+      },
+      error: () => {
+        this.loadingService.hide();
+        this.closePurchaseConfirmationModal();
+      }
     });
   }
 }
