@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Messages } from '../../../texts/messages';
 import { PaymentHttpService } from '../../../core/services/payment-http.service';
 import { LoadingService } from '../../../core/services/loading.service';
@@ -12,18 +12,16 @@ import { Subscription } from 'rxjs';
 })
 export class WalletCardComponent implements OnInit, OnDestroy {
   Messages = Messages;
-  balance: number = 0;
-
+  @Input() balance: number = 0;
+  @Output() transactionChanged = new EventEmitter<void>();
   private transactionSubscription: Subscription | null = null;
 
-  constructor(private paymentHttpService: PaymentHttpService,
-    private loadingService: LoadingService,
+  constructor(
     private transactionService: TransactionService
   ) { }
   ngOnInit(): void {
-    this.getUserBalance();
     this.transactionSubscription = this.transactionService.transactionSubmitted$.subscribe(() => {
-      this.getUserBalance();
+      this.transactionChanged.emit();
     });
   }
 
@@ -34,19 +32,8 @@ export class WalletCardComponent implements OnInit, OnDestroy {
   }
 
   onTransactionSuccess() {
-    this.getUserBalance();
+    this.transactionChanged.emit();;
   }
 
-  getUserBalance() {
-    this.loadingService.show();
-    this.paymentHttpService.getUserBalance().subscribe({
-      next: (data) => {
-        this.balance = data;
-        this.loadingService.hide();
-      },
-      error: (error) => {
-        this.loadingService.hide();
-      }
-    });
-  }
+
 }

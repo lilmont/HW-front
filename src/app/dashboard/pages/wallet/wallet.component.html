@@ -1,3 +1,5 @@
-<hw-wallet-card></hw-wallet-card>
+<hw-wallet-card [balance]="balance" (transactionChanged)="getUserBalance()"></hw-wallet-card>
 
 <hw-user-transactions-table></hw-user-transactions-table>
+
+<hw-withdraw-card [withdrawalInfo]="withdrawalInfo"></hw-withdraw-card>

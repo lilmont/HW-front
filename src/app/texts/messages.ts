@@ -82,7 +82,8 @@ export const Messages = {
         userIdIsRequired: 'آیدی کاربر اجباری است',
         projectCategoryIsRequired: 'یک دسته بندی انتخاب کنید',
         noUserWithThisUserId: 'کاربری با این آیدی وجود ندارد',
-        projectNotConfirmed: 'این پروژه هنوز تایید نشده است'
+        projectNotConfirmed: 'این پروژه هنوز تایید نشده است',
+        withdrawAmountInvalid: 'مبلغ وارد شده از مبلغ قابل برداشت بیشتر است'
     },
     Success: {
         loginSuccessful: 'ورود با موفقیت انجام شد',
@@ -167,7 +168,8 @@ export const Messages = {
         addSession: 'افزودن جلسه',
         delete: 'حذف',
         addPlan: 'افزودن پلن',
-        purchaseProject: 'خرید پروژه'
+        purchaseProject: 'خرید پروژه',
+        submitWithdrawalRequest: 'ثبت درخواست تسویه'
     },
     Labels: {
         enterPhoneNumber: 'لطفا شماره موبایل خود را وارد کنید',
@@ -259,7 +261,10 @@ export const Messages = {
         userPercentage: 'درصد کاربر از پروژه',
         userShareOfTotalPurchased: 'سهم کاربر از فروش کل',
         walletBalance: 'موجودی کیف پول',
-        withdrawableBalance: 'مبلغ قابل تسویه'
+        withdrawableBalance: 'مبلغ قابل تسویه',
+        pendingWithdrawalAmount: 'مبلغ در حال تسویه',
+        WithdrawalAmount: 'مبلغ تسویه شده تا کنون',
+        enterWithdrawalAmount: 'لطفا مبلغ مورد نظر را وارد کنید'
     },
     Headers: {
         signup: 'ثبت نام',
@@ -366,7 +371,8 @@ export const Messages = {
         editHostingPlan: 'ویرایش پلن',
         projectList: 'لیست پروژه ها',
         projectDescription: 'توضیحات',
-        projectSaleReport: 'گزارش فروش پروژه'
+        projectSaleReport: 'گزارش فروش پروژه',
+        withdrawalCardHeader: 'برداشت از کیف پول'
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'

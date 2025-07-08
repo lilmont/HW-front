@@ -1,0 +1,98 @@
+<div
+    class="max-w-2xl mx-auto mt-10 bg-white border border-gray-200 shadow-lg shadow-custom-400 rounded-2xl p-6 space-y-4">
+
+    <!-- Header Section -->
+    <div class="flex items-center justify-between mb-6">
+        <h2 class="text-lg font-semibold text-gray-800">{{Messages.Headers.withdrawalCardHeader}}</h2>
+        <button (click)="openWithdrawalModal()"
+            class="cursor-pointer inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-yellow-100 hover:bg-yellow-200 rounded-md transition">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                <g id="SVGRepo_iconCarrier">
+                    <path
+                        d="M3 12C3 4.5885 4.5885 3 12 3C19.4115 3 21 4.5885 21 12C21 19.4115 19.4115 21 12 21C4.5885 21 3 19.4115 3 12Z"
+                        stroke="#323232" stroke-width="2"></path>
+                    <path d="M9.5 9.5L15 15" stroke="#323232" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                    <path d="M14 9H9.32833C9.147 9 9 9.14703 9 9.32837V14" stroke="#323232" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round"></path>
+                </g>
+            </svg>
+            {{Messages.Buttons.submitWithdrawalRequest}}
+        </button>
+    </div>
+
+    <hr class="border-gray-300">
+
+    <!-- Info Items -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center mt-6">
+        <div>
+            <p class="text-sm text-gray-500 mb-4">{{Messages.Labels.withdrawableBalance}}</p>
+            <p class="text-lg font-semibold text-gray-800">
+                {{withdrawalInfo.withdrawableBalance | number:'1.0-0'}} {{Messages.Headers.toman}}
+            </p>
+        </div>
+        <div>
+            <p class="text-sm text-gray-500  mb-4">{{Messages.Labels.pendingWithdrawalAmount}}</p>
+            <p class="text-lg font-semibold text-gray-800">
+                {{withdrawalInfo.pendingWithdrawalAmount | number:'1.0-0'}} {{Messages.Headers.toman}}
+            </p>
+        </div>
+        <div>
+            <p class="text-sm text-gray-500  mb-4">{{Messages.Labels.WithdrawalAmount}}</p>
+            <p class="text-lg font-semibold text-gray-800">
+                {{withdrawalInfo.withdrawanAmount | number:'1.0-0'}} {{Messages.Headers.toman}}
+            </p>
+        </div>
+    </div>
+</div>
+
+
+<!-- Withdrawal Modal -->
+<div *ngIf="isWithdrawalModalOpen" class="fixed inset-0 z-49 flex items-center justify-center bg-[rgba(31,41,55,0.5)]"
+    (click)="closeWithdrawalModal()">
+
+    <!-- Modal content container -->
+    <div class="relative bg-white rounded-lg shadow-lg w-full max-w-md p-6" (click)="$event.stopPropagation()">
+
+        <!-- Modal header -->
+        <div class="flex items-center justify-between border-b border-gray-200 pb-3 mb-5">
+            <h3 class="text-xl text-gray-900">
+                {{ Messages.Headers.withdrawalCardHeader }}
+            </h3>
+            <button type="button" class="text-gray-400 hover:text-gray-900 rounded-lg focus:outline-none"
+                (click)="closeWithdrawalModal()" aria-label="Close modal">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="text-gray-700 text-center mb-6">
+            <p class="text-sm">{{ Messages.Labels.enterWithdrawalAmount }}</p>
+            <input type="text" hwAmount id="withdrawAmount" [(ngModel)]="withdrawAmount" name="withdrawAmount" dir="ltr"
+                class="text-center bg-gray-50 border outline-custom-300 text-gray-900 text-sm rounded-lg focus:ring-custom-500 focus:border-custom-500 block w-full p-2.5 mt-2"
+                [placeholder]="Messages.Labels.desiredAmountPlaceholder" />
+
+            <div *ngIf="withdrawAmountInvalid" class="text-red-600 text-sm mt-2">
+                {{Messages.Errors.withdrawAmountInvalid}}
+            </div>
+        </div>
+
+        <!-- Modal footer / buttons -->
+        <div class="flex justify-end space-x-4">
+            <button (click)="closeWithdrawalModal()"
+                class="cursor-pointer px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-lg transition duration-200">
+                {{ Messages.Buttons.cancel }}
+            </button>
+
+            <button (click)="submitWithdrawalRequest()"
+                class="cursor-pointer px-4 py-2 bg-custom-600 hover:bg-custom-700 text-white font-semibold rounded-lg shadow-md transition duration-200">
+                {{Messages.Buttons.submitWithdrawalRequest}}
+            </button>
+        </div>
+    </div>
+</div>

@@ -7,6 +7,7 @@ import { catchError, Observable, throwError } from 'rxjs';
 import { Messages } from '../../texts/messages';
 import { ISuggestedWalletAmount } from '../../models/ISuggestedWalletAmount';
 import { JwtHelperService } from './jwt.helper.service';
+import { IUserBalance } from '../../models/IUserBalance';
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +39,19 @@ export class PaymentHttpService {
 
   getUserBalance(): Observable<number> {
     return this.http.get<number>(`${this.baseUrl}/payment/user-balance`).pipe(
+      catchError((error) => {
+        if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+        return throwError(() => error);
+      })
+    );
+  }
+
+  getUserWithdrawalInfo(): Observable<IUserBalance> {
+    return this.http.get<IUserBalance>(`${this.baseUrl}/payment/user-withdrawal-info`).pipe(
       catchError((error) => {
         if (error.status === 400) {
           this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);

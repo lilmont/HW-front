@@ -31,6 +31,7 @@ import { ProjectCardComponent } from './components/project-card/project-card.com
 import { DiscountCodesComponent } from './pages/discount-codes/discount-codes.component';
 import { SupportVideosComponent } from './pages/support-videos/support-videos.component';
 import { SampleSupportVideosComponent } from './pages/sample-support-videos/sample-support-videos.component';
+import { WithdrawCardComponent } from './components/withdraw-card/withdraw-card.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { SampleSupportVideosComponent } from './pages/sample-support-videos/samp
     DiscountCodesComponent,
     SupportVideosComponent,
     SampleSupportVideosComponent,
+    WithdrawCardComponent,
   ],
   imports: [
     CommonModule,
