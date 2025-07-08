@@ -257,7 +257,9 @@ export const Messages = {
         category: 'دسته بندی',
         confirmDate: 'تاریخ تایید',
         userPercentage: 'درصد کاربر از پروژه',
-        userShareOfTotalPurchased: 'سهم کاربر از فروش کل'
+        userShareOfTotalPurchased: 'سهم کاربر از فروش کل',
+        walletBalance: 'موجودی کیف پول',
+        withdrawableBalance: 'مبلغ قابل تسویه'
     },
     Headers: {
         signup: 'ثبت نام',

@@ -8,6 +8,7 @@ export interface IUserDetail {
     biography?: string;
     avatarImage?: string;
     walletBalance: number;
+    withdrawableBalance: number;
     isActive: boolean;
     deactivationDescription?: string;
     canAddProject: boolean;
@@ -26,6 +27,7 @@ export class UserDetail implements IUserDetail {
     biography?: string;
     avatarImage?: string;
     walletBalance: number = 0;
+    withdrawableBalance: number = 0;
     isActive: boolean = false;
     deactivationDescription?: string;
     canAddProject: boolean = false;
