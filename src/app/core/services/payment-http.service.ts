@@ -8,6 +8,7 @@ import { Messages } from '../../texts/messages';
 import { ISuggestedWalletAmount } from '../../models/ISuggestedWalletAmount';
 import { JwtHelperService } from './jwt.helper.service';
 import { IUserBalance } from '../../models/IUserBalance';
+import { IWithdrawalRequest } from '../../models/IWithdrawalRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -87,6 +88,26 @@ export class PaymentHttpService {
       catchError((error) => {
         if (error.status === 400) {
           this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+        return throwError(() => error);
+      })
+    );
+  }
+
+  addWithdrawalRequest(request: IWithdrawalRequest) {
+    return this.http.post<any>(`${this.baseUrl}/payment/add-withdrawal-request`, request).pipe(
+      catchError((error) => {
+        if (error.status === 431) {
+          this.jwtHelperService.logout();
+          location.href = '/';
+        } else if (error.status === 450) {
+          this.toastr.error(Messages.Errors.withdrawAmountExceed, Messages.Errors.error);
+        } else if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
+        } else if (error.status === 401) {
+          this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
         } else {
           this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
         }

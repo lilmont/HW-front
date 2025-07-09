@@ -77,6 +77,10 @@
                 class="text-center bg-gray-50 border outline-custom-300 text-gray-900 text-sm rounded-lg focus:ring-custom-500 focus:border-custom-500 block w-full p-2.5 mt-2"
                 [placeholder]="Messages.Labels.desiredAmountPlaceholder" />
 
+            <div *ngIf="withdrawAmountExceed" class="text-red-600 text-sm mt-2">
+                {{Messages.Errors.withdrawAmountExceed}}
+            </div>
+
             <div *ngIf="withdrawAmountInvalid" class="text-red-600 text-sm mt-2">
                 {{Messages.Errors.withdrawAmountInvalid}}
             </div>

@@ -83,7 +83,8 @@ export const Messages = {
         projectCategoryIsRequired: 'یک دسته بندی انتخاب کنید',
         noUserWithThisUserId: 'کاربری با این آیدی وجود ندارد',
         projectNotConfirmed: 'این پروژه هنوز تایید نشده است',
-        withdrawAmountInvalid: 'مبلغ وارد شده از مبلغ قابل برداشت بیشتر است'
+        withdrawAmountExceed: 'مبلغ درخواست از مبلغ قابل برداشت بیشتر است',
+        withdrawAmountInvalid: 'مبلغ درخواست نمیتواند کمتر از 10 هزار تومان باشد'
     },
     Success: {
         loginSuccessful: 'ورود با موفقیت انجام شد',
@@ -107,7 +108,8 @@ export const Messages = {
         hostingPlanEditedSuccessfully: 'هاست با موفقیت ویرایش شد',
         projectAddedSuccessfully: 'پروژه با موفقیت اضافه شد',
         projectEditedSuccessfully: 'پروژه با موفقیت ویرایش شد',
-        purchaseProjectSuccessful: 'پروژه با موفقیت خریداری شد'
+        purchaseProjectSuccessful: 'پروژه با موفقیت خریداری شد',
+        withdrawlRequestSubmittedSuccessfully: 'درخواست شما با موفقیت ثبت شد'
     },
     Warnings: {
         oneTimePassword: 'قبل از بستن این صفحه اطلاعات هاست خود را کپی کنید و در جای امنی نگداری کنید',
