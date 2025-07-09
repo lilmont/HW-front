@@ -121,7 +121,8 @@ export const Messages = {
         noDiscountCodesYet: 'هنوز کد تخفیفی ندارید',
         noAccessToVideos: 'به نظر میرسد شما به ویدیوهای پشتیبانی دسترسی ندارید.',
         noVideosYet: 'هنوز ویدیویی وجود ندارد.',
-        confirmBuyProject: 'آیا از خرید این پروژه مطمئن هستید؟'
+        confirmBuyProject: 'آیا از خرید این پروژه مطمئن هستید؟',
+        withdrawIsDisabled: 'درخواست تسویه تنها برای مبالغ بالای 10 هزار تومان امکانپذیر است'
     },
     Buttons: {
         sendCode: 'ارسال کد یکبار مصرف',

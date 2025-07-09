@@ -5,7 +5,8 @@
     <div class="flex items-center justify-between mb-6">
         <h2 class="text-lg font-semibold text-gray-800">{{Messages.Headers.withdrawalCardHeader}}</h2>
         <button (click)="openWithdrawalModal()"
-            class="cursor-pointer inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-yellow-100 hover:bg-yellow-200 rounded-md transition">
+            [ngClass]="[isSubmitWithdrawalRequestDisabled() ? 'bg-gray-300' : 'bg-yellow-100 hover:bg-yellow-200']"
+            class="cursor-pointer inline-flex items-center gap-2 px-4 py-2 text-sm font-medium  rounded-md transition">
             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                 <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>

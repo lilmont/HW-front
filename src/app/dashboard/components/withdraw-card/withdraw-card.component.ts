@@ -25,7 +25,15 @@ export class WithdrawCardComponent {
     private toastr: ToastrService
   ) { }
 
+  isSubmitWithdrawalRequestDisabled(): boolean {
+    return this.withdrawalInfo.withdrawableBalance < 10000;
+  }
+
   openWithdrawalModal(): void {
+    if (this.isSubmitWithdrawalRequestDisabled()) {
+      this.toastr.warning(Messages.Warnings.withdrawIsDisabled, '');
+      return;
+    }
     this.resetModal();
     this.isWithdrawalModalOpen = true;
   }
