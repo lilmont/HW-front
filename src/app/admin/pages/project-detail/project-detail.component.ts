@@ -54,7 +54,7 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
       confirmDate: [null],
       dateCreated: [null],
       projectCategoryId: [null, Validators.required],
-      userPercentage: [null, Validators.required],
+      userPercentage: [null, [Validators.required, Validators.min(0), Validators.max(100)]],
       userId: [null, Validators.required],
       userPhoneNumber: [null],
 

@@ -78,7 +78,7 @@ export const Messages = {
         previewLinkIsRequired: 'لینک پیش نمایش اجباری است',
         downloadLinkIsRequired: 'لینک دانلود اجباری است',
         projectImageIsRequired: 'عکس پروژه اجباری است',
-        userPercentageIsRequired: 'درصد کاربر اجباری است',
+        userPercentageIsRequired: 'درصد کاربر اجباری است و باید بین 0 تا 100 باشد',
         userIdIsRequired: 'آیدی کاربر اجباری است',
         projectCategoryIsRequired: 'یک دسته بندی انتخاب کنید',
         noUserWithThisUserId: 'کاربری با این آیدی وجود ندارد',
