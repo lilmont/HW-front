@@ -181,7 +181,8 @@ export const Messages = {
         rejectRequest: 'در کردن درخواست',
         confirmRequest: 'تایید درخواست',
         selectReceiptImage: 'انتخاب تصویر رسید',
-        viewReceipt: 'مشاهده رسید'
+        viewReceipt: 'مشاهده رسید',
+        addDiscountCode: 'افزودن کد تخفیف'
     },
     Labels: {
         enterPhoneNumber: 'لطفا شماره موبایل خود را وارد کنید',
@@ -278,7 +279,9 @@ export const Messages = {
         WithdrawalAmount: 'مبلغ تسویه شده تا کنون',
         enterWithdrawalAmount: 'لطفا مبلغ مورد نظر را وارد کنید',
         pending: 'در حال  بررسی',
-        rejected: 'رد شده'
+        rejected: 'رد شده',
+        used: 'استفاده شده',
+        unUsed: 'استفاده نشده'
     },
     Headers: {
         signup: 'ثبت نام',
@@ -430,6 +433,11 @@ export const Messages = {
         previewLink: 'لینک پیش نمایش',
         purchase: 'خرید',
         dateRequested: 'تاریخ درخواست',
-        amount: 'مبلغ'
+        amount: 'مبلغ',
+        discountPercentage: 'درصد تخفیف',
+        productName: 'برای محصول',
+        isUsed: 'وضعیت',
+        usedAt: 'تاریخ استفاده',
+        createdBy: 'ایجاد شده توسط'
     }
 };

@@ -12,6 +12,7 @@ import { HostDetailComponent } from "./pages/host-detail/host-detail.component";
 import { ProjectListComponent } from "./pages/project-list/project-list.component";
 import { ProjectDetailComponent } from "./pages/project-detail/project-detail.component";
 import { WithdrawalListComponent } from "./pages/withdrawal-list/withdrawal-list.component";
+import { DiscountCodeListComponent } from "./pages/discount-code-list/discount-code-list.component";
 
 const routes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -38,6 +39,9 @@ const routes: Routes = [
             { path: 'hosting/host-detail/:id', component: HostDetailComponent },
 
             { path: 'withdrawals', component: WithdrawalListComponent },
+
+            { path: 'discount-codes', component: DiscountCodeListComponent },
+            { path: 'discount-codes/code', component: DiscountCodeListComponent }
         ]
     }
 ];

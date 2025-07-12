@@ -1,0 +1,82 @@
+<h1 class="text-xl lg:text-2xl font-bold mb-6">{{Messages.Headers.discountCodes}}</h1>
+
+<div class="p-6 space-y-6">
+    <!-- 🔍 Filters -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <input type="text" [placeholder]="Messages.TableHeaders.id" class="border rounded p-2 w-full"
+            [(ngModel)]="filters.userId" />
+
+        <input type="text" [placeholder]="Messages.TableHeaders.phoneNumber" class="border rounded p-2 w-full"
+            [(ngModel)]="filters.userPhoneNumber" />
+    </div>
+
+    <!-- 🔘 Buttons -->
+    <div class="flex space-x-4">
+        <button class="cursor-pointer bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            (click)="loadDiscountCodes()">
+            {{Messages.Buttons.search}}
+        </button>
+
+        <button class="cursor-pointer bg-gray-300 px-4 py-2 rounded hover:bg-gray-400" (click)="resetFilters()">
+            {{Messages.Buttons.reset}}
+        </button>
+    </div>
+
+    <!-- 📋 Table -->
+    <div class="overflow-x-auto">
+        <div class="mb-2 p-4">
+            <a type="button" [routerLink]="['/mazmon/discount-codes/code']"
+                class="bg-green-600 text-white px-4 py-1 rounded hover:bg-green-700">
+                + {{Messages.Buttons.addDiscountCode}}
+            </a>
+        </div>
+
+        <table class="min-w-full border border-gray-300">
+            <thead class="bg-gray-200">
+                <tr>
+                    <th class="px-4 py-2 border">{{Messages.TableHeaders.id}}</th>
+                    <th class="px-4 py-2 border">{{Messages.TableHeaders.userId}}</th>
+                    <th class="px-4 py-2 border">{{Messages.TableHeaders.userPhoneNumber}}</th>
+                    <th class="px-4 py-2 border">{{Messages.TableHeaders.discountPercentage}}</th>
+                    <th class="px-4 py-2 border">{{Messages.TableHeaders.productName}}</th>
+                    <th class="px-4 py-2 border">{{Messages.TableHeaders.isUsed}}</th>
+                    <th class="px-4 py-2 border">{{Messages.TableHeaders.usedAt}}</th>
+                    <th class="px-4 py-2 border">{{Messages.TableHeaders.createdBy}}</th>
+                    <th class="px-4 py-2 border">{{Messages.Headers.actions}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let discountCode of discountCodes; let i = index" class="hover:bg-gray-300"
+                    [ngClass]="{ 'bg-white': i % 2 === 0, 'bg-gray-100': i % 2 !== 0 }">
+                    <td class="px-4 py-2 border">{{ discountCode.id }}</td>
+                    <td class="px-4 py-2 border">{{ discountCode.userId }}</td>
+                    <td class="px-4 py-2 border">{{ discountCode.userPhoneNumber }}</td>
+                    <td class="px-4 py-2 border">{{ discountCode.discountPercentage }}%</td>
+                    <td class="px-4 py-2 border">{{ discountCode.productName }}</td>
+                    <td class="px-4 py-2 border">
+                        <span *ngIf="discountCode.isUsed; else notUsed"
+                            class="text-red-800">{{Messages.Labels.used}}</span>
+
+                        <ng-template #notUsed>
+                            <span class="text-green-800">{{Messages.Labels.unUsed}}</span>
+                        </ng-template>
+                    </td>
+                    <td class="px-4 py-2 border"> {{discountCode.usedAt | jalaliDate}}</td>
+                    <td class="px-4 py-2 border">{{ discountCode.createdBy }}</td>
+                    <td class="cursor-pointer px-4 py-2 border border-gray-800 text-center text-blue-600">
+                        <div class="flex justify-center">
+                            <a class="bg-red-800 text-white px-3 py-2 text-sm ml-2"
+                                (click)="deleteDiscountCode(discountCode.id)">{{Messages.Buttons.delete}}</a>
+
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 🔢 Pagination -->
+    <hw-pagination [pageNumber]="filters.pageNumber" [pageSize]="filters.pageSize" [totalCount]="totalCount"
+        (pageChange)="onPageChange($event)">
+    </hw-pagination>
+</div>

@@ -22,4 +22,8 @@ export const SIDEBAR_ITEMS: ISidebarItem[] = [
         label: Messages.Headers.withdrawalRequests,
         path: '/mazmon/withdrawals',
     },
+    {
+        label: Messages.Headers.discountCodes,
+        path: '/mazmon/discount-codes',
+    },
 ];
