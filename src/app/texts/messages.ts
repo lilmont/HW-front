@@ -109,7 +109,8 @@ export const Messages = {
         projectAddedSuccessfully: 'پروژه با موفقیت اضافه شد',
         projectEditedSuccessfully: 'پروژه با موفقیت ویرایش شد',
         purchaseProjectSuccessful: 'پروژه با موفقیت خریداری شد',
-        withdrawlRequestSubmittedSuccessfully: 'درخواست شما با موفقیت ثبت شد'
+        withdrawlRequestSubmittedSuccessfully: 'درخواست شما با موفقیت ثبت شد',
+        rejectWithdrawalRequestSuccessful: 'رد درخواست با موفقیت انجام شد'
     },
     Warnings: {
         oneTimePassword: 'قبل از بستن این صفحه اطلاعات هاست خود را کپی کنید و در جای امنی نگداری کنید',
@@ -122,7 +123,8 @@ export const Messages = {
         noAccessToVideos: 'به نظر میرسد شما به ویدیوهای پشتیبانی دسترسی ندارید.',
         noVideosYet: 'هنوز ویدیویی وجود ندارد.',
         confirmBuyProject: 'آیا از خرید این پروژه مطمئن هستید؟',
-        withdrawIsDisabled: 'درخواست تسویه تنها برای مبالغ بالای 10 هزار تومان امکانپذیر است'
+        withdrawIsDisabled: 'درخواست تسویه تنها برای مبالغ بالای 10 هزار تومان امکانپذیر است',
+        confirmRejectRequest: 'آیا از رد کردن درخواست مطمئن هستید؟'
     },
     Buttons: {
         sendCode: 'ارسال کد یکبار مصرف',
@@ -173,7 +175,8 @@ export const Messages = {
         addPlan: 'افزودن پلن',
         purchaseProject: 'خرید پروژه',
         submitWithdrawalRequest: 'ثبت درخواست تسویه',
-        reject: 'رد'
+        reject: 'رد',
+        rejectRequest: 'در کردن درخواست'
     },
     Labels: {
         enterPhoneNumber: 'لطفا شماره موبایل خود را وارد کنید',

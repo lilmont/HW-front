@@ -8,6 +8,7 @@ import { IApiResponse } from '../models/IApiResponse';
 import { catchError, Observable, throwError } from 'rxjs';
 import { IWithdrawalQueryParameters } from '../models/IWithdrawalQueryParameters';
 import { Messages } from '../../texts/messages';
+import { IRejectWithdrawalRequest } from '../models/IRejectWithdrawalRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,21 @@ export class PaymentHttpService {
     const params = this.buildHttpParams(data);
 
     return this.http.get<IApiResponse<IPagedResult<IWithdrawalRequestListItem>>>(`${this.baseUrl}/api/mazmon/payment/withdrawal-request-list`, { params }).pipe(
+      catchError((error) => {
+        if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
+        } else if (error.status === 401) {
+          this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+        return throwError(() => error);
+      })
+    );
+  }
+
+  rejectWithdrawalRequest(request: IRejectWithdrawalRequest): Observable<IApiResponse<null>> {
+    return this.http.post<IApiResponse<null>>(`${this.baseUrl}/api/mazmon/payment/reject-withdrawal-request`, request).pipe(
       catchError((error) => {
         if (error.status === 400) {
           this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);

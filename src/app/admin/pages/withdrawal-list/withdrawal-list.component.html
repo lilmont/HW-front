@@ -47,7 +47,7 @@
                         <span [ngSwitch]="withdrawalRequest.withdrawalRequestStatus">
                             <span *ngSwitchCase="0" class="text-yellow-500">{{Messages.Labels.pending}}</span>
                             <span *ngSwitchCase="1" class="text-red-800">{{Messages.Labels.rejected}}</span>
-                            <span *ngSwitchCase="1" class="text-green-800">{{Messages.Labels.confirmed}}</span>
+                            <span *ngSwitchCase="2" class="text-green-800">{{Messages.Labels.confirmed}}</span>
                         </span>
                     </td>
                     <td class="px-4 py-2 border"> {{withdrawalRequest.dateRequested | jalaliDate}}</td>
@@ -57,7 +57,8 @@
                             <a *ngIf="withdrawalRequest.withdrawalRequestStatus === 0"
                                 class="bg-green-800 text-white px-3 py-2 text-sm ml-2">{{Messages.Buttons.confirm}}</a>
                             <a *ngIf="withdrawalRequest.withdrawalRequestStatus === 0"
-                                class="bg-red-800 text-white px-3 py-2 text-sm ml-2">{{Messages.Buttons.reject}}</a>
+                                class="bg-red-800 text-white px-3 py-2 text-sm ml-2"
+                                (click)="openRejectWithdrawalRequestModal(withdrawalRequest.id)">{{Messages.Buttons.reject}}</a>
                         </div>
                     </td>
                 </tr>
@@ -69,4 +70,46 @@
     <hw-pagination [pageNumber]="filters.pageNumber" [pageSize]="filters.pageSize" [totalCount]="totalCount"
         (pageChange)="onPageChange($event)">
     </hw-pagination>
+</div>
+
+<!-- Reject Request Modal -->
+<div *ngIf="isRejectWithdrawalRequestModalOpen"
+    class="fixed inset-0 z-49 flex items-center justify-center bg-[rgba(31,41,55,0.5)]"
+    (click)="closeRejectWithdrawalRequestModal()">
+
+    <!-- Modal content container -->
+    <div class="relative bg-white rounded-lg shadow-lg w-full max-w-md p-6" (click)="$event.stopPropagation()">
+
+        <!-- Modal header -->
+        <div class="flex items-center justify-between border-b border-gray-200 pb-3 mb-5">
+            <h3 class="text-xl text-gray-900">
+                {{ Messages.Headers.areYouSure }}
+            </h3>
+            <button type="button" class="text-gray-400 hover:text-gray-900 rounded-lg focus:outline-none"
+                (click)="closeRejectWithdrawalRequestModal()" aria-label="Close modal">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="text-gray-700 text-center mb-6">
+            <p>{{ Messages.Warnings.confirmRejectRequest }}</p>
+        </div>
+
+        <!-- Modal footer / buttons -->
+        <div class="flex justify-end space-x-4">
+            <button (click)="closeRejectWithdrawalRequestModal()"
+                class="cursor-pointer px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-lg transition duration-200">
+                {{ Messages.Buttons.cancel }}
+            </button>
+
+            <button (click)="rejectWithdrawalRequest()"
+                class="cursor-pointer px-4 py-2 bg-custom-600 hover:bg-custom-700 text-white font-semibold rounded-lg shadow-md transition duration-200">
+                {{ Messages.Buttons.rejectRequest }}
+            </button>
+        </div>
+    </div>
 </div>
