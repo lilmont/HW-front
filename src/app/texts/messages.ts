@@ -84,7 +84,8 @@ export const Messages = {
         noUserWithThisUserId: 'کاربری با این آیدی وجود ندارد',
         projectNotConfirmed: 'این پروژه هنوز تایید نشده است',
         withdrawAmountExceed: 'مبلغ درخواست از مبلغ قابل برداشت بیشتر است',
-        withdrawAmountInvalid: 'مبلغ درخواست نمیتواند کمتر از 10 هزار تومان باشد'
+        withdrawAmountInvalid: 'مبلغ درخواست نمیتواند کمتر از 10 هزار تومان باشد',
+        receiptImageInvalid: 'عکس نامعتبر است'
     },
     Success: {
         loginSuccessful: 'ورود با موفقیت انجام شد',
@@ -110,7 +111,8 @@ export const Messages = {
         projectEditedSuccessfully: 'پروژه با موفقیت ویرایش شد',
         purchaseProjectSuccessful: 'پروژه با موفقیت خریداری شد',
         withdrawlRequestSubmittedSuccessfully: 'درخواست شما با موفقیت ثبت شد',
-        rejectWithdrawalRequestSuccessful: 'رد درخواست با موفقیت انجام شد'
+        rejectWithdrawalRequestSuccessful: 'رد درخواست با موفقیت انجام شد',
+        confirmWithdrawalRequestSuccessful: 'تایید درخواست با موفقیت انجام شد',
     },
     Warnings: {
         oneTimePassword: 'قبل از بستن این صفحه اطلاعات هاست خود را کپی کنید و در جای امنی نگداری کنید',
@@ -176,7 +178,10 @@ export const Messages = {
         purchaseProject: 'خرید پروژه',
         submitWithdrawalRequest: 'ثبت درخواست تسویه',
         reject: 'رد',
-        rejectRequest: 'در کردن درخواست'
+        rejectRequest: 'در کردن درخواست',
+        confirmRequest: 'تایید درخواست',
+        selectReceiptImage: 'انتخاب تصویر رسید',
+        viewReceipt: 'مشاهده رسید'
     },
     Labels: {
         enterPhoneNumber: 'لطفا شماره موبایل خود را وارد کنید',
@@ -382,7 +387,8 @@ export const Messages = {
         projectDescription: 'توضیحات',
         projectSaleReport: 'گزارش فروش پروژه',
         withdrawalCardHeader: 'برداشت از کیف پول',
-        withdrawalRequests: 'درخواست های تسویه'
+        withdrawalRequests: 'درخواست های تسویه',
+        confirmWithdrawalRequest: 'تایید درخواست تسویه'
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'

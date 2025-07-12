@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { LoadingService } from '../../../core/services/loading.service';
 import { PaymentHttpService } from '../../services/payment-http.service';
 import { RejectWithdrawalRequest } from '../../models/IRejectWithdrawalRequest';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'hw-withdrawal-list',
@@ -14,14 +15,20 @@ import { RejectWithdrawalRequest } from '../../models/IRejectWithdrawalRequest';
 })
 export class WithdrawalListComponent implements OnInit {
   Messages = Messages;
+  baseUrl = environment.apiBaseUrl;
   withdrawalRequests: IWithdrawalRequestListItem[] = [];
   totalCount = 0;
 
   filters: WithdrawalQueryParameters = new WithdrawalQueryParameters();
   isConfirmWithdrawalRequestModalOpen: boolean = false;
   isRejectWithdrawalRequestModalOpen: boolean = false;
+  isReceiptModalOpen: boolean = false;
 
   rejectWithdrawalRequestData: RejectWithdrawalRequest = new RejectWithdrawalRequest();
+  selectedWithdrawalRequestId?: number = undefined;
+  selectedWithdrawalRequestReceipt: string = '';
+  selectedImage: File | null = null;
+  imageInvalid = false;
 
   constructor(private paymentHttpService: PaymentHttpService,
     private toastr: ToastrService,
@@ -60,12 +67,66 @@ export class WithdrawalListComponent implements OnInit {
     this.loadWithdrawalRequests();
   }
 
-  openConfirmWithdrawalRequestModal(): void {
+  openConfirmWithdrawalRequestModal(id: number): void {
+    this.selectedWithdrawalRequestId = id;
     this.isConfirmWithdrawalRequestModalOpen = true;
   }
 
   closeConfirmWithdrawalRequestModal(): void {
+    this.selectedImage = null;
     this.isConfirmWithdrawalRequestModalOpen = false;
+  }
+
+
+  onImageSelected(event: Event): void {
+    const validImageTypes = ['image/jpeg', 'image/png', 'image/jpg'];
+
+    const input = event.target as HTMLInputElement;
+    const file = input.files?.[0] || null;
+
+    if (file && !validImageTypes.includes(file.type)) {
+      this.toastr.error(Messages.Errors.invalidImage, Messages.Errors.error);
+      return;
+    }
+
+    this.selectedImage = file;
+
+    if (input.files?.length) {
+      const fileNameElement = document.getElementById("fileName");
+      if (fileNameElement) {
+        fileNameElement.textContent = input.files[0].name;
+      }
+    }
+  }
+
+  confirmWithdrawalRequest() {
+    if (!this.selectedWithdrawalRequestId)
+      return
+
+    const formData = new FormData();
+    formData.append('Id', this.selectedWithdrawalRequestId.toString());
+
+    if (this.selectedImage)
+      formData.append('ReceiptImageFile', this.selectedImage, this.selectedImage.name);
+
+    this.loadingService.show();
+    this.paymentHttpService.confirmWithdrawalRequest(formData).subscribe({
+      next: (response) => {
+        if (response.success) {
+          this.toastr.success(Messages.Success.confirmWithdrawalRequestSuccessful, '');
+          this.loadWithdrawalRequests();
+        } else {
+          this.toastr.error(response.data ?? Messages.Errors.invalidRequest, Messages.Errors.error)
+        }
+        this.closeConfirmWithdrawalRequestModal();
+        this.loadingService.hide();
+        this.selectedImage = null;
+      },
+      error: () => {
+        this.loadingService.hide();
+        this.closeConfirmWithdrawalRequestModal();
+      }
+    });
   }
 
   openRejectWithdrawalRequestModal(id: number): void {
@@ -95,5 +156,15 @@ export class WithdrawalListComponent implements OnInit {
         this.closeRejectWithdrawalRequestModal();
       }
     });
+  }
+
+  openReceiptModal(imagePath: string): void {
+    this.selectedWithdrawalRequestReceipt = `${this.baseUrl}/uploads/withdraw/receipts/${imagePath}`
+    this.isReceiptModalOpen = true;
+  }
+
+  closeReceiptModal(): void {
+    this.selectedWithdrawalRequestReceipt = '';
+    this.isReceiptModalOpen = false;
   }
 }

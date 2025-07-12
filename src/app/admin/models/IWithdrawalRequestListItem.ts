@@ -5,4 +5,5 @@ export interface IWithdrawalRequestListItem {
     amount: number;
     dateRequested: string;
     withdrawalRequestStatus: number;
+    receiptImage: string;
 }
