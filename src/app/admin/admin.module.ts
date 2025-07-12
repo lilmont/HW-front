@@ -19,6 +19,7 @@ import { HostListComponent } from './pages/host-list/host-list.component';
 import { HostDetailComponent } from './pages/host-detail/host-detail.component';
 import { ProjectListComponent } from './pages/project-list/project-list.component';
 import { ProjectDetailComponent } from './pages/project-detail/project-detail.component';
+import { WithdrawalListComponent } from './pages/withdrawal-list/withdrawal-list.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { ProjectDetailComponent } from './pages/project-detail/project-detail.co
     HostListComponent,
     HostDetailComponent,
     ProjectListComponent,
-    ProjectDetailComponent
+    ProjectDetailComponent,
+    WithdrawalListComponent
   ],
   imports: [
     CommonModule,

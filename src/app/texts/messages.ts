@@ -172,7 +172,8 @@ export const Messages = {
         delete: 'حذف',
         addPlan: 'افزودن پلن',
         purchaseProject: 'خرید پروژه',
-        submitWithdrawalRequest: 'ثبت درخواست تسویه'
+        submitWithdrawalRequest: 'ثبت درخواست تسویه',
+        reject: 'رد'
     },
     Labels: {
         enterPhoneNumber: 'لطفا شماره موبایل خود را وارد کنید',
@@ -267,7 +268,9 @@ export const Messages = {
         withdrawableBalance: 'مبلغ قابل تسویه',
         pendingWithdrawalAmount: 'مبلغ در حال تسویه',
         WithdrawalAmount: 'مبلغ تسویه شده تا کنون',
-        enterWithdrawalAmount: 'لطفا مبلغ مورد نظر را وارد کنید'
+        enterWithdrawalAmount: 'لطفا مبلغ مورد نظر را وارد کنید',
+        pending: 'در حال  بررسی',
+        rejected: 'رد شده'
     },
     Headers: {
         signup: 'ثبت نام',
@@ -375,7 +378,8 @@ export const Messages = {
         projectList: 'لیست پروژه ها',
         projectDescription: 'توضیحات',
         projectSaleReport: 'گزارش فروش پروژه',
-        withdrawalCardHeader: 'برداشت از کیف پول'
+        withdrawalCardHeader: 'برداشت از کیف پول',
+        withdrawalRequests: 'درخواست های تسویه'
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'
@@ -415,6 +419,8 @@ export const Messages = {
         userId: 'آیدی کاربر',
         userPhoneNumber: 'شماره موبایل کاربر',
         previewLink: 'لینک پیش نمایش',
-        purchase: 'خرید'
+        purchase: 'خرید',
+        dateRequested: 'تاریخ درخواست',
+        amount: 'مبلغ'
     }
 };

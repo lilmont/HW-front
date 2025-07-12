@@ -18,4 +18,8 @@ export const SIDEBAR_ITEMS: ISidebarItem[] = [
         label: Messages.Headers.hostManagement,
         path: '/mazmon/hosting',
     },
+    {
+        label: Messages.Headers.withdrawalRequests,
+        path: '/mazmon/withdrawals',
+    },
 ];

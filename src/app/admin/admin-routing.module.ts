@@ -11,6 +11,7 @@ import { HostListComponent } from "./pages/host-list/host-list.component";
 import { HostDetailComponent } from "./pages/host-detail/host-detail.component";
 import { ProjectListComponent } from "./pages/project-list/project-list.component";
 import { ProjectDetailComponent } from "./pages/project-detail/project-detail.component";
+import { WithdrawalListComponent } from "./pages/withdrawal-list/withdrawal-list.component";
 
 const routes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -35,6 +36,8 @@ const routes: Routes = [
             { path: 'hosting', component: HostListComponent },
             { path: 'hosting/host-detail', component: HostDetailComponent },
             { path: 'hosting/host-detail/:id', component: HostDetailComponent },
+
+            { path: 'withdrawals', component: WithdrawalListComponent },
         ]
     }
 ];
