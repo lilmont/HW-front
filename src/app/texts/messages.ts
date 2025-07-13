@@ -121,7 +121,9 @@ export const Messages = {
         confirmWithdrawalRequestSuccessful: 'تایید درخواست با موفقیت انجام شد',
         discountCodeAddedSuccessfully: 'کد تخفیف با موفقیت افزوده شد',
         discountCodeDeletedSuccessfully: 'کد تخفیف با موفقیت حذف شد',
-        userBalanceIncreasedSuccessfully: 'موجودی کاربر با موفقیت افزایش یافت'
+        userBalanceIncreasedSuccessfully: 'موجودی کاربر با موفقیت افزایش یافت',
+        videoAddedSuccessfully: 'ویدیو با موفقیت ثبت شد',
+        videoEditedSuccessfully: 'ویدیو با موفقیت ویرایش شد',
     },
     Warnings: {
         oneTimePassword: 'قبل از بستن این صفحه اطلاعات هاست خود را کپی کنید و در جای امنی نگداری کنید',
@@ -293,7 +295,9 @@ export const Messages = {
         rejected: 'رد شده',
         used: 'استفاده شده',
         unUsed: 'استفاده نشده',
-        forWhatProduct: 'برای کدام محصول؟'
+        forWhatProduct: 'برای کدام محصول؟',
+        sampleSupportVideo: 'نمونه جلسه آنلاین',
+        supportVideo: 'ویدیو پشتیبانی'
     },
     Headers: {
         signup: 'ثبت نام',
@@ -455,6 +459,7 @@ export const Messages = {
         isUsed: 'وضعیت',
         usedAt: 'تاریخ استفاده',
         createdBy: 'ایجاد شده توسط',
-        increaseBalance: 'افزایش موجودی'
+        increaseBalance: 'افزایش موجودی',
+        videoType: 'نوع ویدیو'
     }
 };

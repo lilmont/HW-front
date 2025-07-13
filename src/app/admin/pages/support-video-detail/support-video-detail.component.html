@@ -21,6 +21,15 @@
                 {{Messages.Errors.titleIsRequired}}
             </div>
         </div>
+
+        <!-- Type -->
+        <div>
+            <label for="videoType" class="text-sm block mb-1">{{Messages.TableHeaders.status}}</label>
+            <select formControlName="videoType" class="w-full border rounded px-3 py-2">
+                <option [value]="0">{{Messages.Labels.sampleSupportVideo}}</option>
+                <option [value]="1">{{Messages.Labels.supportVideo}}</option>
+            </select>
+        </div>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">

@@ -14,6 +14,7 @@
                 <tr>
                     <th class="px-4 py-2 border">{{Messages.TableHeaders.id}}</th>
                     <th class="px-4 py-2 border">{{Messages.TableHeaders.title}}</th>
+                    <th class="px-4 py-2 border">{{Messages.TableHeaders.videoType}}</th>
                     <th class="px-4 py-2 border">{{Messages.TableHeaders.edit}}</th>
                 </tr>
             </thead>
@@ -22,6 +23,13 @@
                     [ngClass]="{ 'bg-white': i % 2 === 0, 'bg-gray-100': i % 2 !== 0 }">
                     <td class="px-4 py-2 border">{{ video.id }}</td>
                     <td class="px-4 py-2 border">{{ video.title }}</td>
+                    <td class="px-4 py-2 border">
+                        <span [ngSwitch]="video.videoType">
+                            <span *ngSwitchCase="0"
+                                class="text-custom-600">{{Messages.Labels.sampleSupportVideo}}</span>
+                            <span *ngSwitchCase="1" class="text-green-800">{{Messages.Labels.supportVideo}}</span>
+                        </span>
+                    </td>
                     <td class="px-4 py-2 border border-gray-800 text-center text-blue-600"><a
                             [routerLink]="['/mazmon/support-videos/video-detail', video.id]">{{Messages.TableHeaders.edit}}</a>
                     </td>

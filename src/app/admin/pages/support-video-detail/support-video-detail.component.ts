@@ -5,7 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoadingService } from '../../../core/services/loading.service';
 import { ToastrService } from 'ngx-toastr';
 import { CommonHttpService } from '../../services/common-http.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'hw-support-video-detail',
@@ -27,13 +27,14 @@ export class SupportVideoDetailComponent implements OnInit, OnDestroy {
     private toastr: ToastrService,
     private cdr: ChangeDetectorRef,
     private fb: FormBuilder,
-    // private router: Router
+    private router: Router
   ) { }
 
   ngOnInit() {
     this.videoForm = this.fb.group({
       id: [null],
       title: ['', Validators.required],
+      videoType: [0, Validators.required],
 
       video: [''],
       videoFile: [null]
@@ -71,6 +72,7 @@ export class SupportVideoDetailComponent implements OnInit, OnDestroy {
             id: video.id,
             title: video.title,
             video: video.video,
+            videoType: video.videoType
           });
         } else {
           this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
@@ -117,5 +119,46 @@ export class SupportVideoDetailComponent implements OnInit, OnDestroy {
     }
   }
 
-  AddOrEditVideo() { }
+  AddOrEditVideo() {
+    if (this.videoForm.invalid) {
+      this.videoForm.markAllAsTouched();
+      return;
+    }
+
+    const formValues = this.videoForm.value;
+    const formData = new FormData();
+
+    formData.append('Id', formValues.id ?? '');
+    formData.append('Title', formValues.title);
+    formData.append('VideoType', formValues.videoType.toString());
+
+    if (this.videoForm.get('videoFile')) {
+      formData.append('videoFile', this.videoForm.get('videoFile')?.value);
+    }
+
+    this.loadingService.show();
+
+    const apiCall = this.isAddMode
+      ? this.commonHttpService.addVideo(formData)
+      : this.commonHttpService.editVideo(formData);
+
+    apiCall.subscribe({
+      next: (response) => {
+        if (response.success) {
+          this.toastr.success(this.isAddMode ? Messages.Success.videoAddedSuccessfully : Messages.Success.videoEditedSuccessfully, '');
+          if (this.isAddMode)
+            this.router.navigate(['/mazmon/support-videos']);
+          else
+            location.reload();
+        } else {
+          this.toastr.error(response.data ?? Messages.Errors.invalidRequest, Messages.Errors.error)
+        }
+        this.loadingService.hide();
+      },
+      error: () => {
+
+        this.loadingService.hide();
+      },
+    });
+  }
 }
