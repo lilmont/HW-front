@@ -1,0 +1,50 @@
+<h1 class="text-xl lg:text-2xl font-bold mb-6">{{isAddMode ? Messages.Headers.addVideo :Messages.Headers.editVideo}}
+</h1>
+
+<form [formGroup]="videoForm" (ngSubmit)="AddOrEditVideo()" class="mx-auto p-6 bg-white rounded shadow space-y-6">
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- ID (readonly) -->
+        <div>
+            <label class="block mb-1 font-semibold text-gray-700">{{Messages.TableHeaders.id}}</label>
+            <input formControlName="id" type="number" readonly
+                class="border rounded px-3 py-2 w-full bg-gray-100 cursor-not-allowed">
+        </div>
+
+        <!-- Title -->
+        <div>
+            <label class="block mb-1 font-semibold text-gray-700">{{Messages.TableHeaders.title}}</label>
+            <input formControlName="title" class="border rounded px-3 py-2 w-full"
+                [class.border-red-500]="videoForm.get('title')?.invalid && videoForm.get('title')?.touched">
+            <div *ngIf="videoForm.get('title')?.invalid && videoForm.get('title')?.touched"
+                class="text-red-600 text-sm mt-1">
+                {{Messages.Errors.titleIsRequired}}
+            </div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+            <label class="block mb-1">{{Messages.Headers.video}}</label>
+            <input type="file" accept="video/*" (change)="onVideoSelect($event)">
+
+            <div *ngIf="videoForm.get('videoFile')?.invalid && videoForm.get('videoFile')?.touched"
+                class="text-red-600 text-sm mt-1">
+                {{Messages.Errors.videoFileIsRequired}}
+            </div>
+        </div>
+
+        <div>
+            <div *ngIf="videoForm.get('video')?.value || videoPreviewUrl">
+                <video [src]="videoUrl" controls class="w-full mt-2"></video>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="pt-4">
+        <button type="submit" class="cursor-pointer bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">
+            {{Messages.Buttons.save}}
+        </button>
+    </div>
+</form>

@@ -23,6 +23,7 @@ import { WithdrawalListComponent } from './pages/withdrawal-list/withdrawal-list
 import { DiscountCodeListComponent } from './pages/discount-code-list/discount-code-list.component';
 import { DiscountCodeDetailComponent } from './pages/discount-code-detail/discount-code-detail.component';
 import { SupportVideoListComponent } from './pages/support-video-list/support-video-list.component';
+import { SupportVideoDetailComponent } from './pages/support-video-detail/support-video-detail.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { SupportVideoListComponent } from './pages/support-video-list/support-vi
     WithdrawalListComponent,
     DiscountCodeListComponent,
     DiscountCodeDetailComponent,
-    SupportVideoListComponent
+    SupportVideoListComponent,
+    SupportVideoDetailComponent
   ],
   imports: [
     CommonModule,

@@ -90,7 +90,8 @@ export const Messages = {
         destinationProductIdIsRequired: 'محصول اجباری است',
         cannotDeleteUsedDiscountCode: 'کد تخفیف استفاده شده قابل حذف نیست',
         invalidAmount: 'مبلغ وارد شده باید بزرگتر از 0 باشد',
-        invalidAmountUserVersion: 'مبلغ نامعتبر'
+        invalidAmountUserVersion: 'مبلغ نامعتبر',
+        videoFileIsRequired: 'ویدیو اجباری است'
     },
     Success: {
         loginSuccessful: 'ورود با موفقیت انجام شد',
@@ -403,7 +404,10 @@ export const Messages = {
         withdrawalCardHeader: 'برداشت از کیف پول',
         withdrawalRequests: 'درخواست های تسویه',
         confirmWithdrawalRequest: 'تایید درخواست تسویه',
-        addDiscountCode: 'افزودن کد تخفیف'
+        addDiscountCode: 'افزودن کد تخفیف',
+        editVideo: 'ویرایش ویدیو',
+        addVideo: 'افزودن ویدیو',
+        video: 'ویدیو'
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'

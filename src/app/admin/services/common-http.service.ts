@@ -8,6 +8,7 @@ import { environment } from '../../../environments/environment';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { ToastService } from '../../core/services/toast.service';
 import { Messages } from '../../texts/messages';
+import { ISupportVideoDetail } from '../models/ISupportVideoDetail';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,21 @@ export class CommonHttpService {
     const params = this.buildHttpParams(data);
 
     return this.http.get<IApiResponse<IPagedResult<ISupportVideoListItem>>>(`${this.baseUrl}/api/mazmon/common/support-video-list`, { params }).pipe(
+      catchError((error) => {
+        if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
+        } else if (error.status === 401) {
+          this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+        return throwError(() => error);
+      })
+    );
+  }
+
+  getSupportVideoDetail(id: number): Observable<IApiResponse<ISupportVideoDetail>> {
+    return this.http.get<IApiResponse<ISupportVideoDetail>>(`${this.baseUrl}/api/mazmon/common/support-video-detail`, { params: { id: id.toString() } }).pipe(
       catchError((error) => {
         if (error.status === 400) {
           this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
