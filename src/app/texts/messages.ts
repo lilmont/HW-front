@@ -87,7 +87,8 @@ export const Messages = {
         withdrawAmountInvalid: 'مبلغ درخواست نمیتواند کمتر از 10 هزار تومان باشد',
         receiptImageInvalid: 'عکس نامعتبر است',
         discountPercentageIsRequired: 'درصد تخفیف اجباری است و باید بین 0 تا 100 باشد',
-        destinationProductIdIsRequired: 'محصول اجباری است'
+        destinationProductIdIsRequired: 'محصول اجباری است',
+        cannotDeleteUsedDiscountCode: 'کد تخفیف استفاده شده قابل حذف نیست'
     },
     Success: {
         loginSuccessful: 'ورود با موفقیت انجام شد',
@@ -115,7 +116,8 @@ export const Messages = {
         withdrawlRequestSubmittedSuccessfully: 'درخواست شما با موفقیت ثبت شد',
         rejectWithdrawalRequestSuccessful: 'رد درخواست با موفقیت انجام شد',
         confirmWithdrawalRequestSuccessful: 'تایید درخواست با موفقیت انجام شد',
-        discountCodeAddedSuccessfully: 'کد تخفیف با موفقیت افزوده شد'
+        discountCodeAddedSuccessfully: 'کد تخفیف با موفقیت افزوده شد',
+        discountCodeDeletedSuccessfully: 'کد تخفیف با موفقیت حذف شد',
     },
     Warnings: {
         oneTimePassword: 'قبل از بستن این صفحه اطلاعات هاست خود را کپی کنید و در جای امنی نگداری کنید',
@@ -129,7 +131,8 @@ export const Messages = {
         noVideosYet: 'هنوز ویدیویی وجود ندارد.',
         confirmBuyProject: 'آیا از خرید این پروژه مطمئن هستید؟',
         withdrawIsDisabled: 'درخواست تسویه تنها برای مبالغ بالای 10 هزار تومان امکانپذیر است',
-        confirmRejectRequest: 'آیا از رد کردن درخواست مطمئن هستید؟'
+        confirmRejectRequest: 'آیا از رد کردن درخواست مطمئن هستید؟',
+        confirmDeleteDiscountCode: 'آیا از حذف این کد تخفیف مطمئن هستید؟'
     },
     Buttons: {
         sendCode: 'ارسال کد یکبار مصرف',

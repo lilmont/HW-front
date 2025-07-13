@@ -10,6 +10,7 @@ import { catchError, Observable, throwError } from 'rxjs';
 import { Messages } from '../../texts/messages';
 import { IProductDropdown } from '../models/IProductDropdown';
 import { IDiscountCodeDetail } from '../models/IDiscountCodeDetail';
+import { IDeleteConfirmationCode } from '../models/IDeleteConfirmationCode';
 
 @Injectable({
   providedIn: 'root'
@@ -56,7 +57,26 @@ export class DiscountCodeHttpService {
   addDiscountCode(discountCode: IDiscountCodeDetail): Observable<IApiResponse<null>> {
     return this.http.post<IApiResponse<null>>(`${this.baseUrl}/api/mazmon/discount-code/add-discount-code`, discountCode).pipe(
       catchError((error) => {
-        if (error.status === 400) {
+        if (error.status === 409) {
+          this.toastr.error(Messages.Errors.noUserWithThisUserId, Messages.Errors.error);
+        } else if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
+        } else if (error.status === 401) {
+          this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+        return throwError(() => error);
+      })
+    );
+  }
+
+  deleteDiscountCode(discountCode: IDeleteConfirmationCode): Observable<IApiResponse<null>> {
+    return this.http.post<IApiResponse<null>>(`${this.baseUrl}/api/mazmon/discount-code/delete-discount-code`, discountCode).pipe(
+      catchError((error) => {
+        if (error.status === 409) {
+          this.toastr.error(Messages.Errors.cannotDeleteUsedDiscountCode, Messages.Errors.error);
+        } else if (error.status === 400) {
           this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
         } else if (error.status === 401) {
           this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
