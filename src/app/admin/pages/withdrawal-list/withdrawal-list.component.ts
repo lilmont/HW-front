@@ -74,6 +74,7 @@ export class WithdrawalListComponent implements OnInit {
 
   closeConfirmWithdrawalRequestModal(): void {
     this.selectedImage = null;
+    this.imageInvalid = false;
     this.isConfirmWithdrawalRequestModalOpen = false;
   }
 
@@ -100,6 +101,11 @@ export class WithdrawalListComponent implements OnInit {
   }
 
   confirmWithdrawalRequest() {
+    if (!this.selectedImage) {
+      this.imageInvalid = true;
+      return;
+    }
+
     if (!this.selectedWithdrawalRequestId)
       return
 
