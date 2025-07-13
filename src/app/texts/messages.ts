@@ -85,7 +85,9 @@ export const Messages = {
         projectNotConfirmed: 'این پروژه هنوز تایید نشده است',
         withdrawAmountExceed: 'مبلغ درخواست از مبلغ قابل برداشت بیشتر است',
         withdrawAmountInvalid: 'مبلغ درخواست نمیتواند کمتر از 10 هزار تومان باشد',
-        receiptImageInvalid: 'عکس نامعتبر است'
+        receiptImageInvalid: 'عکس نامعتبر است',
+        discountPercentageIsRequired: 'درصد تخفیف اجباری است و باید بین 0 تا 100 باشد',
+        destinationProductIdIsRequired: 'محصول اجباری است'
     },
     Success: {
         loginSuccessful: 'ورود با موفقیت انجام شد',
@@ -113,6 +115,7 @@ export const Messages = {
         withdrawlRequestSubmittedSuccessfully: 'درخواست شما با موفقیت ثبت شد',
         rejectWithdrawalRequestSuccessful: 'رد درخواست با موفقیت انجام شد',
         confirmWithdrawalRequestSuccessful: 'تایید درخواست با موفقیت انجام شد',
+        discountCodeAddedSuccessfully: 'کد تخفیف با موفقیت افزوده شد'
     },
     Warnings: {
         oneTimePassword: 'قبل از بستن این صفحه اطلاعات هاست خود را کپی کنید و در جای امنی نگداری کنید',
@@ -281,7 +284,8 @@ export const Messages = {
         pending: 'در حال  بررسی',
         rejected: 'رد شده',
         used: 'استفاده شده',
-        unUsed: 'استفاده نشده'
+        unUsed: 'استفاده نشده',
+        forWhatProduct: 'برای کدام محصول؟'
     },
     Headers: {
         signup: 'ثبت نام',
@@ -391,7 +395,8 @@ export const Messages = {
         projectSaleReport: 'گزارش فروش پروژه',
         withdrawalCardHeader: 'برداشت از کیف پول',
         withdrawalRequests: 'درخواست های تسویه',
-        confirmWithdrawalRequest: 'تایید درخواست تسویه'
+        confirmWithdrawalRequest: 'تایید درخواست تسویه',
+        addDiscountCode: 'افزودن کد تخفیف'
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'

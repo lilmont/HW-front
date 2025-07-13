@@ -13,6 +13,7 @@ import { ProjectListComponent } from "./pages/project-list/project-list.componen
 import { ProjectDetailComponent } from "./pages/project-detail/project-detail.component";
 import { WithdrawalListComponent } from "./pages/withdrawal-list/withdrawal-list.component";
 import { DiscountCodeListComponent } from "./pages/discount-code-list/discount-code-list.component";
+import { DiscountCodeDetailComponent } from "./pages/discount-code-detail/discount-code-detail.component";
 
 const routes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -41,7 +42,7 @@ const routes: Routes = [
             { path: 'withdrawals', component: WithdrawalListComponent },
 
             { path: 'discount-codes', component: DiscountCodeListComponent },
-            { path: 'discount-codes/code', component: DiscountCodeListComponent }
+            { path: 'discount-codes/code', component: DiscountCodeDetailComponent }
         ]
     }
 ];

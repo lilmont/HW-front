@@ -1,0 +1,59 @@
+<h1 class="text-xl lg:text-2xl font-bold mb-6">
+    {{Messages.Headers.addDiscountCode}}
+</h1>
+
+<form [formGroup]="discountCodeForm" (ngSubmit)="AddDiscountCode()"
+    class="mx-auto p-6 bg-white rounded shadow space-y-6">
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <!-- Discount Percentage -->
+        <div>
+            <label for="discountPercentage" class="block mb-1 font-semibold text-gray-700">
+                {{Messages.TableHeaders.discountPercentage}}
+            </label>
+            <input type="number" formControlName="discountPercentage" class="border rounded px-3 py-2 w-full" dir="ltr"
+                [class.border-red-500]="discountCodeForm.get('discountPercentage')?.invalid && discountCodeForm.get('discountPercentage')?.touched">
+            <div *ngIf="discountCodeForm.get('discountPercentage')?.invalid && discountCodeForm.get('discountPercentage')?.touched"
+                class="text-red-600 text-sm mt-1">
+                {{Messages.Errors.discountPercentageIsRequired}}
+            </div>
+        </div>
+
+        <!-- User Id -->
+        <div>
+            <label for="userId" class="block mb-1 font-semibold text-gray-700">
+                {{Messages.TableHeaders.userId}}
+            </label>
+            <input type="number" formControlName="userId" class="w-full border rounded px-3 py-2"
+                [class.border-red-500]="discountCodeForm.get('userId')?.invalid && discountCodeForm.get('userId')?.touched"
+                dir="ltr">
+            <div *ngIf="discountCodeForm.get('userId')?.invalid && discountCodeForm.get('userId')?.touched"
+                class="text-red-600 text-sm mt-1">
+                {{Messages.Errors.userIdIsRequired}}
+            </div>
+        </div>
+
+        <!-- Product -->
+        <div>
+            <label for="destinationProductId">{{Messages.Labels.forWhatProduct}}</label>
+            <select id="destinationProductId" formControlName="destinationProductId" class="mr-2 min-w-1/2">
+                <option [ngValue]="null" disabled selected hidden>{{Messages.Labels.select}}</option>
+                <option *ngFor="let product of products" [ngValue]="product.id">
+                    {{ product.title }}
+                </option>
+            </select>
+
+            <div *ngIf="discountCodeForm.get('destinationProductId')?.invalid && discountCodeForm.get('destinationProductId')?.touched"
+                class="text-red-600 text-sm mt-1">
+                {{Messages.Errors.destinationProductIdIsRequired}}
+            </div>
+        </div>
+    </div>
+
+
+    <div class="pt-4">
+        <button type="submit" class="cursor-pointer bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">
+            {{Messages.Buttons.save}}
+        </button>
+    </div>
+</form>
