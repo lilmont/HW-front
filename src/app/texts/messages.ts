@@ -88,7 +88,8 @@ export const Messages = {
         receiptImageInvalid: 'عکس نامعتبر است',
         discountPercentageIsRequired: 'درصد تخفیف اجباری است و باید بین 0 تا 100 باشد',
         destinationProductIdIsRequired: 'محصول اجباری است',
-        cannotDeleteUsedDiscountCode: 'کد تخفیف استفاده شده قابل حذف نیست'
+        cannotDeleteUsedDiscountCode: 'کد تخفیف استفاده شده قابل حذف نیست',
+        invalidAmount: 'مبلغ وارد شده باید بزرگتر از 0 باشد'
     },
     Success: {
         loginSuccessful: 'ورود با موفقیت انجام شد',
@@ -118,6 +119,7 @@ export const Messages = {
         confirmWithdrawalRequestSuccessful: 'تایید درخواست با موفقیت انجام شد',
         discountCodeAddedSuccessfully: 'کد تخفیف با موفقیت افزوده شد',
         discountCodeDeletedSuccessfully: 'کد تخفیف با موفقیت حذف شد',
+        userBalanceIncreasedSuccessfully: 'موجودی کاربر با موفقیت افزایش یافت'
     },
     Warnings: {
         oneTimePassword: 'قبل از بستن این صفحه اطلاعات هاست خود را کپی کنید و در جای امنی نگداری کنید',
@@ -446,6 +448,7 @@ export const Messages = {
         productName: 'برای محصول',
         isUsed: 'وضعیت',
         usedAt: 'تاریخ استفاده',
-        createdBy: 'ایجاد شده توسط'
+        createdBy: 'ایجاد شده توسط',
+        increaseBalance: 'افزایش موجودی'
     }
 };

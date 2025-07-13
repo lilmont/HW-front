@@ -1,5 +1,5 @@
 export interface IUserListItem {
-    id: string;
+    id: number;
     firstName: string;
     lastName: string;
     phoneNumber: string;

@@ -5,6 +5,7 @@ import { IUserQueryParameters, UserQueryParameters } from '../../models/IUserQue
 import { ToastrService } from 'ngx-toastr';
 import { Messages } from '../../../texts/messages';
 import { LoadingService } from '../../../core/services/loading.service';
+import { IncreaseBalance } from '../../models/IIncreaseBalance';
 
 @Component({
   selector: 'hw-user-list',
@@ -17,6 +18,11 @@ export class UserListComponent implements OnInit {
   totalCount = 0;
 
   filters: UserQueryParameters = new UserQueryParameters();
+
+  isIncreaseBalanceModalOpen: boolean = false;
+  increaseBalanceData: IncreaseBalance = new IncreaseBalance();
+  amount: string = '';
+  amountInvalid: boolean = false;
 
   constructor(private userHttpService: UserHttpService,
     private toastr: ToastrService,
@@ -54,5 +60,42 @@ export class UserListComponent implements OnInit {
   resetFilters() {
     this.filters.reset();
     this.loadUsers();
+  }
+
+  openIncreaseBalanceModal(userId: number) {
+    this.increaseBalanceData.userId = userId;
+    this.isIncreaseBalanceModalOpen = true;
+  }
+  closeIncreaseBalanceModal() {
+    this.increaseBalanceData.reset();
+    this.amount = '';
+    this.amountInvalid = false;
+    this.isIncreaseBalanceModalOpen = false;
+  }
+
+  increaseBalance() {
+    this.increaseBalanceData.amount = Number(this.amount.replaceAll(',', ''))
+
+    if (this.increaseBalanceData.amount <= 0) {
+      this.amountInvalid = true;
+      return;
+    }
+
+    this.loadingService.show();
+    this.userHttpService.increaseUserBalance(this.increaseBalanceData).subscribe({
+      next: (response) => {
+        if (response.success) {
+          this.toastr.success(Messages.Success.userBalanceIncreasedSuccessfully, '');
+        } else {
+          this.toastr.error(response.data ?? Messages.Errors.invalidRequest, Messages.Errors.error)
+        }
+        this.closeIncreaseBalanceModal();
+        this.loadingService.hide();
+      },
+      error: () => {
+        this.closeIncreaseBalanceModal();
+        this.loadingService.hide();
+      }
+    });
   }
 }
