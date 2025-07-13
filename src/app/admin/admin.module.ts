@@ -22,6 +22,7 @@ import { ProjectDetailComponent } from './pages/project-detail/project-detail.co
 import { WithdrawalListComponent } from './pages/withdrawal-list/withdrawal-list.component';
 import { DiscountCodeListComponent } from './pages/discount-code-list/discount-code-list.component';
 import { DiscountCodeDetailComponent } from './pages/discount-code-detail/discount-code-detail.component';
+import { SupportVideoListComponent } from './pages/support-video-list/support-video-list.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { DiscountCodeDetailComponent } from './pages/discount-code-detail/discou
     ProjectDetailComponent,
     WithdrawalListComponent,
     DiscountCodeListComponent,
-    DiscountCodeDetailComponent
+    DiscountCodeDetailComponent,
+    SupportVideoListComponent
   ],
   imports: [
     CommonModule,

@@ -26,4 +26,8 @@ export const SIDEBAR_ITEMS: ISidebarItem[] = [
         label: Messages.Headers.discountCodes,
         path: '/mazmon/discount-codes',
     },
+    {
+        label: Messages.Headers.supportVideos,
+        path: '/mazmon/support-videos',
+    },
 ];

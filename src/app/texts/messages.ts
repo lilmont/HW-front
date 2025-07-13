@@ -191,7 +191,8 @@ export const Messages = {
         confirmRequest: 'تایید درخواست',
         selectReceiptImage: 'انتخاب تصویر رسید',
         viewReceipt: 'مشاهده رسید',
-        addDiscountCode: 'افزودن کد تخفیف'
+        addDiscountCode: 'افزودن کد تخفیف',
+        addVideo: 'افزودن ویدیو'
     },
     Labels: {
         enterPhoneNumber: 'لطفا شماره موبایل خود را وارد کنید',
