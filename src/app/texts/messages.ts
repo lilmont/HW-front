@@ -89,7 +89,8 @@ export const Messages = {
         discountPercentageIsRequired: 'درصد تخفیف اجباری است و باید بین 0 تا 100 باشد',
         destinationProductIdIsRequired: 'محصول اجباری است',
         cannotDeleteUsedDiscountCode: 'کد تخفیف استفاده شده قابل حذف نیست',
-        invalidAmount: 'مبلغ وارد شده باید بزرگتر از 0 باشد'
+        invalidAmount: 'مبلغ وارد شده باید بزرگتر از 0 باشد',
+        invalidAmountUserVersion: 'مبلغ نامعتبر'
     },
     Success: {
         loginSuccessful: 'ورود با موفقیت انجام شد',

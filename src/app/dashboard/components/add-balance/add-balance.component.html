@@ -46,6 +46,10 @@
                     <input type="text" hwAmount id="amount" [(ngModel)]="amount" name="amount" dir="ltr"
                         class="text-center bg-gray-50 border outline-custom-300 text-gray-900 text-sm rounded-lg focus:ring-custom-500 focus:border-custom-500 block w-full p-2.5"
                         [placeholder]="Messages.Labels.desiredAmountPlaceholder" (input)="onAmountInputChange()" />
+
+                    <div *ngIf="amountInvalid" class="text-red-600 text-xs mt-1">
+                        {{Messages.Errors.invalidAmountUserVersion}}
+                    </div>
                 </div>
 
                 <div class="space-x-2 mt-6">

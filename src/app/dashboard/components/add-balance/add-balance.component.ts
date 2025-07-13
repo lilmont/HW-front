@@ -17,6 +17,7 @@ export class AddBalanceComponent implements OnInit {
   amount: string = '';
   suggestedAmounts: ISuggestedWalletAmount[] = [];
   selectedAmount: number | null = null;
+  amountInvalid: boolean = false;
   constructor(private decimalPipe: DecimalPipe,
     private paymentHttpService: PaymentHttpService,
     private loadingService: LoadingService
@@ -38,6 +39,9 @@ export class AddBalanceComponent implements OnInit {
     this.isModalOpen = true;
   }
   closeModal() {
+    this.amountInvalid = false;
+    this.amount = '';
+    this.selectedAmount = null;
     this.isModalOpen = false;
   }
 
@@ -56,8 +60,14 @@ export class AddBalanceComponent implements OnInit {
       return;
     }
 
+    if (parsed <= 0) {
+      this.amountInvalid = true;
+      return;
+    }
+
     const amountInRial = parsed * 10;
     const url = `https://zarinp.al/mazwebprog?amount=${amountInRial}`;
     window.open(url, '_blank');
+    this.closeModal();
   }
 }
