@@ -1,5 +1,5 @@
 export interface ISupportVideoListItem {
-    id: string;
+    id: number;
     title: string;
     videoType: number;
 }

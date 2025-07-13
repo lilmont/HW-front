@@ -5,6 +5,7 @@ import { LoadingService } from '../../../core/services/loading.service';
 import { ISupportVideoListItem } from '../../models/ISupportVideoListItem';
 import { SupportVideoQueryParameters } from '../../models/ISupportVideoQueryParameters';
 import { CommonHttpService } from '../../services/common-http.service';
+import { DeleteConfirmationCode } from '../../models/IDeleteConfirmationCode';
 
 @Component({
   selector: 'hw-support-video-list',
@@ -16,6 +17,9 @@ export class SupportVideoListComponent implements OnInit {
   supportVideos: ISupportVideoListItem[] = [];
   totalCount = 0;
   filters: SupportVideoQueryParameters = new SupportVideoQueryParameters();
+
+  isDeleteConfirmationModalOpen: boolean = false;
+  deleteConfirmationCode: DeleteConfirmationCode = new DeleteConfirmationCode();
 
   constructor(private commonHttpService: CommonHttpService,
     private toastr: ToastrService,
@@ -48,5 +52,35 @@ export class SupportVideoListComponent implements OnInit {
   onPageChange(page: any) {
     this.filters.pageNumber = page;
     this.loadSupportVideos();
+  }
+
+  openDeleteConfirmationModal(id: number) {
+    this.deleteConfirmationCode.id = id;
+    this.isDeleteConfirmationModalOpen = true;
+  }
+  closeDeleteConfirmationModal() {
+    this.deleteConfirmationCode.id = 0;
+    this.isDeleteConfirmationModalOpen = false;
+  }
+
+  deleteVideo(): void {
+    this.loadingService.show();
+
+    this.commonHttpService.deleteVideo(this.deleteConfirmationCode).subscribe({
+      next: (response) => {
+        if (response.success) {
+          this.toastr.success(Messages.Success.videoDeletedSuccessfully, '');
+          location.reload();
+        } else {
+          this.toastr.error(response.data ?? Messages.Errors.invalidRequest, Messages.Errors.error)
+        }
+        this.isDeleteConfirmationModalOpen = false;
+        this.loadingService.hide();
+      },
+      error: () => {
+        this.isDeleteConfirmationModalOpen = false;
+        this.loadingService.hide();
+      },
+    });
   }
 }

@@ -91,7 +91,7 @@ export const Messages = {
         cannotDeleteUsedDiscountCode: 'کد تخفیف استفاده شده قابل حذف نیست',
         invalidAmount: 'مبلغ وارد شده باید بزرگتر از 0 باشد',
         invalidAmountUserVersion: 'مبلغ نامعتبر',
-        videoFileIsRequired: 'ویدیو اجباری است'
+        videoFileIsRequired: 'ویدیو اجباری است',
     },
     Success: {
         loginSuccessful: 'ورود با موفقیت انجام شد',
@@ -124,6 +124,7 @@ export const Messages = {
         userBalanceIncreasedSuccessfully: 'موجودی کاربر با موفقیت افزایش یافت',
         videoAddedSuccessfully: 'ویدیو با موفقیت ثبت شد',
         videoEditedSuccessfully: 'ویدیو با موفقیت ویرایش شد',
+        videoDeletedSuccessfully: 'ویدیو با موفقیت حذف شد'
     },
     Warnings: {
         oneTimePassword: 'قبل از بستن این صفحه اطلاعات هاست خود را کپی کنید و در جای امنی نگداری کنید',
@@ -138,7 +139,8 @@ export const Messages = {
         confirmBuyProject: 'آیا از خرید این پروژه مطمئن هستید؟',
         withdrawIsDisabled: 'درخواست تسویه تنها برای مبالغ بالای 10 هزار تومان امکانپذیر است',
         confirmRejectRequest: 'آیا از رد کردن درخواست مطمئن هستید؟',
-        confirmDeleteDiscountCode: 'آیا از حذف این کد تخفیف مطمئن هستید؟'
+        confirmDeleteDiscountCode: 'آیا از حذف این کد تخفیف مطمئن هستید؟',
+        confirmDeleteVideo: 'آیا از حذف این ویدیو مطمئن هستید؟',
     },
     Buttons: {
         sendCode: 'ارسال کد یکبار مصرف',

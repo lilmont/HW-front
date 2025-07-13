@@ -9,6 +9,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { ToastService } from '../../core/services/toast.service';
 import { Messages } from '../../texts/messages';
 import { ISupportVideoDetail } from '../models/ISupportVideoDetail';
+import { IDeleteConfirmationCode } from '../models/IDeleteConfirmationCode';
 
 @Injectable({
   providedIn: 'root'
@@ -79,6 +80,21 @@ export class CommonHttpService {
         } else if (error.status === 441) {
           this.toastr.error(Messages.Errors.invalidImage, Messages.Errors.error);
         } else if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
+        } else if (error.status === 401) {
+          this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+        return throwError(() => error);
+      })
+    );
+  }
+
+  deleteVideo(video: IDeleteConfirmationCode): Observable<IApiResponse<null>> {
+    return this.http.post<IApiResponse<null>>(`${this.baseUrl}/api/mazmon/common/delete-support-video`, video).pipe(
+      catchError((error) => {
+        if (error.status === 400) {
           this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
         } else if (error.status === 401) {
           this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
