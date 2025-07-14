@@ -93,7 +93,7 @@ export const Messages = {
         invalidAmountUserVersion: 'مبلغ نامعتبر',
         videoFileIsRequired: 'ویدیو اجباری است',
         deleteFailedInUseForeignKey: 'این رکورد به علت در استفاده بودن قابل حذف نیست',
-        titleInvalid: 'عنوان نمیتواند خالی باشد'
+        titleInvalid: 'عنوان نمیتواند خالی باشد',
     },
     Success: {
         loginSuccessful: 'ورود با موفقیت انجام شد',
@@ -132,6 +132,9 @@ export const Messages = {
         categoryDeletedSuccessfully: 'دسته بندی با موفقیت حذف شد',
         categoryAddedSuccessfully: 'دسته بندی با موفقیت اضافه شد',
         categoryEditedSuccessfully: 'دسته بندی با موفقیت ویرایش شد',
+        supportAnnouncementAddedSuccessfully: 'اعلان با موفقیت افزوده شد',
+        supportAnnouncementEditedSuccessfully: 'اعلان با موفقیت ویرایش شد',
+        announcementDeletedSuccessfully: 'اعلان با موفقیت حذف شد',
     },
     Warnings: {
         oneTimePassword: 'قبل از بستن این صفحه اطلاعات هاست خود را کپی کنید و در جای امنی نگداری کنید',
@@ -148,7 +151,8 @@ export const Messages = {
         confirmRejectRequest: 'آیا از رد کردن درخواست مطمئن هستید؟',
         confirmDeleteDiscountCode: 'آیا از حذف این کد تخفیف مطمئن هستید؟',
         confirmDeleteVideo: 'آیا از حذف این ویدیو مطمئن هستید؟',
-        confirmDeleteCategory: 'آیا از حذف این دسته بندی مطمئن هستید؟'
+        confirmDeleteCategory: 'آیا از حذف این دسته بندی مطمئن هستید؟',
+        confirmDeleteAnnouncement: 'آیا از حذف این اعلان مطمئن هستید؟',
     },
     Buttons: {
         sendCode: 'ارسال کد یکبار مصرف',
@@ -210,7 +214,10 @@ export const Messages = {
         approve: 'تایید',
         disapprove: 'رد',
         addCategory: 'افزودن دسته بندی',
-        editCategory: 'ویرایش دسته بندی'
+        editCategory: 'ویرایش دسته بندی',
+        addAnnouncement: 'افزودن اعلان',
+        editAnnouncement: 'ویرایش اعلان',
+
     },
     Labels: {
         enterPhoneNumber: 'لطفا شماره موبایل خود را وارد کنید',
@@ -432,7 +439,8 @@ export const Messages = {
         video: 'ویدیو',
         userComments: 'نظرات کاربران',
         userComment: 'نظر کاربر',
-        projectCategories: 'دسته بندی پروژه'
+        projectCategories: 'دسته بندی پروژه',
+        supportAnnouncements: 'اعلانات پشتیبانی'
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'
@@ -481,6 +489,7 @@ export const Messages = {
         usedAt: 'تاریخ استفاده',
         createdBy: 'ایجاد شده توسط',
         increaseBalance: 'افزایش موجودی',
-        videoType: 'نوع ویدیو'
+        videoType: 'نوع ویدیو',
+        text: 'متن'
     }
 };

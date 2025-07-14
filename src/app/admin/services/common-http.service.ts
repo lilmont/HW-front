@@ -12,6 +12,7 @@ import { ISupportVideoDetail } from '../models/ISupportVideoDetail';
 import { IDeleteConfirmationCode } from '../models/IDeleteConfirmationCode';
 import { IProjectCategoryListItem } from '../models/IProjectCategoryListItem';
 import { IProjectCategoryQueryParameters } from '../models/IProjectCategoryQueryParameters';
+import { ISupportAnnouncementListItem } from '../models/ISupportAnnouncementListItem';
 
 @Injectable({
   providedIn: 'root'
@@ -171,6 +172,67 @@ export class CommonHttpService {
       })
     );
   }
+
+  getSupportAnnouncements(): Observable<IApiResponse<ISupportAnnouncementListItem[]>> {
+    return this.http.get<IApiResponse<ISupportAnnouncementListItem[]>>(`${this.baseUrl}/api/mazmon/common/support-announcement-list`).pipe(
+      catchError((error) => {
+        if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
+        } else if (error.status === 401) {
+          this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+        return throwError(() => error);
+      })
+    );
+  }
+
+  addSupportAnnouncement(category: ISupportAnnouncementListItem): Observable<IApiResponse<null>> {
+    return this.http.post<IApiResponse<null>>(`${this.baseUrl}/api/mazmon/common/add-support-announcement`, category).pipe(
+      catchError((error) => {
+        if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
+        } else if (error.status === 401) {
+          this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+        return throwError(() => error);
+      })
+    );
+  }
+
+  editSupportAnnouncement(hostingPlan: ISupportAnnouncementListItem): Observable<IApiResponse<null>> {
+    return this.http.post<IApiResponse<null>>(`${this.baseUrl}/api/mazmon/common/edit-support-announcement`, hostingPlan).pipe(
+      catchError((error) => {
+        if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
+        } else if (error.status === 401) {
+          this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+        return throwError(() => error);
+      })
+    );
+  }
+
+  deleteSupportAnnouncement(category: ISupportAnnouncementListItem): Observable<IApiResponse<null>> {
+    return this.http.post<IApiResponse<null>>(`${this.baseUrl}/api/mazmon/common/delete-support-announcement`, category).pipe(
+      catchError((error) => {
+        if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
+        } else if (error.status === 401) {
+          this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+        return throwError(() => error);
+      })
+    );
+  }
+
 
   private buildHttpParams(data: ISupportVideoQueryParameters): HttpParams {
     let params = new HttpParams();

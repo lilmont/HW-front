@@ -26,6 +26,7 @@ import { SupportVideoListComponent } from './pages/support-video-list/support-vi
 import { SupportVideoDetailComponent } from './pages/support-video-detail/support-video-detail.component';
 import { UserCommentListComponent } from './pages/user-comment-list/user-comment-list.component';
 import { ProjectCategoryListComponent } from './pages/project-category-list/project-category-list.component';
+import { SupportAnnouncementListComponent } from './pages/support-announcement-list/support-announcement-list.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { ProjectCategoryListComponent } from './pages/project-category-list/proj
     SupportVideoListComponent,
     SupportVideoDetailComponent,
     UserCommentListComponent,
-    ProjectCategoryListComponent
+    ProjectCategoryListComponent,
+    SupportAnnouncementListComponent
   ],
   imports: [
     CommonModule,

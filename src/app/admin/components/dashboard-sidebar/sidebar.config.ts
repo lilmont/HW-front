@@ -38,4 +38,8 @@ export const SIDEBAR_ITEMS: ISidebarItem[] = [
         label: Messages.Headers.projectCategories,
         path: '/mazmon/project-categories',
     },
+    {
+        label: Messages.Headers.supportAnnouncements,
+        path: '/mazmon/support-announcements',
+    },
 ];

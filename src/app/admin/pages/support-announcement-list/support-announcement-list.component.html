@@ -1,0 +1,131 @@
+<h1 class="text-xl lg:text-2xl font-bold mb-6">{{Messages.Headers.supportAnnouncements}}</h1>
+
+<div class="p-6 space-y-6">
+    <div class="overflow-x-auto">
+        <div class="mb-2 p-4">
+            <a type="button" (click)="openAddOrEditModal(undefined)"
+                class="cursor-pointer bg-green-600 text-white px-4 py-1 rounded hover:bg-green-700">
+                + {{Messages.Buttons.addAnnouncement}}
+            </a>
+        </div>
+
+        <table class="min-w-full border border-gray-300">
+            <thead class="bg-gray-200">
+                <tr>
+                    <th class="px-4 py-2 border">{{Messages.TableHeaders.id}}</th>
+                    <th class="px-4 py-2 border">{{Messages.TableHeaders.text}}</th>
+                    <th class="px-4 py-2 border">{{Messages.Headers.actions}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let announcement of announcements; let i = index" class="hover:bg-gray-300"
+                    [ngClass]="{ 'bg-white': i % 2 === 0, 'bg-gray-100': i % 2 !== 0 }">
+                    <td class="px-4 py-2 border">{{ announcement.id }}</td>
+                    <td class="px-4 py-2 border">{{ announcement.text }}</td>
+                    <td class="px-4 py-2 border border-gray-800 text-center text-blue-600">
+                        <a class="cursor-pointer bg-custom-600 text-white px-3 py-2 text-sm ml-2"
+                            (click)="openAddOrEditModal(announcement)">
+                            {{Messages.Buttons.edit}}
+                        </a>
+                        <a class="cursor-pointer bg-red-800 text-white px-3 py-2 text-sm"
+                            (click)="openDeleteConfirmationModal(announcement)">
+                            {{Messages.Buttons.delete}}
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div *ngIf="isDeleteConfirmationModalOpen"
+    class="fixed inset-0 z-49 flex items-center justify-center bg-[rgba(31,41,55,0.5)]"
+    (click)="closeDeleteConfirmationModal()">
+
+    <!-- Modal content container -->
+    <div class="relative bg-white rounded-lg shadow-lg w-full max-w-md p-6" (click)="$event.stopPropagation()">
+
+        <!-- Modal header -->
+        <div class="flex items-center justify-between border-b border-gray-200 pb-3 mb-5">
+            <h3 class="text-xl text-gray-900">
+                {{ Messages.Headers.areYouSure }}
+            </h3>
+            <button type="button" class="text-gray-400 hover:text-gray-900 rounded-lg focus:outline-none"
+                (click)="closeDeleteConfirmationModal()" aria-label="Close modal">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="text-gray-700 text-center mb-6">
+            <p>{{ Messages.Warnings.confirmDeleteAnnouncement }}</p>
+        </div>
+
+        <!-- Modal footer / buttons -->
+        <div class="flex justify-end space-x-4">
+            <button (click)="closeDeleteConfirmationModal()"
+                class="cursor-pointer px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-lg transition duration-200">
+                {{ Messages.Buttons.cancel }}
+            </button>
+
+            <button (click)="deleteAnnouncement()"
+                class="cursor-pointer px-4 py-2 bg-custom-600 hover:bg-custom-700 text-white font-semibold rounded-lg shadow-md transition duration-200">
+                {{ Messages.Buttons.delete }}
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Add/Edit Modal -->
+<div *ngIf="isAddOrEditModalOpen" class="fixed inset-0 z-49 flex items-center justify-center bg-[rgba(31,41,55,0.5)]"
+    (click)="closeAddOrEditModal()">
+
+    <!-- Modal content container -->
+    <div class="relative bg-white rounded-lg shadow-lg w-full max-w-md p-6" (click)="$event.stopPropagation()">
+
+        <!-- Modal header -->
+        <div class="flex items-center justify-between border-b border-gray-200 pb-3 mb-5">
+            <h3 class="text-xl text-gray-900">
+                {{ !selectedAnnouncement?.id ? Messages.Buttons.addAnnouncement : Messages.Buttons.editAnnouncement }}
+            </h3>
+            <button type="button" class="text-gray-400 hover:text-gray-900 rounded-lg focus:outline-none"
+                (click)="closeAddOrEditModal()" aria-label="Close modal">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="text-gray-700 text-center mb-6">
+            <label for="text" class="block text-sm font-medium text-gray-700 mb-4 text-center">
+                {{Messages.Labels.title}}
+            </label>
+            <input type="text" id="text" [(ngModel)]="modalAnnouncement.text" name="text"
+                class="text-center bg-gray-50 border outline-custom-300 text-gray-900 text-sm rounded-lg focus:ring-custom-500 focus:border-custom-500 block w-full p-2.5"
+                [placeholder]="Messages.Labels.enterCategoryTitle" />
+
+            <div *ngIf="textInvalid" class="text-red-600 text-sm mt-1">
+                {{Messages.Errors.titleInvalid}}
+            </div>
+        </div>
+
+        <!-- Modal footer / buttons -->
+        <div class="flex justify-end space-x-4">
+            <button (click)="closeAddOrEditModal()"
+                class="cursor-pointer px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-lg transition duration-200">
+                {{ Messages.Buttons.cancel }}
+            </button>
+
+            <button (click)="addOrEditAnnouncement()"
+                class="cursor-pointer px-4 py-2 bg-custom-600 hover:bg-custom-700 text-white font-semibold rounded-lg shadow-md transition duration-200">
+                {{ Messages.Buttons.save }}
+            </button>
+        </div>
+    </div>
+</div>
