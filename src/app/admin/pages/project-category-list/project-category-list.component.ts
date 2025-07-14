@@ -27,10 +27,10 @@ export class ProjectCategoryListComponent {
   ) { }
 
   ngOnInit() {
-    this.loadHostingPlans();
+    this.loadProjectCategories();
   }
 
-  loadHostingPlans() {
+  loadProjectCategories() {
     this.loadingService.show();
     this.commonHttpService.getPagedProjectCategories(this.filters).subscribe({
       next: (response) => {
@@ -51,7 +51,7 @@ export class ProjectCategoryListComponent {
 
   onPageChange(page: any) {
     this.filters.pageNumber = page;
-    this.loadHostingPlans();
+    this.loadProjectCategories();
   }
 
   openAddOrEditModal(category: IProjectCategoryListItem | undefined) {
