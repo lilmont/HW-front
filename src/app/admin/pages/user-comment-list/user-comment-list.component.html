@@ -50,15 +50,15 @@
                     <td class="px-4 py-2 border">{{ comment.userId }}</td>
                     <td class="px-4 py-2 border">{{ comment.userPhoneNumber }}</td>
                     <td class="px-4 py-2 border">
-                        <span *ngIf="comment.isApproved; else notApproved"
-                            class="text-green-800">{{Messages.Labels.confirmed}}</span>
-                        <ng-template #notApproved>
-                            <span class="text-yellow-500">{{Messages.Labels.inProgress}}</span>
-                        </ng-template>
+                        <span [ngSwitch]="comment.userCommentStatus">
+                            <span *ngSwitchCase="0" class="text-yellow-500">{{Messages.Labels.pending}}</span>
+                            <span *ngSwitchCase="1" class="text-green-800">{{Messages.Labels.approved}}</span>
+                            <span *ngSwitchCase="2" class="text-red-800">{{Messages.Labels.disapproved}}</span>
+                        </span>
                     </td>
                     <td class="cursor-pointer px-4 py-2 border border-gray-800 text-center text-green-600">
                         <a (click)="openConfirmationModal(comment)">
-                            {{comment.isApproved ? Messages.Buttons.view : Messages.Buttons.viewAndConfirm}}
+                            {{Messages.Buttons.viewAndEdit}}
                         </a>
                     </td>
                 </tr>
@@ -72,44 +72,48 @@
     </hw-pagination>
 </div>
 
-<!-- Purchase Confirmation Modal -->
-<!-- <div *ngIf="isPurchaseConfirmationModalOpen"
-    class="fixed inset-0 z-49 flex items-center justify-center bg-[rgba(31,41,55,0.5)]"
-    (click)="closePurchaseConfirmationModal()"> -->
+<!-- Confirmation Modal -->
+<div *ngIf="isConfirmationModalOpen" class="fixed inset-0 z-49 flex items-center justify-center bg-[rgba(31,41,55,0.5)]"
+    (click)="closeConfirmationModal()">
 
-<!-- Modal content container -->
-<!-- <div class="relative bg-white rounded-lg shadow-lg w-full max-w-md p-6" (click)="$event.stopPropagation()"> -->
+    <!-- Modal content container -->
+    <div class="relative bg-white rounded-lg shadow-lg w-full max-w-md p-6" (click)="$event.stopPropagation()">
 
-<!-- Modal header -->
-<!-- <div class="flex items-center justify-between border-b border-gray-200 pb-3 mb-5">
+        <!-- Modal header -->
+        <div class="flex items-center justify-between border-b border-gray-200 pb-3 mb-5">
             <h3 class="text-xl text-gray-900">
-                {{ Messages.Headers.areYouSure }}
+                {{ Messages.Headers.userComment + ' '+ selectedUserComment?.userId}}
             </h3>
             <button type="button" class="text-gray-400 hover:text-gray-900 rounded-lg focus:outline-none"
-                (click)="closePurchaseConfirmationModal()" aria-label="Close modal">
+                (click)="closeConfirmationModal()" aria-label="Close modal">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
             </button>
-        </div> -->
+        </div>
 
-<!-- Modal body -->
-<!-- <div class="text-gray-700 text-center mb-6">
-            <p>{{ Messages.Warnings.confirmBuyProject }}</p>
-        </div> -->
+        <!-- Modal body -->
+        <div class="text-gray-700 text-center mb-6">
+            <p>{{ selectedUserComment?.commentText }}</p>
+        </div>
 
-<!-- Modal footer / buttons -->
-<!-- <div class="flex justify-end space-x-4">
-            <button (click)="closePurchaseConfirmationModal()"
+        <!-- Modal footer / buttons -->
+        <div class="flex justify-end space-x-4">
+            <button (click)="closeConfirmationModal()"
                 class="cursor-pointer px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-lg transition duration-200">
                 {{ Messages.Buttons.cancel }}
             </button>
 
-            <button (click)="purchaseProject()"
-                class="cursor-pointer px-4 py-2 bg-custom-600 hover:bg-custom-700 text-white font-semibold rounded-lg shadow-md transition duration-200">
-                {{ Messages.Buttons.purchaseProject }}
+            <button (click)="approveUserComment()"
+                class="cursor-pointer px-4 py-2 bg-green-800 hover:bg-green-700 text-white font-semibold rounded-lg shadow-md transition duration-200">
+                {{ Messages.Buttons.approve }}
+            </button>
+
+            <button (click)="disapproveUserComment()"
+                class="cursor-pointer px-4 py-2 bg-red-800 hover:bg-red-700 text-white font-semibold rounded-lg shadow-md transition duration-200">
+                {{ Messages.Buttons.disapprove }}
             </button>
         </div>
     </div>
-</div> -->
+</div>

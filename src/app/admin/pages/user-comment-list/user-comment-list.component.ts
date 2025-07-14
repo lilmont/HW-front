@@ -5,6 +5,7 @@ import { UserHttpService } from '../../services/user-http.service';
 import { ToastrService } from 'ngx-toastr';
 import { LoadingService } from '../../../core/services/loading.service';
 import { IUserCommentListItem } from '../../models/IUserCommentListItem';
+import { UserCommentApproval } from '../../models/IUserCommentApproval';
 
 @Component({
   selector: 'hw-user-comment-list',
@@ -19,6 +20,8 @@ export class UserCommentListComponent implements OnInit {
   filters: UserCommentQueryParameters = new UserCommentQueryParameters();
 
   isConfirmationModalOpen: boolean = false;
+  selectedUserComment?: IUserCommentListItem = undefined;
+  userCommentApproval: UserCommentApproval = new UserCommentApproval();
 
   constructor(private userHttpService: UserHttpService,
     private toastr: ToastrService,
@@ -58,11 +61,53 @@ export class UserCommentListComponent implements OnInit {
   }
 
   openConfirmationModal(comment: IUserCommentListItem): void {
+    this.selectedUserComment = comment;
+    this.userCommentApproval.id = comment.id;
     this.isConfirmationModalOpen = true;
   }
 
   closeConfirmationModal(): void {
+    this.selectedUserComment = undefined;
+    this.userCommentApproval.id = 0;
     this.isConfirmationModalOpen = false;
   }
 
+  approveUserComment() {
+    this.loadingService.show();
+    this.userHttpService.approveUserComment(this.userCommentApproval).subscribe({
+      next: (response) => {
+        if (response.success) {
+          this.toastr.success(Messages.Success.userCommentApprovedSuccessfully, '');
+          this.loadUserComments();
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+        this.closeConfirmationModal();
+        this.loadingService.hide();
+      },
+      error: () => {
+        this.loadingService.hide();
+        this.closeConfirmationModal();
+      }
+    });
+  }
+  disapproveUserComment() {
+    this.loadingService.show();
+    this.userHttpService.disapproveUserComment(this.userCommentApproval).subscribe({
+      next: (response) => {
+        if (response.success) {
+          this.toastr.success(Messages.Success.userCommentDisapprovedSuccessfully, '');
+          this.loadUserComments();
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+        this.closeConfirmationModal();
+        this.loadingService.hide();
+      },
+      error: () => {
+        this.loadingService.hide();
+        this.closeConfirmationModal();
+      }
+    });
+  }
 }

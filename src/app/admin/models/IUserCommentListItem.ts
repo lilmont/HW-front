@@ -3,6 +3,6 @@ export interface IUserCommentListItem {
     userId: number;
     userPhoneNumber: string;
     price: number;
-    isApproved: boolean;
+    userCommentStatus: number;
     commentText: string;
 }

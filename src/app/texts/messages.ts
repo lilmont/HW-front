@@ -124,7 +124,9 @@ export const Messages = {
         userBalanceIncreasedSuccessfully: 'موجودی کاربر با موفقیت افزایش یافت',
         videoAddedSuccessfully: 'ویدیو با موفقیت ثبت شد',
         videoEditedSuccessfully: 'ویدیو با موفقیت ویرایش شد',
-        videoDeletedSuccessfully: 'ویدیو با موفقیت حذف شد'
+        videoDeletedSuccessfully: 'ویدیو با موفقیت حذف شد',
+        userCommentApprovedSuccessfully: 'نظر تایید شد',
+        userCommentDisapprovedSuccessfully: 'نظر رد شد',
     },
     Warnings: {
         oneTimePassword: 'قبل از بستن این صفحه اطلاعات هاست خود را کپی کنید و در جای امنی نگداری کنید',
@@ -198,7 +200,9 @@ export const Messages = {
         viewReceipt: 'مشاهده رسید',
         addDiscountCode: 'افزودن کد تخفیف',
         addVideo: 'افزودن ویدیو',
-        viewAndConfirm: 'مشاهده و تایید'
+        viewAndEdit: 'مشاهده و ویرایش',
+        approve: 'تایید',
+        disapprove: 'رد'
     },
     Labels: {
         enterPhoneNumber: 'لطفا شماره موبایل خود را وارد کنید',
@@ -300,7 +304,9 @@ export const Messages = {
         unUsed: 'استفاده نشده',
         forWhatProduct: 'برای کدام محصول؟',
         sampleSupportVideo: 'نمونه جلسه آنلاین',
-        supportVideo: 'ویدیو پشتیبانی'
+        supportVideo: 'ویدیو پشتیبانی',
+        approved: 'تایید شده',
+        disapproved: 'رد شده'
     },
     Headers: {
         signup: 'ثبت نام',
@@ -415,7 +421,8 @@ export const Messages = {
         editVideo: 'ویرایش ویدیو',
         addVideo: 'افزودن ویدیو',
         video: 'ویدیو',
-        userComments: 'نظرات کاربران'
+        userComments: 'نظرات کاربران',
+        userComment: 'نظر کاربر'
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'
