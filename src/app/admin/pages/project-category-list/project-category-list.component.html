@@ -95,7 +95,7 @@
         <!-- Modal header -->
         <div class="flex items-center justify-between border-b border-gray-200 pb-3 mb-5">
             <h3 class="text-xl text-gray-900">
-                {{ Messages.Headers.areYouSure }}
+                {{ !selectedProjectCategory?.id ? Messages.Buttons.addCategory : Messages.Buttons.editCategory }}
             </h3>
             <button type="button" class="text-gray-400 hover:text-gray-900 rounded-lg focus:outline-none"
                 (click)="closeAddOrEditModal()" aria-label="Close modal">
@@ -107,8 +107,17 @@
         </div>
 
         <!-- Modal body -->
-        <div class="text-gray-700 text-center mb-6">
-            <p>{{ Messages.Warnings.confirmDeleteCategory }}</p>
+        <div class="text-gray-700 text-center mb-6" *ngIf="selectedProjectCategory">
+            <label for="title" class="block text-sm font-medium text-gray-700 mb-4 text-center">
+                {{Messages.Labels.title}}
+            </label>
+            <input type="text" id="title" [(ngModel)]="selectedProjectCategory.title" name="title"
+                class="text-center bg-gray-50 border outline-custom-300 text-gray-900 text-sm rounded-lg focus:ring-custom-500 focus:border-custom-500 block w-full p-2.5"
+                [placeholder]="Messages.Labels.enterCategoryTitle" />
+
+            <div *ngIf="titleInvalid" class="text-red-600 text-sm mt-1">
+                {{Messages.Errors.titleInvalid}}
+            </div>
         </div>
 
         <!-- Modal footer / buttons -->
@@ -120,7 +129,7 @@
 
             <button (click)="addOrEditCategory()"
                 class="cursor-pointer px-4 py-2 bg-custom-600 hover:bg-custom-700 text-white font-semibold rounded-lg shadow-md transition duration-200">
-                {{ Messages.Buttons.delete }}
+                {{ Messages.Buttons.save }}
             </button>
         </div>
     </div>

@@ -92,7 +92,8 @@ export const Messages = {
         invalidAmount: 'مبلغ وارد شده باید بزرگتر از 0 باشد',
         invalidAmountUserVersion: 'مبلغ نامعتبر',
         videoFileIsRequired: 'ویدیو اجباری است',
-        deleteFailedInUseForeignKey: 'این رکورد به علت در استفاده بودن قابل حذف نیست'
+        deleteFailedInUseForeignKey: 'این رکورد به علت در استفاده بودن قابل حذف نیست',
+        titleInvalid: 'عنوان نمیتواند خالی باشد'
     },
     Success: {
         loginSuccessful: 'ورود با موفقیت انجام شد',
@@ -129,6 +130,8 @@ export const Messages = {
         userCommentApprovedSuccessfully: 'نظر تایید شد',
         userCommentDisapprovedSuccessfully: 'نظر رد شد',
         categoryDeletedSuccessfully: 'دسته بندی با موفقیت حذف شد',
+        categoryAddedSuccessfully: 'دسته بندی با موفقیت اضافه شد',
+        categoryEditedSuccessfully: 'دسته بندی با موفقیت ویرایش شد',
     },
     Warnings: {
         oneTimePassword: 'قبل از بستن این صفحه اطلاعات هاست خود را کپی کنید و در جای امنی نگداری کنید',
@@ -206,7 +209,8 @@ export const Messages = {
         viewAndEdit: 'مشاهده و ویرایش',
         approve: 'تایید',
         disapprove: 'رد',
-        addCategory: 'افزودن دسته بندی'
+        addCategory: 'افزودن دسته بندی',
+        editCategory: 'ویرایش دسته بندی'
     },
     Labels: {
         enterPhoneNumber: 'لطفا شماره موبایل خود را وارد کنید',
@@ -310,7 +314,8 @@ export const Messages = {
         sampleSupportVideo: 'نمونه جلسه آنلاین',
         supportVideo: 'ویدیو پشتیبانی',
         approved: 'تایید شده',
-        disapproved: 'رد شده'
+        disapproved: 'رد شده',
+        enterCategoryTitle: 'عنوان دسته بندی را وارد کنید'
     },
     Headers: {
         signup: 'ثبت نام',

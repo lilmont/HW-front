@@ -3,7 +3,7 @@ import { CommonHttpService } from '../../services/common-http.service';
 import { ToastrService } from 'ngx-toastr';
 import { LoadingService } from '../../../core/services/loading.service';
 import { ProjectCategoryQueryParameters } from '../../models/IProjectCategoryQueryParameters';
-import { IProjectCategoryListItem } from '../../models/IProjectCategoryListItem';
+import { IProjectCategoryListItem, ProjectCategoryListItem } from '../../models/IProjectCategoryListItem';
 import { Messages } from '../../../texts/messages';
 
 @Component({
@@ -20,6 +20,7 @@ export class ProjectCategoryListComponent {
   isDeleteConfirmationModalOpen: boolean = false;
   isAddOrEditModalOpen: boolean = false;
   selectedProjectCategory?: IProjectCategoryListItem;
+  titleInvalid: boolean = false;
   constructor(private commonHttpService: CommonHttpService,
     private toastr: ToastrService,
     private loadingService: LoadingService
@@ -54,11 +55,15 @@ export class ProjectCategoryListComponent {
   }
 
   openAddOrEditModal(category: IProjectCategoryListItem | undefined) {
-    this.selectedProjectCategory = category;
+    if (!category)
+      this.selectedProjectCategory = new ProjectCategoryListItem();
+    else
+      this.selectedProjectCategory = category;
     this.isAddOrEditModalOpen = true;
   }
   closeAddOrEditModal() {
     this.selectedProjectCategory = undefined;
+    this.titleInvalid = false;
     this.isAddOrEditModalOpen = false;
   }
 
@@ -94,5 +99,34 @@ export class ProjectCategoryListComponent {
     });
   }
 
-  addOrEditCategory() { }
+  addOrEditCategory() {
+    if (!this.selectedProjectCategory)
+      return;
+
+    if (this.selectedProjectCategory.title.trim() === '') {
+      this.titleInvalid = true;
+      return;
+    }
+
+    const apiCall = !this.selectedProjectCategory?.id
+      ? this.commonHttpService.addProjectCategory(this.selectedProjectCategory)
+      : this.commonHttpService.editProjectCategory(this.selectedProjectCategory);
+
+    apiCall.subscribe({
+      next: (response) => {
+        if (response.success) {
+          this.toastr.success(!this.selectedProjectCategory?.id ? Messages.Success.categoryAddedSuccessfully : Messages.Success.categoryEditedSuccessfully, '');
+          location.reload();
+        } else {
+          this.toastr.error(response.data ?? Messages.Errors.invalidRequest, Messages.Errors.error)
+        }
+        this.closeAddOrEditModal();
+        this.loadingService.hide();
+      },
+      error: () => {
+        this.closeAddOrEditModal();
+        this.loadingService.hide();
+      },
+    });
+  }
 }
