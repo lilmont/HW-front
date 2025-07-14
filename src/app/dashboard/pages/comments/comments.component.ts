@@ -17,7 +17,7 @@ import { ToastrService } from 'ngx-toastr';
 export class CommentsComponent implements OnInit {
   Messages = Messages;
   baseUrl = environment.apiBaseUrl;
-  userComment: IUserComment = { commentText: '', isApproved: false };
+  userComment: IUserComment = { commentText: '', userCommentStatus: 0 };
   userInfo: IUserInfo = {
     firstName: '',
     lastName: '',
@@ -56,7 +56,7 @@ export class CommentsComponent implements OnInit {
         if (data != null) {
           this.userComment = data;
           this.hasUserAlreaduSubmittedComment = true;
-          this.showEditButton = !data.isApproved;
+          this.showEditButton = data.userCommentStatus === 0;
         }
 
         this.loadingService.hide();
