@@ -30,4 +30,8 @@ export const SIDEBAR_ITEMS: ISidebarItem[] = [
         label: Messages.Headers.supportVideos,
         path: '/mazmon/support-videos',
     },
+    {
+        label: Messages.Headers.userComments,
+        path: '/mazmon/user-comments',
+    },
 ];

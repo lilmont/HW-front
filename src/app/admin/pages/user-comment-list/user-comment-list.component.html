@@ -1,0 +1,115 @@
+<h1 class="text-xl lg:text-2xl font-bold mb-6">{{Messages.Headers.userComments}}</h1>
+
+<div class="p-6 space-y-6">
+    <!-- 🔍 Filters -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <input type="text" [placeholder]="Messages.TableHeaders.id" class="border rounded p-2 w-full"
+            [(ngModel)]="filters.userId" />
+
+        <input type="text" [placeholder]="Messages.TableHeaders.phoneNumber" class="border rounded p-2 w-full"
+            [(ngModel)]="filters.userPhoneNumber" />
+
+        <div>
+            <label for="isApprovedSelect" class="text-sm block mb-1">{{Messages.TableHeaders.status}}</label>
+            <select id="isApprovedSelect" [(ngModel)]="filters.isApproved" class="border rounded p-2 w-full">
+                <option [ngValue]="undefined">{{Messages.Buttons.all}}</option>
+                <option [ngValue]="true">{{Messages.Labels.confirmed}}</option>
+                <option [ngValue]="false">{{Messages.Labels.inProgress}}</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- 🔘 Buttons -->
+    <div class="flex space-x-4">
+        <button class="cursor-pointer bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            (click)="loadUserComments()">
+            {{Messages.Buttons.search}}
+        </button>
+
+        <button class="cursor-pointer bg-gray-300 px-4 py-2 rounded hover:bg-gray-400" (click)="resetFilters()">
+            {{Messages.Buttons.reset}}
+        </button>
+    </div>
+
+    <!-- 📋 Table -->
+    <div class="overflow-x-auto">
+        <table class="min-w-full border border-gray-300">
+            <thead class="bg-gray-200">
+                <tr>
+                    <th class="px-4 py-2 border">{{Messages.TableHeaders.id}}</th>
+                    <th class="px-4 py-2 border">{{Messages.TableHeaders.userId}}</th>
+                    <th class="px-4 py-2 border">{{Messages.TableHeaders.userPhoneNumber}}</th>
+                    <th class="px-4 py-2 border">{{Messages.TableHeaders.status}}</th>
+                    <th class="px-4 py-2 border">{{Messages.Headers.actions}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let comment of userComments; let i = index" class="hover:bg-gray-300"
+                    [ngClass]="{ 'bg-white': i % 2 === 0, 'bg-gray-100': i % 2 !== 0 }">
+                    <td class="px-4 py-2 border">{{ comment.id }}</td>
+                    <td class="px-4 py-2 border">{{ comment.userId }}</td>
+                    <td class="px-4 py-2 border">{{ comment.userPhoneNumber }}</td>
+                    <td class="px-4 py-2 border">
+                        <span *ngIf="comment.isApproved; else notApproved"
+                            class="text-green-800">{{Messages.Labels.confirmed}}</span>
+                        <ng-template #notApproved>
+                            <span class="text-yellow-500">{{Messages.Labels.inProgress}}</span>
+                        </ng-template>
+                    </td>
+                    <td class="cursor-pointer px-4 py-2 border border-gray-800 text-center text-green-600">
+                        <a (click)="openConfirmationModal(comment)">
+                            {{comment.isApproved ? Messages.Buttons.view : Messages.Buttons.viewAndConfirm}}
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 🔢 Pagination -->
+    <hw-pagination [pageNumber]="filters.pageNumber" [pageSize]="filters.pageSize" [totalCount]="totalCount"
+        (pageChange)="onPageChange($event)">
+    </hw-pagination>
+</div>
+
+<!-- Purchase Confirmation Modal -->
+<!-- <div *ngIf="isPurchaseConfirmationModalOpen"
+    class="fixed inset-0 z-49 flex items-center justify-center bg-[rgba(31,41,55,0.5)]"
+    (click)="closePurchaseConfirmationModal()"> -->
+
+<!-- Modal content container -->
+<!-- <div class="relative bg-white rounded-lg shadow-lg w-full max-w-md p-6" (click)="$event.stopPropagation()"> -->
+
+<!-- Modal header -->
+<!-- <div class="flex items-center justify-between border-b border-gray-200 pb-3 mb-5">
+            <h3 class="text-xl text-gray-900">
+                {{ Messages.Headers.areYouSure }}
+            </h3>
+            <button type="button" class="text-gray-400 hover:text-gray-900 rounded-lg focus:outline-none"
+                (click)="closePurchaseConfirmationModal()" aria-label="Close modal">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div> -->
+
+<!-- Modal body -->
+<!-- <div class="text-gray-700 text-center mb-6">
+            <p>{{ Messages.Warnings.confirmBuyProject }}</p>
+        </div> -->
+
+<!-- Modal footer / buttons -->
+<!-- <div class="flex justify-end space-x-4">
+            <button (click)="closePurchaseConfirmationModal()"
+                class="cursor-pointer px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-lg transition duration-200">
+                {{ Messages.Buttons.cancel }}
+            </button>
+
+            <button (click)="purchaseProject()"
+                class="cursor-pointer px-4 py-2 bg-custom-600 hover:bg-custom-700 text-white font-semibold rounded-lg shadow-md transition duration-200">
+                {{ Messages.Buttons.purchaseProject }}
+            </button>
+        </div>
+    </div>
+</div> -->

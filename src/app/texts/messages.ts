@@ -197,7 +197,8 @@ export const Messages = {
         selectReceiptImage: 'انتخاب تصویر رسید',
         viewReceipt: 'مشاهده رسید',
         addDiscountCode: 'افزودن کد تخفیف',
-        addVideo: 'افزودن ویدیو'
+        addVideo: 'افزودن ویدیو',
+        viewAndConfirm: 'مشاهده و تایید'
     },
     Labels: {
         enterPhoneNumber: 'لطفا شماره موبایل خود را وارد کنید',
@@ -413,7 +414,8 @@ export const Messages = {
         addDiscountCode: 'افزودن کد تخفیف',
         editVideo: 'ویرایش ویدیو',
         addVideo: 'افزودن ویدیو',
-        video: 'ویدیو'
+        video: 'ویدیو',
+        userComments: 'نظرات کاربران'
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'

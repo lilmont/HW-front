@@ -16,6 +16,7 @@ import { DiscountCodeListComponent } from "./pages/discount-code-list/discount-c
 import { DiscountCodeDetailComponent } from "./pages/discount-code-detail/discount-code-detail.component";
 import { SupportVideoListComponent } from "./pages/support-video-list/support-video-list.component";
 import { SupportVideoDetailComponent } from "./pages/support-video-detail/support-video-detail.component";
+import { UserCommentListComponent } from "./pages/user-comment-list/user-comment-list.component";
 
 const routes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -49,6 +50,8 @@ const routes: Routes = [
             { path: 'support-videos', component: SupportVideoListComponent },
             { path: 'support-videos/video-detail', component: SupportVideoDetailComponent },
             { path: 'support-videos/video-detail/:id', component: SupportVideoDetailComponent },
+
+            { path: 'user-comments', component: UserCommentListComponent },
         ]
     }
 ];
