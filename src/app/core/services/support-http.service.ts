@@ -6,6 +6,7 @@ import { ISupportVideo } from '../../models/ISupportVideo';
 import { catchError, Observable, throwError } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { Messages } from '../../texts/messages';
+import { ISupportAnnouncement } from '../../models/ISupportAnnouncement';
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +44,21 @@ export class SupportHttpService {
           this.jwtHelperService.logout();
           location.href = '/';
         } else if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
+        } else if (error.status === 401) {
+          this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+        return throwError(() => error);
+      })
+    );
+  }
+
+  getSupportAnnouncements(): Observable<ISupportAnnouncement[]> {
+    return this.http.get<ISupportAnnouncement[]>(`${this.baseUrl}/support/support-announcement-list`).pipe(
+      catchError((error) => {
+        if (error.status === 400) {
           this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
         } else if (error.status === 401) {
           this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
