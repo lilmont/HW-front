@@ -34,4 +34,8 @@ export const SIDEBAR_ITEMS: ISidebarItem[] = [
         label: Messages.Headers.userComments,
         path: '/mazmon/user-comments',
     },
+    {
+        label: Messages.Headers.projectCategories,
+        path: '/mazmon/project-categories',
+    },
 ];

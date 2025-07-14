@@ -25,6 +25,7 @@ import { DiscountCodeDetailComponent } from './pages/discount-code-detail/discou
 import { SupportVideoListComponent } from './pages/support-video-list/support-video-list.component';
 import { SupportVideoDetailComponent } from './pages/support-video-detail/support-video-detail.component';
 import { UserCommentListComponent } from './pages/user-comment-list/user-comment-list.component';
+import { ProjectCategoryListComponent } from './pages/project-category-list/project-category-list.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { UserCommentListComponent } from './pages/user-comment-list/user-comment
     DiscountCodeDetailComponent,
     SupportVideoListComponent,
     SupportVideoDetailComponent,
-    UserCommentListComponent
+    UserCommentListComponent,
+    ProjectCategoryListComponent
   ],
   imports: [
     CommonModule,

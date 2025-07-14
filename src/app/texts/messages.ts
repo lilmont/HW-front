@@ -92,6 +92,7 @@ export const Messages = {
         invalidAmount: 'مبلغ وارد شده باید بزرگتر از 0 باشد',
         invalidAmountUserVersion: 'مبلغ نامعتبر',
         videoFileIsRequired: 'ویدیو اجباری است',
+        deleteFailedInUseForeignKey: 'این رکورد به علت در استفاده بودن قابل حذف نیست'
     },
     Success: {
         loginSuccessful: 'ورود با موفقیت انجام شد',
@@ -127,6 +128,7 @@ export const Messages = {
         videoDeletedSuccessfully: 'ویدیو با موفقیت حذف شد',
         userCommentApprovedSuccessfully: 'نظر تایید شد',
         userCommentDisapprovedSuccessfully: 'نظر رد شد',
+        categoryDeletedSuccessfully: 'دسته بندی با موفقیت حذف شد',
     },
     Warnings: {
         oneTimePassword: 'قبل از بستن این صفحه اطلاعات هاست خود را کپی کنید و در جای امنی نگداری کنید',
@@ -143,6 +145,7 @@ export const Messages = {
         confirmRejectRequest: 'آیا از رد کردن درخواست مطمئن هستید؟',
         confirmDeleteDiscountCode: 'آیا از حذف این کد تخفیف مطمئن هستید؟',
         confirmDeleteVideo: 'آیا از حذف این ویدیو مطمئن هستید؟',
+        confirmDeleteCategory: 'آیا از حذف این دسته بندی مطمئن هستید؟'
     },
     Buttons: {
         sendCode: 'ارسال کد یکبار مصرف',
@@ -202,7 +205,8 @@ export const Messages = {
         addVideo: 'افزودن ویدیو',
         viewAndEdit: 'مشاهده و ویرایش',
         approve: 'تایید',
-        disapprove: 'رد'
+        disapprove: 'رد',
+        addCategory: 'افزودن دسته بندی'
     },
     Labels: {
         enterPhoneNumber: 'لطفا شماره موبایل خود را وارد کنید',
@@ -422,7 +426,8 @@ export const Messages = {
         addVideo: 'افزودن ویدیو',
         video: 'ویدیو',
         userComments: 'نظرات کاربران',
-        userComment: 'نظر کاربر'
+        userComment: 'نظر کاربر',
+        projectCategories: 'دسته بندی پروژه'
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'
