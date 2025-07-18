@@ -135,6 +135,7 @@ export const Messages = {
         supportAnnouncementAddedSuccessfully: 'اعلان با موفقیت افزوده شد',
         supportAnnouncementEditedSuccessfully: 'اعلان با موفقیت ویرایش شد',
         announcementDeletedSuccessfully: 'اعلان با موفقیت حذف شد',
+        orderSubmittedSuccessfully: 'سفارش شما با موفقیت ثبت شد'
     },
     Warnings: {
         oneTimePassword: 'قبل از بستن این صفحه اطلاعات هاست خود را کپی کنید و در جای امنی نگداری کنید',

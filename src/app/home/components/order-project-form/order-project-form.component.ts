@@ -39,7 +39,7 @@ export class OrderProjectFormComponent {
         this.loadingService.hide();
 
         if (response.isSuccess) {
-          this.toastr.success(Messages.Success.saveUserInfoSuccessful, '');
+          this.toastr.success(Messages.Success.orderSubmittedSuccessfully, '');
           this.resetForm();
         } else {
           response.errors.forEach(err => {
