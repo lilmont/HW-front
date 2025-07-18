@@ -13,6 +13,8 @@ import { IDeleteConfirmationCode } from '../models/IDeleteConfirmationCode';
 import { IProjectCategoryListItem } from '../models/IProjectCategoryListItem';
 import { IProjectCategoryQueryParameters } from '../models/IProjectCategoryQueryParameters';
 import { ISupportAnnouncementListItem } from '../models/ISupportAnnouncementListItem';
+import { IOrderMessageListItem } from '../models/IOrderMessageListItem';
+import { IOrderMessageQueryParameters } from '../models/IOrderMessageQueryParameters';
 
 @Injectable({
   providedIn: 'root'
@@ -220,6 +222,23 @@ export class CommonHttpService {
 
   deleteSupportAnnouncement(category: ISupportAnnouncementListItem): Observable<IApiResponse<null>> {
     return this.http.post<IApiResponse<null>>(`${this.baseUrl}/api/mazmon/common/delete-support-announcement`, category).pipe(
+      catchError((error) => {
+        if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
+        } else if (error.status === 401) {
+          this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+        return throwError(() => error);
+      })
+    );
+  }
+
+  getOrderMessages(data: IOrderMessageQueryParameters): Observable<IApiResponse<IPagedResult<IOrderMessageListItem>>> {
+    const params = this.buildHttpParams(data);
+
+    return this.http.get<IApiResponse<IPagedResult<IOrderMessageListItem>>>(`${this.baseUrl}/api/mazmon/common/order-messages-list`, { params }).pipe(
       catchError((error) => {
         if (error.status === 400) {
           this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);

@@ -440,7 +440,9 @@ export const Messages = {
         userComments: 'نظرات کاربران',
         userComment: 'نظر کاربر',
         projectCategories: 'دسته بندی پروژه',
-        supportAnnouncements: 'اعلانات پشتیبانی'
+        supportAnnouncements: 'اعلانات پشتیبانی',
+        orderFormMessages: 'پیام های سفارش',
+        messageText: 'متن پیام'
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'
@@ -490,6 +492,8 @@ export const Messages = {
         createdBy: 'ایجاد شده توسط',
         increaseBalance: 'افزایش موجودی',
         videoType: 'نوع ویدیو',
-        text: 'متن'
+        text: 'متن',
+        fullName: 'نام و نام خانوادگی',
+        orderDate: 'تاریخ سفارش'
     }
 };

@@ -1,0 +1,66 @@
+<h1 class="text-xl lg:text-2xl font-bold mb-6">{{Messages.Headers.orderFormMessages}}</h1>
+
+<div class="p-6 space-y-6">
+    <div class="overflow-x-auto">
+        <table class="min-w-full border border-gray-300">
+            <thead class="bg-gray-200">
+                <tr>
+                    <th class="px-4 py-2 border">{{Messages.TableHeaders.fullName}}</th>
+                    <th class="px-4 py-2 border">{{Messages.TableHeaders.phoneNumber}}</th>
+                    <th class="px-4 py-2 border">{{Messages.TableHeaders.orderDate}}</th>
+                    <th class="px-4 py-2 border">{{Messages.Headers.actions}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let message of orderMessages; let i = index" class="hover:bg-gray-300"
+                    [ngClass]="{ 'bg-white': i % 2 === 0, 'bg-gray-100': i % 2 !== 0 }">
+                    <td class="px-4 py-2 border">{{ message.fullName }}</td>
+                    <td class="px-4 py-2 border">{{ message.phoneNumber }}</td>
+                    <td class="px-4 py-2 border">{{ message.dateCreated | jalaliDate }}</td>
+                    <td class="px-4 py-2 border border-gray-800 text-center text-blue-600">
+                        <a class="cursor-pointer bg-custom-600 text-white px-3 py-2 text-sm ml-2"
+                            (click)="openMessageModal(message)">
+                            {{Messages.Buttons.view}}
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Message Modal -->
+<div *ngIf="isMessageModalOpen" class="fixed inset-0 z-49 flex items-center justify-center bg-[rgba(31,41,55,0.5)]"
+    (click)="closeMessageModal()">
+
+    <!-- Modal content container -->
+    <div class="relative bg-white rounded-lg shadow-lg w-full max-w-md p-6" (click)="$event.stopPropagation()">
+
+        <!-- Modal header -->
+        <div class="flex items-center justify-between border-b border-gray-200 pb-3 mb-5">
+            <h3 class="text-xl text-gray-900">
+                {{ Messages.Headers.messageText }}
+            </h3>
+            <button type="button" class="text-gray-400 hover:text-gray-900 rounded-lg focus:outline-none"
+                (click)="closeMessageModal()" aria-label="Close modal">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="text-gray-700 text-center mb-6">
+            <p>{{ selectedMessage?.messageText }}</p>
+        </div>
+
+        <!-- Modal footer / buttons -->
+        <div class="flex justify-end space-x-4">
+            <button (click)="closeMessageModal()"
+                class="cursor-pointer px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-lg transition duration-200">
+                {{ Messages.Buttons.close }}
+            </button>
+        </div>
+    </div>
+</div>

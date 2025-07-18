@@ -42,4 +42,8 @@ export const SIDEBAR_ITEMS: ISidebarItem[] = [
         label: Messages.Headers.supportAnnouncements,
         path: '/mazmon/support-announcements',
     },
+    {
+        label: Messages.Headers.orderFormMessages,
+        path: '/mazmon/order-messages',
+    },
 ];
