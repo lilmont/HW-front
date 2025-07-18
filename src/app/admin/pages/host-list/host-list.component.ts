@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { Messages } from '../../../texts/messages';
 import { IHostListItem } from '../../models/IHostListItem';
 import { HostQueryParameters } from '../../models/IHostQueryParameters';
-import { ToastrService } from 'ngx-toastr';
 import { LoadingService } from '../../../core/services/loading.service';
 import { HostHttpService } from '../../services/host-http.service';
+import { ToastService } from '../../../core/services/toast.service';
 
 @Component({
   selector: 'hw-host-list',
@@ -18,7 +18,7 @@ export class HostListComponent {
   filters: HostQueryParameters = new HostQueryParameters();
 
   constructor(private hostHttpService: HostHttpService,
-    private toastr: ToastrService,
+    private toastr: ToastService,
     private loadingService: LoadingService
   ) { }
 

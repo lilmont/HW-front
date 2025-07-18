@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Messages } from '../../../texts/messages';
 import { IProjectListItem } from '../../models/IProjectListItem';
 import { ProjectQueryParameters } from '../../models/IProjectQueryParameters';
-import { ToastrService } from 'ngx-toastr';
 import { LoadingService } from '../../../core/services/loading.service';
 import { ProjectHttpService } from '../../services/project-http.service';
 import { IPurchaseProjectRequest, PurchaseProjectRequest } from '../../models/IPurchaseProjectRequest';
+import { ToastService } from '../../../core/services/toast.service';
 
 @Component({
   selector: 'hw-project-list',
@@ -23,7 +23,7 @@ export class ProjectListComponent implements OnInit {
   isPurchaseConfirmationModalOpen: boolean = false;
 
   constructor(private projectHttpService: ProjectHttpService,
-    private toastr: ToastrService,
+    private toastr: ToastService,
     private loadingService: LoadingService
   ) { }
 

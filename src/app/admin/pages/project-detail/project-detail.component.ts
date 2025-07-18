@@ -4,10 +4,10 @@ import { environment } from '../../../../environments/environment';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoadingService } from '../../../core/services/loading.service';
-import { ToastrService } from 'ngx-toastr';
 import { ProjectHttpService } from '../../services/project-http.service';
 import { IProjectCategory } from '../../models/IProjectCategory';
 import { IPurchaseProjectRequest, PurchaseProjectRequest } from '../../models/IPurchaseProjectRequest';
+import { ToastService } from '../../../core/services/toast.service';
 
 @Component({
   selector: 'hw-project-detail',
@@ -34,7 +34,7 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
   constructor(private route: ActivatedRoute,
     private loadingService: LoadingService,
     private projectHttpService: ProjectHttpService,
-    private toastr: ToastrService,
+    private toastr: ToastService,
     private fb: FormBuilder,
     private router: Router
   ) { }

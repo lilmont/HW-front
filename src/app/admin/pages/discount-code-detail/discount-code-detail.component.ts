@@ -6,8 +6,8 @@ import { IProductDropdown } from '../../models/IProductDropdown';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoadingService } from '../../../core/services/loading.service';
 import { DiscountCodeHttpService } from '../../services/discount-code-http.service';
-import { ToastrService } from 'ngx-toastr';
 import { IDiscountCodeDetail } from '../../models/IDiscountCodeDetail';
+import { ToastService } from '../../../core/services/toast.service';
 
 @Component({
   selector: 'hw-discount-code-detail',
@@ -23,7 +23,7 @@ export class DiscountCodeDetailComponent {
   constructor(private route: ActivatedRoute,
     private loadingService: LoadingService,
     private discountCodeHttpService: DiscountCodeHttpService,
-    private toastr: ToastrService,
+    private toastr: ToastService,
     private fb: FormBuilder,
     private router: Router
   ) { }

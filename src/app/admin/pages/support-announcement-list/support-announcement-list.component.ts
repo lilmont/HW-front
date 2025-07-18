@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ISupportAnnouncementListItem, SupportAnnouncementListItem } from '../../models/ISupportAnnouncementListItem';
 import { Messages } from '../../../texts/messages';
 import { CommonHttpService } from '../../services/common-http.service';
-import { ToastrService } from 'ngx-toastr';
 import { LoadingService } from '../../../core/services/loading.service';
+import { ToastService } from '../../../core/services/toast.service';
 
 @Component({
   selector: 'hw-support-announcement-list',
@@ -20,7 +20,7 @@ export class SupportAnnouncementListComponent implements OnInit {
   textInvalid: boolean = false;
 
   constructor(private commonHttpService: CommonHttpService,
-    private toastr: ToastrService,
+    private toastr: ToastService,
     private loadingService: LoadingService
   ) { }
 

@@ -3,9 +3,9 @@ import { Messages } from '../../../texts/messages';
 import { environment } from '../../../../environments/environment';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoadingService } from '../../../core/services/loading.service';
-import { ToastrService } from 'ngx-toastr';
 import { CommonHttpService } from '../../services/common-http.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastService } from '../../../core/services/toast.service';
 
 @Component({
   selector: 'hw-support-video-detail',
@@ -24,7 +24,7 @@ export class SupportVideoDetailComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private loadingService: LoadingService,
     private commonHttpService: CommonHttpService,
-    private toastr: ToastrService,
+    private toastr: ToastService,
     private cdr: ChangeDetectorRef,
     private fb: FormBuilder,
     private router: Router

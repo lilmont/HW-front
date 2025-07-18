@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Messages } from '../../../texts/messages';
 import { UserCommentQueryParameters } from '../../models/IUserCommentQueryParameters';
 import { UserHttpService } from '../../services/user-http.service';
-import { ToastrService } from 'ngx-toastr';
 import { LoadingService } from '../../../core/services/loading.service';
 import { IUserCommentListItem } from '../../models/IUserCommentListItem';
 import { UserCommentApproval } from '../../models/IUserCommentApproval';
+import { ToastService } from '../../../core/services/toast.service';
 
 @Component({
   selector: 'hw-user-comment-list',
@@ -24,7 +24,7 @@ export class UserCommentListComponent implements OnInit {
   userCommentApproval: UserCommentApproval = new UserCommentApproval();
 
   constructor(private userHttpService: UserHttpService,
-    private toastr: ToastrService,
+    private toastr: ToastService,
     private loadingService: LoadingService
   ) { }
 

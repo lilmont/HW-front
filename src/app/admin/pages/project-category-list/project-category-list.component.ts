@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { CommonHttpService } from '../../services/common-http.service';
-import { ToastrService } from 'ngx-toastr';
 import { LoadingService } from '../../../core/services/loading.service';
 import { ProjectCategoryQueryParameters } from '../../models/IProjectCategoryQueryParameters';
 import { IProjectCategoryListItem, ProjectCategoryListItem } from '../../models/IProjectCategoryListItem';
 import { Messages } from '../../../texts/messages';
+import { ToastService } from '../../../core/services/toast.service';
 
 @Component({
   selector: 'hw-project-category-list',
@@ -22,7 +22,7 @@ export class ProjectCategoryListComponent {
   selectedProjectCategory?: IProjectCategoryListItem;
   titleInvalid: boolean = false;
   constructor(private commonHttpService: CommonHttpService,
-    private toastr: ToastrService,
+    private toastr: ToastService,
     private loadingService: LoadingService
   ) { }
 

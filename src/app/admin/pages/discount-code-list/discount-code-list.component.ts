@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
 import { LoadingService } from '../../../core/services/loading.service';
 import { Messages } from '../../../texts/messages';
 import { IDiscountCodeListItem } from '../../models/IDiscountCodeListItem';
 import { DiscountCodeQueryParameters } from '../../models/IDiscountCodeQueryParameters';
 import { DiscountCodeHttpService } from '../../services/discount-code-http.service';
 import { DeleteConfirmationCode } from '../../models/IDeleteConfirmationCode';
+import { ToastService } from '../../../core/services/toast.service';
 
 @Component({
   selector: 'hw-discount-code-list',
@@ -22,7 +22,7 @@ export class DiscountCodeListComponent {
   deleteConfirmationCode: DeleteConfirmationCode = new DeleteConfirmationCode();
 
   constructor(private discountCodeHttpService: DiscountCodeHttpService,
-    private toastr: ToastrService,
+    private toastr: ToastService,
     private loadingService: LoadingService
   ) { }
 

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Messages } from '../../../texts/messages';
-import { ToastrService } from 'ngx-toastr';
 import { LoadingService } from '../../../core/services/loading.service';
 import { ISupportVideoListItem } from '../../models/ISupportVideoListItem';
 import { SupportVideoQueryParameters } from '../../models/ISupportVideoQueryParameters';
 import { CommonHttpService } from '../../services/common-http.service';
 import { DeleteConfirmationCode } from '../../models/IDeleteConfirmationCode';
+import { ToastService } from '../../../core/services/toast.service';
 
 @Component({
   selector: 'hw-support-video-list',
@@ -22,7 +22,7 @@ export class SupportVideoListComponent implements OnInit {
   deleteConfirmationCode: DeleteConfirmationCode = new DeleteConfirmationCode();
 
   constructor(private commonHttpService: CommonHttpService,
-    private toastr: ToastrService,
+    private toastr: ToastService,
     private loadingService: LoadingService
   ) { }
 

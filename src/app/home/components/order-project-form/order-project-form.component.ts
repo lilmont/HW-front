@@ -3,8 +3,8 @@ import { Messages } from '../../../texts/messages';
 import { environment } from '../../../../environments/environment';
 import { IOrderFormMessage, OrderFormMessage } from '../../../models/IOrderFormMessage';
 import { MessagingHttpService } from '../../../core/services/messaging-http.service';
-import { ToastrService } from 'ngx-toastr';
 import { LoadingService } from '../../../core/services/loading.service';
+import { ToastService } from '../../../core/services/toast.service';
 
 @Component({
   selector: 'hw-order-project-form',
@@ -20,7 +20,7 @@ export class OrderProjectFormComponent {
   messageTextInvalid: boolean = false;
 
   constructor(private messagingHttpService: MessagingHttpService,
-    private toastr: ToastrService,
+    private toastr: ToastService,
     private loadingService: LoadingService
   ) {
   }

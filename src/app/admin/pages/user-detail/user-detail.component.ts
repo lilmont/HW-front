@@ -4,8 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Messages } from '../../../texts/messages';
 import { IUserDetail, UserDetail } from '../../models/IUserDetail';
 import { UserHttpService } from '../../services/user-http.service';
-import { ToastrService } from 'ngx-toastr';
 import { environment } from '../../../../environments/environment';
+import { ToastService } from '../../../core/services/toast.service';
 
 @Component({
   selector: 'hw-user-detail',
@@ -21,7 +21,7 @@ export class UserDetailComponent implements OnInit {
   constructor(private route: ActivatedRoute,
     private loadingService: LoadingService,
     private userHttpService: UserHttpService,
-    private toastr: ToastrService
+    private toastr: ToastService
   ) { }
 
   ngOnInit() {

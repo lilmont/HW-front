@@ -3,8 +3,8 @@ import { CourseQueryParameters } from '../../models/ICourseQueryParameters';
 import { Messages } from '../../../texts/messages';
 import { ICourseListItem } from '../../models/ICourseListItem';
 import { CourseHttpService } from '../../services/course-http.service';
-import { ToastrService } from 'ngx-toastr';
 import { LoadingService } from '../../../core/services/loading.service';
+import { ToastService } from '../../../core/services/toast.service';
 
 @Component({
   selector: 'hw-course-list',
@@ -18,7 +18,7 @@ export class CourseListComponent implements OnInit {
   filters: CourseQueryParameters = new CourseQueryParameters();
 
   constructor(private courseHttpService: CourseHttpService,
-    private toastr: ToastrService,
+    private toastr: ToastService,
     private loadingService: LoadingService
   ) { }
 

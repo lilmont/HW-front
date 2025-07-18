@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Messages } from '../../../texts/messages';
 import { ISupportAnnouncement } from '../../../models/ISupportAnnouncement';
 import { SupportHttpService } from '../../../core/services/support-http.service';
-import { ToastrService } from 'ngx-toastr';
 import { LoadingService } from '../../../core/services/loading.service';
 
 @Component({
@@ -15,7 +14,6 @@ export class SupportComponent implements OnInit {
   announcements: ISupportAnnouncement[] = [];
 
   constructor(private supportHttpService: SupportHttpService,
-    private toastr: ToastrService,
     private loadingService: LoadingService
   ) { }
 

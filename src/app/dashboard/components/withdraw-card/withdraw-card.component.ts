@@ -4,7 +4,7 @@ import { Messages } from '../../../texts/messages';
 import { PaymentHttpService } from '../../../core/services/payment-http.service';
 import { LoadingService } from '../../../core/services/loading.service';
 import { IWithdrawalRequest, WithdrawalRequest } from '../../../models/IWithdrawalRequest';
-import { ToastrService } from 'ngx-toastr';
+import { ToastService } from '../../../core/services/toast.service';
 
 @Component({
   selector: 'hw-withdraw-card',
@@ -22,7 +22,7 @@ export class WithdrawCardComponent {
 
   constructor(private paymentHttpService: PaymentHttpService,
     private loadingService: LoadingService,
-    private toastr: ToastrService
+    private toastr: ToastService
   ) { }
 
   isSubmitWithdrawalRequestDisabled(): boolean {

@@ -7,7 +7,7 @@ import { UserInfoService } from '../../../core/services/user-info.service';
 import { environment } from '../../../../environments/environment';
 import { IUserInfo } from '../../../models/IUserInfo';
 import { Subscription } from 'rxjs';
-import { ToastrService } from 'ngx-toastr';
+import { ToastService } from '../../../core/services/toast.service';
 
 @Component({
   selector: 'hw-comments',
@@ -32,7 +32,7 @@ export class CommentsComponent implements OnInit {
   constructor(private userHttpService: UserHttpService,
     private loadingService: LoadingService,
     private userInfoService: UserInfoService,
-    private toastr: ToastrService
+    private toastr: ToastService
   ) {
     this.userInfoService.loadUser();
   }

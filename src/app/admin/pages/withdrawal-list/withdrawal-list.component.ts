@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Messages } from '../../../texts/messages';
 import { IWithdrawalRequestListItem } from '../../models/IWithdrawalRequestListItem';
 import { WithdrawalQueryParameters } from '../../models/IWithdrawalQueryParameters';
-import { ToastrService } from 'ngx-toastr';
 import { LoadingService } from '../../../core/services/loading.service';
 import { PaymentHttpService } from '../../services/payment-http.service';
 import { RejectWithdrawalRequest } from '../../models/IRejectWithdrawalRequest';
 import { environment } from '../../../../environments/environment';
+import { ToastService } from '../../../core/services/toast.service';
 
 @Component({
   selector: 'hw-withdrawal-list',
@@ -31,7 +31,7 @@ export class WithdrawalListComponent implements OnInit {
   imageInvalid = false;
 
   constructor(private paymentHttpService: PaymentHttpService,
-    private toastr: ToastrService,
+    private toastr: ToastService,
     private loadingService: LoadingService
   ) { }
 

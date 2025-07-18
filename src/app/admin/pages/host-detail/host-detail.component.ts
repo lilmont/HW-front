@@ -5,8 +5,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoadingService } from '../../../core/services/loading.service';
 import { HostHttpService } from '../../services/host-http.service';
-import { ToastrService } from 'ngx-toastr';
 import { IHostingDetail } from '../../models/IHostingDetail';
+import { ToastService } from '../../../core/services/toast.service';
 
 @Component({
   selector: 'hw-host-detail',
@@ -23,7 +23,7 @@ export class HostDetailComponent implements OnInit {
   constructor(private route: ActivatedRoute,
     private loadingService: LoadingService,
     private hostHttpService: HostHttpService,
-    private toastr: ToastrService,
+    private toastr: ToastService,
     private cdr: ChangeDetectorRef,
     private fb: FormBuilder,
     private router: Router

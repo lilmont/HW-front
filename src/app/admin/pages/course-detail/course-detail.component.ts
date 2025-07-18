@@ -4,9 +4,9 @@ import { environment } from '../../../../environments/environment';
 import { CourseHttpService } from '../../services/course-http.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoadingService } from '../../../core/services/loading.service';
-import { ToastrService } from 'ngx-toastr';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { uniqueSessionNumberValidator } from '../../validators/custom-validators';
+import { ToastService } from '../../../core/services/toast.service';
 
 @Component({
   selector: 'hw-course-detail',
@@ -27,7 +27,7 @@ export class CourseDetailComponent implements OnInit, OnDestroy {
   constructor(private route: ActivatedRoute,
     private loadingService: LoadingService,
     private courseHttpService: CourseHttpService,
-    private toastr: ToastrService,
+    private toastr: ToastService,
     private cdr: ChangeDetectorRef,
     private fb: FormBuilder,
     private router: Router

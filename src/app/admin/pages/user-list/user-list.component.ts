@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { UserHttpService } from '../../services/user-http.service';
 import { IUserListItem } from '../../models/IUserListItem';
 import { IUserQueryParameters, UserQueryParameters } from '../../models/IUserQueryParameters';
-import { ToastrService } from 'ngx-toastr';
 import { Messages } from '../../../texts/messages';
 import { LoadingService } from '../../../core/services/loading.service';
 import { IncreaseBalance } from '../../models/IIncreaseBalance';
+import { ToastService } from '../../../core/services/toast.service';
 
 @Component({
   selector: 'hw-user-list',
@@ -25,7 +25,7 @@ export class UserListComponent implements OnInit {
   amountInvalid: boolean = false;
 
   constructor(private userHttpService: UserHttpService,
-    private toastr: ToastrService,
+    private toastr: ToastService,
     private loadingService: LoadingService
   ) { }
 
