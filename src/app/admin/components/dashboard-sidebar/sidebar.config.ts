@@ -46,4 +46,8 @@ export const SIDEBAR_ITEMS: ISidebarItem[] = [
         label: Messages.Headers.orderFormMessages,
         path: '/mazmon/order-messages',
     },
+    {
+        label: Messages.Headers.settings,
+        path: '/mazmon/settings',
+    },
 ];

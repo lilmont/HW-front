@@ -94,6 +94,7 @@ export const Messages = {
         videoFileIsRequired: 'ویدیو اجباری است',
         deleteFailedInUseForeignKey: 'این رکورد به علت در استفاده بودن قابل حذف نیست',
         titleInvalid: 'عنوان نمیتواند خالی باشد',
+        referralPercentageIsRequired: 'درصد اجباری است و نمیتواند منفی باشد'
     },
     Success: {
         loginSuccessful: 'ورود با موفقیت انجام شد',
@@ -135,7 +136,8 @@ export const Messages = {
         supportAnnouncementAddedSuccessfully: 'اعلان با موفقیت افزوده شد',
         supportAnnouncementEditedSuccessfully: 'اعلان با موفقیت ویرایش شد',
         announcementDeletedSuccessfully: 'اعلان با موفقیت حذف شد',
-        orderSubmittedSuccessfully: 'سفارش شما با موفقیت ثبت شد'
+        orderSubmittedSuccessfully: 'سفارش شما با موفقیت ثبت شد',
+        websiteSettingEditedSuccessfully: 'تنظیمات با موفقیت ویرایش شد'
     },
     Warnings: {
         oneTimePassword: 'قبل از بستن این صفحه اطلاعات هاست خود را کپی کنید و در جای امنی نگداری کنید',
@@ -444,7 +446,8 @@ export const Messages = {
         supportAnnouncements: 'اعلانات پشتیبانی',
         orderFormMessages: 'پیام های سفارش',
         messageText: 'متن پیام',
-        referralCode: 'لینک معرفی'
+        referralCode: 'لینک معرفی',
+        settings: 'تنظیمات'
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'
@@ -497,7 +500,8 @@ export const Messages = {
         videoType: 'نوع ویدیو',
         text: 'متن',
         fullName: 'نام و نام خانوادگی',
-        orderDate: 'تاریخ سفارش'
+        orderDate: 'تاریخ سفارش',
+        referralPercentage: 'درصد معرفی'
     },
     Texts: {
         referralText1: `لینک دعوت خود را با دیگران به اشتراک بگذارید.

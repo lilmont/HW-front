@@ -28,6 +28,7 @@ import { UserCommentListComponent } from './pages/user-comment-list/user-comment
 import { ProjectCategoryListComponent } from './pages/project-category-list/project-category-list.component';
 import { SupportAnnouncementListComponent } from './pages/support-announcement-list/support-announcement-list.component';
 import { OrderFormListComponent } from './pages/order-form-list/order-form-list.component';
+import { SettingsComponent } from './pages/settings/settings.component';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { OrderFormListComponent } from './pages/order-form-list/order-form-list.
     UserCommentListComponent,
     ProjectCategoryListComponent,
     SupportAnnouncementListComponent,
-    OrderFormListComponent
+    OrderFormListComponent,
+    SettingsComponent
   ],
   imports: [
     CommonModule,

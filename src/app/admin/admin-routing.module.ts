@@ -20,6 +20,7 @@ import { UserCommentListComponent } from "./pages/user-comment-list/user-comment
 import { ProjectCategoryListComponent } from "./pages/project-category-list/project-category-list.component";
 import { SupportAnnouncementListComponent } from "./pages/support-announcement-list/support-announcement-list.component";
 import { OrderFormListComponent } from "./pages/order-form-list/order-form-list.component";
+import { SettingsComponent } from "./pages/settings/settings.component";
 
 const routes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -61,6 +62,8 @@ const routes: Routes = [
             { path: 'support-announcements', component: SupportAnnouncementListComponent },
 
             { path: 'order-messages', component: OrderFormListComponent },
+
+            { path: 'settings', component: SettingsComponent },
         ]
     }
 ];
