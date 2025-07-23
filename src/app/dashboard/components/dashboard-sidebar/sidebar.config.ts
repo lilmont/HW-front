@@ -4,6 +4,7 @@ import { CoursesIconComponent } from '../../../shared/svg-icons/courses-icon/cou
 import { HostIconComponent } from '../../../shared/svg-icons/host-icon/host-icon.component';
 import { ProfileIconComponent } from '../../../shared/svg-icons/profile-icon/profile-icon.component';
 import { ProjectIconComponent } from '../../../shared/svg-icons/project-icon/project-icon.component';
+import { ReferralSvgComponent } from '../../../shared/svg-icons/referral-svg/referral-svg.component';
 import { SupportIconComponent } from '../../../shared/svg-icons/support-icon/support-icon.component';
 import { VideoIconComponent } from '../../../shared/svg-icons/video-icon/video-icon.component';
 import { WalletIconComponent } from '../../../shared/svg-icons/wallet-icon/wallet-icon.component';
@@ -60,6 +61,11 @@ export const SIDEBAR_ITEMS: ISidebarItem[] = [
         label: Messages.Headers.hosting,
         path: '/dashboard/hosting',
         svgComponent: HostIconComponent,
+    },
+    {
+        label: Messages.Headers.referralCode,
+        path: '/dashboard/referral',
+        svgComponent: ReferralSvgComponent,
     },
     // {
     //     label: Messages.Headers.discountCodes,

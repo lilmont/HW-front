@@ -13,6 +13,7 @@ import { AuthGuard } from '../auth/auth.guard';
 import { SupportVideosComponent } from './pages/support-videos/support-videos.component';
 import { SampleSupportVideosComponent } from './pages/sample-support-videos/sample-support-videos.component';
 import { Messages } from '../texts/messages';
+import { ReferralComponent } from './pages/referral/referral.component';
 
 const routes: Routes = [
     {
@@ -30,6 +31,7 @@ const routes: Routes = [
             { path: 'user-info', component: UserInfoComponent, canActivate: [AuthGuard], data: { title: Messages.Titles.dashboard + ' - ' + Messages.Titles.userInfo } },
             { path: 'support-videos', component: SupportVideosComponent, canActivate: [AuthGuard], data: { title: Messages.Titles.dashboard + ' - ' + Messages.Titles.supportVideos } },
             { path: 'sample-support-videos', component: SampleSupportVideosComponent, canActivate: [AuthGuard], data: { title: Messages.Titles.dashboard + ' - ' + Messages.Titles.sampleSupportVideos } },
+            { path: 'referral', component: ReferralComponent, canActivate: [AuthGuard], data: { title: Messages.Titles.dashboard + ' - ' + Messages.Titles.referral } },
             // { path: 'discount-codes', component: DiscountCodesComponent, canActivate: [AuthGuard] },
         ],
     },

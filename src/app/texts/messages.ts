@@ -443,7 +443,8 @@ export const Messages = {
         projectCategories: 'دسته بندی پروژه',
         supportAnnouncements: 'اعلانات پشتیبانی',
         orderFormMessages: 'پیام های سفارش',
-        messageText: 'متن پیام'
+        messageText: 'متن پیام',
+        referralCode: 'لینک معرفی'
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'
@@ -465,7 +466,8 @@ export const Messages = {
         projects: 'پروژه های کارآموزان',
         LoginOrSignup: 'ورود / ثبت نام',
         notFound: '404 - صفحه یافت نشد',
-        contactUs: 'تماس با ما'
+        contactUs: 'تماس با ما',
+        referral: 'لینک معرفی'
     },
     TableHeaders: {
         id: 'ID',
@@ -496,5 +498,10 @@ export const Messages = {
         text: 'متن',
         fullName: 'نام و نام خانوادگی',
         orderDate: 'تاریخ سفارش'
+    },
+    Texts: {
+        referralText1: `لینک دعوت خود را با دیگران به اشتراک بگذارید.
+    اگر از طریق این لینک ثبت‌ نام کنند، با هر خرید آن‌ها از دوره‌ها، `,
+        referralText2: ` درصد از مبلغ خرید به حساب شما اضافه می‌شود.`
     }
 };

@@ -32,6 +32,8 @@ import { DiscountCodesComponent } from './pages/discount-codes/discount-codes.co
 import { SupportVideosComponent } from './pages/support-videos/support-videos.component';
 import { SampleSupportVideosComponent } from './pages/sample-support-videos/sample-support-videos.component';
 import { WithdrawCardComponent } from './components/withdraw-card/withdraw-card.component';
+import { ReferralComponent } from './pages/referral/referral.component';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @NgModule({
   declarations: [
@@ -63,13 +65,15 @@ import { WithdrawCardComponent } from './components/withdraw-card/withdraw-card.
     SupportVideosComponent,
     SampleSupportVideosComponent,
     WithdrawCardComponent,
+    ReferralComponent,
   ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
     FormsModule,
     SharedModule,
-    CoreModule
+    CoreModule,
+    QRCodeModule
   ]
 })
 export class DashboardModule { }

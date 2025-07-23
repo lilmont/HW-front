@@ -46,7 +46,7 @@ import { TelegramIconComponent } from './svg-icons/telegram-icon/telegram-icon.c
 import { SoroushIconComponent } from './svg-icons/soroush-icon/soroush-icon.component';
 import { VideoIconComponent } from './svg-icons/video-icon/video-icon.component';
 import { VideoChatIconComponent } from './svg-icons/video-chat-icon/video-chat-icon.component';
-
+import { ReferralSvgComponent } from './svg-icons/referral-svg/referral-svg.component';
 
 
 @NgModule({
@@ -95,6 +95,7 @@ import { VideoChatIconComponent } from './svg-icons/video-chat-icon/video-chat-i
     SoroushIconComponent,
     VideoIconComponent,
     VideoChatIconComponent,
+    ReferralSvgComponent,
   ],
   imports: [
     CommonModule,
@@ -141,7 +142,8 @@ import { VideoChatIconComponent } from './svg-icons/video-chat-icon/video-chat-i
     TelegramIconComponent,
     SoroushIconComponent,
     VideoIconComponent,
-    VideoChatIconComponent
+    VideoChatIconComponent,
+    ReferralSvgComponent
   ]
 })
 export class SharedModule { }

@@ -11,6 +11,7 @@ import { IDiscountCodeCard } from '../../models/IDiscountCodeCard';
 import { IUserComment } from '../../models/IUserComment';
 import { IUserCommentList } from '../../models/IUserCommentList';
 import { ISupportVideoAccess } from '../../models/ISupportVideoAccess';
+import { IUserReferralCode } from '../../models/IUserReferralCode';
 
 @Injectable({
   providedIn: 'root'
@@ -176,6 +177,20 @@ export class UserHttpService {
         } else {
           this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
         }
+        return throwError(() => error);
+      })
+    );
+  }
+
+  getUserReferralCode(): Observable<IUserReferralCode> {
+    return this.http.get<any>(`${this.baseUrl}/users/user-referral-code`).pipe(
+      catchError((error) => {
+        if (error.status === 401) {
+          this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+
         return throwError(() => error);
       })
     );

@@ -15,7 +15,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
 import { registerLocaleData } from '@angular/common';
 import localeFa from '@angular/common/locales/fa';
 import { CoursesModule } from './courses/courses.module';
-
+import { QRCodeModule } from 'angularx-qrcode';
 
 registerLocaleData(localeFa);
 
@@ -34,6 +34,7 @@ registerLocaleData(localeFa);
     AuthModule,
     BrowserAnimationsModule,
     CoursesModule,
+    QRCodeModule,
     ToastrModule.forRoot({
       toastClass: 'ngx-toastr toast-enter',
       positionClass: 'toast-bottom-right',
