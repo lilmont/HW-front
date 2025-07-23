@@ -3,6 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { initFlowbite } from 'flowbite'
 import { filter, map, mergeMap } from 'rxjs';
+import { ReferralService } from './core/services/referral.service';
 
 @Component({
   selector: 'hw-root',
@@ -12,10 +13,16 @@ import { filter, map, mergeMap } from 'rxjs';
 export class AppComponent implements OnInit {
   constructor(private router: Router,
     private activatedRoute: ActivatedRoute,
-    private titleService: Title) { }
+    private titleService: Title,
+    private referralService: ReferralService) { }
   ngOnInit(): void {
     initFlowbite();
     this.setStaticPageTitles();
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const ref = urlParams.get('ref');
+    if (ref)
+      this.referralService.setReferralFromUrl(ref);
   }
 
   setStaticPageTitles() {

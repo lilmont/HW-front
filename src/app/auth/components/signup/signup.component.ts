@@ -7,6 +7,7 @@ import { LoadingService } from '../../../core/services/loading.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserInfoService } from '../../../core/services/user-info.service';
 import { environment } from '../../../../environments/environment';
+import { ReferralService } from '../../../core/services/referral.service';
 
 @Component({
   selector: 'hw-signup',
@@ -17,7 +18,8 @@ export class SignupComponent implements OnInit {
   signupData: ISendSignupCodeRequest = {
     phoneNumber: '',
     code: '',
-    password: ''
+    password: '',
+    referralCode: ''
   };
   returnUrl: string = '/';
   Messages = Messages;
@@ -37,6 +39,7 @@ export class SignupComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private userInfoService: UserInfoService,
+    private referralService: ReferralService
   ) {
   }
 
@@ -113,6 +116,11 @@ export class SignupComponent implements OnInit {
       return;
     }
 
+    const referralCode = this.referralService.getReferral();
+    if (referralCode) {
+      this.signupData.referralCode = referralCode;
+    }
+
     this.loadingService.show();
 
     this.authHttpService.validateVerificationCode(this.signupData).subscribe({
@@ -121,6 +129,7 @@ export class SignupComponent implements OnInit {
         this.loadingService.hide();
         this.userInfoService.loadUser();
         this.router.navigateByUrl(this.returnUrl);
+        this.referralService.clearReferral();
       },
       error: () => {
         this.loadingService.hide();
