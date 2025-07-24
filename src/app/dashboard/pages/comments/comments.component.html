@@ -21,7 +21,7 @@
                         [src]="userInfo.avatarImage.trim() ? baseUrl + '/uploads/avatars/' + userInfo.avatarImage : baseUrl + '/uploads/utilities/avatar.png'"
                         alt="profile picture">
                     <div *ngIf="userInfo.firstName || userInfo.lastName"
-                        class="space-y-0.5 font-medium text-left rtl:text-right ms-3">
+                        class="font-medium text-left rtl:text-right ms-3">
                         <div>{{ userInfo.firstName}} {{userInfo.lastName}}</div>
                     </div>
                 </figcaption>

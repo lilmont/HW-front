@@ -1,8 +1,8 @@
 <h1 class="text-xl lg:text-2xl font-bold mb-6">{{Messages.Headers.userComments}}</h1>
 
-<div class="p-6 space-y-6">
+<div class="p-6">
     <!-- 🔍 Filters -->
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
         <input type="text" [placeholder]="Messages.TableHeaders.id" class="border rounded p-2 w-full"
             [(ngModel)]="filters.userId" />
 
@@ -20,8 +20,8 @@
     </div>
 
     <!-- 🔘 Buttons -->
-    <div class="flex space-x-4">
-        <button class="cursor-pointer bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+    <div class="flex mb-4">
+        <button class="cursor-pointer bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 ml-4"
             (click)="loadUserComments()">
             {{Messages.Buttons.search}}
         </button>
@@ -32,7 +32,7 @@
     </div>
 
     <!-- 📋 Table -->
-    <div class="overflow-x-auto">
+    <div class="overflow-x-auto mb-6">
         <table class="min-w-full border border-gray-300">
             <thead class="bg-gray-200">
                 <tr>
@@ -99,14 +99,14 @@
         </div>
 
         <!-- Modal footer / buttons -->
-        <div class="flex justify-end space-x-4">
+        <div class="flex justify-end">
             <button (click)="closeConfirmationModal()"
-                class="cursor-pointer px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-lg transition duration-200">
+                class="cursor-pointer px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-lg transition duration-200 ml-4">
                 {{ Messages.Buttons.cancel }}
             </button>
 
             <button (click)="approveUserComment()"
-                class="cursor-pointer px-4 py-2 bg-green-800 hover:bg-green-700 text-white font-semibold rounded-lg shadow-md transition duration-200">
+                class="cursor-pointer px-4 py-2 bg-green-800 hover:bg-green-700 text-white font-semibold rounded-lg shadow-md transition duration-200 ml-4">
                 {{ Messages.Buttons.approve }}
             </button>
 

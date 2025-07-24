@@ -2,10 +2,9 @@
     {{Messages.Headers.addDiscountCode}}
 </h1>
 
-<form [formGroup]="discountCodeForm" (ngSubmit)="AddDiscountCode()"
-    class="mx-auto p-6 bg-white rounded shadow space-y-6">
+<form [formGroup]="discountCodeForm" (ngSubmit)="AddDiscountCode()" class="mx-auto p-6 bg-white rounded shadow">
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
         <!-- Discount Percentage -->
         <div>
             <label for="discountPercentage" class="block mb-1 font-semibold text-gray-700">

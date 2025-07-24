@@ -37,21 +37,21 @@
             <h3 class="text-xl font-bold text-gray-800 mb-6">{{Messages.Headers.supportMessengers}}</h3>
 
             <!-- Wrapper to center the grid -->
-            <div class="mx-auto space-y-4">
+            <div class="mx-auto">
                 <!-- WhatsApp -->
-                <div class="grid grid-cols-[auto_1fr] items-center gap-3">
+                <div class="grid grid-cols-[auto_1fr] items-center gap-3 mb-4">
                     <hw-whatsapp-icon></hw-whatsapp-icon>
                     <p class="font-semibold text-green-600 text-sm">{{Messages.Labels.whatsapp}}</p>
                 </div>
 
                 <!-- Telegram -->
-                <div class="grid grid-cols-[auto_1fr] items-center gap-3">
+                <div class="grid grid-cols-[auto_1fr] items-center gap-3 mb-4">
                     <hw-telegram-icon></hw-telegram-icon>
                     <p class="font-semibold text-blue-500 text-sm">{{Messages.Labels.telegram}}</p>
                 </div>
 
                 <!-- Soroush -->
-                <div class="grid grid-cols-[auto_1fr] items-center gap-3">
+                <div class="grid grid-cols-[auto_1fr] items-center gap-3 mb-4">
                     <hw-soroush-icon></hw-soroush-icon>
                     <p class="font-semibold text-blue-700 text-sm">{{Messages.Labels.soroush}}</p>
                 </div>
@@ -60,9 +60,9 @@
     </div>
 </div>
 
-<div class="mt-6 space-y-4">
+<div class="mt-6">
     <div *ngFor="let announcement of announcements"
-        class="bg-custom-300 border border-gray-300 shadow-md rounded-2xl p-6 transition-transform hover:scale-[1.02] hover:shadow-lg duration-200 ease-in-out">
+        class="bg-custom-300 border border-gray-300 shadow-md rounded-2xl p-6 transition-transform hover:scale-[1.02] hover:shadow-lg duration-200 ease-in-out mb-4">
 
         <p class="text-md text-gray-800 text-center font-medium leading-relaxed">
             {{ announcement.text }}

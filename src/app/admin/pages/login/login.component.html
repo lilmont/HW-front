@@ -4,8 +4,8 @@
             <img [src]="baseUrl + '/uploads/utilities/logo.png'" [alt]="Messages.Alts.logoAlt" class="w-20 h-20">
         </div>
 
-        <form class="space-y-6">
-            <h5 class="text-xl font-bold text-gray-900">
+        <form>
+            <h5 class="text-xl font-bold text-gray-900 mb-4">
                 {{ Messages.Headers.login }}
             </h5>
 
@@ -13,7 +13,7 @@
                 {{ Messages.Labels.enterPhoneNumber }}
             </label>
 
-            <div class="relative">
+            <div class="relative mb-4">
                 <div class="relative">
                     <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
                         <svg class="w-4 h-4 text-custom-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -33,7 +33,7 @@
                 {{ Messages.Labels.password }}
             </label>
 
-            <div class="relative">
+            <div class="relative mb-4">
                 <div class="relative">
                     <input type="password" id="password" [(ngModel)]="login.password" name="password" dir="ltr"
                         class="bg-gray-50 border border-custom-300 text-gray-900 text-sm rounded-lg focus:ring-custom-500 focus:border-custom-500 block w-full ps-10 p-2.5 mt-6">

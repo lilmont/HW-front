@@ -5,8 +5,8 @@
         </div>
 
         <!-- Send Confirmation Code -->
-        <form class="space-y-6" *ngIf="step === 'phone'">
-            <h5 class="text-xl font-bold text-gray-900">
+        <form *ngIf="step === 'phone'">
+            <h5 class="text-xl font-bold text-gray-900 mb-6">
                 {{ Messages.Headers.signup }}
             </h5>
 
@@ -30,7 +30,7 @@
                         placeholder="09123456789">
                 </div>
 
-                <div *ngIf="phoneInvalid" class="text-red-600 text-sm mt-1">
+                <div *ngIf="phoneInvalid" class="text-red-600 text-sm mt-2">
                     {{Messages.Errors.invalidPhoneNumber}}
                 </div>
             </div>
@@ -41,8 +41,8 @@
         <!-- End Send Confirmation Code -->
 
         <!-- Validate Confirmation Code -->
-        <form class="space-y-6" *ngIf="step === 'code'">
-            <h5 class="text-xl font-bold text-gray-900">
+        <form *ngIf="step === 'code'">
+            <h5 class="text-xl font-bold text-gray-900 mb-6">
                 {{ Messages.Headers.enterConfirmationCode }}
             </h5>
 

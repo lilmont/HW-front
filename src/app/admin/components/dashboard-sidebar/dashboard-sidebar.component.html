@@ -4,8 +4,8 @@
   }" class="fixed top-0 right-0 z-40 w-64 h-screen pt-20 transition-transform bg-white shadow-2xl"
     aria-label="Sidebar">
     <div class="h-full px-3 pb-4 overflow-y-auto bg-white">
-        <ul class="space-y-2 font-medium">
-            <li *ngFor="let item of sidebarItems" class="cursor-pointer"
+        <ul class="font-medium">
+            <li *ngFor="let item of sidebarItems" class="cursor-pointer mb-2"
                 [ngClass]="{ 'bg-gray-200': isActive(item.path) }" (click)="navigate(item.path)">
                 <a class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
                     <span class="ms-3">{{ item.label }}</span>
