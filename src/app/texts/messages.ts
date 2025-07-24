@@ -220,7 +220,8 @@ export const Messages = {
         editCategory: 'ویرایش دسته بندی',
         addAnnouncement: 'افزودن اعلان',
         editAnnouncement: 'ویرایش اعلان',
-
+        addContacts: 'افزودن مخاطبین',
+        adding: 'در حال افزودن...'
     },
     Labels: {
         enterPhoneNumber: 'لطفا شماره موبایل خود را وارد کنید',

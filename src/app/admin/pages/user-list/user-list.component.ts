@@ -23,6 +23,7 @@ export class UserListComponent implements OnInit {
   increaseBalanceData: IncreaseBalance = new IncreaseBalance();
   amount: string = '';
   amountInvalid: boolean = false;
+  addContactButtonText: string = Messages.Buttons.addContacts;
 
   constructor(private userHttpService: UserHttpService,
     private toastr: ToastService,
@@ -95,6 +96,23 @@ export class UserListComponent implements OnInit {
       error: () => {
         this.closeIncreaseBalanceModal();
         this.loadingService.hide();
+      }
+    });
+  }
+
+  addContacts() {
+    this.addContactButtonText = Messages.Buttons.adding;
+    this.userHttpService.addContacts().subscribe({
+      next: (response) => {
+        if (response.success) {
+          this.addContactButtonText = Messages.Buttons.addContacts;
+        } else {
+          this.addContactButtonText = Messages.Buttons.addContacts;
+        }
+        this.loadUsers();
+      },
+      error: () => {
+        this.addContactButtonText = Messages.Buttons.addContacts;
       }
     });
   }
