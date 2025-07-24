@@ -5,4 +5,5 @@ export interface IUserListItem {
     phoneNumber: string;
     domain: string;
     isActive: boolean;
+    isContactAdded: boolean;
 }

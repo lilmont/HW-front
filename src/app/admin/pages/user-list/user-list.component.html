@@ -27,6 +27,14 @@
             </select>
         </div>
 
+        <div>
+            <label for="isConactSelect" class="text-sm block mb-1">{{Messages.TableHeaders.contact}}</label>
+            <select id="isConactSelect" [(ngModel)]="filters.isContactAdded" class="border rounded p-2 w-full">
+                <option [ngValue]="undefined">{{Messages.Buttons.all}}</option>
+                <option [ngValue]="true">{{Messages.Labels.contactIsAdded}}</option>
+                <option [ngValue]="false">{{Messages.Labels.contactIsNotAdded}}</option>
+            </select>
+        </div>
     </div>
 
     <!-- 🔘 Buttons -->
@@ -51,6 +59,7 @@
                     <th class="px-4 py-2 border">{{Messages.TableHeaders.phoneNumber}}</th>
                     <th class="px-4 py-2 border">{{Messages.TableHeaders.domain}}</th>
                     <th class="px-4 py-2 border">{{Messages.TableHeaders.status}}</th>
+                    <th class="px-4 py-2 border">{{Messages.TableHeaders.contact}}</th>
                     <th class="px-4 py-2 border">{{Messages.TableHeaders.increaseBalance}}</th>
                     <th class="px-4 py-2 border">{{Messages.TableHeaders.edit}}</th>
                 </tr>
@@ -63,15 +72,21 @@
                     <td class="px-4 py-2 border">{{ user.lastName }}</td>
                     <td class="px-4 py-2 border">{{ user.phoneNumber }}</td>
                     <td class="px-4 py-2 border">{{ user.domain }}</td>
-                    <td class="px-4 py-2 border border-gray-800 text-center text-blue-600">
-                        <a *ngIf="user.isActive" class="cursor-pointer"
-                            (click)="openIncreaseBalanceModal(user.id)">{{Messages.TableHeaders.increaseBalance}}</a>
-                    </td>
                     <td class="px-4 py-2 border">
                         <span [ngClass]="user.isActive ? 'text-green-600' : 'text-red-600'">
                             {{ user.isActive ? Messages.Labels.active : Messages.Labels.inactive }}
                         </span>
                     </td>
+                    <td class="px-4 py-2 border">
+                        <span [ngClass]="user.isContactAdded ? 'text-green-600' : 'text-red-600'">
+                            {{ user.isActive ? Messages.Labels.contactIsNotAdded : Messages.Labels.contactIsAdded }}
+                        </span>
+                    </td>
+                    <td class="px-4 py-2 border border-gray-800 text-center text-blue-600">
+                        <a *ngIf="user.isActive" class="cursor-pointer"
+                            (click)="openIncreaseBalanceModal(user.id)">{{Messages.TableHeaders.increaseBalance}}</a>
+                    </td>
+
                     <td class="px-4 py-2 border border-gray-800 text-center text-blue-600"><a
                             [routerLink]="[user.id]">{{Messages.TableHeaders.edit}}</a></td>
                 </tr>

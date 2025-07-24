@@ -7,6 +7,7 @@ export interface IUserQueryParameters {
     isActive?: boolean;
     pageNumber: number;
     pageSize: number;
+    isContactAdded?: boolean;
 }
 
 export class UserQueryParameters implements IUserQueryParameters {
@@ -16,6 +17,7 @@ export class UserQueryParameters implements IUserQueryParameters {
     id?: string;
     domain?: string;
     isActive?: boolean;
+    isContactAdded?: boolean;
 
     pageNumber = 1;
     pageSize = 10;
@@ -32,6 +34,7 @@ export class UserQueryParameters implements IUserQueryParameters {
         this.id = '';
         this.domain = '';
         this.isActive = undefined;
+        this.isContactAdded = undefined;
         this.pageNumber = 1;
         this.pageSize = 10;
     }

@@ -325,7 +325,9 @@ export const Messages = {
         supportVideo: 'ویدیو پشتیبانی',
         approved: 'تایید شده',
         disapproved: 'رد شده',
-        enterCategoryTitle: 'عنوان دسته بندی را وارد کنید'
+        enterCategoryTitle: 'عنوان دسته بندی را وارد کنید',
+        contactIsAdded: 'مخاطب دارد',
+        contactIsNotAdded: 'مخاطب ندارد'
     },
     Headers: {
         signup: 'ثبت نام',
@@ -501,7 +503,8 @@ export const Messages = {
         text: 'متن',
         fullName: 'نام و نام خانوادگی',
         orderDate: 'تاریخ سفارش',
-        referralPercentage: 'درصد معرفی'
+        referralPercentage: 'درصد معرفی',
+        contact: 'مخاطب'
     },
     Texts: {
         referralText1: `لینک دعوت خود را با دیگران به اشتراک بگذارید.
