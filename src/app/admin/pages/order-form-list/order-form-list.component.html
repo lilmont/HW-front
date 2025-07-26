@@ -27,6 +27,11 @@
             </tbody>
         </table>
     </div>
+
+    <!-- 🔢 Pagination -->
+    <hw-pagination [pageNumber]="filters.pageNumber" [pageSize]="filters.pageSize" [totalCount]="totalCount"
+        (pageChange)="onPageChange($event)">
+    </hw-pagination>
 </div>
 
 <!-- Message Modal -->

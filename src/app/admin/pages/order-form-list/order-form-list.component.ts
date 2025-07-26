@@ -55,4 +55,9 @@ export class OrderFormListComponent implements OnInit {
     this.selectedMessage = undefined;
     this.isMessageModalOpen = false;
   }
+
+  onPageChange(page: any) {
+    this.filters.pageNumber = page;
+    this.loadOrderMessages();
+  }
 }
