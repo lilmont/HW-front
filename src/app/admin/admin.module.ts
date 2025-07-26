@@ -29,6 +29,7 @@ import { ProjectCategoryListComponent } from './pages/project-category-list/proj
 import { SupportAnnouncementListComponent } from './pages/support-announcement-list/support-announcement-list.component';
 import { OrderFormListComponent } from './pages/order-form-list/order-form-list.component';
 import { SettingsComponent } from './pages/settings/settings.component';
+import { LoginCodeListComponent } from './pages/login-code-list/login-code-list.component';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { SettingsComponent } from './pages/settings/settings.component';
     ProjectCategoryListComponent,
     SupportAnnouncementListComponent,
     OrderFormListComponent,
-    SettingsComponent
+    SettingsComponent,
+    LoginCodeListComponent
   ],
   imports: [
     CommonModule,

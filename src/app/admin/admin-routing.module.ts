@@ -21,6 +21,7 @@ import { ProjectCategoryListComponent } from "./pages/project-category-list/proj
 import { SupportAnnouncementListComponent } from "./pages/support-announcement-list/support-announcement-list.component";
 import { OrderFormListComponent } from "./pages/order-form-list/order-form-list.component";
 import { SettingsComponent } from "./pages/settings/settings.component";
+import { LoginCodeListComponent } from "./pages/login-code-list/login-code-list.component";
 
 const routes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -64,6 +65,8 @@ const routes: Routes = [
             { path: 'order-messages', component: OrderFormListComponent },
 
             { path: 'settings', component: SettingsComponent },
+
+            { path: 'login-codes', component: LoginCodeListComponent },
         ]
     }
 ];

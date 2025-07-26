@@ -451,6 +451,7 @@ export const Messages = {
         messageText: 'متن پیام',
         referralCode: 'لینک معرفی',
         settings: 'تنظیمات',
+        loginCodes: 'کدهای ورود'
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'
@@ -506,7 +507,9 @@ export const Messages = {
         fullName: 'نام و نام خانوادگی',
         orderDate: 'تاریخ سفارش',
         referralPercentage: 'درصد معرفی',
-        contact: 'مخاطب'
+        contact: 'مخاطب',
+        createDate: 'تاریخ ایجاد',
+        code: 'کد ورود'
     },
     Texts: {
         referralText1: `لینک دعوت خود را با دیگران به اشتراک بگذارید.

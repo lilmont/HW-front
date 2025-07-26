@@ -16,6 +16,8 @@ import { ISupportAnnouncementListItem } from '../models/ISupportAnnouncementList
 import { IOrderMessageListItem } from '../models/IOrderMessageListItem';
 import { IOrderMessageQueryParameters } from '../models/IOrderMessageQueryParameters';
 import { IWebsiteSettings } from '../models/IWebsiteSettings';
+import { ILoginCodeListItem } from '../models/ILoginCodeListItem';
+import { LoginCodeQueryParameters } from '../models/ILoginCodeQueryParameters';
 
 @Injectable({
   providedIn: 'root'
@@ -270,6 +272,23 @@ export class CommonHttpService {
 
   editWebsiteSettings(websiteSetting: IWebsiteSettings): Observable<IApiResponse<null>> {
     return this.http.post<IApiResponse<null>>(`${this.baseUrl}/api/mazmon/common/edit-settings`, websiteSetting).pipe(
+      catchError((error) => {
+        if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
+        } else if (error.status === 401) {
+          this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+        return throwError(() => error);
+      })
+    );
+  }
+
+  getPagedLoginCodes(data: LoginCodeQueryParameters): Observable<IApiResponse<IPagedResult<ILoginCodeListItem>>> {
+    const params = this.buildHttpParams(data);
+
+    return this.http.get<IApiResponse<IPagedResult<ILoginCodeListItem>>>(`${this.baseUrl}/api/mazmon/common/login-code-list`, { params }).pipe(
       catchError((error) => {
         if (error.status === 400) {
           this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);

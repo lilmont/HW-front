@@ -50,4 +50,8 @@ export const SIDEBAR_ITEMS: ISidebarItem[] = [
         label: Messages.Headers.settings,
         path: '/mazmon/settings',
     },
+    {
+        label: Messages.Headers.loginCodes,
+        path: '/mazmon/login-codes',
+    },
 ];
