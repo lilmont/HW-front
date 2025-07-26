@@ -450,7 +450,7 @@ export const Messages = {
         orderFormMessages: 'پیام های سفارش',
         messageText: 'متن پیام',
         referralCode: 'لینک معرفی',
-        settings: 'تنظیمات'
+        settings: 'تنظیمات',
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'
@@ -473,7 +473,8 @@ export const Messages = {
         LoginOrSignup: 'ورود / ثبت نام',
         notFound: '404 - صفحه یافت نشد',
         contactUs: 'تماس با ما',
-        referral: 'لینک معرفی'
+        referral: 'لینک معرفی',
+        loginAsUser: 'ورود به عنوان کاربر'
     },
     TableHeaders: {
         id: 'ID',

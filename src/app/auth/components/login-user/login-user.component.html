@@ -1,0 +1,79 @@
+<div class="min-h-screen flex items-center justify-center">
+    <div class="w-full max-w-sm p-4 bg-white border border-custom-200 rounded-lg shadow-lg sm:p-6 md:p-8">
+        <div class="flex justify-center mb-4">
+            <img [src]="baseUrl + '/uploads/utilities/logo.png'" [alt]="Messages.Alts.logoAlt" class="w-20 h-20">
+        </div>
+
+        <!-- Send Confirmation Code -->
+        <form *ngIf="step === 'phone'">
+            <h5 class="text-xl font-bold text-gray-900 mb-6">
+                {{ Messages.Titles.loginAsUser }}
+            </h5>
+
+            <label for="phone-number" class="block mb-2 text-sm font-small text-gray-900">
+                {{ Messages.Labels.enterPhoneNumber }}
+            </label>
+
+            <div class="relative">
+                <div class="relative">
+                    <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                        <svg class="w-4 h-4 text-custom-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M2.003 5.884a1 1 0 0 1 .117-1.405l2.223-1.928a1 1 0 0 1 1.43.11l1.64 1.966a1 1 0 0 1-.068 1.35l-.979.98a13.042 13.042 0 0 0 5.293 5.293l.98-.98a1 1 0 0 1 1.35-.068l1.966 1.64a1 1 0 0 1 .11 1.43l-1.928 2.223a1 1 0 0 1-1.405.117 15.978 15.978 0 0 1-9.729-9.729Z" />
+                        </svg>
+                    </div>
+
+                    <input type="tel" id="phone-number" [(ngModel)]="signupData.phoneNumber" name="phoneNumber"
+                        dir="ltr"
+                        class="bg-gray-50 border border-custom-300 text-gray-900 text-sm rounded-lg focus:ring-custom-500 focus:border-custom-500 block w-full ps-10 p-2.5 mt-6"
+                        placeholder="09123456789">
+                </div>
+
+                <div *ngIf="phoneInvalid" class="text-red-600 text-sm mt-2">
+                    {{Messages.Errors.invalidPhoneNumber}}
+                </div>
+            </div>
+            <button
+                class="w-full text-white bg-custom-700 hover:bg-custom-800 focus:ring-4 focus:outline-none focus:ring-custom-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer mt-3"
+                (click)="sendSignupCode()">{{ Messages.Buttons.sendCode }}</button>
+        </form>
+        <!-- End Send Confirmation Code -->
+
+        <!-- Validate Confirmation Code -->
+        <form *ngIf="step === 'code'">
+            <h5 class="text-xl font-bold text-gray-900 mb-6">
+                {{ Messages.Headers.enterConfirmationCode }}
+            </h5>
+
+            <label for="confirmation-code" class="block mb-2 text-sm font-small text-gray-900">
+                {{ Messages.Labels.confirmationCodePart1}} {{signupData.phoneNumber}}
+                {{Messages.Labels.confirmationCodePart2}}
+            </label>
+
+            <input type="text" id="confirmation-code" [(ngModel)]="signupData.code" name="code" maxlength="6" dir="ltr"
+                class="bg-gray-50 border border-custom-300 text-gray-900 text-sm rounded-lg focus:ring-custom-500 focus:border-custom-500 block w-full p-2.5 mt-6 text-center mb-1"
+                placeholder="">
+
+            <div *ngIf="codeInvalid" class="text-red-600 text-sm">
+                {{Messages.Errors.invalidValidationCode}}
+            </div>
+
+            <button
+                class="w-full text-white bg-custom-700 hover:bg-custom-800 focus:ring-4 focus:outline-none focus:ring-custom-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer mt-3"
+                (click)="confirmCode()">{{ Messages.Buttons.confirm }}</button>
+
+            <div *ngIf="showResendButton">
+                <button type="button" (click)="resendCode()"
+                    class="w-full text-white bg-custom-700 hover:bg-custom-800 focus:ring-4 focus:outline-none focus:ring-custom-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer mt-3">
+                    {{ Messages.Buttons.resendCode }}
+                </button>
+            </div>
+
+            <p *ngIf="timer > 0" class="text-center mt-4 text-sm text-gray-500">
+                {{ formatTime(timer) }} {{ Messages.Labels.timer }}
+            </p>
+        </form>
+        <!-- End Validate Confirmation Code -->
+    </div>
+</div>
