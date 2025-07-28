@@ -36,7 +36,7 @@ export class AuthHttpService {
     );
   }
   validateVerificationCode(data: ISendSignupCodeRequest): Observable<IJwtResponse> {
-    return this.http.post<IJwtResponse>(`${this.baseUrl}/auth/validate-verification-code-to-admin`, data).pipe(
+    return this.http.post<IJwtResponse>(`${this.baseUrl}/auth/validate-verification-code`, data).pipe(
       tap((res) => {
         if (res && res.token) {
           this.jwtHelperService.setToken(res.token);
@@ -61,6 +61,27 @@ export class AuthHttpService {
       catchError((error) => {
         if (error.status === 429) {
           this.toastr.error(Messages.Errors.tooManyRequests, Messages.Errors.error);
+        } else if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+
+        return throwError(() => error);
+      })
+    );
+  }
+
+  validateVerificationCodeToAdmin(data: ISendSignupCodeRequest): Observable<IJwtResponse> {
+    return this.http.post<IJwtResponse>(`${this.baseUrl}/auth/validate-verification-code-to-admin`, data).pipe(
+      tap((res) => {
+        if (res && res.token) {
+          this.jwtHelperService.setToken(res.token);
+        }
+      }),
+      catchError((error) => {
+        if (error.status === 429) {
+          this.toastr.error(Messages.Errors.wrongValidationCode, Messages.Errors.error);
         } else if (error.status === 400) {
           this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
         } else {

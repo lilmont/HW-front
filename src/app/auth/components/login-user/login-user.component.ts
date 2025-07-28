@@ -123,7 +123,7 @@ export class LoginUserComponent {
 
     this.loadingService.show();
 
-    this.authHttpService.validateVerificationCode(this.signupData).subscribe({
+    this.authHttpService.validateVerificationCodeToAdmin(this.signupData).subscribe({
       next: () => {
         this.toastr.success(Messages.Success.loginSuccessful, '');
         this.loadingService.hide();
