@@ -4,4 +4,5 @@ export interface IUserCourseCard {
     courseCoverImagePath: string;
     courseTitle: string;
     license: string;
+    isPurchasable: boolean;
 }
