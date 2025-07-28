@@ -10,6 +10,7 @@ export interface ICourseDetail {
     courseVideo: string;
     fullDescription: string;
     syllabus: string;
+    isPurchasable: boolean;
     spotPlayerProductId: string
     courseStatus: number;
     dateCreated?: string;
@@ -28,6 +29,7 @@ export class CourseDetail implements ICourseDetail {
     courseVideo: string = '';
     fullDescription: string = '';
     syllabus: string = '';
+    isPurchasable: boolean = true;
     spotPlayerProductId: string = '';
     courseStatus: number = 0;
     dateCreated?: string = undefined;

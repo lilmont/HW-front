@@ -328,7 +328,8 @@ export const Messages = {
         disapproved: 'رد شده',
         enterCategoryTitle: 'عنوان دسته بندی را وارد کنید',
         contactIsAdded: 'مخاطب دارد',
-        contactIsNotAdded: 'مخاطب ندارد'
+        contactIsNotAdded: 'مخاطب ندارد',
+        isPurchasable: 'قابل خرید است؟'
     },
     Headers: {
         signup: 'ثبت نام',

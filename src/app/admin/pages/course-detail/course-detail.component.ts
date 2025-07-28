@@ -43,6 +43,7 @@ export class CourseDetailComponent implements OnInit, OnDestroy {
       courseDurationInHours: [1, [Validators.required, Validators.min(1)]],
       price: [0, [Validators.required, Validators.min(0)]],
       syllabus: ['', Validators.required],
+      isPurchasable: [true],
       spotPlayerProductId: ['', Validators.required],
       courseStatus: [0, Validators.required],
       sessions: this.fb.array([], uniqueSessionNumberValidator),
@@ -100,6 +101,7 @@ export class CourseDetailComponent implements OnInit, OnDestroy {
             courseDurationInHours: course.courseDurationInHours,
             price: course.price,
             syllabus: course.syllabus,
+            isPurchasable: course.isPurchasable,
             spotPlayerProductId: course.spotPlayerProductId,
             courseStatus: course.courseStatus,
             dateCreated: course.dateCreated,
@@ -268,6 +270,7 @@ export class CourseDetailComponent implements OnInit, OnDestroy {
     formData.append('CourseDurationInHours', formValues.courseDurationInHours.toString());
     formData.append('Price', formValues.price.toString().replace(/,/g, ''));
     formData.append('Syllabus', formValues.syllabus);
+    formData.append('IsPurchasable', formValues.isPurchasable);
     formData.append('SpotPlayerProductId', formValues.spotPlayerProductId);
     formData.append('CourseStatus', formValues.courseStatus.toString());
 
