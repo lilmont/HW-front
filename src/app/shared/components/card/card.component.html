@@ -1,23 +1,25 @@
-<div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+<div
+    class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow h-full flex flex-col">
     <a (click)="navigateToCardPage()" class="block">
-        <img class="rounded-t-lg w-full h-48" [src]="baseUrl + '/uploads/courses/images/' + card?.imagePath" alt="" />
+        <img class="rounded-t-lg w-full h-40 object-fill" [src]="baseUrl + '/uploads/courses/images/' + card?.imagePath"
+            alt="" />
     </a>
 
     <div class="p-5 flex flex-col justify-between h-full">
         <!-- Title -->
         <a (click)="navigateToCardPage()" class="cursor-pointer">
-            <h5 class="mb-1 text-lg font-semibold text-gray-900">
+            <h5 class="text-lg font-semibold text-gray-900">
                 {{ card?.title }}
             </h5>
         </a>
 
         <!-- Short Description -->
-        <p class="text-sm text-gray-700 mb-4">
+        <p class="text-sm text-gray-700">
             {{ card?.shortDescription }}
         </p>
 
         <!-- Price + Button container -->
-        <div class="flex items-center justify-between">
+        <div class="flex items-center justify-between mt-4 md:mt-2 lg:mt-1">
             <!-- Price -->
             <div class="text-custom-600 font-semibold text-base">
                 <span>{{ card?.price | number:'1.0-0' }}</span>

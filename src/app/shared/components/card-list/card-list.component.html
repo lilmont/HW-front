@@ -1,6 +1,6 @@
 <div class="w-3/4 mx-auto">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        <div *ngFor="let card of cards">
+        <div *ngFor="let card of cards" class="h-full">
             <hw-card [card]="card"></hw-card>
         </div>
     </div>
