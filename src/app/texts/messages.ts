@@ -337,6 +337,7 @@ export const Messages = {
         courses: 'دوره ها',
         students: 'فراگیران',
         seeAllComments: 'مشاهده همه',
+        seeAllCourses: 'مشاهده همه دوره ها',
         shop: 'فروشگاه',
         order: 'سفارش پروژه',
         login: 'ورود',
