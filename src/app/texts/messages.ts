@@ -329,7 +329,10 @@ export const Messages = {
         enterCategoryTitle: 'عنوان دسته بندی را وارد کنید',
         contactIsAdded: 'مخاطب دارد',
         contactIsNotAdded: 'مخاطب ندارد',
-        isPurchasable: 'قابل خرید است؟'
+        isPurchasable: 'قابل خرید است؟',
+        selfHost: 'خودش هاست گرفته',
+        supportHost: 'هاست پشتیبانی دارد',
+        noHostYet: 'هنوز هاست ندارد'
     },
     Headers: {
         signup: 'ثبت نام',
@@ -511,7 +514,8 @@ export const Messages = {
         referralPercentage: 'درصد معرفی',
         contact: 'مخاطب',
         createDate: 'تاریخ ایجاد',
-        code: 'کد ورود'
+        code: 'کد ورود',
+        hostStatus: 'وضعیت هاست'
     },
     Texts: {
         referralText1: `لینک دعوت خود را با دیگران به اشتراک بگذارید.

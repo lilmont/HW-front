@@ -6,4 +6,5 @@ export interface IUserListItem {
     domain: string;
     isActive: boolean;
     isContactAdded: boolean;
+    hostStatus: number;
 }

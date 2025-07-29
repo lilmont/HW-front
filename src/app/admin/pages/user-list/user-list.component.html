@@ -64,6 +64,7 @@
                     <th class="px-4 py-2 border">{{Messages.TableHeaders.phoneNumber}}</th>
                     <th class="px-4 py-2 border">{{Messages.TableHeaders.domain}}</th>
                     <th class="px-4 py-2 border">{{Messages.TableHeaders.status}}</th>
+                    <th class="px-4 py-2 border">{{Messages.TableHeaders.hostStatus}}</th>
                     <th class="px-4 py-2 border">{{Messages.TableHeaders.contact}}</th>
                     <th class="px-4 py-2 border">{{Messages.TableHeaders.increaseBalance}}</th>
                     <th class="px-4 py-2 border">{{Messages.TableHeaders.edit}}</th>
@@ -80,6 +81,13 @@
                     <td class="px-4 py-2 border">
                         <span [ngClass]="user.isActive ? 'text-green-600' : 'text-red-600'">
                             {{ user.isActive ? Messages.Labels.active : Messages.Labels.inactive }}
+                        </span>
+                    </td>
+                    <td class="px-4 py-2 border">
+                        <span [ngSwitch]="user.hostStatus">
+                            <span *ngSwitchCase="0">{{Messages.Labels.selfHost}}</span>
+                            <span *ngSwitchCase="1">{{Messages.Labels.supportHost}}</span>
+                            <span *ngSwitchCase="2">{{Messages.Labels.noHostYet}}</span>
                         </span>
                     </td>
                     <td class="px-4 py-2 border">
