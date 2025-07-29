@@ -1,4 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { environment } from '../../../../environments/environment';
+import { CommonHttpService } from '../../../core/services/common-http.service';
+import { LoadingService } from '../../../core/services/loading.service';
 
 @Component({
   selector: 'hw-carousel',
@@ -6,19 +9,34 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
   styleUrl: './carousel.component.css'
 })
 export class CarouselComponent implements OnInit, OnDestroy {
-  carouselImages: string[] = [
-    "https://flowbite.com/docs/images/carousel/carousel-1.svg",
-    "https://flowbite.com/docs/images/carousel/carousel-2.svg",
-    "https://flowbite.com/docs/images/carousel/carousel-3.svg",
-    "https://flowbite.com/docs/images/carousel/carousel-4.svg",
-    "https://flowbite.com/docs/images/carousel/carousel-5.svg"
-  ];
+  baseUrl = environment.apiBaseUrl;
+  carouselImages: string[] = [];
+
+  constructor(private commonHttpService: CommonHttpService,
+    private loadingService: LoadingService
+  ) { }
 
   currentIndex = 0;
   autoSlideInterval: any;
 
   ngOnInit(): void {
-    this.startAutoSlide(); // Optional
+    // this.startAutoSlide(); // Optional
+
+    this.getCarouselImages();
+  }
+
+  getCarouselImages() {
+    this.loadingService.show();
+    this.commonHttpService.getCarouselImages().subscribe({
+      next: (response) => {
+        console.log(response)
+        this.carouselImages = response.map(c => this.baseUrl + '/uploads/carousel/' + c);
+        this.loadingService.hide();
+      },
+      error: () => {
+        this.loadingService.hide();
+      }
+    });
   }
 
   ngOnDestroy(): void {
