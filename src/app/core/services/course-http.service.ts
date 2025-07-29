@@ -75,6 +75,21 @@ export class CourseHttpService {
     );
   }
 
+  getRecentCourses(count: number): Observable<ICourseCardInfo[]> {
+    return this.http.get<any>(`${this.baseUrl}/courses/recent-courses`, { params: { count: count.toString() } }).pipe(
+      catchError((error) => {
+        if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
+        } else if (error.status === 401) {
+          this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+        return throwError(() => error);
+      })
+    );
+  }
+
   getCourseDetail(id: number, title: string): Observable<ICourseDetail> {
     return this.http.get<any>(`${this.baseUrl}/courses/course-detail`, { params: { id: id.toString(), title: title } }).pipe(
       catchError((error) => {

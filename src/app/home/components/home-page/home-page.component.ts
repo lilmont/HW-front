@@ -29,7 +29,7 @@ export class HomePageComponent implements OnInit {
 
   getCourses(): void {
     this.loadingService.show();
-    this.courseHttpService.getAllCourses().subscribe({
+    this.courseHttpService.getRecentCourses(4).subscribe({
       next: (response) => {
         this.courses = response;
         this.loadingService.hide();

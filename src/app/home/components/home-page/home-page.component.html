@@ -1,5 +1,6 @@
 <hw-carousel></hw-carousel>
-<hw-text-divider id="courses" [title]="Messages.Headers.courses"></hw-text-divider>
+<hw-text-divider id="courses" [title]="Messages.Headers.courses" [hasLink]="true"
+    [linkText]="Messages.Headers.seeAllCourses" [linkRoute]="'courses'"></hw-text-divider>
 <hw-card-list [cards]="courses"></hw-card-list>
 <hw-jumbotron></hw-jumbotron>
 <div class="flex justify-center gap-4 my-12">
