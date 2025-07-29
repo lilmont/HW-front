@@ -16,6 +16,8 @@ export class SettingsComponent implements OnInit {
   Messages = Messages;
   baseUrl = environment.apiBaseUrl;
   settingsForm!: FormGroup;
+  carouselImages: string[] = [];
+
 
   constructor(private fb: FormBuilder,
     private loadingService: LoadingService,
@@ -29,6 +31,7 @@ export class SettingsComponent implements OnInit {
     });
 
     this.getWebsiteSettings();
+    this.getCarouselImages();
   }
 
   getWebsiteSettings(): void {
@@ -70,6 +73,48 @@ export class SettingsComponent implements OnInit {
       next: (response) => {
         if (response.success) {
           this.toastr.success(Messages.Success.websiteSettingEditedSuccessfully, '');
+          location.reload();
+        } else {
+          this.toastr.error(response.data ?? Messages.Errors.invalidRequest, Messages.Errors.error)
+        }
+        this.loadingService.hide();
+      },
+      error: () => {
+
+        this.loadingService.hide();
+      },
+    });
+  }
+
+  getCarouselImages() {
+    this.loadingService.show();
+    this.commonHttpService.getCarouselImages().subscribe({
+      next: (response) => {
+        this.carouselImages = response.map(c => this.baseUrl + '/uploads/carousel/' + c);
+        this.loadingService.hide();
+      },
+      error: () => {
+        this.loadingService.hide();
+      }
+    });
+  }
+
+  handleSave(images: (string | File)[]) {
+    const formData = new FormData();
+    for (const img of images) {
+      if (img instanceof File) {
+        formData.append('newImages', img);
+      } else {
+        formData.append('existingImages', img.split("/").pop() ?? '');
+      }
+    }
+
+    this.loadingService.show();
+
+    this.commonHttpService.EditCarouselImages(formData).subscribe({
+      next: (response) => {
+        if (response.success) {
+          this.toastr.success(Messages.Success.carouselImagesEditedSuccessfully);
           location.reload();
         } else {
           this.toastr.error(response.data ?? Messages.Errors.invalidRequest, Messages.Errors.error)

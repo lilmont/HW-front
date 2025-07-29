@@ -137,7 +137,8 @@ export const Messages = {
         supportAnnouncementEditedSuccessfully: 'اعلان با موفقیت ویرایش شد',
         announcementDeletedSuccessfully: 'اعلان با موفقیت حذف شد',
         orderSubmittedSuccessfully: 'سفارش شما با موفقیت ثبت شد',
-        websiteSettingEditedSuccessfully: 'تنظیمات با موفقیت ویرایش شد'
+        websiteSettingEditedSuccessfully: 'تنظیمات با موفقیت ویرایش شد',
+        carouselImagesEditedSuccessfully: 'تغییر تصاویر با موفقیت انجام شد'
     },
     Warnings: {
         oneTimePassword: 'قبل از بستن این صفحه اطلاعات هاست خود را کپی کنید و در جای امنی نگداری کنید',
@@ -332,7 +333,8 @@ export const Messages = {
         isPurchasable: 'قابل خرید است؟',
         selfHost: 'خودش هاست گرفته',
         supportHost: 'هاست پشتیبانی دارد',
-        noHostYet: 'هنوز هاست ندارد'
+        noHostYet: 'هنوز هاست ندارد',
+        dragAndDrop: 'Click to upload or drag images here'
     },
     Headers: {
         signup: 'ثبت نام',

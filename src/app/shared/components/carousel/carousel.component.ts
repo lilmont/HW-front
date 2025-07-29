@@ -29,8 +29,10 @@ export class CarouselComponent implements OnInit, OnDestroy {
     this.loadingService.show();
     this.commonHttpService.getCarouselImages().subscribe({
       next: (response) => {
-        console.log(response)
         this.carouselImages = response.map(c => this.baseUrl + '/uploads/carousel/' + c);
+        if (this.carouselImages.length > 1) {
+          this.startAutoSlide();
+        }
         this.loadingService.hide();
       },
       error: () => {

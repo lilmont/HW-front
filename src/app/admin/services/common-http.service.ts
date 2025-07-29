@@ -302,6 +302,39 @@ export class CommonHttpService {
     );
   }
 
+  getCarouselImages(): Observable<string[]> {
+    return this.http.get<any>(`${this.baseUrl}/common/carousel-images`).pipe(
+      catchError((error) => {
+        if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
+        } else if (error.status === 401) {
+          this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+        return throwError(() => error);
+      })
+    );
+  }
+
+  EditCarouselImages(images: FormData): Observable<IApiResponse<null>> {
+    return this.http.post<IApiResponse<null>>(`${this.baseUrl}/api/mazmon/common/edit-carousel-images`, images).pipe(
+      catchError((error) => {
+        if (error.status === 440) {
+          this.toastr.error(Messages.Errors.fileSizeTooLarge, Messages.Errors.error);
+        } else if (error.status === 441) {
+          this.toastr.error(Messages.Errors.invalidImage, Messages.Errors.error);
+        } else if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
+        } else if (error.status === 401) {
+          this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+        return throwError(() => error);
+      })
+    );
+  }
 
   private buildHttpParams(data: ISupportVideoQueryParameters): HttpParams {
     let params = new HttpParams();

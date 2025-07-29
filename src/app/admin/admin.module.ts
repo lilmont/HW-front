@@ -30,6 +30,7 @@ import { SupportAnnouncementListComponent } from './pages/support-announcement-l
 import { OrderFormListComponent } from './pages/order-form-list/order-form-list.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { LoginCodeListComponent } from './pages/login-code-list/login-code-list.component';
+import { ImageDropZoneComponent } from './components/image-drop-zone/image-drop-zone.component';
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import { LoginCodeListComponent } from './pages/login-code-list/login-code-list.
     SupportAnnouncementListComponent,
     OrderFormListComponent,
     SettingsComponent,
-    LoginCodeListComponent
+    LoginCodeListComponent,
+    ImageDropZoneComponent
   ],
   imports: [
     CommonModule,

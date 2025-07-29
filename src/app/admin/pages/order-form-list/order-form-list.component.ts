@@ -32,7 +32,6 @@ export class OrderFormListComponent implements OnInit {
     this.loadingService.show();
     this.commonHttpService.getOrderMessages(this.filters).subscribe({
       next: (response) => {
-        console.log(response.data)
         if (response.success) {
           this.orderMessages = response.data.items;
           this.totalCount = response.data.totalCount;

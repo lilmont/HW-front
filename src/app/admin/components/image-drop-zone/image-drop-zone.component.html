@@ -1,0 +1,27 @@
+<div class="w-full p-4 border-2 border-dashed border-gray-300 rounded-lg bg-gray-50" (drop)="onDrop($event)"
+    (dragover)="allowDrop($event)">
+
+    <div class="text-center mb-4">
+        <label class="cursor-pointer text-blue-500 underline">
+            {{Messages.Labels.dragAndDrop}}
+            <input type="file" multiple hidden (change)="onFileInput($event)">
+        </label>
+    </div>
+
+    <div class="flex flex-wrap gap-4">
+        <div *ngFor="let image of allImages; let i = index"
+            class="relative w-40 h-40 border rounded overflow-hidden group">
+            <img [src]="image" class="object-cover w-full h-full" />
+            <button type="button" (click)="removeImage(i, i < existingImages.length)"
+                class="cursor-pointer absolute top-1 right-1 bg-red-500 text-white text-xs rounded-full w-10 h-10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+                ×
+            </button>
+        </div>
+    </div>
+
+    <div class="mt-6 text-right">
+        <button class="cursor-pointer px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700" (click)="onSave()">
+            {{Messages.Buttons.save}}
+        </button>
+    </div>
+</div>
