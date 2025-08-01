@@ -136,3 +136,40 @@ body {
         opacity: 1;
     }
 }
+
+
+.rich-content {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333;
+    padding-right: 3rem;
+}
+
+.rich-content ul,
+.rich-content ol {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.rich-content ul {
+    list-style-type: disc;
+}
+
+.rich-content ol {
+    list-style-type: decimal;
+}
+
+.rich-content li {
+    margin-bottom: 0.5rem;
+}
+
+.rich-content h1,
+.rich-content h2,
+.rich-content h3 {
+    font-weight: bold;
+    margin: 1.5rem 0 0.5rem;
+}
+
+.rich-content p {
+    margin-bottom: 1rem;
+}
