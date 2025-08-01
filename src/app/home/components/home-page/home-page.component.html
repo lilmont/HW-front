@@ -15,3 +15,40 @@
     [linkText]="Messages.Headers.seeAllProjects"></hw-projects-section>
 <hw-text-divider [title]="Messages.Headers.order"></hw-text-divider>
 <hw-order-project-form id="order-project"></hw-order-project-form>
+
+<!-- Change Design modal -->
+<div *ngIf="showModal" class="fixed inset-0 z-50 flex items-center justify-center bg-[rgba(31,41,55,0.6)]"
+    (click)="closeModal()" dir="rtl">
+    <!-- Modal content container -->
+    <div class="relative p-6 w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl bg-white rounded-2xl shadow-xl"
+        (click)="$event.stopPropagation()">
+
+        <!-- Modal header -->
+        <div class="flex items-center justify-between border-b border-gray-200 pb-3 mb-5">
+            <h2 class="text-2xl font-bold text-gray-800">
+                {{Messages.Labels.legacyWebsiteHeader}}
+            </h2>
+        </div>
+
+        <!-- Modal description -->
+        <div class="modal-body text-start">
+            <p>
+                {{Messages.Labels.legacyWebsiteText1}}
+            </p>
+            <p class="mb-5 mt-4">
+                {{Messages.Labels.legacyWebsiteText2}}
+            </p>
+            <div class="text-center">
+                <img [src]="baseUrl + '/uploads/utilities/legacy-website.png'" alt="نسخه قبلی وب‌سایت"
+                    style="max-width: 100%; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.1);" />
+            </div>
+        </div>
+
+        <div class="flex justify-center mt-4">
+            <button (click)="closeModal()"
+                class="cursor-pointer bg-custom-600 hover:bg-custom-700 text-white font-semibold py-2 px-6 rounded-lg shadow-md transition duration-200">
+                متوجه شدم
+            </button>
+        </div>
+    </div>
+</div>

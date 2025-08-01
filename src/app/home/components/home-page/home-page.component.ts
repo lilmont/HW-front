@@ -5,6 +5,7 @@ import { ICourseCardInfo } from '../../../models/ICourseCardInfo';
 import { LoadingService } from '../../../core/services/loading.service';
 import { UserHttpService } from '../../../core/services/user-http.service';
 import { IUserCommentList } from '../../../models/IUserCommentList';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'hw-home-page',
@@ -16,6 +17,8 @@ export class HomePageComponent implements OnInit {
   Messages = Messages;
   testimonials: IUserCommentList[] = [];
   courses: ICourseCardInfo[] = [];
+  showModal: boolean = false;
+  baseUrl = environment.apiBaseUrl;
 
   constructor(private courseHttpService: CourseHttpService,
     private loadingService: LoadingService,
@@ -23,6 +26,14 @@ export class HomePageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    const hasSeenModal = localStorage.getItem('signupModalSeen');
+    console.log(localStorage.getItem('signupModalSeen'))
+    if (!hasSeenModal) {
+      console.log("hello")
+      this.showIntroModal();
+      localStorage.setItem('signupModalSeen', 'true');
+    }
+
     this.getCourses();
     this.getComments();
   }
@@ -51,5 +62,13 @@ export class HomePageComponent implements OnInit {
         this.loadingService.hide();
       }
     });
+  }
+
+  showIntroModal() {
+    this.showModal = true;
+  }
+
+  closeModal() {
+    this.showModal = false;
   }
 }

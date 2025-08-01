@@ -334,7 +334,10 @@ export const Messages = {
         selfHost: 'خودش هاست گرفته',
         supportHost: 'هاست پشتیبانی دارد',
         noHostYet: 'هنوز هاست ندارد',
-        dragAndDrop: 'Click to upload or drag images here'
+        dragAndDrop: 'Click to upload or drag images here',
+        legacyWebsiteHeader: "به نسخه‌ی جدید وب‌سایت خوش آمدید",
+        legacyWebsiteText1: "ما ظاهر وب‌سایت را برای تجربه‌ای بهتر و سریع‌تر به‌روزرسانی کرده‌ایم. همه‌ی امکانات همچنان در دسترس شماست.",
+        legacyWebsiteText2: "تصویر صفحه اصلی نسخه‌ی قبلی را در ادامه مشاهده می‌کنید:"
     },
     Headers: {
         signup: 'ثبت نام',
