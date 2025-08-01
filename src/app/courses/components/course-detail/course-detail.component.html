@@ -74,17 +74,32 @@
                     </span>
                 </span>
                 <ng-template #normalPrice>
-                    <span class="font-semibold text-custom-800">
-                        {{ courseDetail?.price | number:'1.0-0' }}
-                    </span>
+                    <ng-container *ngIf="courseDetail?.price === 0; else notFree">
+                        <span class="text-green-600 font-semibold mr-1">
+                            {{ Messages.Labels.free }}
+                        </span>
+                    </ng-container>
+                    <ng-template #notFree>
+                        <span class="font-semibold text-custom-800 mr-1">
+                            {{ courseDetail?.price | number:'1.0-0' }}
+                        </span>
+                        <span class="mr-1">{{ Messages.Headers.toman }}</span>
+                    </ng-template>
                 </ng-template>
-                <span class="mr-1">{{ Messages.Headers.toman }}</span>
+                <span class="mr-1" *ngIf="courseDetail?.price !== 0">{{ Messages.Headers.toman }}</span>
             </div>
 
-            <button (click)="purchaseCoursePrep()"
+            <button (click)="purchaseCoursePrep()" *ngIf="courseDetail?.price !== 0; else viewCourseButton"
                 class="cursor-pointer mt-3 bg-custom-700 text-white text-sm py-2 px-4 rounded-md hover:bg-custom-800 transition">
                 {{Messages.Buttons.purchaseCourse}}
             </button>
+
+            <ng-template #viewCourseButton>
+                <button (click)="ViewWebCourse()"
+                    class="cursor-pointer mt-3 bg-custom-700 text-white text-sm py-2 px-4 rounded-md hover:bg-custom-800 transition">
+                    {{Messages.Buttons.viewCourse}}
+                </button>
+            </ng-template>
         </div>
     </div>
 

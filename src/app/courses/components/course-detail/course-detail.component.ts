@@ -162,4 +162,8 @@ export class CourseDetailComponent {
     const url = `https://zarinp.al/mazwebprog?amount=${amountInRial}`;
     window.open(url, '_blank');
   }
+
+  ViewWebCourse() {
+    this.router.navigate(['/dashboard/web-course']);
+  }
 }

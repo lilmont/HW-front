@@ -22,8 +22,13 @@
         <div class="flex items-center justify-between mt-4 md:mt-2 lg:mt-1">
             <!-- Price -->
             <div class="text-custom-600 font-semibold text-base">
-                <span>{{ card?.price | number:'1.0-0' }}</span>
-                <span class="mr-1">{{ Messages.Headers.toman }}</span>
+                <div *ngIf="card?.price === 0; else notFree">
+                    <span>{{ Messages.Labels.free }}</span>
+                </div>
+                <ng-template #notFree>
+                    <span>{{ card?.price | number:'1.0-0' }}</span>
+                    <span class="mr-1">{{ Messages.Headers.toman }}</span>
+                </ng-template>
             </div>
 
             <!-- CTA -->

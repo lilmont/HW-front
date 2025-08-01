@@ -337,7 +337,8 @@ export const Messages = {
         dragAndDrop: 'Click to upload or drag images here',
         legacyWebsiteHeader: "به نسخه‌ی جدید وب‌سایت خوش آمدید",
         legacyWebsiteText1: "ما ظاهر وب‌سایت را برای تجربه‌ای بهتر و سریع‌تر به‌روزرسانی کرده‌ایم. همه‌ی امکانات همچنان در دسترس شماست.",
-        legacyWebsiteText2: "تصویر صفحه اصلی نسخه‌ی قبلی را در ادامه مشاهده می‌کنید:"
+        legacyWebsiteText2: "تصویر صفحه اصلی نسخه‌ی قبلی را در ادامه مشاهده می‌کنید:",
+        free: 'رایگان'
     },
     Headers: {
         signup: 'ثبت نام',
