@@ -461,7 +461,8 @@ export const Messages = {
         messageText: 'متن پیام',
         referralCode: 'لینک معرفی',
         settings: 'تنظیمات',
-        loginCodes: 'کدهای ورود'
+        loginCodes: 'کدهای ورود',
+        studentProjects: 'پروژه های فراگیران'
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'
