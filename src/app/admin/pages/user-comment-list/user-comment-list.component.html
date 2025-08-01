@@ -40,6 +40,7 @@
                     <th class="px-4 py-2 border">{{Messages.TableHeaders.userId}}</th>
                     <th class="px-4 py-2 border">{{Messages.TableHeaders.userPhoneNumber}}</th>
                     <th class="px-4 py-2 border">{{Messages.TableHeaders.status}}</th>
+                    <th class="px-4 py-2 border">{{Messages.TableHeaders.isChosen}}</th>
                     <th class="px-4 py-2 border">{{Messages.Headers.actions}}</th>
                 </tr>
             </thead>
@@ -55,6 +56,13 @@
                             <span *ngSwitchCase="1" class="text-green-800">{{Messages.Labels.approved}}</span>
                             <span *ngSwitchCase="2" class="text-red-800">{{Messages.Labels.disapproved}}</span>
                         </span>
+                    </td>
+                    <td class="px-4 py-2 border">
+                        <span *ngIf="comment.isChosen; else notChosen"
+                            class="text-green-800">{{Messages.Labels.yes}}</span>
+                        <ng-template #notChosen>
+                            <span class="text-red-800">{{Messages.Labels.no}}</span>
+                        </ng-template>
                     </td>
                     <td class="cursor-pointer px-4 py-2 border border-gray-800 text-center text-green-600">
                         <a (click)="openConfirmationModal(comment)">
@@ -98,11 +106,22 @@
             <p>{{ selectedUserComment?.commentText }}</p>
         </div>
 
+        <!-- Is Chosen -->
+        <div *ngIf="selectedUserComment" class="mb-4 text-center">
+            <label class="inline-flex items-center">
+                <input type="checkbox" [(ngModel)]="selectedUserComment.isChosen"
+                    class="form-checkbox h-5 w-5 text-blue-600" />
+                <span class="mr-2 text-gray-700 font-medium">
+                    {{ Messages.Labels.isShownInHomePage }}
+                </span>
+            </label>
+        </div>
+
         <!-- Modal footer / buttons -->
         <div class="flex justify-end">
-            <button (click)="closeConfirmationModal()"
-                class="cursor-pointer px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-lg transition duration-200 ml-4">
-                {{ Messages.Buttons.cancel }}
+            <button (click)="editUserComment()"
+                class="cursor-pointer px-4 py-2 bg-custom-800 hover:bg-custom-700 text-white font-semibold rounded-lg shadow-md transition duration-200 ml-4">
+                {{ Messages.Buttons.edit }}
             </button>
 
             <button (click)="approveUserComment()"
@@ -111,8 +130,13 @@
             </button>
 
             <button (click)="disapproveUserComment()"
-                class="cursor-pointer px-4 py-2 bg-red-800 hover:bg-red-700 text-white font-semibold rounded-lg shadow-md transition duration-200">
+                class="cursor-pointer px-4 py-2 bg-red-800 hover:bg-red-700 text-white font-semibold rounded-lg shadow-md transition duration-200 ml-4">
                 {{ Messages.Buttons.disapprove }}
+            </button>
+
+            <button (click)="closeConfirmationModal()"
+                class="cursor-pointer px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-lg transition duration-200">
+                {{ Messages.Buttons.cancel }}
             </button>
         </div>
     </div>

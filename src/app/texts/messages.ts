@@ -138,7 +138,8 @@ export const Messages = {
         announcementDeletedSuccessfully: 'اعلان با موفقیت حذف شد',
         orderSubmittedSuccessfully: 'سفارش شما با موفقیت ثبت شد',
         websiteSettingEditedSuccessfully: 'تنظیمات با موفقیت ویرایش شد',
-        carouselImagesEditedSuccessfully: 'تغییر تصاویر با موفقیت انجام شد'
+        carouselImagesEditedSuccessfully: 'تغییر تصاویر با موفقیت انجام شد',
+        userCommentEdittedSuccessfully: 'ویرایش نظر با موفقیت انجام شد'
     },
     Warnings: {
         oneTimePassword: 'قبل از بستن این صفحه اطلاعات هاست خود را کپی کنید و در جای امنی نگداری کنید',
@@ -338,7 +339,10 @@ export const Messages = {
         legacyWebsiteHeader: "به نسخه‌ی جدید وب‌سایت خوش آمدید",
         legacyWebsiteText1: "ما ظاهر وب‌سایت را برای تجربه‌ای بهتر و سریع‌تر به‌روزرسانی کرده‌ایم. همه‌ی امکانات همچنان در دسترس شماست.",
         legacyWebsiteText2: "تصویر صفحه اصلی نسخه‌ی قبلی را در ادامه مشاهده می‌کنید:",
-        free: 'رایگان'
+        free: 'رایگان',
+        isShownInHomePage: 'در صفحه اصلی نمایش داده شود؟',
+        yes: 'بله',
+        no: 'نه'
     },
     Headers: {
         signup: 'ثبت نام',
@@ -522,7 +526,8 @@ export const Messages = {
         contact: 'مخاطب',
         createDate: 'تاریخ ایجاد',
         code: 'کد ورود',
-        hostStatus: 'وضعیت هاست'
+        hostStatus: 'وضعیت هاست',
+        isChosen: 'منتخب'
     },
     Texts: {
         referralText1: `لینک دعوت خود را با دیگران به اشتراک بگذارید.

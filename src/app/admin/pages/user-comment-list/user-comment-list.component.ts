@@ -110,4 +110,26 @@ export class UserCommentListComponent implements OnInit {
       }
     });
   }
+
+  editUserComment() {
+    if (this.selectedUserComment) {
+      this.loadingService.show();
+      this.userHttpService.editUserComment(this.selectedUserComment).subscribe({
+        next: (response) => {
+          if (response.success) {
+            this.toastr.success(Messages.Success.userCommentEdittedSuccessfully, '');
+            this.loadUserComments();
+          } else {
+            this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+          }
+          this.closeConfirmationModal();
+          this.loadingService.hide();
+        },
+        error: () => {
+          this.loadingService.hide();
+          this.closeConfirmationModal();
+        }
+      });
+    }
+  }
 }

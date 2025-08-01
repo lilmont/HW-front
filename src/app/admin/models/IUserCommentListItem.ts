@@ -5,4 +5,5 @@ export interface IUserCommentListItem {
     price: number;
     userCommentStatus: number;
     commentText: string;
+    isChosen: boolean;
 }
