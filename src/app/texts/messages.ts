@@ -94,7 +94,9 @@ export const Messages = {
         videoFileIsRequired: 'ویدیو اجباری است',
         deleteFailedInUseForeignKey: 'این رکورد به علت در استفاده بودن قابل حذف نیست',
         titleInvalid: 'عنوان نمیتواند خالی باشد',
-        referralPercentageIsRequired: 'درصد اجباری است و نمیتواند منفی باشد'
+        referralPercentageIsRequired: 'درصد اجباری است و نمیتواند منفی باشد',
+        showOrderIsRequired: 'ترتیب نمایش اجباری است و باید حداقل 1 باشد',
+        duplicateShowOrder: 'ترتیب نمایش نمیتواند تکراری باشد'
     },
     Success: {
         loginSuccessful: 'ورود با موفقیت انجام شد',
@@ -527,7 +529,8 @@ export const Messages = {
         createDate: 'تاریخ ایجاد',
         code: 'کد ورود',
         hostStatus: 'وضعیت هاست',
-        isChosen: 'منتخب'
+        isChosen: 'منتخب',
+        showOrder: 'ترتیب نمایش'
     },
     Texts: {
         referralText1: `لینک دعوت خود را با دیگران به اشتراک بگذارید.

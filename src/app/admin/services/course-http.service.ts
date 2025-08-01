@@ -66,7 +66,9 @@ export class CourseHttpService {
   addCourse(course: FormData): Observable<IApiResponse<null>> {
     return this.http.post<IApiResponse<null>>(`${this.baseUrl}/api/mazmon/courses/add-course`, course).pipe(
       catchError((error) => {
-        if (error.status === 440) {
+        if (error.status === 409) {
+          this.toastr.error(Messages.Errors.duplicateShowOrder, Messages.Errors.error);
+        } else if (error.status === 440) {
           this.toastr.error(Messages.Errors.fileSizeTooLarge, Messages.Errors.error);
         } else if (error.status === 441) {
           this.toastr.error(Messages.Errors.invalidImage, Messages.Errors.error);
@@ -85,7 +87,9 @@ export class CourseHttpService {
   editCourse(course: FormData): Observable<IApiResponse<null>> {
     return this.http.post<IApiResponse<null>>(`${this.baseUrl}/api/mazmon/courses/edit-course`, course).pipe(
       catchError((error) => {
-        if (error.status === 440) {
+        if (error.status === 409) {
+          this.toastr.error(Messages.Errors.duplicateShowOrder, Messages.Errors.error);
+        } else if (error.status === 440) {
           this.toastr.error(Messages.Errors.fileSizeTooLarge, Messages.Errors.error);
         } else if (error.status === 441) {
           this.toastr.error(Messages.Errors.invalidImage, Messages.Errors.error);

@@ -11,6 +11,7 @@ export interface ICourseDetail {
     fullDescription: string;
     syllabus: string;
     isPurchasable: boolean;
+    showOrder: number;
     spotPlayerProductId: string
     courseStatus: number;
     dateCreated?: string;
@@ -30,6 +31,7 @@ export class CourseDetail implements ICourseDetail {
     fullDescription: string = '';
     syllabus: string = '';
     isPurchasable: boolean = true;
+    showOrder: number = 1;
     spotPlayerProductId: string = '';
     courseStatus: number = 0;
     dateCreated?: string = undefined;
