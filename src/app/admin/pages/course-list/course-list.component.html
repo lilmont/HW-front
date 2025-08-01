@@ -15,6 +15,7 @@
                     <th class="px-4 py-2 border">{{Messages.TableHeaders.id}}</th>
                     <th class="px-4 py-2 border">{{Messages.TableHeaders.title}}</th>
                     <th class="px-4 py-2 border">{{Messages.TableHeaders.price}}</th>
+                    <th class="px-4 py-2 border">{{Messages.TableHeaders.showOrder}}</th>
                     <th class="px-4 py-2 border">{{Messages.TableHeaders.edit}}</th>
                 </tr>
             </thead>
@@ -24,6 +25,7 @@
                     <td class="px-4 py-2 border">{{ course.id }}</td>
                     <td class="px-4 py-2 border">{{ course.title }}</td>
                     <td class="px-4 py-2 border">{{ course.price | number:'1.0-0' }}</td>
+                    <td class="px-4 py-2 border">{{ course.showOrder }}</td>
                     <td class="px-4 py-2 border border-gray-800 text-center text-blue-600"><a
                             [routerLink]="['/mazmon/courses/course-detail', course.id]">{{Messages.TableHeaders.edit}}</a>
                     </td>
