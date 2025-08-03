@@ -4,19 +4,19 @@
     <!-- 🔍 Filters -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
         <input type="text" [placeholder]="Messages.TableHeaders.id" class="border rounded p-2 w-full"
-            [(ngModel)]="filters.id" />
+            [(ngModel)]="filters.id" (keydown.enter)="loadUsers()" />
 
         <input type="text" [placeholder]="Messages.TableHeaders.firstName" class="border rounded p-2 w-full"
-            [(ngModel)]="filters.firstName" />
+            [(ngModel)]="filters.firstName" (keydown.enter)="loadUsers()" />
 
         <input type="text" [placeholder]="Messages.TableHeaders.lastName" class="border rounded p-2 w-full"
-            [(ngModel)]="filters.lastName" />
+            [(ngModel)]="filters.lastName" (keydown.enter)="loadUsers()" />
 
         <input type="text" [placeholder]="Messages.TableHeaders.phoneNumber" class="border rounded p-2 w-full"
-            [(ngModel)]="filters.phoneNumber" />
+            [(ngModel)]="filters.phoneNumber" (keydown.enter)="loadUsers()" />
 
         <input type="text" [placeholder]="Messages.TableHeaders.domain" class="border rounded p-2 w-full"
-            [(ngModel)]="filters.domain" />
+            [(ngModel)]="filters.domain" (keydown.enter)="loadUsers()" />
 
         <div>
             <label for="isActiveSelect" class="text-sm block mb-1">{{Messages.TableHeaders.status}}</label>
