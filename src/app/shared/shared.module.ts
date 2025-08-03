@@ -47,6 +47,7 @@ import { SoroushIconComponent } from './svg-icons/soroush-icon/soroush-icon.comp
 import { VideoIconComponent } from './svg-icons/video-icon/video-icon.component';
 import { VideoChatIconComponent } from './svg-icons/video-chat-icon/video-chat-icon.component';
 import { ReferralSvgComponent } from './svg-icons/referral-svg/referral-svg.component';
+import { NormalizePhoneDirective } from './directives/normalize-phone.directive';
 
 
 @NgModule({
@@ -96,6 +97,7 @@ import { ReferralSvgComponent } from './svg-icons/referral-svg/referral-svg.comp
     VideoIconComponent,
     VideoChatIconComponent,
     ReferralSvgComponent,
+    NormalizePhoneDirective,
   ],
   imports: [
     CommonModule,
@@ -143,7 +145,8 @@ import { ReferralSvgComponent } from './svg-icons/referral-svg/referral-svg.comp
     SoroushIconComponent,
     VideoIconComponent,
     VideoChatIconComponent,
-    ReferralSvgComponent
+    ReferralSvgComponent,
+    NormalizePhoneDirective
   ]
 })
 export class SharedModule { }
