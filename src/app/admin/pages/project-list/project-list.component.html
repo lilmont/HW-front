@@ -7,7 +7,7 @@
             [(ngModel)]="filters.userId" (keydown.enter)="loadProjects()" />
 
         <input type="text" [placeholder]="Messages.TableHeaders.phoneNumber" class="border rounded p-2 w-full"
-            [(ngModel)]="filters.userPhoneNumber" (keydown.enter)="loadProjects()" />
+            [(ngModel)]="filters.userPhoneNumber" (keydown.enter)="loadProjects()" hwNormalizePhone />
     </div>
 
     <!-- 🔘 Buttons -->
