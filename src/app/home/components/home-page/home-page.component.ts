@@ -27,9 +27,7 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit(): void {
     const hasSeenModal = localStorage.getItem('signupModalSeen');
-    console.log(localStorage.getItem('signupModalSeen'))
     if (!hasSeenModal) {
-      console.log("hello")
       this.showIntroModal();
       localStorage.setItem('signupModalSeen', 'true');
     }
