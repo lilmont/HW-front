@@ -7,6 +7,7 @@
                 <tr>
                     <th class="px-4 py-2 border">{{Messages.TableHeaders.code}}</th>
                     <th class="px-4 py-2 border">{{Messages.TableHeaders.phoneNumber}}</th>
+                    <th class="px-4 py-2 border">{{Messages.TableHeaders.userId}}</th>
                     <th class="px-4 py-2 border">{{Messages.TableHeaders.createDate}}</th>
                 </tr>
             </thead>
@@ -15,6 +16,7 @@
                     [ngClass]="{ 'bg-white': i % 2 === 0, 'bg-gray-100': i % 2 !== 0 }">
                     <td class="px-4 py-2 border">{{ code.code }}</td>
                     <td class="px-4 py-2 border">{{ code.phoneNumber }}</td>
+                    <td class="px-4 py-2 border">{{ code.userId }}</td>
                     <td class="px-4 py-2 border">{{ code.dateCreated | jalaliDate}}</td>
                 </tr>
             </tbody>
