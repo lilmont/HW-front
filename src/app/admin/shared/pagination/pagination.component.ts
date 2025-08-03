@@ -22,4 +22,28 @@ export class PaginationComponent {
       this.pageChange.emit(page);
     }
   }
+
+  get paginationRange(): (number | string)[] {
+    const total = this.totalPages;
+    const current = this.pageNumber;
+    const delta = 2; // how many pages to show around current
+
+    const range: (number | string)[] = [];
+    const left = Math.max(2, current - delta);
+    const right = Math.min(total - 1, current + delta);
+
+    range.push(1); // always show first page
+
+    if (left > 2) range.push('...');
+
+    for (let i = left; i <= right; i++) {
+      range.push(i);
+    }
+
+    if (right < total - 1) range.push('...');
+
+    if (total > 1) range.push(total); // always show last page
+
+    return range;
+  }
 }
