@@ -344,7 +344,8 @@ export const Messages = {
         free: 'رایگان',
         isShownInHomePage: 'در صفحه اصلی نمایش داده شود؟',
         yes: 'بله',
-        no: 'نه'
+        no: 'نه',
+        enterPhoneNumberOrUserId: 'شماره موبایل یا آیدی کاربر را وارد کنید'
     },
     Headers: {
         signup: 'ثبت نام',

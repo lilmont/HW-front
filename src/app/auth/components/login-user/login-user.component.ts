@@ -8,6 +8,7 @@ import { LoadingService } from '../../../core/services/loading.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserInfoService } from '../../../core/services/user-info.service';
 import { ReferralService } from '../../../core/services/referral.service';
+import { ISendLoginAsUserCodeRequest } from '../../../models/ISendLoginAsUserCodeRequest';
 
 @Component({
   selector: 'hw-login-user',
@@ -15,7 +16,7 @@ import { ReferralService } from '../../../core/services/referral.service';
   styleUrl: './login-user.component.css'
 })
 export class LoginUserComponent {
-  signupData: ISendSignupCodeRequest = {
+  signupData: ISendLoginAsUserCodeRequest = {
     phoneNumber: '',
     code: '',
     password: '',
@@ -45,10 +46,15 @@ export class LoginUserComponent {
 
   //#region Send Code
   sendSignupCode() {
-    this.phoneInvalid = !this.isPhoneNumberValid(this.signupData.phoneNumber);
-
-    if (this.phoneInvalid) {
+    if (!this.signupData.phoneNumber && !this.signupData.id)
       return;
+
+    if (this.signupData.phoneNumber) {
+      this.phoneInvalid = !this.isPhoneNumberValid(this.signupData.phoneNumber);
+
+      if (this.phoneInvalid) {
+        return;
+      }
     }
 
     this.loadingService.show();

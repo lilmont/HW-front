@@ -11,7 +11,7 @@
             </h5>
 
             <label for="phone-number" class="block mb-2 text-sm font-small text-gray-900">
-                {{ Messages.Labels.enterPhoneNumber }}
+                {{ Messages.Labels.enterPhoneNumberOrUserId }}
             </label>
 
             <div class="relative">
@@ -32,6 +32,14 @@
 
                 <div *ngIf="phoneInvalid" class="text-red-600 text-sm mt-2">
                     {{Messages.Errors.invalidPhoneNumber}}
+                </div>
+            </div>
+
+            <div class="relative">
+                <div class="relative">
+                    <input type="number" id="phone-number" [(ngModel)]="signupData.id" name="id" dir="ltr"
+                        class="bg-gray-50 border border-custom-300 text-gray-900 text-sm rounded-lg focus:ring-custom-500 focus:border-custom-500 block w-full ps-10 p-2.5 mt-6"
+                        [placeholder]="Messages.TableHeaders.userId">
                 </div>
             </div>
             <button

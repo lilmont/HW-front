@@ -7,6 +7,7 @@ import { ISendSignupCodeRequest } from '../../models/SendSignupCodeRequest';
 import { Messages } from '../../texts/messages';
 import { ToastService } from './toast.service';
 import { JwtHelperService } from './jwt.helper.service';
+import { ISendLoginAsUserCodeRequest } from '../../models/ISendLoginAsUserCodeRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -56,7 +57,7 @@ export class AuthHttpService {
     );
   }
 
-  sendVerificationCodeToAdmin(data: ISendSignupCodeRequest): Observable<void> {
+  sendVerificationCodeToAdmin(data: ISendLoginAsUserCodeRequest): Observable<void> {
     return this.http.post<void>(`${this.baseUrl}/auth/admin-verification-code`, data).pipe(
       catchError((error) => {
         if (error.status === 429) {
@@ -72,7 +73,7 @@ export class AuthHttpService {
     );
   }
 
-  validateVerificationCodeToAdmin(data: ISendSignupCodeRequest): Observable<IJwtResponse> {
+  validateVerificationCodeToAdmin(data: ISendLoginAsUserCodeRequest): Observable<IJwtResponse> {
     return this.http.post<IJwtResponse>(`${this.baseUrl}/auth/validate-verification-code-to-admin`, data).pipe(
       tap((res) => {
         if (res && res.token) {
