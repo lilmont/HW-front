@@ -190,7 +190,7 @@ export const Messages = {
         purchaseCourse: 'خرید دوره',
         check: 'بررسی',
         viewCourse: 'مشاهده دوره',
-        useCoursesTutorial: 'راهنمای استفاده از دوره ها',
+        useCoursesTutorial: 'راهنمای استفاده از اسپات پلیر',
         downloadSpotPlayer: 'دانلود اسپات پلیر',
         edit: 'ویرایش',
         addProject: 'افزودن پروژه',
