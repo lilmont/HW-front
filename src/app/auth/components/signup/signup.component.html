@@ -51,9 +51,11 @@
                 {{Messages.Labels.confirmationCodePart2}}
             </label>
 
-            <input type="text" id="confirmation-code" [(ngModel)]="signupData.code" name="code" maxlength="6" dir="ltr"
+            <input type="text" id="confirmation-code" [(ngModel)]="signupData.code" name="code" maxlength="6"
+                inputmode="numeric" pattern="[0-9]{6}" dir="ltr"
                 class="bg-gray-50 border border-custom-300 text-gray-900 text-sm rounded-lg focus:ring-custom-500 focus:border-custom-500 block w-full p-2.5 mt-6 text-center mb-1"
-                placeholder="">
+                placeholder="" (input)="onCodeInput($event)">
+
 
             <div *ngIf="codeInvalid" class="text-red-600 text-sm">
                 {{Messages.Errors.invalidValidationCode}}
