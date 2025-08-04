@@ -147,4 +147,23 @@ export class LoginUserComponent {
     const sixDigitCodeRegex = /^\d{6}$/;
     return sixDigitCodeRegex.test(code);
   }
+
+  onCodeInput(event: any): void {
+    const input = event.target as HTMLInputElement;
+
+    // Persian to English digit conversion map
+    const persianDigits = '۰۱۲۳۴۵۶۷۸۹';
+    const englishDigits = '0123456789';
+
+    let value = input.value;
+
+    // Replace Persian digits with English equivalents
+    value = value.replace(/[۰-۹]/g, (d) => englishDigits[persianDigits.indexOf(d)]);
+
+    // Remove any non-English digit
+    value = value.replace(/[^0-9]/g, '').slice(0, 6);
+
+    input.value = value;
+    this.signupData.code = value;
+  }
 }
