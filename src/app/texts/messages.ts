@@ -97,7 +97,8 @@ export const Messages = {
         referralPercentageIsRequired: 'درصد اجباری است و نمیتواند منفی باشد',
         showOrderIsRequired: 'ترتیب نمایش اجباری است و باید حداقل 1 باشد',
         duplicateShowOrder: 'ترتیب نمایش نمیتواند تکراری باشد',
-        smsNotSent: 'خطا در ارسال رمز یکبار مصرف. لطفا با پشتیبانی تماس بگیرید'
+        smsNotSent: 'خطا در ارسال رمز یکبار مصرف. لطفا با پشتیبانی تماس بگیرید',
+        userIdOrPhoneIsRequired: 'شماره موبایل یا یوزرنیم باید وارد شود'
     },
     Success: {
         loginSuccessful: 'ورود با موفقیت انجام شد',
@@ -226,7 +227,8 @@ export const Messages = {
         addAnnouncement: 'افزودن اعلان',
         editAnnouncement: 'ویرایش اعلان',
         addContacts: 'افزودن مخاطبین',
-        adding: 'در حال افزودن...'
+        adding: 'در حال افزودن...',
+        clearSmsBlockage: 'برطرف کردن محدودیت رمز یکبار مصرف'
     },
     Labels: {
         enterPhoneNumber: 'لطفا شماره موبایل خود را وارد کنید',
@@ -471,7 +473,8 @@ export const Messages = {
         referralCode: 'لینک معرفی',
         settings: 'تنظیمات',
         loginCodes: 'کدهای ورود',
-        studentProjects: 'پروژه های فراگیران'
+        studentProjects: 'پروژه های فراگیران',
+        cacheClearance: 'پاک کردن کش'
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'

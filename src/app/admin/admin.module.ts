@@ -31,6 +31,7 @@ import { OrderFormListComponent } from './pages/order-form-list/order-form-list.
 import { SettingsComponent } from './pages/settings/settings.component';
 import { LoginCodeListComponent } from './pages/login-code-list/login-code-list.component';
 import { ImageDropZoneComponent } from './components/image-drop-zone/image-drop-zone.component';
+import { ClearBlockageComponent } from './pages/clear-blockage/clear-blockage.component';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { ImageDropZoneComponent } from './components/image-drop-zone/image-drop-
     OrderFormListComponent,
     SettingsComponent,
     LoginCodeListComponent,
-    ImageDropZoneComponent
+    ImageDropZoneComponent,
+    ClearBlockageComponent
   ],
   imports: [
     CommonModule,

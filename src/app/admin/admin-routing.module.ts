@@ -22,6 +22,7 @@ import { SupportAnnouncementListComponent } from "./pages/support-announcement-l
 import { OrderFormListComponent } from "./pages/order-form-list/order-form-list.component";
 import { SettingsComponent } from "./pages/settings/settings.component";
 import { LoginCodeListComponent } from "./pages/login-code-list/login-code-list.component";
+import { ClearBlockageComponent } from "./pages/clear-blockage/clear-blockage.component";
 
 const routes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -65,6 +66,8 @@ const routes: Routes = [
             { path: 'order-messages', component: OrderFormListComponent },
 
             { path: 'settings', component: SettingsComponent },
+
+            { path: 'clear-blockage', component: ClearBlockageComponent },
 
             { path: 'login-codes', component: LoginCodeListComponent },
         ]
