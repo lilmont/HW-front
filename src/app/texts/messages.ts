@@ -1,6 +1,6 @@
 export const Messages = {
     Errors: {
-        tooManyRequests: 'خطا در ثبت نام. لطفا با پشتیبانی تماس بگیرید',
+        tooManyRequests: 'تعداد درخواست شما از حد مجاز بیشتر است. لطفا با پشتیبانی تماس بگیرید',
         invalidRequest: 'مشکلی پیش آمده، لطفا دوباره امتحان کنید',
         error: 'خطا',
         invalidPhoneNumber: 'شماره تلفن باید با 09 شروع شود و 11 رقم باشد.',
@@ -96,7 +96,8 @@ export const Messages = {
         titleInvalid: 'عنوان نمیتواند خالی باشد',
         referralPercentageIsRequired: 'درصد اجباری است و نمیتواند منفی باشد',
         showOrderIsRequired: 'ترتیب نمایش اجباری است و باید حداقل 1 باشد',
-        duplicateShowOrder: 'ترتیب نمایش نمیتواند تکراری باشد'
+        duplicateShowOrder: 'ترتیب نمایش نمیتواند تکراری باشد',
+        smsNotSent: 'خطا در ارسال رمز یکبار مصرف. لطفا با پشتیبانی تماس بگیرید'
     },
     Success: {
         loginSuccessful: 'ورود با موفقیت انجام شد',

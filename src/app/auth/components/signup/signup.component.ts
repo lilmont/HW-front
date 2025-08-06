@@ -54,10 +54,15 @@ export class SignupComponent implements OnInit {
     this.loadingService.show();
 
     this.authHttpService.sendVerificationCode(this.signupData).subscribe({
-      next: () => {
-        this.step = 'code';
+      next: (result) => {
+        if (result === false) {
+          this.toastr.error(Messages.Errors.smsNotSent, Messages.Errors.error);
+        }
+        else {
+          this.step = 'code';
+          this.startTimer();
+        }
         this.loadingService.hide();
-        this.startTimer();
       },
       error: () => {
         this.loadingService.hide();

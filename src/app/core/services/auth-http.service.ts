@@ -21,10 +21,10 @@ export class AuthHttpService {
     private toastr: ToastService,
     private jwtHelperService: JwtHelperService) { }
 
-  sendVerificationCode(data: ISendSignupCodeRequest): Observable<void> {
-    return this.http.post<void>(`${this.baseUrl}/auth/verification-code`, data).pipe(
+  sendVerificationCode(data: ISendSignupCodeRequest): Observable<boolean> {
+    return this.http.post<boolean>(`${this.baseUrl}/auth/verification-code`, data).pipe(
       catchError((error) => {
-        if (error.status === 429) {
+        if (error.status === 409) {
           this.toastr.error(Messages.Errors.tooManyRequests, Messages.Errors.error);
         } else if (error.status === 400) {
           this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
