@@ -98,7 +98,8 @@ export const Messages = {
         showOrderIsRequired: 'ترتیب نمایش اجباری است و باید حداقل 1 باشد',
         duplicateShowOrder: 'ترتیب نمایش نمیتواند تکراری باشد',
         smsNotSent: 'خطا در ارسال رمز یکبار مصرف. لطفا با پشتیبانی تماس بگیرید',
-        userIdOrPhoneIsRequired: 'شماره موبایل یا یوزرنیم باید وارد شود'
+        userIdOrPhoneIsRequired: 'شماره موبایل یا یوزرنیم باید وارد شود',
+        accessLimited: 'دسترسی شما محدود شده، لطفا با پشتیبانی تماس بگیرید'
     },
     Success: {
         loginSuccessful: 'ورود با موفقیت انجام شد',

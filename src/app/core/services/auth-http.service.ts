@@ -26,6 +26,8 @@ export class AuthHttpService {
       catchError((error) => {
         if (error.status === 409) {
           this.toastr.error(Messages.Errors.tooManyRequests, Messages.Errors.error);
+        } else if (error.status === 431) {
+          this.toastr.error(Messages.Errors.accessLimited, Messages.Errors.error);
         } else if (error.status === 400) {
           this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
         } else {
