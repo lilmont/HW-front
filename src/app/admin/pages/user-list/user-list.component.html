@@ -149,6 +149,10 @@
                 {{Messages.Errors.invalidAmount}}
             </div>
         </div>
+        <div class="text-gray-700 text-center mb-6">
+            <input type="checkbox" [(ngModel)]="isGift" name="isGift" id="isGift" class="h-5 w-5 ml-3" />
+            <label for="isGift" class="font-semibold text-gray-700">{{Messages.Labels.isGift}}</label>
+        </div>
 
         <!-- Modal footer / buttons -->
         <div class="flex justify-end">

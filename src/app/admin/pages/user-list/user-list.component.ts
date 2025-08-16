@@ -22,6 +22,7 @@ export class UserListComponent implements OnInit {
   isIncreaseBalanceModalOpen: boolean = false;
   increaseBalanceData: IncreaseBalance = new IncreaseBalance();
   amount: string = '';
+  isGift: boolean = true;
   amountInvalid: boolean = false;
   addContactButtonText: string = Messages.Buttons.addContacts;
 
@@ -75,7 +76,8 @@ export class UserListComponent implements OnInit {
   }
 
   increaseBalance() {
-    this.increaseBalanceData.amount = Number(this.amount.replaceAll(',', ''))
+    this.increaseBalanceData.amount = Number(this.amount.replaceAll(',', ''));
+    this.increaseBalanceData.isGift = this.isGift;
 
     if (this.increaseBalanceData.amount <= 0) {
       this.amountInvalid = true;

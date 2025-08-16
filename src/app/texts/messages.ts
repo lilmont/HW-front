@@ -348,7 +348,8 @@ export const Messages = {
         isShownInHomePage: 'در صفحه اصلی نمایش داده شود؟',
         yes: 'بله',
         no: 'نه',
-        enterPhoneNumberOrUserId: 'شماره موبایل یا آیدی کاربر را وارد کنید'
+        enterPhoneNumberOrUserId: 'شماره موبایل یا آیدی کاربر را وارد کنید',
+        isGift: 'هدیه است؟'
     },
     Headers: {
         signup: 'ثبت نام',
