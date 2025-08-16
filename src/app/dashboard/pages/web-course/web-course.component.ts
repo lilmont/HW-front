@@ -33,7 +33,8 @@ export class WebCourseComponent implements OnInit {
     });
   }
 
-  downloadSession(sessionId: number) {
+  downloadSession(sessionId: number, event: MouseEvent) {
+    event.preventDefault();
     this.loadingService.show();
     this.courseHttpService.getSessionDownloadLink(sessionId).subscribe({
       next: (data) => {
