@@ -8,6 +8,7 @@ import { Messages } from '../../texts/messages';
 import { ToastService } from './toast.service';
 import { JwtHelperService } from './jwt.helper.service';
 import { ISendLoginAsUserCodeRequest } from '../../models/ISendLoginAsUserCodeRequest';
+import { ISendLoginCodeRequest } from '../../models/ISendLoginCodeRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -85,6 +86,53 @@ export class AuthHttpService {
       catchError((error) => {
         if (error.status === 429) {
           this.toastr.error(Messages.Errors.wrongValidationCode, Messages.Errors.error);
+        } else if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+
+        return throwError(() => error);
+      })
+    );
+  }
+
+  sendVerificationCodeByEmail(data: ISendLoginCodeRequest): Observable<boolean> {
+    return this.http.post<boolean>(`${this.baseUrl}/auth/verification-code-email`, data).pipe(
+      catchError((error) => {
+        if (error.status === 404) {
+          this.toastr.error(Messages.Errors.userNotFound, Messages.Errors.error);
+        } else if (error.status === 409) {
+          this.toastr.error(Messages.Errors.duplicateEmail, Messages.Errors.error);
+        } else if (error.status === 431) {
+          this.toastr.error(Messages.Errors.accessLimited, Messages.Errors.error);
+        } else if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+
+        return throwError(() => error);
+      })
+    );
+  }
+
+  validateVerificationCodeByEmail(data: ISendLoginCodeRequest): Observable<IJwtResponse> {
+    return this.http.post<IJwtResponse>(`${this.baseUrl}/auth/validate-email-verification-code`, data).pipe(
+      tap((res) => {
+        if (res && res.token) {
+          this.jwtHelperService.setToken(res.token);
+        }
+      }),
+      catchError((error) => {
+        if (error.status === 429) {
+          this.toastr.error(Messages.Errors.wrongValidationCode, Messages.Errors.error);
+        } else if (error.status === 404) {
+          this.toastr.error(Messages.Errors.userNotFound, Messages.Errors.error);
+        } else if (error.status === 409) {
+          this.toastr.error(Messages.Errors.duplicateEmail, Messages.Errors.error);
+        } else if (error.status === 431) {
+          this.toastr.error(Messages.Errors.accessLimited, Messages.Errors.error);
         } else if (error.status === 400) {
           this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
         } else {

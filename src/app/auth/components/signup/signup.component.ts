@@ -8,6 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UserInfoService } from '../../../core/services/user-info.service';
 import { environment } from '../../../../environments/environment';
 import { ReferralService } from '../../../core/services/referral.service';
+import { ISendLoginCodeRequest } from '../../../models/ISendLoginCodeRequest';
 
 @Component({
   selector: 'hw-signup',
@@ -31,6 +32,12 @@ export class SignupComponent implements OnInit {
   timer: number = 120;
   timerInterval: any;
   showResendButton: boolean = false;
+  loginData: ISendLoginCodeRequest = {
+    emailAddress: '',
+    code: ''
+  };
+  loginMode: 'phone' | 'email' = 'phone';
+  emailInvalid: boolean = false;
 
   constructor(
     private authHttpService: AuthHttpService,
@@ -164,5 +171,82 @@ export class SignupComponent implements OnInit {
 
     input.value = value;
     this.signupData.code = value;
+  }
+
+  changeToEmailMode() {
+    this.loginMode = 'email';
+    this.step = 'phone';
+    this.signupData.phoneNumber = '';
+    this.signupData.code = '';
+    this.signupData.password = '';
+    this.phoneInvalid = false
+  }
+
+  changeToPhoneNumberMode() {
+    this.loginMode = 'phone';
+    this.step = 'phone';
+    this.loginData.emailAddress = '';
+    this.loginData.code = '';
+    this.emailInvalid = false
+  }
+
+  sendLoginCodeByEmail() {
+    this.emailInvalid = !this.isEmailValid(this.loginData.emailAddress ?? '');
+
+    if (this.emailInvalid) {
+      return;
+    }
+
+    this.loadingService.show();
+
+    this.authHttpService.sendVerificationCodeByEmail(this.loginData).subscribe({
+      next: (result) => {
+        if (result === false) {
+          this.toastr.error(Messages.Errors.smsNotSent, Messages.Errors.error);
+        }
+        else {
+          this.step = 'code';
+          this.startTimer();
+        }
+        this.loadingService.hide();
+      },
+      error: () => {
+        this.loadingService.hide();
+      }
+    });
+  }
+
+  private isEmailValid(email: string): boolean {
+    if (!email) return false;
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return emailRegex.test(email);
+  }
+
+  confirmEmailCode() {
+    this.codeInvalid = !this.isCodeValid(this.loginData.code);
+
+    if (this.codeInvalid) {
+      return;
+    }
+
+    this.loadingService.show();
+
+    this.authHttpService.validateVerificationCodeByEmail(this.loginData).subscribe({
+      next: () => {
+        this.toastr.success(Messages.Success.loginSuccessful, '');
+        this.loadingService.hide();
+        this.userInfoService.loadUser();
+        this.router.navigateByUrl(this.returnUrl);
+        this.referralService.clearReferral();
+      },
+      error: () => {
+        this.loadingService.hide();
+      }
+    });
+  }
+
+  resendCodeByEmail() {
+    this.sendLoginCodeByEmail();
+    this.startTimer();
   }
 }

@@ -1,4 +1,4 @@
-<div class="min-h-screen flex items-center justify-center">
+<div class="min-h-screen flex items-center justify-center" *ngIf="loginMode === 'phone'">
     <div class="w-full max-w-sm p-4 bg-white border border-custom-200 rounded-lg shadow-lg sm:p-6 md:p-8">
         <div class="flex justify-center mb-4">
             <img [src]="baseUrl + '/uploads/utilities/logo.png'" [alt]="Messages.Alts.logoAlt" class="w-20 h-20">
@@ -37,6 +37,12 @@
             <button
                 class="w-full text-white bg-custom-700 hover:bg-custom-800 focus:ring-4 focus:outline-none focus:ring-custom-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer mt-3"
                 (click)="sendSignupCode()">{{ Messages.Buttons.sendCode }}</button>
+
+            <div class="text-center mt-4">
+                <a class="text-sm text-custom-700 hover:underline cursor-pointer" (click)="changeToEmailMode()">
+                    {{ Messages.Buttons.loginWithEmail }}
+                </a>
+            </div>
         </form>
         <!-- End Send Confirmation Code -->
 
@@ -67,6 +73,94 @@
 
             <div *ngIf="showResendButton">
                 <button type="button" (click)="resendCode()"
+                    class="w-full text-white bg-custom-700 hover:bg-custom-800 focus:ring-4 focus:outline-none focus:ring-custom-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer mt-3">
+                    {{ Messages.Buttons.resendCode }}
+                </button>
+            </div>
+
+            <p *ngIf="timer > 0" class="text-center mt-4 text-sm text-gray-500">
+                {{ formatTime(timer) }} {{ Messages.Labels.timer }}
+            </p>
+        </form>
+        <!-- End Validate Confirmation Code -->
+    </div>
+</div>
+
+<div class="min-h-screen flex items-center justify-center" *ngIf="loginMode === 'email'">
+    <div class="w-full max-w-sm p-4 bg-white border border-custom-200 rounded-lg shadow-lg sm:p-6 md:p-8">
+        <div class="flex justify-center mb-4">
+            <img [src]="baseUrl + '/uploads/utilities/logo.png'" [alt]="Messages.Alts.logoAlt" class="w-20 h-20">
+        </div>
+
+        <!-- Send Confirmation Code -->
+        <form *ngIf="step === 'phone'">
+            <h5 class="text-xl font-bold text-gray-900 mb-6">
+                {{ Messages.Headers.loginWithEmail }}
+            </h5>
+
+            <label for="email-address" class="block mb-2 text-sm font-small text-gray-900">
+                {{ Messages.Labels.enterEmailAddress }}
+            </label>
+
+            <div class="relative">
+                <div class="relative">
+                    <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                        <svg class="w-4 h-4 text-custom-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M2.94 4.94a1.5 1.5 0 0 1 1.061-.44h12a1.5 1.5 0 0 1 1.06.44l-7.53 5.03-7.53-5.03zM2 6.5v8a1.5 1.5 0 0 0 1.5 1.5h13a1.5 1.5 0 0 0 1.5-1.5v-8l-7.53 5.03a1 1 0 0 1-1.06 0L2 6.5z" />
+                        </svg>
+                    </div>
+
+                    <input type="email" id="email-address" [(ngModel)]="loginData.emailAddress" name="emailAddress"
+                        dir="ltr"
+                        class="bg-gray-50 border border-custom-300 text-gray-900 text-sm rounded-lg focus:ring-custom-500 focus:border-custom-500 block w-full ps-10 p-2.5 mt-6"
+                        placeholder="example@email.com">
+                </div>
+
+                <div *ngIf="emailInvalid" class="text-red-600 text-sm mt-2">
+                    {{Messages.Errors.invalidEmail}}
+                </div>
+            </div>
+            <button
+                class="w-full text-white bg-custom-700 hover:bg-custom-800 focus:ring-4 focus:outline-none focus:ring-custom-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer mt-3"
+                (click)="sendLoginCodeByEmail()">{{ Messages.Buttons.sendCode }}</button>
+
+            <div class="text-center mt-4">
+                <a class="text-sm text-custom-700 hover:underline cursor-pointer" (click)="changeToPhoneNumberMode()">
+                    {{ Messages.Buttons.loginWithPhoneNumber }}
+                </a>
+            </div>
+        </form>
+        <!-- End Send Confirmation Code -->
+
+        <!-- Validate Confirmation Code -->
+        <form *ngIf="step === 'code'">
+            <h5 class="text-xl font-bold text-gray-900 mb-6">
+                {{ Messages.Headers.enterConfirmationCode }}
+            </h5>
+
+            <label for="confirmation-code" class="block mb-2 text-sm font-small text-gray-900">
+                {{ Messages.Labels.emailConfirmationCodePart1}} {{loginData.emailAddress}}
+                {{Messages.Labels.emailConfirmationCodePart2}}
+            </label>
+
+            <input type="text" id="confirmation-code" [(ngModel)]="loginData.code" name="code" maxlength="6"
+                inputmode="numeric" pattern="[0-9]{6}" dir="ltr"
+                class="bg-gray-50 border border-custom-300 text-gray-900 text-sm rounded-lg focus:ring-custom-500 focus:border-custom-500 block w-full p-2.5 mt-6 text-center mb-1"
+                placeholder="" (input)="onCodeInput($event)">
+
+
+            <div *ngIf="codeInvalid" class="text-red-600 text-sm">
+                {{Messages.Errors.invalidValidationCode}}
+            </div>
+
+            <button
+                class="w-full text-white bg-custom-700 hover:bg-custom-800 focus:ring-4 focus:outline-none focus:ring-custom-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer mt-3"
+                (click)="confirmEmailCode()">{{ Messages.Buttons.confirm }}</button>
+
+            <div *ngIf="showResendButton">
+                <button type="button" (click)="resendCodeByEmail()"
                     class="w-full text-white bg-custom-700 hover:bg-custom-800 focus:ring-4 focus:outline-none focus:ring-custom-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer mt-3">
                     {{ Messages.Buttons.resendCode }}
                 </button>

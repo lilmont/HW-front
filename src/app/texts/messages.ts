@@ -99,7 +99,9 @@ export const Messages = {
         duplicateShowOrder: 'ترتیب نمایش نمیتواند تکراری باشد',
         smsNotSent: 'خطا در ارسال رمز یکبار مصرف. لطفا با پشتیبانی تماس بگیرید',
         userIdOrPhoneIsRequired: 'شماره موبایل یا یوزرنیم باید وارد شود',
-        accessLimited: 'دسترسی شما محدود شده، لطفا با پشتیبانی تماس بگیرید'
+        accessLimited: 'دسترسی شما محدود شده، لطفا با پشتیبانی تماس بگیرید',
+        userNotFound: 'کاربری با این ایمیل یافت نشد',
+        duplicateEmail: 'تعداد کاربر غیرمجاز'
     },
     Success: {
         loginSuccessful: 'ورود با موفقیت انجام شد',
@@ -229,7 +231,9 @@ export const Messages = {
         editAnnouncement: 'ویرایش اعلان',
         addContacts: 'افزودن مخاطبین',
         adding: 'در حال افزودن...',
-        clearSmsBlockage: 'برطرف کردن محدودیت رمز یکبار مصرف'
+        clearSmsBlockage: 'برطرف کردن محدودیت رمز یکبار مصرف',
+        loginWithEmail: 'ورود با ایمیل',
+        loginWithPhoneNumber: 'ورود/ثبت نام با شماره موبایل'
     },
     Labels: {
         enterPhoneNumber: 'لطفا شماره موبایل خود را وارد کنید',
@@ -350,7 +354,10 @@ export const Messages = {
         yes: 'بله',
         no: 'نه',
         enterPhoneNumberOrUserId: 'شماره موبایل یا آیدی کاربر را وارد کنید',
-        isGift: 'هدیه است؟'
+        isGift: 'هدیه است؟',
+        enterEmailAddress: 'آدرس ایمیل خود را وارد کنید',
+        emailConfirmationCodePart1: 'کد تایید برای ایمیل',
+        emailConfirmationCodePart2: 'ارسال شد',
     },
     Headers: {
         signup: 'ثبت نام',
@@ -476,7 +483,8 @@ export const Messages = {
         settings: 'تنظیمات',
         loginCodes: 'کدهای ورود',
         studentProjects: 'پروژه های فراگیران',
-        cacheClearance: 'پاک کردن کش'
+        cacheClearance: 'پاک کردن کش',
+        loginWithEmail: 'ورود به ایمیل'
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'
