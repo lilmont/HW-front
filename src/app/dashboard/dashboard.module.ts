@@ -34,6 +34,8 @@ import { SampleSupportVideosComponent } from './pages/sample-support-videos/samp
 import { WithdrawCardComponent } from './components/withdraw-card/withdraw-card.component';
 import { ReferralComponent } from './pages/referral/referral.component';
 import { QRCodeModule } from 'angularx-qrcode';
+import { PaymentSuccessComponent } from './pages/payment-success/payment-success.component';
+import { PaymentFailedComponent } from './pages/payment-failed/payment-failed.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +68,8 @@ import { QRCodeModule } from 'angularx-qrcode';
     SampleSupportVideosComponent,
     WithdrawCardComponent,
     ReferralComponent,
+    PaymentSuccessComponent,
+    PaymentFailedComponent,
   ],
   imports: [
     CommonModule,

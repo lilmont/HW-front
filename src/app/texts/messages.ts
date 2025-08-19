@@ -233,7 +233,9 @@ export const Messages = {
         adding: 'در حال افزودن...',
         clearSmsBlockage: 'برطرف کردن محدودیت رمز یکبار مصرف',
         loginWithEmail: 'ورود با ایمیل',
-        loginWithPhoneNumber: 'ورود/ثبت نام با شماره موبایل'
+        loginWithPhoneNumber: 'ورود/ثبت نام با شماره موبایل',
+        tryAgain: 'تلاش مجدد',
+        goBackToWallet: 'بازگشت به کیف پول'
     },
     Labels: {
         enterPhoneNumber: 'لطفا شماره موبایل خود را وارد کنید',
@@ -358,6 +360,9 @@ export const Messages = {
         enterEmailAddress: 'آدرس ایمیل خود را وارد کنید',
         emailConfirmationCodePart1: 'کد تایید برای ایمیل',
         emailConfirmationCodePart2: 'ارسال شد',
+        errorCode: 'کد خطا:',
+        refId: 'شماره تراکنش',
+        card: 'شماره کارت پرداخت کننده'
     },
     Headers: {
         signup: 'ثبت نام',
@@ -508,7 +513,9 @@ export const Messages = {
         notFound: '404 - صفحه یافت نشد',
         contactUs: 'تماس با ما',
         referral: 'لینک معرفی',
-        loginAsUser: 'ورود به عنوان کاربر'
+        loginAsUser: 'ورود به عنوان کاربر',
+        successfulPayment: 'تراکنش موفق',
+        failedPayment: 'تراکنش ناموفق'
     },
     TableHeaders: {
         id: 'ID',
@@ -550,6 +557,8 @@ export const Messages = {
     Texts: {
         referralText1: `لینک دعوت خود را با دیگران به اشتراک بگذارید.
     اگر از طریق این لینک ثبت‌ نام کنند، با هر خرید آن‌ها از دوره‌ها، `,
-        referralText2: ` درصد از مبلغ خرید به حساب شما اضافه می‌شود.`
+        referralText2: ` درصد از مبلغ خرید به حساب شما اضافه می‌شود.`,
+        failedPayment1: 'لطفا مجدد امتحان کنید.',
+        failedPayment2: 'در صورت دریافت مجدد خطا، عکس این صفحه را برای پشتیبانی ارسال کنید.'
     }
 };

@@ -14,6 +14,8 @@ import { SupportVideosComponent } from './pages/support-videos/support-videos.co
 import { SampleSupportVideosComponent } from './pages/sample-support-videos/sample-support-videos.component';
 import { Messages } from '../texts/messages';
 import { ReferralComponent } from './pages/referral/referral.component';
+import { PaymentSuccessComponent } from './pages/payment-success/payment-success.component';
+import { PaymentFailedComponent } from './pages/payment-failed/payment-failed.component';
 
 const routes: Routes = [
     {
@@ -35,6 +37,8 @@ const routes: Routes = [
             // { path: 'discount-codes', component: DiscountCodesComponent, canActivate: [AuthGuard] },
         ],
     },
+    { path: 'payment-success', component: PaymentSuccessComponent, data: { title: Messages.Titles.successfulPayment } },
+    { path: 'payment-failed', component: PaymentFailedComponent, data: { title: Messages.Titles.failedPayment } },
 ];
 
 @NgModule({

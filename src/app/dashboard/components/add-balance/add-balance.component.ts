@@ -54,6 +54,23 @@ export class AddBalanceComponent implements OnInit {
     this.selectedAmount = null;
   }
 
+  // goToPayment() {
+  //   const parsed = Number(this.amount.replaceAll(',', ''));
+  //   if (isNaN(parsed)) {
+  //     return;
+  //   }
+
+  //   if (parsed <= 0) {
+  //     this.amountInvalid = true;
+  //     return;
+  //   }
+
+  //   const amountInRial = parsed * 10;
+  //   const url = `https://zarinp.al/mazwebprog?amount=${amountInRial}`;
+  //   window.open(url, '_blank');
+  //   this.closeModal();
+  // }
+
   goToPayment() {
     const parsed = Number(this.amount.replaceAll(',', ''));
     if (isNaN(parsed)) {
@@ -66,8 +83,17 @@ export class AddBalanceComponent implements OnInit {
     }
 
     const amountInRial = parsed * 10;
-    const url = `https://zarinp.al/mazwebprog?amount=${amountInRial}`;
-    window.open(url, '_blank');
-    this.closeModal();
+
+    this.loadingService.show();
+    this.paymentHttpService.getPaymentLink(amountInRial).subscribe({
+      next: (data) => {
+        this.loadingService.hide();
+        window.open(data, '_blank');
+      },
+      error: (error) => {
+        console.error(error);
+        this.loadingService.hide();
+      }
+    });
   }
 }

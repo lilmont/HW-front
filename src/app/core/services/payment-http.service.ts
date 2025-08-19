@@ -9,6 +9,7 @@ import { ISuggestedWalletAmount } from '../../models/ISuggestedWalletAmount';
 import { JwtHelperService } from './jwt.helper.service';
 import { IUserBalance } from '../../models/IUserBalance';
 import { IWithdrawalRequest } from '../../models/IWithdrawalRequest';
+import { IPaymentTokenVerificationResult } from '../../models/IPaymentTokenVerificationResult';
 
 @Injectable({
   providedIn: 'root'
@@ -108,6 +109,37 @@ export class PaymentHttpService {
           this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
         } else if (error.status === 401) {
           this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+        return throwError(() => error);
+      })
+    );
+  }
+
+  getPaymentLink(amount: number): Observable<string> {
+    return this.http.get(`${this.baseUrl}/payment/get-payment-link?amount=${amount}`, { responseType: 'text' }).pipe(
+      catchError((error) => {
+        if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+        return throwError(() => error);
+      })
+    );
+  }
+
+  verifyPaymentToken(token: string): Observable<IPaymentTokenVerificationResult> {
+    return this.http.get<IPaymentTokenVerificationResult>(`${this.baseUrl}/payment/verify-token?token=${token}`).pipe(
+      catchError((error) => {
+        if (error.status === 431) {
+          this.jwtHelperService.logout();
+          location.href = '/';
+        } else if (error.status === 409) {
+          this.toastr.error(Messages.Errors.duplicateTransaction, Messages.Errors.error);
+        } else if (error.status === 400) {
+          location.href = '/dashboard/wallet';
         } else {
           this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
         }
