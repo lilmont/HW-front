@@ -11,12 +11,12 @@ export class FooterComponent {
   Messages = Messages;
   baseUrl = environment.apiBaseUrl;
 
-  openSamandehiPopup(): void {
-    window.open(
-      'https://logo.samandehi.ir/Verify.aspx?id=195265&p=rfthpfvldshwuiwkgvkadshw',
-      'Popup',
-      'toolbar=no, scrollbars=no, location=no, statusbar=no, menubar=no, resizable=0, width=450, height=630, top=30'
-    );
-  }
+  // openSamandehiPopup(): void {
+  //   window.open(
+  //     'https://logo.samandehi.ir/Verify.aspx?id=195265&p=rfthpfvldshwuiwkgvkadshw',
+  //     'Popup',
+  //     'toolbar=no, scrollbars=no, location=no, statusbar=no, menubar=no, resizable=0, width=450, height=630, top=30'
+  //   );
+  // }
 
 }
