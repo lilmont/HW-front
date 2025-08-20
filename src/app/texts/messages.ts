@@ -104,7 +104,8 @@ export const Messages = {
         duplicateEmail: 'تعداد کاربر غیرمجاز',
         userAlreadyHasContact: 'این کاربر دارای مخاطب است',
         userDoesNotHaveSupportHosting: 'این کاربر هاست پشتیبانی ندارد',
-        userInfoIncomplete: 'اطلاعات کاربر کامل نیست'
+        userInfoIncomplete: 'اطلاعات کاربر کامل نیست',
+        duplicateUserMissingEmail: 'این کاربر قبلا ثبت شده اما ایمیلی ندارد.'
     },
     Success: {
         loginSuccessful: 'ورود با موفقیت انجام شد',

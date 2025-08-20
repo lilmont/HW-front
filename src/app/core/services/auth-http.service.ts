@@ -128,6 +128,8 @@ export class AuthHttpService {
         if (error.status === 429) {
           this.toastr.error(Messages.Errors.wrongValidationCode, Messages.Errors.error);
         } else if (error.status === 404) {
+          this.toastr.error(Messages.Errors.duplicateUserMissingEmail, Messages.Errors.error);
+        } else if (error.status === 404) {
           this.toastr.error(Messages.Errors.userNotFound, Messages.Errors.error);
         } else if (error.status === 409) {
           this.toastr.error(Messages.Errors.duplicateEmail, Messages.Errors.error);
