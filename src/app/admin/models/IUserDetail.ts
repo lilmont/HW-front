@@ -15,6 +15,7 @@ export interface IUserDetail {
     dateCreated: string;
     downloadCount: number;
     hasExternalHostingPlan: boolean;
+    isContactAdded: boolean;
 }
 
 export class UserDetail implements IUserDetail {
@@ -34,6 +35,7 @@ export class UserDetail implements IUserDetail {
     dateCreated: string = '';
     downloadCount: number = 0;
     hasExternalHostingPlan: boolean = false;
+    isContactAdded: boolean = false;
 
     constructor(init?: Partial<UserDetail>) {
         Object.assign(this, init);
