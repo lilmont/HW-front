@@ -157,10 +157,16 @@ export class UserHttpService {
     );
   }
 
-  addContacts(): Observable<IApiResponse<null>> {
-    return this.http.get<IApiResponse<null>>(`${this.baseUrl}/api/mazmon/users/add-contacts`).pipe(
+  addContact(userId: number): Observable<IApiResponse<null>> {
+    return this.http.get<IApiResponse<null>>(`${this.baseUrl}/api/mazmon/users/add-contact?userId=${userId}`).pipe(
       catchError((error) => {
-        if (error.status === 400) {
+        if (error.status === 409) {
+          this.toastr.error(Messages.Errors.userAlreadyHasContact, Messages.Errors.error);
+        } else if (error.status === 402) {
+          this.toastr.error(Messages.Errors.userDoesNotHaveSupportHosting, Messages.Errors.error);
+        } else if (error.status === 403) {
+          this.toastr.error(Messages.Errors.userInfoIncomplete, Messages.Errors.error);
+        } else if (error.status === 400) {
           this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
         } else if (error.status === 401) {
           this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);

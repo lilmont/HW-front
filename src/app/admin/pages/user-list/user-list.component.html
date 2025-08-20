@@ -47,10 +47,6 @@
         <button class="cursor-pointer bg-gray-300 px-4 py-2 rounded hover:bg-gray-400 ml-4" (click)="resetFilters()">
             {{Messages.Buttons.reset}}
         </button>
-
-        <button class="cursor-pointer bg-yellow-100 px-4 py-2 rounded hover:bg-yellow-200" (click)="addContacts()">
-            {{addContactButtonText}}
-        </button>
     </div>
 
     <!-- 📋 Table -->
@@ -67,6 +63,7 @@
                     <th class="px-4 py-2 border">{{Messages.TableHeaders.hostStatus}}</th>
                     <th class="px-4 py-2 border">{{Messages.TableHeaders.contact}}</th>
                     <th class="px-4 py-2 border">{{Messages.TableHeaders.increaseBalance}}</th>
+                    <th class="px-4 py-2 border">{{Messages.TableHeaders.addContact}}</th>
                     <th class="px-4 py-2 border">{{Messages.TableHeaders.edit}}</th>
                 </tr>
             </thead>
@@ -99,6 +96,15 @@
                     <td class="px-4 py-2 border border-gray-800 text-center text-blue-600">
                         <a *ngIf="user.isActive" class="cursor-pointer"
                             (click)="openIncreaseBalanceModal(user.id)">{{Messages.TableHeaders.increaseBalance}}</a>
+                    </td>
+
+                    <td class="px-4 py-2 border border-gray-800 text-center text-blue-600">
+                        <ng-container *ngIf="!user.isContactAdded && user.hostStatus == 1">
+                            <a class="cursor-pointer" (click)="addContact(user)">
+                                <span *ngIf="!user.isAddingContact">{{Messages.TableHeaders.addContact}}</span>
+                                <span *ngIf="user.isAddingContact">{{Messages.Labels.operating}}</span>
+                            </a>
+                        </ng-container>
                     </td>
 
                     <td class="px-4 py-2 border border-gray-800 text-center text-blue-600"><a

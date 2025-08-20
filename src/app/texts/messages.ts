@@ -101,7 +101,10 @@ export const Messages = {
         userIdOrPhoneIsRequired: 'شماره موبایل یا یوزرنیم باید وارد شود',
         accessLimited: 'دسترسی شما محدود شده، لطفا با پشتیبانی تماس بگیرید',
         userNotFound: 'کاربری با این ایمیل یافت نشد',
-        duplicateEmail: 'تعداد کاربر غیرمجاز'
+        duplicateEmail: 'تعداد کاربر غیرمجاز',
+        userAlreadyHasContact: 'این کاربر دارای مخاطب است',
+        userDoesNotHaveSupportHosting: 'این کاربر هاست پشتیبانی ندارد',
+        userInfoIncomplete: 'اطلاعات کاربر کامل نیست'
     },
     Success: {
         loginSuccessful: 'ورود با موفقیت انجام شد',
@@ -362,7 +365,8 @@ export const Messages = {
         emailConfirmationCodePart2: 'ارسال شد',
         errorCode: 'کد خطا:',
         refId: 'شماره تراکنش',
-        card: 'شماره کارت پرداخت کننده'
+        card: 'شماره کارت پرداخت کننده',
+        operating: 'در حال انجام',
     },
     Headers: {
         signup: 'ثبت نام',
@@ -552,7 +556,8 @@ export const Messages = {
         code: 'کد ورود',
         hostStatus: 'وضعیت هاست',
         isChosen: 'منتخب',
-        showOrder: 'ترتیب نمایش'
+        showOrder: 'ترتیب نمایش',
+        addContact: 'افزودن مخاطب'
     },
     Texts: {
         referralText1: `لینک دعوت خود را با دیگران به اشتراک بگذارید.

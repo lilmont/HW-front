@@ -102,19 +102,18 @@ export class UserListComponent implements OnInit {
     });
   }
 
-  addContacts() {
-    this.addContactButtonText = Messages.Buttons.adding;
-    this.userHttpService.addContacts().subscribe({
+  addContact(user: IUserListItem) {
+    user.isAddingContact = true;
+    this.userHttpService.addContact(user.id).subscribe({
       next: (response) => {
-        if (response.success) {
-          this.addContactButtonText = Messages.Buttons.addContacts;
+        if (response.data) {
+          user.isContactAdded = true;
         } else {
-          this.addContactButtonText = Messages.Buttons.addContacts;
+          user.isAddingContact = false;
         }
-        this.loadUsers();
       },
       error: () => {
-        this.addContactButtonText = Messages.Buttons.addContacts;
+        user.isAddingContact = false;
       }
     });
   }
