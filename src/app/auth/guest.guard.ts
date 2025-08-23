@@ -1,18 +1,14 @@
-
-import { Injectable } from '@angular/core';
-import { CanActivate, Router } from '@angular/router';
+import { CanActivateFn, Router } from '@angular/router';
 import { JwtHelperService } from '../core/services/jwt.helper.service';
+import { inject } from '@angular/core';
 
-@Injectable({ providedIn: 'root' })
-export class GuestGuard implements CanActivate {
-    constructor(private jwtHelper: JwtHelperService, private router: Router) { }
+export const guestGuard: CanActivateFn = (route, state) => {
+  const jwtHelper = inject(JwtHelperService);
+  const router = inject(Router);
+  if (jwtHelper.isLoggedIn()) {
+    router.navigate(['/dashboard']);
+    return false;
+  }
 
-    canActivate(): boolean {
-        if (this.jwtHelper.isLoggedIn()) {
-            this.router.navigate(['/dashboard']);
-            return false;
-        }
-
-        return true;
-    }
-}
+  return true;
+};
