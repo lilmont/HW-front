@@ -494,7 +494,8 @@ export const Messages = {
         loginCodes: 'کدهای ورود',
         studentProjects: 'پروژه های فراگیران',
         cacheClearance: 'پاک کردن کش',
-        loginWithEmail: 'ورود به ایمیل'
+        loginWithEmail: 'ورود به ایمیل',
+        enterHost: 'ورود به هاست'
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'
