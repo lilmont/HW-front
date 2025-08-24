@@ -150,7 +150,8 @@ export const Messages = {
         orderSubmittedSuccessfully: 'سفارش شما با موفقیت ثبت شد',
         websiteSettingEditedSuccessfully: 'تنظیمات با موفقیت ویرایش شد',
         carouselImagesEditedSuccessfully: 'تغییر تصاویر با موفقیت انجام شد',
-        userCommentEdittedSuccessfully: 'ویرایش نظر با موفقیت انجام شد'
+        userCommentEdittedSuccessfully: 'ویرایش نظر با موفقیت انجام شد',
+        hostUpgradedSuccessfully: 'هاست شما با موفقیت ارتقا پیدا کرد'
     },
     Warnings: {
         oneTimePassword: 'قبل از بستن این صفحه اطلاعات هاست خود را کپی کنید و در جای امنی نگداری کنید',
@@ -239,7 +240,8 @@ export const Messages = {
         loginWithEmail: 'ورود با ایمیل',
         loginWithPhoneNumber: 'ورود/ثبت نام با شماره موبایل',
         tryAgain: 'تلاش مجدد',
-        goBackToWallet: 'بازگشت به کیف پول'
+        goBackToWallet: 'بازگشت به کیف پول',
+        upgrade: 'ارتقا'
     },
     Labels: {
         enterPhoneNumber: 'لطفا شماره موبایل خود را وارد کنید',

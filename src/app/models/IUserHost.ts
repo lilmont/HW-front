@@ -9,4 +9,5 @@ export interface IUserHost {
     paidAmount: string;
     status: number;
     paymentStatus: number
+    isUpgraded: boolean;
 }

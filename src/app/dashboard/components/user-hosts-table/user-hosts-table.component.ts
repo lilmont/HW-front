@@ -62,6 +62,13 @@ export class UserHostsTableComponent implements AfterViewInit {
     return false;
   }
 
+  showUpgradeBtn(host: IUserHost): boolean {
+    if (host.status == 0 && host.paymentStatus == 2 && !host.isUpgraded) {
+      return true;
+    }
+    return false;
+  }
+
   private initializeScrollbars(): void {
     const topScrollbarEl = this.topScrollbar.nativeElement;
     const tableContainerEl = this.tableContainer.nativeElement;
@@ -125,6 +132,22 @@ export class UserHostsTableComponent implements AfterViewInit {
       next: () => {
         this.loadingService.hide();
         this.toastr.success(Messages.Success.hostSettledSuccessfully, '');
+        this.refreshUserHostsListService.triggerRefreshHosts();
+      },
+      error: () => {
+        this.loadingService.hide();
+      }
+    });
+  }
+
+  upgradeHost(host: IUserHost): void {
+    const recoverPasswordRequest = new RecoverPasswordRequest({ productId: host.id });
+
+    this.loadingService.show();
+    this.hostingHttpService.upgradeHost(recoverPasswordRequest).subscribe({
+      next: () => {
+        this.loadingService.hide();
+        this.toastr.success(Messages.Success.hostUpgradedSuccessfully, '');
         this.refreshUserHostsListService.triggerRefreshHosts();
       },
       error: () => {

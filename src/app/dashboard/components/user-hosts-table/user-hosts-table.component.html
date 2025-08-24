@@ -150,6 +150,11 @@
                                     {{Messages.Buttons.passwordRecover}}
                                 </button>
 
+                                <button *ngIf="showUpgradeBtn(host)" (click)="upgradeHost(host)"
+                                    class="cursor-pointer text-gray-800 items-center justify-center px-2 py-2 text-sm font-medium text-center bg-yellow-100 rounded-lg hover:bg-yellow-200">
+                                    {{Messages.Buttons.upgrade}}
+                                </button>
+
                                 <a href="https://omg12.ir:8443/" target="_blank"
                                     class="cursor-pointer text-gray-200 items-center justify-center px-3 py-2 text-sm font-medium text-center bg-green-600 rounded-lg hover:bg-green-500">
                                     {{Messages.Headers.enterHost}}
