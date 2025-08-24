@@ -196,7 +196,7 @@ export const Messages = {
         copied: 'کپی شد',
         settle: 'تسویه',
         extend: 'تمدید',
-        passwordRecover: 'بازیابی',
+        passwordRecover: 'فراموشی رمز عبور',
         purchaseCourse: 'خرید دوره',
         check: 'بررسی',
         viewCourse: 'مشاهده دوره',
