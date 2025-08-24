@@ -30,7 +30,7 @@ export class AddBalanceComponent implements OnInit {
         this.loadingService.hide();
       },
       error: (error) => {
-        console.error(error);
+        // console.error(error);
         this.loadingService.hide();
       }
     });
@@ -91,7 +91,7 @@ export class AddBalanceComponent implements OnInit {
         window.open(data, '_blank');
       },
       error: (error) => {
-        console.error(error);
+        // console.error(error);
         this.loadingService.hide();
       }
     });
