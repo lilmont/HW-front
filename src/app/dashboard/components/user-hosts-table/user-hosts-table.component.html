@@ -133,32 +133,43 @@
                                 {{Messages.Headers.deleted}}
                             </div>
                         </td>
-                        <td class="px-6 py-4  min-w-[160px]">
-                            <div class="flex flex-row flex-wrap gap-2 justify-center">
-                                <button *ngIf="showExtendBtn(host)" (click)="extendHost(host)"
-                                    class="cursor-pointer text-gray-200 items-center justify-center px-2 py-2 text-sm font-medium text-center bg-custom-500 rounded-lg hover:bg-custom-600">
-                                    {{Messages.Buttons.extend}}
-                                </button>
+                        <td #dropdownTd class="px-6 py-4 min-w-[100px]">
+                            <button (click)="toggleDropdown(i, $event, dropdownTd)"
+                                class="m-auto flex items-center justify-center px-3 py-2 text-sm font-medium text-gray-200 bg-custom-500 rounded-lg hover:bg-custom-600 focus:outline-none">
+                                {{Messages.Headers.actions}}
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div *ngIf="openDropdownIndex === i"
+                                class="fixed z-30 w-40 bg-white rounded-lg shadow-lg border border-gray-200"
+                                [ngStyle]="dropdownPosition">
+                                <div class="py-1">
+                                    <button *ngIf="showExtendBtn(host)" (click)="extendHost(host); closeDropdown()"
+                                        class="cursor-pointer block w-full text-right px-4 py-2 text-sm text-gray-800 hover:bg-green-400">
+                                        {{Messages.Buttons.extend}}
+                                    </button>
+                                    <button *ngIf="showSettlementBtn(host)" (click)="settleHost(host); closeDropdown()"
+                                        class="cursor-pointer block w-full text-right px-4 py-2 text-sm text-gray-800 hover:bg-green-400">
+                                        {{Messages.Buttons.settle}}
+                                    </button>
 
-                                <button *ngIf="showSettlementBtn(host)" (click)="settleHost(host)"
-                                    class="cursor-pointer text-gray-200 items-center justify-center px-2 py-2 text-sm font-medium text-center bg-custom-500 rounded-lg hover:bg-custom-600">
-                                    {{Messages.Buttons.settle}}
-                                </button>
-
-                                <button *ngIf="showRestoreBtn(host)" (click)="recoverPassword(host)"
-                                    class="cursor-pointer text-gray-800 items-center justify-center px-2 py-2 text-sm font-medium text-center bg-yellow-100 rounded-lg hover:bg-yellow-200">
-                                    {{Messages.Buttons.passwordRecover}}
-                                </button>
-
-                                <button *ngIf="showUpgradeBtn(host)" (click)="upgradeHost(host)"
-                                    class="cursor-pointer text-gray-800 items-center justify-center px-2 py-2 text-sm font-medium text-center bg-yellow-100 rounded-lg hover:bg-yellow-200">
-                                    {{Messages.Buttons.upgrade}}
-                                </button>
-
-                                <a href="https://omg12.ir:8443/" target="_blank"
-                                    class="cursor-pointer text-gray-200 items-center justify-center px-3 py-2 text-sm font-medium text-center bg-green-600 rounded-lg hover:bg-green-500">
-                                    {{Messages.Headers.enterHost}}
-                                </a>
+                                    <button *ngIf="showUpgradeBtn(host)" (click)="upgradeHost(host); closeDropdown()"
+                                        class="cursor-pointer block w-full text-right px-4 py-2 text-sm text-gray-800 hover:bg-purple-400">
+                                        {{Messages.Buttons.upgrade}}
+                                    </button>
+                                    <button *ngIf="showRestoreBtn(host)"
+                                        (click)="recoverPassword(host); closeDropdown()"
+                                        class="cursor-pointer block w-full text-right px-4 py-2 text-sm text-gray-800 hover:bg-yellow-100">
+                                        {{Messages.Buttons.passwordRecover}}
+                                    </button>
+                                    <a href="https://omg12.ir:8443/" target="_blank"
+                                        class="block w-full text-right px-4 py-2 text-sm text-gray-800 hover:bg-green-200">
+                                        {{Messages.Headers.enterHost}}
+                                    </a>
+                                </div>
                             </div>
                         </td>
                     </tr>

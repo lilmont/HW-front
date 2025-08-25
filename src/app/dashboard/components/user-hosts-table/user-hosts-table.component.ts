@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, Input, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { Messages } from '../../../texts/messages';
 import { IUserHost } from '../../../models/IUserHost';
 import { LoadingService } from '../../../core/services/loading.service';
@@ -21,7 +21,10 @@ export class UserHostsTableComponent implements AfterViewInit {
   showPasswordModal: boolean = false;
   loginInfo: IPasswordRecovery = new PasswordRecovery();
   @Input() userHosts: IUserHost[] = [];
+  openDropdownIndex: number | null = null;
+  dropdownPosition: { top: string; left: string } = { top: '0px', left: '0px' };
 
+  @ViewChildren('dropdownTd') dropdownTds!: QueryList<ElementRef>;
   @ViewChild('topScrollbar') topScrollbar!: ElementRef;
   @ViewChild('tableContainer') tableContainer!: ElementRef;
 
@@ -31,6 +34,46 @@ export class UserHostsTableComponent implements AfterViewInit {
     private toastr: ToastService,
   ) {
 
+  }
+
+  toggleDropdown(index: number, event: MouseEvent, td: HTMLElement): void {
+    if (this.openDropdownIndex === index) {
+      this.openDropdownIndex = null;
+    } else {
+      this.openDropdownIndex = index;
+      const button = (event.target as HTMLElement).closest('button');
+      if (button) {
+        const rect = button.getBoundingClientRect();
+        const tableRect = this.tableContainer.nativeElement.getBoundingClientRect();
+        // Position dropdown's left edge at button's left edge for LTR
+        let left = rect.left + window.scrollX;
+        // Ensure dropdown stays within table bounds to avoid horizontal scroll
+        if (left < tableRect.left + window.scrollX) {
+          left = tableRect.left + window.scrollX; // Align left edge with table's left
+        }
+        if (left + 192 > tableRect.right + window.scrollX) {
+          left = tableRect.right + window.scrollX - 192; // Align right edge with table's right
+        }
+        this.dropdownPosition = {
+          top: `${rect.bottom + window.scrollY}px`,
+          left: `${left}px`
+        };
+      }
+    }
+  }
+
+  closeDropdown(): void {
+    this.openDropdownIndex = null;
+  }
+
+  @HostListener('document:click', ['$event'])
+  handleOutsideClick(event: MouseEvent): void {
+    if (this.openDropdownIndex !== null) {
+      const clickedInside = this.dropdownTds.toArray()[this.openDropdownIndex]?.nativeElement.contains(event.target);
+      if (!clickedInside) {
+        this.closeDropdown();
+      }
+    }
   }
 
   showExtendBtn(host: IUserHost): boolean {
