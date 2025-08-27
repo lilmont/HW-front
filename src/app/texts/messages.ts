@@ -105,7 +105,8 @@ export const Messages = {
         userAlreadyHasContact: 'این کاربر دارای مخاطب است',
         userDoesNotHaveSupportHosting: 'این کاربر هاست پشتیبانی ندارد',
         userInfoIncomplete: 'اطلاعات کاربر کامل نیست',
-        duplicateUserMissingEmail: 'این کاربر قبلا ثبت شده اما ایمیلی ندارد.'
+        duplicateUserMissingEmail: 'این کاربر قبلا ثبت شده اما ایمیلی ندارد.',
+        incompleteUserInfo: 'اطلاعات کاربری (نام و نام خانوادگی) را در قسمت اطلاعات شخصی وارد کنید.'
     },
     Success: {
         loginSuccessful: 'ورود با موفقیت انجام شد',

@@ -76,6 +76,8 @@ export class HostingHttpService {
       catchError((error) => {
         if (error.status === 400) {
           this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
+        } else if (error.status === 402) {
+          this.toastr.error(Messages.Errors.incompleteUserInfo, Messages.Errors.error);
         } else if (error.status === 401) {
           this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
         } else {
