@@ -561,7 +561,8 @@ export const Messages = {
         hostStatus: 'وضعیت هاست',
         isChosen: 'منتخب',
         showOrder: 'ترتیب نمایش',
-        addContact: 'افزودن مخاطب'
+        addContact: 'افزودن مخاطب',
+        cardNumber: 'شماره کارت'
     },
     Texts: {
         referralText1: `لینک دعوت خود را با دیگران به اشتراک بگذارید.

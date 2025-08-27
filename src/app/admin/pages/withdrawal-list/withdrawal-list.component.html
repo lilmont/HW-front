@@ -31,6 +31,7 @@
                     <th class="px-4 py-2 border">{{Messages.TableHeaders.userId}}</th>
                     <th class="px-4 py-2 border">{{Messages.TableHeaders.userPhoneNumber}}</th>
                     <th class="px-4 py-2 border">{{Messages.TableHeaders.amount}}</th>
+                    <th class="px-4 py-2 border">{{Messages.TableHeaders.cardNumber}}</th>
                     <th class="px-4 py-2 border">{{Messages.TableHeaders.status}}</th>
                     <th class="px-4 py-2 border">{{Messages.TableHeaders.dateRequested}}</th>
                     <th class="px-4 py-2 border">{{Messages.Headers.actions}}</th>
@@ -43,6 +44,7 @@
                     <td class="px-4 py-2 border">{{ withdrawalRequest.userId }}</td>
                     <td class="px-4 py-2 border">{{ withdrawalRequest.userPhoneNumber }}</td>
                     <td class="px-4 py-2 border">{{ withdrawalRequest.amount | number:'1.0-0' }}</td>
+                    <td class="px-4 py-2 border">{{ withdrawalRequest.cardNumber }}</td>
                     <td class="px-4 py-2 border">
                         <span [ngSwitch]="withdrawalRequest.withdrawalRequestStatus">
                             <span *ngSwitchCase="0" class="text-yellow-500">{{Messages.Labels.pending}}</span>
