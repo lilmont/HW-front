@@ -30,9 +30,9 @@ export class AuthHttpService {
         } else if (error.status === 431) {
           this.toastr.error(Messages.Errors.accessLimited, Messages.Errors.error);
         } else if (error.status === 400) {
-          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+          this.toastr.error(Messages.Errors.invalidRequest + ' ' + error.status, Messages.Errors.error);
         } else {
-          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+          this.toastr.error(Messages.Errors.invalidRequest + ' ' + error.status, Messages.Errors.error);
         }
 
         return throwError(() => error);
