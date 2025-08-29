@@ -1,0 +1,25 @@
+<ul class="flex flex-wrap text-sm font-medium text-center text-gray-900 border-b border-custom-300">
+    <li class="ml-2 rounded-t-lg cursor-pointer" [ngClass]="{
+        'text-custom-700 bg-gray-200 font-extrabold': activeTab === 'income',
+        'border-2 border-custom-300': activeTab !== 'income'
+      }">
+        <button (click)="activeTab = 'income'" class="inline-block p-4 cursor-pointer">
+            {{Messages.Titles.incomeReport}}
+        </button>
+    </li>
+
+    <li class="ml-2 rounded-t-lg cursor-pointer" [ngClass]="{
+        'text-custom-700 bg-gray-200 font-extrabold': activeTab === 'user',
+        'border-2 border-custom-300': activeTab !== 'user'
+      }">
+        <button (click)="activeTab = 'user'" class="inline-block p-4 cursor-pointer">
+            {{Messages.Titles.userReport}}
+        </button>
+    </li>
+</ul>
+
+<!-- Tab Content -->
+<div class="mt-6">
+    <hw-income-report *ngIf="activeTab === 'income'"></hw-income-report>
+    <hw-user-report *ngIf="activeTab === 'user'"></hw-user-report>
+</div>

@@ -24,6 +24,7 @@ import { SettingsComponent } from "./pages/settings/settings.component";
 import { LoginCodeListComponent } from "./pages/login-code-list/login-code-list.component";
 import { ClearBlockageComponent } from "./pages/clear-blockage/clear-blockage.component";
 import { guestGuard } from "./guards/guest.guard";
+import { ReportListComponent } from "./pages/report-list/report-list.component";
 
 const routes: Routes = [
     { path: 'login', canActivate: [guestGuard], component: LoginComponent },
@@ -71,6 +72,8 @@ const routes: Routes = [
             { path: 'clear-blockage', component: ClearBlockageComponent },
 
             { path: 'login-codes', component: LoginCodeListComponent },
+
+            { path: 'reports', component: ReportListComponent },
         ]
     }
 ];

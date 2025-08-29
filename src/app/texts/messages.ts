@@ -504,7 +504,8 @@ export const Messages = {
         cacheClearance: 'پاک کردن کش',
         loginWithEmail: 'ورود به ایمیل',
         enterHost: 'ورود به هاست',
-        dailyIncome: 'درآمد روزانه'
+        dailyIncome: 'درآمد روزانه',
+        report: 'گزارش'
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'
@@ -530,7 +531,10 @@ export const Messages = {
         referral: 'لینک معرفی',
         loginAsUser: 'ورود به عنوان کاربر',
         successfulPayment: 'تراکنش موفق',
-        failedPayment: 'تراکنش ناموفق'
+        failedPayment: 'تراکنش ناموفق',
+        incomeReport: 'گزارش درآمد',
+        userReport: 'گزارش کاربران',
+
     },
     TableHeaders: {
         id: 'ID',

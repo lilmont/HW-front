@@ -55,7 +55,11 @@ export const SIDEBAR_ITEMS: ISidebarItem[] = [
         path: '/mazmon/login-codes',
     },
     {
-        label: Messages.Headers.cacheClearance,
-        path: 'mazmon/clear-blockage'
+        label: Messages.Headers.report,
+        path: '/mazmon/reports',
     }
+    // {
+    //     label: Messages.Headers.cacheClearance,
+    //     path: 'mazmon/clear-blockage'
+    // }
 ];

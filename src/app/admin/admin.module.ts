@@ -32,6 +32,7 @@ import { SettingsComponent } from './pages/settings/settings.component';
 import { LoginCodeListComponent } from './pages/login-code-list/login-code-list.component';
 import { ImageDropZoneComponent } from './components/image-drop-zone/image-drop-zone.component';
 import { ClearBlockageComponent } from './pages/clear-blockage/clear-blockage.component';
+import { ReportListComponent } from './pages/report-list/report-list.component';
 import { BaseChartDirective } from 'ng2-charts';
 import { IncomeReportComponent } from './components/income-report/income-report.component';
 
@@ -64,6 +65,7 @@ import { IncomeReportComponent } from './components/income-report/income-report.
     LoginCodeListComponent,
     ImageDropZoneComponent,
     ClearBlockageComponent,
+    ReportListComponent,
     IncomeReportComponent,
   ],
   imports: [
