@@ -32,6 +32,8 @@ import { SettingsComponent } from './pages/settings/settings.component';
 import { LoginCodeListComponent } from './pages/login-code-list/login-code-list.component';
 import { ImageDropZoneComponent } from './components/image-drop-zone/image-drop-zone.component';
 import { ClearBlockageComponent } from './pages/clear-blockage/clear-blockage.component';
+import { BaseChartDirective } from 'ng2-charts';
+import { IncomeReportComponent } from './components/income-report/income-report.component';
 
 
 @NgModule({
@@ -61,7 +63,8 @@ import { ClearBlockageComponent } from './pages/clear-blockage/clear-blockage.co
     SettingsComponent,
     LoginCodeListComponent,
     ImageDropZoneComponent,
-    ClearBlockageComponent
+    ClearBlockageComponent,
+    IncomeReportComponent,
   ],
   imports: [
     CommonModule,
@@ -71,7 +74,8 @@ import { ClearBlockageComponent } from './pages/clear-blockage/clear-blockage.co
     CoreModule,
     SharedModule,
     QuillModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BaseChartDirective
   ]
 })
 export class AdminModule { }

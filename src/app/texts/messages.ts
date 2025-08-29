@@ -242,7 +242,9 @@ export const Messages = {
         loginWithPhoneNumber: 'ورود/ثبت نام با شماره موبایل',
         tryAgain: 'تلاش مجدد',
         goBackToWallet: 'بازگشت به کیف پول',
-        upgrade: 'ارتقا'
+        upgrade: 'ارتقا',
+        addComparison: 'افزودن مقایسه',
+        removeComparison: 'حذف مقایسه',
     },
     Labels: {
         enterPhoneNumber: 'لطفا شماره موبایل خود را وارد کنید',
@@ -371,6 +373,9 @@ export const Messages = {
         refId: 'شماره تراکنش',
         card: 'شماره کارت پرداخت کننده',
         operating: 'در حال انجام',
+        income: 'درآمد',
+        day: 'روز',
+        total: 'مجموع'
     },
     Headers: {
         signup: 'ثبت نام',
@@ -498,7 +503,8 @@ export const Messages = {
         studentProjects: 'پروژه های فراگیران',
         cacheClearance: 'پاک کردن کش',
         loginWithEmail: 'ورود به ایمیل',
-        enterHost: 'ورود به هاست'
+        enterHost: 'ورود به هاست',
+        dailyIncome: 'درآمد روزانه'
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'
