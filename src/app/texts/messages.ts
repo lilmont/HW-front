@@ -505,7 +505,10 @@ export const Messages = {
         loginWithEmail: 'ورود به ایمیل',
         enterHost: 'ورود به هاست',
         dailyIncome: 'درآمد روزانه',
-        report: 'گزارش'
+        report: 'گزارش',
+        user: 'کاربر',
+        dailyUserCreated: 'ثبت نام کاربر روزانه',
+        person: 'نفوس'
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'

@@ -34,6 +34,23 @@ export class ReportHttpService {
     );
   }
 
+  getUserCreatedByMonthAndYear(data: IMonthlyReportRequest): Observable<IMonthlyReportResponse> {
+    const params = this.buildHttpParams(data);
+
+    return this.http.get<IMonthlyReportResponse>(`${this.baseUrl}/api/mazmon/reports/monthly-user`, { params }).pipe(
+      catchError((error) => {
+        if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
+        } else if (error.status === 401) {
+          this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+        return throwError(() => error);
+      })
+    );
+  }
+
   private buildHttpParams(data: IMonthlyReportRequest): HttpParams {
     let params = new HttpParams();
 

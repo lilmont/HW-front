@@ -35,6 +35,7 @@ import { ClearBlockageComponent } from './pages/clear-blockage/clear-blockage.co
 import { ReportListComponent } from './pages/report-list/report-list.component';
 import { BaseChartDirective } from 'ng2-charts';
 import { IncomeReportComponent } from './components/income-report/income-report.component';
+import { UserReportComponent } from './components/user-report/user-report.component';
 
 
 @NgModule({
@@ -67,6 +68,7 @@ import { IncomeReportComponent } from './components/income-report/income-report.
     ClearBlockageComponent,
     ReportListComponent,
     IncomeReportComponent,
+    UserReportComponent
   ],
   imports: [
     CommonModule,
