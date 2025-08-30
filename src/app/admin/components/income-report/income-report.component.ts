@@ -34,11 +34,19 @@ export class IncomeReportComponent implements OnInit {
       legend: { position: 'top' },
       tooltip: {
         enabled: true,
+        bodyAlign: 'right',
+        titleAlign: 'right',
+        padding: 12,
         callbacks: {
+          title: (context) => {
+            const dataLabel = context[0].label;
+            const datasetLabel = context[0].dataset.label;
+            return `${dataLabel} ${datasetLabel}`;
+          },
           label: (context) => {
             const value = context.parsed.y;
             const persianValue = moment.locale('fa') ? value.toLocaleString('fa') : value.toString();
-            return `${context.dataset.label}: ${persianValue} ${Messages.Headers.toman}`;
+            return `${persianValue} ${Messages.Headers.toman} `;
           }
         }
       }
