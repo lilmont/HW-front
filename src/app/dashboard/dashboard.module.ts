@@ -36,6 +36,7 @@ import { ReferralComponent } from './pages/referral/referral.component';
 import { QRCodeModule } from 'angularx-qrcode';
 import { PaymentSuccessComponent } from './pages/payment-success/payment-success.component';
 import { PaymentFailedComponent } from './pages/payment-failed/payment-failed.component';
+import { HostVideoComponent } from './components/host-video/host-video.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { PaymentFailedComponent } from './pages/payment-failed/payment-failed.co
     ReferralComponent,
     PaymentSuccessComponent,
     PaymentFailedComponent,
+    HostVideoComponent,
   ],
   imports: [
     CommonModule,

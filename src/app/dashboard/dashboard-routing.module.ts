@@ -16,6 +16,7 @@ import { Messages } from '../texts/messages';
 import { ReferralComponent } from './pages/referral/referral.component';
 import { PaymentSuccessComponent } from './pages/payment-success/payment-success.component';
 import { PaymentFailedComponent } from './pages/payment-failed/payment-failed.component';
+import { HostVideoComponent } from './components/host-video/host-video.component';
 
 const routes: Routes = [
     {
@@ -34,6 +35,7 @@ const routes: Routes = [
             { path: 'support-videos', component: SupportVideosComponent, canActivate: [AuthGuard], data: { title: Messages.Titles.dashboard + ' - ' + Messages.Titles.supportVideos } },
             { path: 'sample-support-videos', component: SampleSupportVideosComponent, canActivate: [AuthGuard], data: { title: Messages.Titles.dashboard + ' - ' + Messages.Titles.sampleSupportVideos } },
             { path: 'referral', component: ReferralComponent, canActivate: [AuthGuard], data: { title: Messages.Titles.dashboard + ' - ' + Messages.Titles.referral } },
+            { path: 'how-to-buy-host', component: HostVideoComponent, canActivate: [AuthGuard], data: { title: Messages.Titles.dashboard + ' - ' + Messages.Titles.hostTutorial } },
             // { path: 'discount-codes', component: DiscountCodesComponent, canActivate: [AuthGuard] },
         ],
     },
