@@ -7,6 +7,8 @@ import { LoadingService } from '../../../core/services/loading.service';
 import { IMonthlyReportResponse } from '../../models/IMonthlyReportResponse';
 import { IOption, Option } from '../../models/IOption';
 import { Messages } from '../../../texts/messages';
+import { DailyIncomeDetailRequest } from '../../models/IDailyIncomeDetailRequest';
+import { IDailyIncomeDetailResponse } from '../../models/IDailyIncomeDetailResponse';
 
 @Component({
   selector: 'hw-income-report',
@@ -22,6 +24,8 @@ export class IncomeReportComponent implements OnInit {
   showComparison: boolean = false;
   months: IOption[] = [];
   years: number[] = [1404];
+  selectedDay: string = ''
+  incomeDetailList: IDailyIncomeDetailResponse[] = [];
 
   // chart configuration
   dailyIncomeData: ChartConfiguration['data'] = { labels: [], datasets: [] };
@@ -54,6 +58,29 @@ export class IncomeReportComponent implements OnInit {
     scales: {
       y: { beginAtZero: true, title: { display: true, text: `${Messages.Labels.income}  (${Messages.Headers.toman})` } },
       x: { title: { display: true, text: Messages.Labels.day } }
+    },
+    onClick: (event, elements, chart) => {
+      if (elements.length > 0) {
+        const element = elements[0];
+        const datasetIndex = element.datasetIndex;
+        const dataIndex = element.index;
+
+        // Determine which report to use based on datasetIndex
+        const selectedReport = datasetIndex === 0 ? this.firstSelectedReport : this.secondSelectedReport;
+        const request = datasetIndex === 0 ? this.firstMonthlyReportRequest : this.secondMonthlyReportRequest;
+
+        if (selectedReport && request) {
+          const day = selectedReport.dailyReports[dataIndex].day;
+          const month = request.month;
+          const year = request.year;
+
+          // Create the date object for the request
+          const datePayload = { day, month, year };
+
+          // Send request to the database
+          this.getSelectedPointDetails(datePayload);
+        }
+      }
     }
   };
 
@@ -147,5 +174,21 @@ export class IncomeReportComponent implements OnInit {
         : [],
       datasets
     };
+  }
+
+  private getSelectedPointDetails(datePayload: { day: number; month: number; year: number }) {
+    this.selectedDay = datePayload.year + '/' + datePayload.month + '/' + datePayload.day;
+    const request = new DailyIncomeDetailRequest();
+    request.ids = this.firstSelectedReport?.dailyReports.filter(i => i.day == datePayload.day)[0].ids ?? [];
+    this.loadingService.show();
+    this.reportHttpService.getDailyIncomeDetailsByTransactionIds(request).subscribe({
+      next: (response) => {
+        this.loadingService.hide();
+        this.incomeDetailList = response;
+      },
+      error: () => {
+        this.loadingService.hide();
+      }
+    });
   }
 }

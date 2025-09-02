@@ -380,7 +380,8 @@ export const Messages = {
         secondSession: 'جلسه دوم',
         thirdSession: 'جلسه سوم',
         fourthSession: 'جلسه چهارم',
-        hostVideo: 'راهنمای هاست'
+        hostVideo: 'راهنمای هاست',
+        transactionDate: 'تاریخ تراکنش'
     },
     Headers: {
         signup: 'ثبت نام',

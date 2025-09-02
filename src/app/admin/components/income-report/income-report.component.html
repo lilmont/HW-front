@@ -34,4 +34,41 @@
             </select>
         </div>
     </div>
+
+    <div class="mt-10">
+        <h2 class="font-bold text-lg">{{ selectedDay }}</h2>
+
+        <div class="w-full py-6 px-4 mt-4">
+            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                <div class="p-6 bg-white border border-gray-200 rounded-lg shadow-sm"
+                    *ngFor="let transaction of incomeDetailList">
+                    <p class="mb-2 text-sm text-gray-500">
+                        <span class="font-semibold">
+                            {{Messages.TableHeaders.phoneNumber}}:
+                        </span>
+                        {{ transaction.userPhoneNumber }}
+                    </p>
+                    <p class="mb-2 text-sm text-gray-500">
+                        <span class="font-semibold">
+                            {{Messages.Labels.transactionDate}}:
+                        </span>
+                        {{ transaction.transactionDate | jalaliDatetime }}
+                    </p>
+                    <p class="mb-2 text-sm text-gray-500">
+                        <span class="font-semibold">
+                            {{Messages.Headers.amount}}:
+                        </span>
+                        {{ transaction.price | number:'1.0-0' }}
+                    </p>
+                    <p class="mb-2 text-sm text-gray-500">
+                        <span class="font-semibold">
+                            {{Messages.Labels.refId}}:
+                        </span>
+                        {{ transaction.transactionNumber }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>

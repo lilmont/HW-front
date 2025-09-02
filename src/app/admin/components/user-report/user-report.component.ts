@@ -25,12 +25,12 @@ export class UserReportComponent implements OnInit {
   months: IOption[] = [];
   years: number[] = [1404];
   selectedDay: string = ''
+  userProgressList: IUserProgressResponse[] = [];
 
   // chart configuration
   dailyUserData: ChartConfiguration['data'] = { labels: [], datasets: [] };
   comparisonUserData: ChartConfiguration['data'] = { labels: [], datasets: [] };
   lineChartType: ChartType = 'line';
-  userProgressList: IUserProgressResponse[] = [];
   public chartOptions: ChartConfiguration['options'] = {
     responsive: true,
     maintainAspectRatio: false,
