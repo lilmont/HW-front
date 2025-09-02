@@ -81,6 +81,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.isNavbarOpen = !this.isNavbarOpen;
   }
 
+  closeNavbar() {
+    this.isNavbarOpen = false;
+  }
+
   logout() {
     this.jwtHelperService.logout();
   }

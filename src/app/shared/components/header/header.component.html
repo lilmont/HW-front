@@ -1,11 +1,25 @@
 <nav class="bg-white border-gray-200 sticky top-0 z-50 shadow-sm">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a [routerLink]="['/']" class="flex items-center">
-            <img [src]="baseUrl + '/uploads/utilities/logo.png'" class="h-6 lg:h-8 ml-3" alt="Hardworker Logo" />
-            <span class="self-center text-lg sm:text-xl lg:text-2xl font-semibold whitespace-nowrap text-custom-900">
-                {{Messages.Headers.hardworker}}
-            </span>
-        </a>
+        <div class="flex items-center md:order-1 space-x-3 md:space-x-0 rtl:space-x relative">
+            <button type="button"
+                class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden"
+                (click)="toggleNavbar()">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 17 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M1 1h15M1 7h15M1 13h15" />
+                </svg>
+            </button>
+
+            <a [routerLink]="['/']" class="flex items-center mt-1">
+                <img [src]="baseUrl + '/uploads/utilities/logo.png'" class="h-6 lg:h-8 ml-3" alt="Hardworker Logo" />
+                <span
+                    class="self-center text-lg sm:text-xl lg:text-2xl font-semibold whitespace-nowrap text-custom-900">
+                    {{Messages.Headers.hardworker}}
+                </span>
+            </a>
+        </div>
         <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x relative">
             <span *ngIf="!jwtHelperService.isLoggedIn()" class="ml-1 sm:ml-3">
                 <a [routerLink]="['/users/signup']"
@@ -15,7 +29,7 @@
             </span>
 
             <button *ngIf="jwtHelperService.isLoggedIn()" type="button"
-                class="cursor-pointer flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300"
+                class="cursor-pointer flex text-sm bg-gray-800 rounded-full me-1 md:me-0 focus:ring-4 focus:ring-gray-300"
                 id="user-menu-button" aria-expanded="false" (click)="toggleDropdown()">
                 <span class="sr-only">Open user menu</span>
                 <img class="w-8 h-8 rounded-full bg-white"
@@ -44,17 +58,6 @@
                     </li>
                 </ul>
             </div>
-
-            <button type="button"
-                class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
-                (click)="toggleNavbar()">
-                <span class="sr-only">Open main menu</span>
-                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                    viewBox="0 0 17 14">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M1 1h15M1 7h15M1 13h15" />
-                </svg>
-            </button>
         </div>
         <div id="navbar-user" [ngClass]="{
             'fixed top-0 right-0 h-full w-64 bg-white shadow-lg transform transition-transform duration-300 z-40': true,
@@ -64,6 +67,15 @@
         }" class="items-center justify-between md:order-1 text-sm md:text-md">
             <ul
                 class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:mt-0 md:border-0 md:bg-white">
+                <li class="flex justify-end mb-4 md:hidden">
+                    <button (click)="closeNavbar()" class="px-2 py-0 rounded-lg text-gray-500">
+                        <span class="sr-only">Close main menu</span>
+                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </li>
                 <li class="md:mr-6 lg:mr-8 mb-4 md:mb-0">
                     <a [routerLink]="['/']" (click)="closeNavbarAndDropdown()" [ngClass]="{
      'text-white bg-blue-700 md:bg-white md:text-custom-700': isActive('/', undefined),
