@@ -7,6 +7,8 @@ import { LoadingService } from '../../../core/services/loading.service';
 import { IMonthlyReportResponse } from '../../models/IMonthlyReportResponse';
 import { IOption, Option } from '../../models/IOption';
 import { Messages } from '../../../texts/messages';
+import { UserProgressRequest } from '../../models/IUserProgressRequest';
+import { IUserProgressResponse } from '../../models/IUserProgressResponse';
 
 @Component({
   selector: 'hw-user-report',
@@ -22,11 +24,13 @@ export class UserReportComponent implements OnInit {
   showComparison: boolean = false;
   months: IOption[] = [];
   years: number[] = [1404];
+  selectedDay: string = ''
 
   // chart configuration
   dailyUserData: ChartConfiguration['data'] = { labels: [], datasets: [] };
   comparisonUserData: ChartConfiguration['data'] = { labels: [], datasets: [] };
   lineChartType: ChartType = 'line';
+  userProgressList: IUserProgressResponse[] = [];
   public chartOptions: ChartConfiguration['options'] = {
     responsive: true,
     maintainAspectRatio: false,
@@ -54,9 +58,31 @@ export class UserReportComponent implements OnInit {
     scales: {
       y: { beginAtZero: true, title: { display: true, text: `${Messages.Headers.user}  (${Messages.Headers.person})` } },
       x: { title: { display: true, text: Messages.Labels.day } }
+    },
+    onClick: (event, elements, chart) => {
+      if (elements.length > 0) {
+        const element = elements[0];
+        const datasetIndex = element.datasetIndex;
+        const dataIndex = element.index;
+
+        // Determine which report to use based on datasetIndex
+        const selectedReport = datasetIndex === 0 ? this.firstSelectedReport : this.secondSelectedReport;
+        const request = datasetIndex === 0 ? this.firstMonthlyReportRequest : this.secondMonthlyReportRequest;
+
+        if (selectedReport && request) {
+          const day = selectedReport.dailyReports[dataIndex].day;
+          const month = request.month;
+          const year = request.year;
+
+          // Create the date object for the request
+          const datePayload = { day, month, year };
+
+          // Send request to the database
+          this.getSelectedPointDetails(datePayload);
+        }
+      }
     }
   };
-
 
   constructor(private reportHttpService: ReportHttpService,
     private loadingService: LoadingService
@@ -147,5 +173,21 @@ export class UserReportComponent implements OnInit {
         : [],
       datasets
     };
+  }
+
+  private getSelectedPointDetails(datePayload: { day: number; month: number; year: number }) {
+    this.selectedDay = datePayload.year + '/' + datePayload.month + '/' + datePayload.day;
+    const request = new UserProgressRequest();
+    request.ids = this.firstSelectedReport?.dailyReports.filter(i => i.day == datePayload.day)[0].ids ?? [];
+    this.loadingService.show();
+    this.reportHttpService.getUsersProgressByIds(request).subscribe({
+      next: (response) => {
+        this.loadingService.hide();
+        this.userProgressList = response;
+      },
+      error: (error) => {
+        this.loadingService.hide();
+      }
+    });
   }
 }

@@ -6,6 +6,8 @@ import { catchError, Observable, throwError } from 'rxjs';
 import { Messages } from '../../texts/messages';
 import { IMonthlyReportRequest } from '../models/IMonthlyReportRequest';
 import { IMonthlyReportResponse } from '../models/IMonthlyReportResponse';
+import { IUserProgressResponse } from '../models/IUserProgressResponse';
+import { IUserProgressRequest } from '../models/IUserProgressRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +40,21 @@ export class ReportHttpService {
     const params = this.buildHttpParams(data);
 
     return this.http.get<IMonthlyReportResponse>(`${this.baseUrl}/api/mazmon/reports/monthly-user`, { params }).pipe(
+      catchError((error) => {
+        if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
+        } else if (error.status === 401) {
+          this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+        return throwError(() => error);
+      })
+    );
+  }
+
+  getUsersProgressByIds(data: IUserProgressRequest): Observable<IUserProgressResponse[]> {
+    return this.http.post<IUserProgressResponse[]>(`${this.baseUrl}/api/mazmon/reports/daily-users-detail`, data).pipe(
       catchError((error) => {
         if (error.status === 400) {
           this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);

@@ -34,4 +34,164 @@
             </select>
         </div>
     </div>
+
+    <div class="mt-10">
+        <h2 class="font-bold text-lg"> {{ selectedDay }}</h2>
+
+        <div class="w-full border-2 border-gray-600 rounded-2xl py-6 px-4 mt-4" *ngFor="let user of userProgressList">
+            <ol class="flex items-center w-full text-gray-400">
+                <li class="relative flex-1 flex flex-col items-center text-center">
+                    <h3 class="mt-3 font-medium leading-tight mb-4">{{user.fullName}}</h3>
+                    <p class="text-sm">{{user.phoneNumber}}</p>
+                </li>
+
+                <li class="relative flex-1 flex flex-col items-center text-center">
+                    <span class="flex items-center justify-center w-8 h-8 bg-green-200 rounded-full ring-4 ring-white"
+                        *ngIf="user.watchedFirstSessionAt != null; else watchedFirstSession">
+                        <svg class="w-3.5 h-3.5 text-green-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M1 5.917 5.724 10.5 15 1.5" />
+                        </svg>
+                    </span>
+                    <ng-template #watchedFirstSession>
+                        <span
+                            class="flex items-center justify-center w-8 h-8 bg-gray-100 rounded-full ring-4 ring-white">
+                            <svg class="w-3.5 h-3.5 text-gray-500" viewBox="0 0 16 16" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M16 2H0V14H16V2ZM6.5 5V11H7.5L11 8L7.5 5H6.5Z" fill="#000000"></path>
+                                </g>
+                            </svg>
+                        </span>
+                    </ng-template>
+
+                    <h3 class="mt-3 font-medium leading-tight">{{Messages.Labels.firstSession}}</h3>
+                    <div class="absolute top-4 left-1/2 w-full h-0.5 bg-gray-200 -z-10"></div>
+                </li>
+
+                <li class="relative flex-1 flex flex-col items-center text-center">
+                    <span class="flex items-center justify-center w-8 h-8 bg-green-200 rounded-full ring-4 ring-white"
+                        *ngIf="user.WatchedSecondSessionAt != null; else WatchedSecondSession">
+                        <svg class="w-3.5 h-3.5 text-green-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M1 5.917 5.724 10.5 15 1.5" />
+                        </svg>
+                    </span>
+                    <ng-template #WatchedSecondSession>
+                        <span
+                            class="flex items-center justify-center w-8 h-8 bg-gray-100 rounded-full ring-4 ring-white">
+                            <svg class="w-3.5 h-3.5 text-gray-500" viewBox="0 0 16 16" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M16 2H0V14H16V2ZM6.5 5V11H7.5L11 8L7.5 5H6.5Z" fill="#000000"></path>
+                                </g>
+                            </svg>
+                        </span>
+                    </ng-template>
+
+                    <h3 class="mt-3 font-medium leading-tight">{{Messages.Labels.secondSession}}</h3>
+                    <div class="absolute top-4 left-1/2 w-full h-0.5 bg-gray-200 -z-10"></div>
+                </li>
+
+                <li class="relative flex-1 flex flex-col items-center text-center">
+                    <span class="flex items-center justify-center w-8 h-8 bg-green-200 rounded-full ring-4 ring-white"
+                        *ngIf="user.WatchedThirdSessionAt != null; else WatchedThirdSession">
+                        <svg class="w-3.5 h-3.5 text-green-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M1 5.917 5.724 10.5 15 1.5" />
+                        </svg>
+                    </span>
+                    <ng-template #WatchedThirdSession>
+                        <span
+                            class="flex items-center justify-center w-8 h-8 bg-gray-100 rounded-full ring-4 ring-white">
+                            <svg class="w-3.5 h-3.5 text-gray-500" viewBox="0 0 16 16" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M16 2H0V14H16V2ZM6.5 5V11H7.5L11 8L7.5 5H6.5Z" fill="#000000"></path>
+                                </g>
+                            </svg>
+                        </span>
+                    </ng-template>
+
+                    <h3 class="mt-3 font-medium leading-tight">{{Messages.Labels.thirdSession}}</h3>
+                    <div class="absolute top-4 left-1/2 w-full h-0.5 bg-gray-200 -z-10"></div>
+                </li>
+
+                <li class="relative flex-1 flex flex-col items-center text-center">
+                    <span class="flex items-center justify-center w-8 h-8 bg-green-200 rounded-full ring-4 ring-white"
+                        *ngIf="user.WatchedFourthSessionAt != null; else WatchedFourthSession">
+                        <svg class="w-3.5 h-3.5 text-green-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M1 5.917 5.724 10.5 15 1.5" />
+                        </svg>
+                    </span>
+                    <ng-template #WatchedFourthSession>
+                        <span
+                            class="flex items-center justify-center w-8 h-8 bg-gray-100 rounded-full ring-4 ring-white">
+                            <svg class="w-3.5 h-3.5 text-gray-500" viewBox="0 0 16 16" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M16 2H0V14H16V2ZM6.5 5V11H7.5L11 8L7.5 5H6.5Z" fill="#000000"></path>
+                                </g>
+                            </svg>
+                        </span>
+                    </ng-template>
+
+                    <h3 class="mt-3 text-sm leading-tight">{{Messages.Labels.fourthSession}}</h3>
+                </li>
+                <li class="relative flex-1 flex flex-col items-center text-center">
+                    <span class="flex items-center justify-center w-8 h-8 bg-green-200 rounded-full ring-4 ring-white"
+                        *ngIf="user.WatchedHostVideoAt != null; else WatchedHostVideo">
+                        <svg class="w-3.5 h-3.5 text-green-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M1 5.917 5.724 10.5 15 1.5" />
+                        </svg>
+                    </span>
+                    <ng-template #WatchedHostVideo>
+                        <span
+                            class="flex items-center justify-center w-8 h-8 bg-gray-100 rounded-full ring-4 ring-white">
+                            <svg class="w-3.5 h-3.5 text-gray-500" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <path
+                                        d="M6 6H6.01M6 18H6.01M5.2 10H18.8C19.9201 10 20.4802 10 20.908 9.78201C21.2843 9.59027 21.5903 9.28431 21.782 8.90798C22 8.48016 22 7.92011 22 6.8V5.2C22 4.0799 22 3.51984 21.782 3.09202C21.5903 2.71569 21.2843 2.40973 20.908 2.21799C20.4802 2 19.9201 2 18.8 2H5.2C4.07989 2 3.51984 2 3.09202 2.21799C2.71569 2.40973 2.40973 2.71569 2.21799 3.09202C2 3.51984 2 4.07989 2 5.2V6.8C2 7.92011 2 8.48016 2.21799 8.90798C2.40973 9.28431 2.71569 9.59027 3.09202 9.78201C3.51984 10 4.0799 10 5.2 10ZM5.2 22H18.8C19.9201 22 20.4802 22 20.908 21.782C21.2843 21.5903 21.5903 21.2843 21.782 20.908C22 20.4802 22 19.9201 22 18.8V17.2C22 16.0799 22 15.5198 21.782 15.092C21.5903 14.7157 21.2843 14.4097 20.908 14.218C20.4802 14 19.9201 14 18.8 14H5.2C4.07989 14 3.51984 14 3.09202 14.218C2.71569 14.4097 2.40973 14.7157 2.21799 15.092C2 15.5198 2 16.0799 2 17.2V18.8C2 19.9201 2 20.4802 2.21799 20.908C2.40973 21.2843 2.71569 21.5903 3.09202 21.782C3.51984 22 4.0799 22 5.2 22Z"
+                                        stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round"></path>
+                                </g>
+                            </svg>
+                        </span>
+                    </ng-template>
+
+                    <h3 class="mt-3 text-sm leading-tight">{{Messages.Labels.hostVideo}}</h3>
+                </li>
+                <li class="relative flex-1 flex flex-col items-center text-center">
+                    <h3 class="mt-3 font-medium leading-tight mb-4">{{Messages.TableHeaders.hostStatus}}</h3>
+                    <span [ngSwitch]="user.hostStatus">
+                        <span *ngSwitchCase="0">{{Messages.Labels.selfHost}}</span>
+                        <span *ngSwitchCase="1">{{Messages.Labels.supportHost}}</span>
+                        <span *ngSwitchCase="2">{{Messages.Labels.noHostYet}}</span>
+                    </span>
+                </li>
+            </ol>
+        </div>
+    </div>
 </div>

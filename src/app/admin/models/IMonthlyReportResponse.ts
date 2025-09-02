@@ -1,6 +1,7 @@
 export interface IDailyReport {
     day: number;
     data: number;
+    ids: number[];
 }
 
 export interface IMonthlyReportResponse {

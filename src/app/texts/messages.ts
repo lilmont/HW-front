@@ -353,9 +353,9 @@ export const Messages = {
         contactIsAdded: 'مخاطب دارد',
         contactIsNotAdded: 'مخاطب ندارد',
         isPurchasable: 'قابل خرید است؟',
-        selfHost: 'خودش هاست گرفته',
-        supportHost: 'هاست پشتیبانی دارد',
-        noHostYet: 'هنوز هاست ندارد',
+        selfHost: ' هاست خودش',
+        supportHost: 'هاست پشتیبانی',
+        noHostYet: ' هاست ندارد',
         dragAndDrop: 'Click to upload or drag images here',
         legacyWebsiteHeader: "به نسخه‌ی جدید وب‌سایت خوش آمدید",
         legacyWebsiteText1: "ما ظاهر وب‌سایت را برای تجربه‌ای بهتر و سریع‌تر به‌روزرسانی کرده‌ایم. همه‌ی امکانات همچنان در دسترس شماست.",
@@ -375,7 +375,12 @@ export const Messages = {
         operating: 'در حال انجام',
         income: 'درآمد',
         day: 'روز',
-        total: 'مجموع'
+        total: 'مجموع',
+        firstSession: 'جلسه اول',
+        secondSession: 'جلسه دوم',
+        thirdSession: 'جلسه سوم',
+        fourthSession: 'جلسه چهارم',
+        hostVideo: 'راهنمای هاست'
     },
     Headers: {
         signup: 'ثبت نام',
