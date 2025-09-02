@@ -11,6 +11,7 @@ import { JwtHelperService } from '../../../core/services/jwt.helper.service';
 import { ToastService } from '../../../core/services/toast.service';
 import { ErrorNavigationService } from '../../../core/services/error-navigation-service.service';
 import { Title } from '@angular/platform-browser';
+import { PaymentHttpService } from '../../../core/services/payment-http.service';
 
 @Component({
   selector: 'hw-course-detail',
@@ -39,6 +40,7 @@ export class CourseDetailComponent {
     private toastr: ToastService,
     private errorNavigationService: ErrorNavigationService,
     private titleService: Title,
+    private paymentHttpService: PaymentHttpService,
   ) { }
 
   ngOnInit() {
@@ -152,6 +154,17 @@ export class CourseDetailComponent {
     this.isChargeWalletModalOpen = false;
   }
 
+  // goToPayment() {
+  //   const price = this.courseDetail?.hasDiscountCode ? this.courseDetail.discountedPrice : this.courseDetail?.price;
+  //   if (!price || isNaN(price)) {
+  //     return;
+  //   }
+
+  //   const amountInRial = price * 10;
+  //   const url = `https://zarinp.al/mazwebprog?amount=${amountInRial}`;
+  //   window.open(url, '_blank');
+  // }
+
   goToPayment() {
     const price = this.courseDetail?.hasDiscountCode ? this.courseDetail.discountedPrice : this.courseDetail?.price;
     if (!price || isNaN(price)) {
@@ -159,8 +172,17 @@ export class CourseDetailComponent {
     }
 
     const amountInRial = price * 10;
-    const url = `https://zarinp.al/mazwebprog?amount=${amountInRial}`;
-    window.open(url, '_blank');
+
+    this.loadingService.show();
+    this.paymentHttpService.getPaymentLink(amountInRial).subscribe({
+      next: (data) => {
+        this.loadingService.hide();
+        window.open(data, '_blank');
+      },
+      error: () => {
+        this.loadingService.hide();
+      }
+    });
   }
 
   ViewWebCourse() {
