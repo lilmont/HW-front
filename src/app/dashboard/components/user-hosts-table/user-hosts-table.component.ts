@@ -7,6 +7,7 @@ import { IPasswordRecovery, PasswordRecovery } from '../../../models/IPasswordRe
 import { RecoverPasswordRequest } from '../../../models/IRecoverPasswordRequest';
 import { RefreshUserHostsListService } from '../../../core/services/refresh-user-hosts-list.service';
 import { ToastService } from '../../../core/services/toast.service';
+import { PaymentHttpService } from '../../../core/services/payment-http.service';
 
 @Component({
   selector: 'hw-user-hosts-table',
@@ -23,6 +24,8 @@ export class UserHostsTableComponent implements AfterViewInit {
   @Input() userHosts: IUserHost[] = [];
   openDropdownIndex: number | null = null;
   dropdownPosition: { top: string; left: string } = { top: '0px', left: '0px' };
+  isChargeWalletModalOpen: boolean = false;
+  chargeWalletAmountRequired: number = 0;
 
   @ViewChildren('dropdownTd') dropdownTds!: QueryList<ElementRef>;
   @ViewChild('topScrollbar') topScrollbar!: ElementRef;
@@ -32,6 +35,7 @@ export class UserHostsTableComponent implements AfterViewInit {
     private hostingHttpService: HostingHttpService,
     private refreshUserHostsListService: RefreshUserHostsListService,
     private toastr: ToastService,
+    private paymentHttpService: PaymentHttpService
   ) {
 
   }
@@ -183,15 +187,55 @@ export class UserHostsTableComponent implements AfterViewInit {
     });
   }
 
-  upgradeHost(host: IUserHost): void {
+  openChgargeWalletModal(host: IUserHost): void {
     const recoverPasswordRequest = new RecoverPasswordRequest({ productId: host.id });
 
     this.loadingService.show();
-    this.hostingHttpService.upgradeHost(recoverPasswordRequest).subscribe({
-      next: () => {
+    this.hostingHttpService.getUpgradeHostingPlanRequiredBalance(recoverPasswordRequest).subscribe({
+      next: (response) => {
+        if (response <= 0) {
+          this.hostingHttpService.upgradeHost(recoverPasswordRequest).subscribe({
+            next: () => {
+              this.loadingService.hide();
+              this.toastr.success(Messages.Success.hostUpgradedSuccessfully, '');
+              this.refreshUserHostsListService.triggerRefreshHosts();
+            },
+            error: () => {
+              this.loadingService.hide();
+            }
+          });
+        }
+        else {
+          this.isChargeWalletModalOpen = true;
+          this.chargeWalletAmountRequired = response;
+        }
         this.loadingService.hide();
-        this.toastr.success(Messages.Success.hostUpgradedSuccessfully, '');
-        this.refreshUserHostsListService.triggerRefreshHosts();
+      },
+      error: () => {
+        this.loadingService.hide();
+      }
+    });
+
+  }
+
+  closeChgargeWalletModal(): void {
+    this.isChargeWalletModalOpen = false;
+  }
+
+  goToPayment() {
+    const price = this.chargeWalletAmountRequired;
+    if (!price || isNaN(price)) {
+      return;
+    }
+
+    const amountInRial = price * 10;
+
+    this.loadingService.show();
+    this.paymentHttpService.getPaymentLink(amountInRial).subscribe({
+      next: (data) => {
+        this.loadingService.hide();
+        this.closeChgargeWalletModal();
+        window.open(data, '_blank');
       },
       error: () => {
         this.loadingService.hide();
