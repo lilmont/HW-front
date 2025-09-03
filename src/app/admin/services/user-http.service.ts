@@ -13,6 +13,7 @@ import { IIncreaseBalance } from '../models/IIncreaseBalance';
 import { IUserCommentQueryParameters } from '../models/IUserCommentQueryParameters';
 import { IUserCommentListItem } from '../models/IUserCommentListItem';
 import { IUserCommentApproval } from '../models/IUserCommentApproval';
+import { ITransferBalanceRequest } from '../models/ITransferBalanceRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -188,6 +189,24 @@ export class UserHttpService {
         } else {
           this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
         }
+        return throwError(() => error);
+      })
+    );
+  }
+
+  transferBalance(data: ITransferBalanceRequest): Observable<IApiResponse<null>> {
+    return this.http.post<IApiResponse<null>>(`${this.baseUrl}/api/mazmon/users/transfer-balance`, data).pipe(
+      catchError((error) => {
+        if (error.status == 402) {
+          this.toastr.error(Messages.Errors.negativeOrZeroBalance, Messages.Errors.error);
+        } else if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
+        } else if (error.status === 401) {
+          this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+
         return throwError(() => error);
       })
     );

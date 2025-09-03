@@ -106,7 +106,8 @@ export const Messages = {
         userDoesNotHaveSupportHosting: 'این کاربر هاست پشتیبانی ندارد',
         userInfoIncomplete: 'اطلاعات کاربر کامل نیست',
         duplicateUserMissingEmail: 'این کاربر قبلا ثبت شده اما ایمیلی ندارد.',
-        incompleteUserInfo: 'اطلاعات کاربری (نام و نام خانوادگی) را در قسمت اطلاعات شخصی وارد کنید.'
+        incompleteUserInfo: 'اطلاعات کاربری (نام و نام خانوادگی) را در قسمت اطلاعات شخصی وارد کنید.',
+        negativeOrZeroBalance: 'موجودی صفر یا منفی است'
     },
     Success: {
         loginSuccessful: 'ورود با موفقیت انجام شد',
@@ -152,7 +153,8 @@ export const Messages = {
         websiteSettingEditedSuccessfully: 'تنظیمات با موفقیت ویرایش شد',
         carouselImagesEditedSuccessfully: 'تغییر تصاویر با موفقیت انجام شد',
         userCommentEdittedSuccessfully: 'ویرایش نظر با موفقیت انجام شد',
-        hostUpgradedSuccessfully: 'هاست شما با موفقیت ارتقا پیدا کرد'
+        hostUpgradedSuccessfully: 'هاست شما با موفقیت ارتقا پیدا کرد',
+        transferBalanceSuccessful: 'انتقال موجودی با موفقیت انجام شد'
     },
     Warnings: {
         oneTimePassword: 'قبل از بستن این صفحه اطلاعات هاست خود را کپی کنید و در جای امنی نگداری کنید',
@@ -245,6 +247,8 @@ export const Messages = {
         upgrade: 'ارتقا',
         addComparison: 'افزودن مقایسه',
         removeComparison: 'حذف مقایسه',
+        transferBalanceToWithdrawableBalance: 'انتقال موجودی کیف پول به قابل تسویه',
+        yes: 'بله'
     },
     Labels: {
         enterPhoneNumber: 'لطفا شماره موبایل خود را وارد کنید',
@@ -381,7 +385,8 @@ export const Messages = {
         thirdSession: 'جلسه سوم',
         fourthSession: 'جلسه چهارم',
         hostVideo: 'راهنمای هاست',
-        transactionDate: 'تاریخ تراکنش'
+        transactionDate: 'تاریخ تراکنش',
+        taxPercentage: 'درصد مالیات'
     },
     Headers: {
         signup: 'ثبت نام',

@@ -6,6 +6,7 @@ import { IUserDetail, UserDetail } from '../../models/IUserDetail';
 import { UserHttpService } from '../../services/user-http.service';
 import { environment } from '../../../../environments/environment';
 import { ToastService } from '../../../core/services/toast.service';
+import { TransferBalanceRequest } from '../../models/ITransferBalanceRequest';
 
 @Component({
   selector: 'hw-user-detail',
@@ -17,6 +18,9 @@ export class UserDetailComponent implements OnInit {
   baseUrl = environment.apiBaseUrl;
   userId?: number = undefined;
   userDetail: IUserDetail = new UserDetail();
+  isTransferBalanceModalOpen: boolean = false;
+  taxPercentage: number = 0;
+  taxPercentageInvalid: boolean = false;
 
   constructor(private route: ActivatedRoute,
     private loadingService: LoadingService,
@@ -138,5 +142,41 @@ export class UserDetailComponent implements OnInit {
 
   private isBiographyValid(biography: string): boolean {
     return biography.length <= 500;
+  }
+
+  closeTransferBalanceModal() {
+    this.taxPercentage = 0;
+    this.taxPercentageInvalid = false;
+    this.isTransferBalanceModalOpen = false;
+  }
+  openTransferBalanceModal() {
+    this.isTransferBalanceModalOpen = true;
+  }
+
+  TransferBalance() {
+    if (this.taxPercentage < 0 || this.taxPercentage > 100) {
+      this.taxPercentageInvalid = true;
+      return;
+    }
+
+    const request = new TransferBalanceRequest();
+    request.userId = this.userDetail.id;
+    request.taxPercentage = this.taxPercentage;
+
+    this.loadingService.show();
+    this.userHttpService.transferBalance(request).subscribe({
+      next: (response) => {
+        if (response.success) {
+          this.toastr.success(Messages.Success.transferBalanceSuccessful, '');
+          location.reload();
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+        this.loadingService.hide();
+      },
+      error: () => {
+        this.loadingService.hide();
+      }
+    });
   }
 }
