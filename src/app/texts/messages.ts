@@ -173,6 +173,7 @@ export const Messages = {
         confirmDeleteVideo: 'آیا از حذف این ویدیو مطمئن هستید؟',
         confirmDeleteCategory: 'آیا از حذف این دسته بندی مطمئن هستید؟',
         confirmDeleteAnnouncement: 'آیا از حذف این اعلان مطمئن هستید؟',
+        noTransactionsYet: 'هنوز تراکنشی برای شما ثبت نشده است.',
     },
     Buttons: {
         sendCode: 'ارسال کد یکبار مصرف',
@@ -550,6 +551,7 @@ export const Messages = {
         userReport: 'گزارش کاربران',
         hostTutorial: 'راهنمای تهیه هاست',
         userGeneralInfo: 'اطلاعات کاربر',
+        transactions: 'تراکنش ها',
     },
     TableHeaders: {
         id: 'ID',

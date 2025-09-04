@@ -1,0 +1,76 @@
+<div class="flex-1 overflow-x-auto mt-8">
+    <div *ngIf="transactions.length == 0; else showTransactions">
+        <div class="w-full my-10">
+            <div
+                class="w-full bg-custom-400/40 rounded-xl py-4 px-2 text-sm md:text-md flex items-center justify-center gap-2">
+                <svg class="w-6 h-6 text-gray-800 hidden sm:block" fill="none" stroke="currentColor" stroke-width="2"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M13 16h-1v-4h-1m1-4h.01M12 20a8 8 0 100-16 8 8 0 000 16z" />
+                </svg>
+                {{ Messages.Warnings.noTransactionsYet }}
+            </div>
+        </div>
+    </div>
+
+    <ng-template #showTransactions>
+        <div class="flex flex-col h-full">
+            <div class="overflow-x-auto" #topScrollbar>
+                <div style="width: 100%; height: 1px;"></div>
+            </div>
+
+            <div class="overflow-x-auto mt-4 rounded-2xl" #tableContainer>
+                <table class="w-full text-sm text-left rtl:text-right text-gray-500 rounded-2xl">
+                    <thead class="text-xs text-gray-700 uppercase bg-custom-300 text-center">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 w-[90px]">
+                                {{Messages.Headers.number}}
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                {{Messages.Headers.transactionTitle}}
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                {{Messages.Headers.date}}
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                {{Messages.Headers.amount}}
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                {{Messages.Headers.balance}}
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let transaction of transactions; let i = index"
+                            class="bg-white border-b border-gray-200 text-center">
+                            <td class="px-6 py-4">
+                                {{i + 1}}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{transaction.title}}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{transaction.transactionDate | jalaliDate}}
+                            </td>
+                            <td *ngIf="transaction.transactionType === 14; else notTransfer"
+                                class="px-6 py-4 text-yellow-200" dir="ltr">
+                                {{transaction.price | number:'1.0-0'}}
+                            </td>
+                            <ng-template #notTransfer>
+                                <td [ngClass]="{
+                        'text-red-500' : transaction.isCredit === false,
+                        'text-green-500' : transaction.isCredit === true
+                    }" class="px-6 py-4" dir="ltr">
+                                    {{ transaction.isCredit ? '+' : '-' }}{{transaction.price | number:'1.0-0'}}
+                                </td>
+                            </ng-template>
+                            <td class="px-6 py-4">
+                                {{transaction.balance | number:'1.0-0'}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </ng-template>
+</div>

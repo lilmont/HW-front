@@ -7,11 +7,22 @@
             {{Messages.Titles.userGeneralInfo}}
         </button>
     </li>
+
+    <li class="ml-2 rounded-t-lg cursor-pointer" [ngClass]="{
+        'text-custom-700 bg-gray-200 font-extrabold': activeTab === 'transaction',
+        'border-2 border-custom-300': activeTab !== 'transaction'
+      }">
+        <button (click)="activeTab = 'transaction'" class="inline-block p-4 cursor-pointer">
+            {{Messages.Titles.transactions}}
+        </button>
+    </li>
         </button>
     </div>
 
 </ul>
+
 <!-- Tab Content -->
 <div class="mt-6">
     <hw-user-general-info [userId]="userId" *ngIf="activeTab === 'general'"></hw-user-general-info>
+    <hw-user-transactions [userId]="userId" *ngIf="activeTab === 'transaction'"></hw-user-transactions>
 </div>

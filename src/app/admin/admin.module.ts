@@ -37,6 +37,7 @@ import { BaseChartDirective } from 'ng2-charts';
 import { IncomeReportComponent } from './components/income-report/income-report.component';
 import { UserReportComponent } from './components/user-report/user-report.component';
 import { UserGeneralInfoComponent } from './components/user-general-info/user-general-info.component';
+import { UserTransactionsComponent } from './components/user-transactions/user-transactions.component';
 
 
 @NgModule({
@@ -71,6 +72,7 @@ import { UserGeneralInfoComponent } from './components/user-general-info/user-ge
     IncomeReportComponent,
     UserReportComponent,
     UserGeneralInfoComponent,
+    UserTransactionsComponent,
   ],
   imports: [
     CommonModule,
