@@ -38,6 +38,8 @@ import { IncomeReportComponent } from './components/income-report/income-report.
 import { UserReportComponent } from './components/user-report/user-report.component';
 import { UserGeneralInfoComponent } from './components/user-general-info/user-general-info.component';
 import { UserTransactionsComponent } from './components/user-transactions/user-transactions.component';
+import { UserHostsComponent } from './components/user-hosts/user-hosts.component';
+import { DashboardModule } from '../dashboard/dashboard.module';
 
 
 @NgModule({
@@ -73,6 +75,7 @@ import { UserTransactionsComponent } from './components/user-transactions/user-t
     UserReportComponent,
     UserGeneralInfoComponent,
     UserTransactionsComponent,
+    UserHostsComponent,
   ],
   imports: [
     CommonModule,
@@ -83,7 +86,8 @@ import { UserTransactionsComponent } from './components/user-transactions/user-t
     SharedModule,
     QuillModule,
     ReactiveFormsModule,
-    BaseChartDirective
+    BaseChartDirective,
+    DashboardModule
   ]
 })
 export class AdminModule { }

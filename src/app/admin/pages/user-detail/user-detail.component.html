@@ -16,13 +16,20 @@
             {{Messages.Titles.transactions}}
         </button>
     </li>
-        </button>
-    </div>
 
+    <li class="ml-2 rounded-t-lg cursor-pointer" [ngClass]="{
+        'text-custom-700 bg-gray-200 font-extrabold': activeTab === 'hosting',
+        'border-2 border-custom-300': activeTab !== 'hosting'
+      }">
+        <button (click)="activeTab = 'hosting'" class="inline-block p-4 cursor-pointer">
+            {{Messages.Titles.hosting}}
+        </button>
+    </li>
 </ul>
 
 <!-- Tab Content -->
 <div class="mt-6">
     <hw-user-general-info [userId]="userId" *ngIf="activeTab === 'general'"></hw-user-general-info>
     <hw-user-transactions [userId]="userId" *ngIf="activeTab === 'transaction'"></hw-user-transactions>
+    <hw-user-hosts [userHostList]="userHosts" *ngIf="activeTab === 'hosting'"></hw-user-hosts>
 </div>

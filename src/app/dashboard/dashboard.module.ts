@@ -80,6 +80,9 @@ import { HostVideoComponent } from './components/host-video/host-video.component
     SharedModule,
     CoreModule,
     QRCodeModule
+  ],
+  exports: [
+    UserHostsTableComponent,
   ]
 })
 export class DashboardModule { }

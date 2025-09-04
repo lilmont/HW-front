@@ -1,0 +1,17 @@
+<div *ngIf="userHostList.length == 0; else showHosts">
+    <div class="w-full my-10">
+        <div
+            class="w-full bg-custom-400/40 rounded-xl py-4 px-2 text-sm md:text-md flex items-center justify-center gap-2">
+            <svg class="w-6 h-6 text-gray-800 hidden sm:block" fill="none" stroke="currentColor" stroke-width="2"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M13 16h-1v-4h-1m1-4h.01M12 20a8 8 0 100-16 8 8 0 000 16z" />
+            </svg>
+            {{ Messages.Warnings.noHostYet }}
+        </div>
+    </div>
+</div>
+
+<ng-template #showHosts>
+    <hw-user-hosts-table [userHosts]="userHostList"></hw-user-hosts-table>
+</ng-template>

@@ -174,6 +174,7 @@ export const Messages = {
         confirmDeleteCategory: 'آیا از حذف این دسته بندی مطمئن هستید؟',
         confirmDeleteAnnouncement: 'آیا از حذف این اعلان مطمئن هستید؟',
         noTransactionsYet: 'هنوز تراکنشی برای شما ثبت نشده است.',
+        noHostYet: 'هنوز هاستی برای شما ثبت نشده است.',
     },
     Buttons: {
         sendCode: 'ارسال کد یکبار مصرف',

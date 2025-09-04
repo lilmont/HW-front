@@ -9,6 +9,7 @@ import { IPagedResult } from '../models/IPagedResult';
 import { IHostListItem } from '../models/IHostListItem';
 import { Messages } from '../../texts/messages';
 import { IHostingDetail } from '../models/IHostingDetail';
+import { IUserHost } from '../../models/IUserHost';
 
 @Injectable({
   providedIn: 'root'
@@ -80,6 +81,21 @@ export class HostHttpService {
 
   editHostingPlan(hostingPlan: IHostingDetail): Observable<IApiResponse<null>> {
     return this.http.post<IApiResponse<null>>(`${this.baseUrl}/api/mazmon/hosting/edit-host`, hostingPlan).pipe(
+      catchError((error) => {
+        if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
+        } else if (error.status === 401) {
+          this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+        return throwError(() => error);
+      })
+    );
+  }
+
+  getUserHosts(userId: number): Observable<IApiResponse<IUserHost[]>> {
+    return this.http.get<IApiResponse<IUserHost[]>>(`${this.baseUrl}/api/mazmon/hosting/user-host-list`, { params: { userId: userId.toString() } }).pipe(
       catchError((error) => {
         if (error.status === 400) {
           this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
