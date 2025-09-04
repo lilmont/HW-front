@@ -1,0 +1,200 @@
+<h1 class="text-xl lg:text-2xl font-bold mb-6">{{Messages.Headers.editUser}}</h1>
+
+
+<form (ngSubmit)="editUser()" class="mx-auto p-6 bg-white rounded shadow">
+    <!-- ID (readonly) -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+        <div>
+            <label class="block mb-1 font-semibold text-gray-700">{{Messages.TableHeaders.id}}</label>
+            <input type="text" [value]="userDetail.id" readonly
+                class="border rounded px-3 py-2 w-full bg-gray-100 cursor-not-allowed" />
+        </div>
+        <div>
+            <label class="block mb-1 font-semibold text-gray-700">{{Messages.TableHeaders.phoneNumber}}</label>
+            <input type="text" [(ngModel)]="userDetail.phoneNumber" name="phoneNumber"
+                class="border rounded px-3 py-2 w-full" />
+        </div>
+        <!-- Email -->
+        <div>
+            <label class="block mb-1 font-semibold text-gray-700">{{Messages.Labels.email}}</label>
+            <input type="email" [(ngModel)]="userDetail.email" name="email" class="border rounded px-3 py-2 w-full" />
+        </div>
+    </div>
+
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+        <!-- First & Last Name -->
+        <div>
+            <label class="block mb-1 font-semibold text-gray-700">{{Messages.TableHeaders.firstName}}</label>
+            <input type="text" [(ngModel)]="userDetail.firstName" name="firstName"
+                class="border rounded px-3 py-2 w-full" />
+        </div>
+        <div>
+            <label class="block mb-1 font-semibold text-gray-700">{{Messages.TableHeaders.lastName}}</label>
+            <input type="text" [(ngModel)]="userDetail.lastName" name="lastName"
+                class="border rounded px-3 py-2 w-full" />
+        </div>
+        <!-- Download Count (readonly) -->
+        <div>
+            <label class="block mb-1 font-semibold text-gray-700">{{Messages.Labels.downloadCount}}</label>
+            <input type="number" [(ngModel)]="userDetail.downloadCount" name="downloadCount"
+                class="border rounded px-3 py-2 w-full" />
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+        <!-- Biography -->
+        <div>
+            <label class="block mb-1 font-semibold text-gray-700">{{Messages.Labels.biography}}</label>
+            <textarea [(ngModel)]="userDetail.biography" name="biography" rows="4"
+                class="border rounded px-3 py-2 w-full"></textarea>
+        </div>
+
+        <!-- Card Number -->
+        <div>
+            <label class="block mb-1 font-semibold text-gray-700">{{Messages.Labels.cardNumber}}</label>
+            <input type="text" [(ngModel)]="userDetail.cardNumber" name="cardNumber"
+                class="border rounded px-3 py-2 w-full" />
+        </div>
+    </div>
+
+
+    <!-- Is Active -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-4">
+        <div class="flex items-center">
+            <input type="checkbox" [(ngModel)]="userDetail.isActive" name="isActive" id="isActive"
+                class="h-5 w-5 ml-3" />
+            <label for="isActive" class="font-semibold text-gray-700">{{Messages.Labels.active}}</label>
+        </div>
+
+        <div class="flex items-center">
+            <input type="checkbox" [(ngModel)]="userDetail.isContactAdded" name="isContactAdded" id="isContactAdded"
+                class="h-5 w-5 ml-3" />
+            <label for="isContactAdded" class="font-semibold text-gray-700">{{Messages.Labels.contactIsAdded}}</label>
+        </div>
+    </div>
+
+    <!-- Deactivation Description -->
+    <div class="mb-4">
+        <label class="block mb-1 font-semibold text-gray-700">{{Messages.Labels.deactivationDescription}}</label>
+        <textarea [(ngModel)]="userDetail.deactivationDescription" name="deactivationDescription" rows="2"
+            class="border rounded px-3 py-2 w-full"></textarea>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-4">
+        <!-- Can Add Project -->
+        <div class="flex items-center">
+            <input type="checkbox" [(ngModel)]="userDetail.canAddProject" name="canAddProject" id="canAddProject"
+                class="h-5 w-5 ml-3" />
+            <label for="canAddProject" class="font-semibold text-gray-700">{{Messages.Labels.canAddProject}}</label>
+        </div>
+        <!-- Has External Hosting Plan (readonly) -->
+        <div class="flex items-center">
+            <input type="checkbox" [(ngModel)]="userDetail.hasExternalHostingPlan" name="hasExternalHostingPlan"
+                id="hasExternalHostingPlan" class="h-5 w-5 ml-3" />
+            <label for="hasExternalHostingPlan"
+                class="font-semibold text-gray-700">{{Messages.Labels.hasExternalHosting}}</label>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2 mb-4">
+        <!-- Wallet Balance -->
+        <div>
+            <label class="block mb-1 font-semibold text-gray-700">{{Messages.Labels.walletBalance}}</label>
+            <input type="text" [value]="userDetail.walletBalance | number:'1.0-0'" readonly
+                class="border rounded px-3 py-2 w-full bg-gray-100 cursor-not-allowed" />
+        </div>
+
+        <!-- Withdrawable Balance -->
+        <div>
+            <label class="block mb-1 font-semibold text-gray-700">{{Messages.Labels.withdrawableBalance}}</label>
+            <input type="text" [value]="userDetail.withdrawableBalance | number:'1.0-0'" readonly
+                class="border rounded px-3 py-2 w-full bg-gray-100 cursor-not-allowed" />
+        </div>
+
+        <!-- Date Created (readonly) -->
+        <div>
+            <label class="block mb-1 font-semibold text-gray-700">{{Messages.Labels.signupDate}}</label>
+            <input type="text" [value]="userDetail.dateCreated | jalaliDate" readonly
+                class="border rounded px-3 py-2 w-full bg-gray-100 cursor-not-allowed" />
+        </div>
+    </div>
+
+    <div class="pt-4 mb-4">
+        <button type="button" (click)="openTransferBalanceModal()" *ngIf="userDetail.walletBalance > 0"
+            class="bg-custom-600 text-white px-6 py-2 rounded hover:bg-custom-700 ml-4">
+            {{Messages.Buttons.transferBalanceToWithdrawableBalance}}
+        </button>
+
+        <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">
+            {{Messages.Buttons.save}}
+        </button>
+    </div>
+
+    <div class="flex flex-col items-center mb-10">
+        <div class="relative w-28 h-28">
+            <img [src]="userDetail.avatarImage && userDetail.avatarImage.trim() !== '' ? baseUrl + '/uploads/avatars/' + userDetail.avatarImage : baseUrl + '/uploads/utilities/avatar.png'"
+                alt="Avatar" class="rounded-full w-full h-full object-cover border-2 border-gray-300">
+            <label for="avatarUpload"
+                class="absolute bottom-0 right-0 bg-custom-600 hover:bg-custom-700 text-white p-2 rounded-full cursor-pointer">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L7 21H3v-4L16.732 3.732z">
+                    </path>
+                </svg>
+            </label>
+            <input id="avatarUpload" type="file" (change)="onAvatarSelect($event)" class="hidden" />
+        </div>
+    </div>
+</form>
+
+<!-- Transfer balance Modal -->
+<div *ngIf="isTransferBalanceModalOpen"
+    class="fixed inset-0 z-49 flex items-center justify-center bg-[rgba(31,41,55,0.5)]"
+    (click)="closeTransferBalanceModal()">
+
+    <!-- Modal content container -->
+    <div class="relative bg-white rounded-lg shadow-lg w-full max-w-md p-6" (click)="$event.stopPropagation()">
+
+        <!-- Modal header -->
+        <div class="flex items-center justify-between border-b border-gray-200 pb-3 mb-5">
+            <h3 class="text-xl text-gray-900">
+                {{ Messages.Buttons.transferBalanceToWithdrawableBalance }}
+            </h3>
+            <button type="button" class="text-gray-400 hover:text-gray-900 rounded-lg focus:outline-none"
+                (click)="closeTransferBalanceModal()" aria-label="Close modal">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="text-gray-700 text-center mb-6">
+            <label for="title" class="block text-sm font-medium text-gray-700 mb-4 text-center">
+                {{Messages.Labels.taxPercentage}}
+            </label>
+            <input type="number" id="taxPercentage" [(ngModel)]="taxPercentage" name="taxPercentage"
+                class="text-center bg-gray-50 border outline-custom-300 text-gray-900 text-sm rounded-lg focus:ring-custom-500 focus:border-custom-500 block w-full p-2.5" />
+
+            <div *ngIf="taxPercentageInvalid" class="text-red-600 text-sm mt-1">
+                {{Messages.Errors.referralPercentageIsRequired}}
+            </div>
+        </div>
+
+        <!-- Modal footer / buttons -->
+        <div class="flex justify-end">
+            <button (click)="closeTransferBalanceModal()"
+                class="cursor-pointer px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-lg transition duration-200 ml-4">
+                {{ Messages.Buttons.cancel }}
+            </button>
+
+            <button (click)="TransferBalance()"
+                class="cursor-pointer px-4 py-2 bg-custom-600 hover:bg-custom-700 text-white font-semibold rounded-lg shadow-md transition duration-200">
+                {{ Messages.Buttons.save }}
+            </button>
+        </div>
+    </div>
+</div>

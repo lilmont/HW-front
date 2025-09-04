@@ -548,7 +548,8 @@ export const Messages = {
         failedPayment: 'تراکنش ناموفق',
         incomeReport: 'گزارش درآمد',
         userReport: 'گزارش کاربران',
-        hostTutorial: 'راهنمای تهیه هاست'
+        hostTutorial: 'راهنمای تهیه هاست',
+        userGeneralInfo: 'اطلاعات کاربر',
     },
     TableHeaders: {
         id: 'ID',

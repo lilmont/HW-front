@@ -9,6 +9,7 @@ import { catchError, Observable, throwError } from 'rxjs';
 import { IWithdrawalQueryParameters } from '../models/IWithdrawalQueryParameters';
 import { Messages } from '../../texts/messages';
 import { IRejectWithdrawalRequest } from '../models/IRejectWithdrawalRequest';
+import { IUserTransaction } from '../../models/IUserTransaction';
 
 @Injectable({
   providedIn: 'root'
@@ -60,6 +61,21 @@ export class PaymentHttpService {
         } else if (error.status === 441) {
           this.toastr.error(Messages.Errors.invalidImage, Messages.Errors.error);
         } else if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
+        } else if (error.status === 401) {
+          this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+        return throwError(() => error);
+      })
+    );
+  }
+
+  getUserTransactions(userId: number): Observable<IApiResponse<IUserTransaction[]>> {
+    return this.http.get<IApiResponse<IUserTransaction[]>>(`${this.baseUrl}/api/mazmon/payment/user-transaction-list`, { params: { userId: userId.toString() } }).pipe(
+      catchError((error) => {
+        if (error.status === 400) {
           this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
         } else if (error.status === 401) {
           this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
