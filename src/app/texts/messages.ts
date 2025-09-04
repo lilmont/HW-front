@@ -553,6 +553,7 @@ export const Messages = {
         hostTutorial: 'راهنمای تهیه هاست',
         userGeneralInfo: 'اطلاعات کاربر',
         transactions: 'تراکنش ها',
+        courses: 'دوره ها'
     },
     TableHeaders: {
         id: 'ID',

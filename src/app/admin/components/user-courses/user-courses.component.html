@@ -1,0 +1,20 @@
+<div *ngIf="courseCards.length == 0; else showCourses">
+    <div class="w-full my-10">
+        <div
+            class="w-full bg-custom-400/40 rounded-xl py-4 px-2 text-sm md:text-md flex items-center justify-center gap-2">
+            <svg class="w-6 h-6 text-gray-800 hidden sm:block" fill="none" stroke="currentColor" stroke-width="2"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M13 16h-1v-4h-1m1-4h.01M12 20a8 8 0 100-16 8 8 0 000 16z" />
+            </svg>
+            {{ Messages.Warnings.noCoursesYet }}
+        </div>
+    </div>
+</div>
+
+<ng-template #showCourses>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <hw-course-card *ngFor="let courseCard of courseCards" [courseCard]="courseCard">
+        </hw-course-card>
+    </div>
+</ng-template>

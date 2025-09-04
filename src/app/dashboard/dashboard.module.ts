@@ -83,6 +83,7 @@ import { HostVideoComponent } from './components/host-video/host-video.component
   ],
   exports: [
     UserHostsTableComponent,
+    CourseCardComponent
   ]
 })
 export class DashboardModule { }

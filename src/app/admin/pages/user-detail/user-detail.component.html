@@ -25,6 +25,15 @@
             {{Messages.Titles.hosting}}
         </button>
     </li>
+
+    <li class="ml-2 rounded-t-lg cursor-pointer" [ngClass]="{
+        'text-custom-700 bg-gray-200 font-extrabold': activeTab === 'course',
+        'border-2 border-custom-300': activeTab !== 'course'
+      }">
+        <button (click)="activeTab = 'course'" class="inline-block p-4 cursor-pointer">
+            {{Messages.Titles.courses}}
+        </button>
+    </li>
 </ul>
 
 <!-- Tab Content -->
@@ -32,4 +41,5 @@
     <hw-user-general-info [userId]="userId" *ngIf="activeTab === 'general'"></hw-user-general-info>
     <hw-user-transactions [userId]="userId" *ngIf="activeTab === 'transaction'"></hw-user-transactions>
     <hw-user-hosts [userHostList]="userHosts" *ngIf="activeTab === 'hosting'"></hw-user-hosts>
+    <hw-user-courses [userId]="userId" *ngIf="activeTab === 'course'"></hw-user-courses>
 </div>

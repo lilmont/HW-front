@@ -39,6 +39,7 @@ import { UserReportComponent } from './components/user-report/user-report.compon
 import { UserGeneralInfoComponent } from './components/user-general-info/user-general-info.component';
 import { UserTransactionsComponent } from './components/user-transactions/user-transactions.component';
 import { UserHostsComponent } from './components/user-hosts/user-hosts.component';
+import { UserCoursesComponent } from './components/user-courses/user-courses.component';
 import { DashboardModule } from '../dashboard/dashboard.module';
 
 
@@ -76,6 +77,7 @@ import { DashboardModule } from '../dashboard/dashboard.module';
     UserGeneralInfoComponent,
     UserTransactionsComponent,
     UserHostsComponent,
+    UserCoursesComponent
   ],
   imports: [
     CommonModule,
