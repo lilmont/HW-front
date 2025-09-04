@@ -36,7 +36,7 @@
                         <th scope="col" class="px-6 py-3">
                             {{Messages.Headers.status}}
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-6 py-3" *ngIf="buttonsShown">
                             {{Messages.Headers.actions}}
                         </th>
                     </tr>
@@ -56,9 +56,14 @@
                             </ng-container>
 
                             <ng-template #checkStatus>
-                                <ng-container *ngIf="host.status !== 2">
-                                    <hw-submit-domain-modal [userHostId]="host.id"></hw-submit-domain-modal>
+                                <ng-container *ngIf="buttonsShown; else noButtonsShown">
+                                    <ng-container *ngIf="host.status !== 2">
+                                        <hw-submit-domain-modal [userHostId]="host.id"></hw-submit-domain-modal>
+                                    </ng-container>
                                 </ng-container>
+                                <ng-template #noButtonsShown>
+                                    -
+                                </ng-template>
                             </ng-template>
                         </td>
                         <td class="px-6 py-4">
@@ -133,7 +138,7 @@
                                 {{Messages.Headers.deleted}}
                             </div>
                         </td>
-                        <td #dropdownTd class="px-6 py-4 min-w-[100px]">
+                        <td #dropdownTd class="px-6 py-4 min-w-[100px]" *ngIf="buttonsShown">
                             <button (click)="toggleDropdown(i, $event, dropdownTd)"
                                 class="m-auto flex items-center justify-center px-3 py-2 text-sm font-medium text-gray-200 bg-custom-500 rounded-lg hover:bg-custom-600 focus:outline-none">
                                 {{Messages.Headers.actions}}

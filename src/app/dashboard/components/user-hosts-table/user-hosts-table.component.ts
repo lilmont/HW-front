@@ -22,6 +22,7 @@ export class UserHostsTableComponent implements AfterViewInit {
   showPasswordModal: boolean = false;
   loginInfo: IPasswordRecovery = new PasswordRecovery();
   @Input() userHosts: IUserHost[] = [];
+  @Input() buttonsShown: boolean = true;
   openDropdownIndex: number | null = null;
   dropdownPosition: { top: string; left: string } = { top: '0px', left: '0px' };
   isChargeWalletModalOpen: boolean = false;
