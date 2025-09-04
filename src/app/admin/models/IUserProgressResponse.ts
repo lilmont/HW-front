@@ -4,9 +4,9 @@ export interface IUserProgressResponse {
     phoneNumber: string;
     dateCreated: string;
     watchedFirstSessionAt?: string;
-    WatchedSecondSessionAt?: string;
-    WatchedThirdSessionAt?: string;
-    WatchedFourthSessionAt?: string;
-    WatchedHostVideoAt?: string;
+    watchedSecondSessionAt?: string;
+    watchedThirdSessionAt?: string;
+    watchedFourthSessionAt?: string;
+    watchedHostVideoAt?: string;
     hostStatus: number;
 }
