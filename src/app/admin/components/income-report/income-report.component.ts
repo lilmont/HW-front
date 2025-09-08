@@ -23,7 +23,7 @@ export class IncomeReportComponent implements OnInit {
   secondSelectedReport: IMonthlyReportResponse | null = null;
   showComparison: boolean = false;
   months: IOption[] = [];
-  years: number[] = [1404];
+  years: number[] = [1404, 1405, 1406];
   selectedDay: string = ''
   incomeDetailList: IDailyIncomeDetailResponse[] = [];
 
@@ -98,6 +98,22 @@ export class IncomeReportComponent implements OnInit {
       option.id = m;
       this.months.push(option);
     }
+
+    const now = moment(); // today
+    const currentShamsiMonth = parseInt(now.format('jM'), 10);
+    const currentShamsiYear = parseInt(now.format('jYYYY'), 10);
+
+    this.firstMonthlyReportRequest = {
+      month: currentShamsiMonth,
+      year: currentShamsiYear
+    };
+
+    // (Optional) also initialize comparison request with same defaults
+    this.secondMonthlyReportRequest = {
+      month: currentShamsiMonth - 1,
+      year: currentShamsiYear
+    };
+
     this.updateFirstChart();
   }
 
@@ -108,6 +124,8 @@ export class IncomeReportComponent implements OnInit {
       this.dailyIncomeData = this.buildDatasets();
       this.secondSelectedReport = null; // optional: clear second report
     }
+    else
+      this.updateSecondChart();
   }
 
   updateFirstChart() {
