@@ -41,6 +41,7 @@ import { UserTransactionsComponent } from './components/user-transactions/user-t
 import { UserHostsComponent } from './components/user-hosts/user-hosts.component';
 import { UserCoursesComponent } from './components/user-courses/user-courses.component';
 import { DashboardModule } from '../dashboard/dashboard.module';
+import { UserOverallReportComponent } from './components/user-overall-report/user-overall-report.component';
 
 
 @NgModule({
@@ -77,7 +78,8 @@ import { DashboardModule } from '../dashboard/dashboard.module';
     UserGeneralInfoComponent,
     UserTransactionsComponent,
     UserHostsComponent,
-    UserCoursesComponent
+    UserCoursesComponent,
+    UserOverallReportComponent
   ],
   imports: [
     CommonModule,

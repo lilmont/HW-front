@@ -388,7 +388,12 @@ export const Messages = {
         fourthSession: 'جلسه چهارم',
         hostVideo: 'راهنمای هاست',
         transactionDate: 'تاریخ تراکنش',
-        taxPercentage: 'درصد مالیات'
+        taxPercentage: 'درصد مالیات',
+        totalRegisteredInDay: 'مجموع ثبت نام روزانه',
+        totalWatchedHostVideoInDay: 'مجموع کاربرانی که ویدیو هاست را دیده اند',
+        totalPurchasedSupportHostInDay: 'مجموع کاربرانی که هاست پشتیبانی خریدند',
+        totalPurchasedSelfHostInDay: 'مجموع کاربرانی که خودش هاست خریدند',
+        totalPendingPurchasedHostInDay: 'مجموع کاربرانی که هنوز هاست نخریده اند',
     },
     Headers: {
         signup: 'ثبت نام',
@@ -553,7 +558,8 @@ export const Messages = {
         hostTutorial: 'راهنمای تهیه هاست',
         userGeneralInfo: 'اطلاعات کاربر',
         transactions: 'تراکنش ها',
-        courses: 'دوره ها'
+        courses: 'دوره ها',
+        userOverallReport: 'گزارش مجموعی کاربران'
     },
     TableHeaders: {
         id: 'ID',

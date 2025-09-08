@@ -8,5 +8,5 @@ import { Messages } from '../../../texts/messages';
 })
 export class ReportListComponent {
   Messages = Messages
-  activeTab: 'income' | 'user' = 'income';
+  activeTab: 'income' | 'user' | 'user-overall' = 'income';
 }

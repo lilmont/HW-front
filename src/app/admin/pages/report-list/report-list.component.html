@@ -16,10 +16,20 @@
             {{Messages.Titles.userReport}}
         </button>
     </li>
+
+    <li class="ml-2 rounded-t-lg cursor-pointer" [ngClass]="{
+        'text-custom-700 bg-gray-200 font-extrabold': activeTab === 'user-overall',
+        'border-2 border-custom-300': activeTab !== 'user-overall'
+      }">
+        <button (click)="activeTab = 'user-overall'" class="inline-block p-4 cursor-pointer">
+            {{Messages.Titles.userOverallReport}}
+        </button>
+    </li>
 </ul>
 
 <!-- Tab Content -->
 <div class="mt-6">
     <hw-income-report *ngIf="activeTab === 'income'"></hw-income-report>
     <hw-user-report *ngIf="activeTab === 'user'"></hw-user-report>
+    <hw-user-overall-report *ngIf="activeTab === 'user-overall'"></hw-user-overall-report>
 </div>

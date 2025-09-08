@@ -10,6 +10,8 @@ import { IUserProgressResponse } from '../models/IUserProgressResponse';
 import { IUserProgressRequest } from '../models/IUserProgressRequest';
 import { IDailyIncomeDetailRequest } from '../models/IDailyIncomeDetailRequest';
 import { IDailyIncomeDetailResponse } from '../models/IDailyIncomeDetailResponse';
+import { IUserOverallProgressResponse } from '../models/IUserOverallProgressResponse';
+import { IUserMonthlyOverallProgressResponse } from '../models/IUserMonthlyOverallProgressResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -72,6 +74,38 @@ export class ReportHttpService {
 
   getUsersProgressByIds(data: IUserProgressRequest): Observable<IUserProgressResponse[]> {
     return this.http.post<IUserProgressResponse[]>(`${this.baseUrl}/api/mazmon/reports/daily-users-detail`, data).pipe(
+      catchError((error) => {
+        if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
+        } else if (error.status === 401) {
+          this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+        return throwError(() => error);
+      })
+    );
+  }
+
+  getUsersOverallProgressByIds(data: IUserProgressRequest): Observable<IUserOverallProgressResponse[]> {
+    return this.http.post<IUserOverallProgressResponse[]>(`${this.baseUrl}/api/mazmon/reports/daily-users-overall`, data).pipe(
+      catchError((error) => {
+        if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
+        } else if (error.status === 401) {
+          this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+        return throwError(() => error);
+      })
+    );
+  }
+
+  getUsersMonthlyOverallProgressByIds(data: IMonthlyReportRequest): Observable<IUserMonthlyOverallProgressResponse> {
+    const params = this.buildHttpParams(data);
+
+    return this.http.get<IUserMonthlyOverallProgressResponse>(`${this.baseUrl}/api/mazmon/reports/daily-users-overall`, { params }).pipe(
       catchError((error) => {
         if (error.status === 400) {
           this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);

@@ -1,0 +1,113 @@
+<div class="p-6 w-full max-w-full box-border">
+    <h2 class="font-bold text-xl"> {{Messages.Headers.dailyUserCreated}} ({{ firstSelectedReport?.monthName }})</h2>
+    <div class="grid grid-cols-2 gap-4 mb-16">
+        <div class="mt-10 rounded-2xl py-4 px-4 shadow-2xl">
+            <p class="mt-1 text-md text-custom-600"><span class="font-bold">{{Messages.Labels.total}}
+                    {{firstSelectedReport?.monthName}}:
+                </span>{{firstSelectedReport?.total | number:'1.0-0'}} {{Messages.Headers.user}}</p>
+            <p class="mt-6 text-md text-custom-600"><span class="font-bold">
+                    {{Messages.Labels.totalWatchedHostVideoInDay}}:
+                </span>{{firstUserOverallMonthlyReport?.totalWatchedHostVideo }} {{Messages.Headers.user}}</p>
+            <p class="mt-6 text-md text-custom-600"><span class="font-bold">
+                    {{Messages.Labels.totalPurchasedSupportHostInDay}}:
+                </span>{{firstUserOverallMonthlyReport?.totalPurchasedSupportHost }} {{Messages.Headers.user}}</p>
+            <p class="mt-6 text-md text-custom-600"><span class="font-bold">
+                    {{Messages.Labels.totalPurchasedSelfHostInDay}}:
+                </span>{{firstUserOverallMonthlyReport?.totalPurchasedSelfHost }} {{Messages.Headers.user}}</p>
+            <p class="mt-6 text-md text-custom-600"><span class="font-bold">
+                    {{Messages.Labels.totalPendingPurchasedHostInDay}}:
+                </span>{{firstUserOverallMonthlyReport?.totalPendingPurchasedHost }} {{Messages.Headers.user}}</p>
+        </div>
+        <div class="mt-10 rounded-2xl py-4 px-4 shadow-2xl" *ngIf="showComparison">
+            <p class="mt-1 text-md text-yellow-200"><span class="font-bold">{{Messages.Labels.total}}
+                    {{secondSelectedReport?.monthName}}:
+                </span>{{secondSelectedReport?.total | number:'1.0-0'}} {{Messages.Headers.user}}</p>
+            <p class="mt-6 text-md text-yellow-200"><span class="font-bold">
+                    {{Messages.Labels.totalWatchedHostVideoInDay}}:
+                </span>{{secondUserOverallMonthlyReport?.totalWatchedHostVideo }} {{Messages.Headers.user}}</p>
+            <p class="mt-6 text-md text-yellow-200"><span class="font-bold">
+                    {{Messages.Labels.totalPurchasedSupportHostInDay}}:
+                </span>{{secondUserOverallMonthlyReport?.totalPurchasedSupportHost }} {{Messages.Headers.user}}</p>
+            <p class="mt-6 text-md text-yellow-200"><span class="font-bold">
+                    {{Messages.Labels.totalPurchasedSelfHostInDay}}:
+                </span>{{secondUserOverallMonthlyReport?.totalPurchasedSelfHost }} {{Messages.Headers.user}}</p>
+            <p class="mt-6 text-md text-yellow-200"><span class="font-bold">
+                    {{Messages.Labels.totalPendingPurchasedHostInDay}}:
+                </span>{{secondUserOverallMonthlyReport?.totalPendingPurchasedHost }} {{Messages.Headers.user}}</p>
+        </div>
+    </div>
+    <div class="w-full overflow-hidden">
+        <canvas baseChart [datasets]="dailyUserData.datasets" [labels]="dailyUserData.labels" [options]="chartOptions"
+            [type]="lineChartType" id="dailyUserChart" class="!w-full !h-[400px]"></canvas>
+    </div>
+
+    <div class="mt-4 flex">
+        <select [(ngModel)]="firstMonthlyReportRequest.month" (change)="updateFirstChart()" class="mr-2 min-w-[150px]">
+            <option *ngFor="let m of months" [value]="m.id">{{ m.title }}</option>
+        </select>
+        <select [(ngModel)]="firstMonthlyReportRequest.year" (change)="updateFirstChart()" class="mr-2 min-w-[150px]">
+            <option *ngFor="let y of years" [ngValue]="y">{{ y }}</option>
+        </select>
+
+        <button (click)="toggleComparison()" class="cursor-pointer px-3 py-1 rounded bg-blue-500 text-white mr-4">
+            {{ showComparison ? Messages.Buttons.removeComparison : Messages.Buttons.addComparison }}
+        </button>
+
+        <div *ngIf="showComparison" class="flex items-center gap-2">
+            <select [(ngModel)]="secondMonthlyReportRequest.month" (change)="updateSecondChart()"
+                class="mr-2 min-w-[150px]">
+                <option *ngFor="let m of months" [value]="m.id">{{ m.title }}</option>
+            </select>
+            <select [(ngModel)]="secondMonthlyReportRequest.year" (change)="updateSecondChart()"
+                class="mr-2 min-w-[150px]">
+                <option *ngFor="let y of years" [ngValue]="y">{{ y }}</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-2 gap-4 mb-6">
+        <div class="mt-10 rounded-2xl py-6 px-4">
+            <h2 class="font-bold text-lg"> {{ firstSelectedDay }}</h2>
+
+            <div class="w-full" *ngFor="let user of firstUserOverallProgressList">
+                <p class="mt-6 text-md text-custom-600"><span class="font-bold">
+                        {{Messages.Labels.totalRegisteredInDay}}:
+                    </span>{{user?.totalRegistered }} {{Messages.Headers.user}}</p>
+                <p class="mt-6 text-md text-custom-600"><span class="font-bold">
+                        {{Messages.Labels.totalWatchedHostVideoInDay}}:
+                    </span>{{user?.totalWatchedHostVideo }} {{Messages.Headers.user}}</p>
+                <p class="mt-6 text-md text-custom-600"><span class="font-bold">
+                        {{Messages.Labels.totalPurchasedSupportHostInDay}}:
+                    </span>{{user?.totalPurchasedSupportHost }} {{Messages.Headers.user}}</p>
+                <p class="mt-6 text-md text-custom-600"><span class="font-bold">
+                        {{Messages.Labels.totalPurchasedSelfHostInDay}}:
+                    </span>{{user?.totalPurchasedSelfHost }} {{Messages.Headers.user}}</p>
+                <p class="mt-6 text-md text-custom-600"><span class="font-bold">
+                        {{Messages.Labels.totalPendingPurchasedHostInDay}}:
+                    </span>{{user?.totalPendingPurchasedHost }} {{Messages.Headers.user}}</p>
+            </div>
+        </div>
+
+        <div class="mt-10 rounded-2xl py-6 px-4" *ngIf="showComparison">
+            <h2 class="font-bold text-lg"> {{ secondSelectedDay }}</h2>
+
+            <div class="w-full" *ngFor="let user of secondUserOverallProgressList">
+                <p class="mt-6 text-md text-yellow-200"><span class="font-bold">
+                        {{Messages.Labels.totalRegisteredInDay}}:
+                    </span>{{user?.totalRegistered }} {{Messages.Headers.user}}</p>
+                <p class="mt-6 text-md text-yellow-200"><span class="font-bold">
+                        {{Messages.Labels.totalWatchedHostVideoInDay}}:
+                    </span>{{user?.totalWatchedHostVideo }} {{Messages.Headers.user}}</p>
+                <p class="mt-6 text-md text-yellow-200"><span class="font-bold">
+                        {{Messages.Labels.totalPurchasedSupportHostInDay}}:
+                    </span>{{user?.totalPurchasedSupportHost }} {{Messages.Headers.user}}</p>
+                <p class="mt-6 text-md text-yellow-200"><span class="font-bold">
+                        {{Messages.Labels.totalPurchasedSelfHostInDay}}:
+                    </span>{{user?.totalPurchasedSelfHost }} {{Messages.Headers.user}}</p>
+                <p class="mt-6 text-md text-yellow-200"><span class="font-bold">
+                        {{Messages.Labels.totalPendingPurchasedHostInDay}}:
+                    </span>{{user?.totalPendingPurchasedHost }} {{Messages.Headers.user}}</p>
+            </div>
+        </div>
+    </div>
+</div>
