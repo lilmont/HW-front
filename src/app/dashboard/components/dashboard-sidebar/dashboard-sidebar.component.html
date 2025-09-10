@@ -1,9 +1,9 @@
 <aside [ngClass]="{
     'translate-x-0': (sidebarService.isOpen$ | async),
     'translate-x-full': !(sidebarService.isOpen$ | async)
-  }" class="fixed top-0 right-0 z-40 w-64 h-screen pt-20 transition-transform bg-white shadow-2xl"
+  }" class="fixed top-0 right-0 z-40 w-64 h-[100dvh] pt-20 transition-transform bg-white shadow-2xl flex flex-col"
     aria-label="Sidebar">
-    <div class="h-full px-3 pb-4 overflow-y-auto bg-white">
+    <div class="flex-1 px-3 pb-4 overflow-y-auto">
         <ul class="font-medium">
             <li *ngFor="let item of sidebarItems" class="cursor-pointer mb-2"
                 [ngClass]="{ 'bg-gray-200': isActive(item.path) }" (click)="navigate(item.path)">
@@ -13,5 +13,13 @@
                 </a>
             </li>
         </ul>
+    </div>
+
+    <!-- Fixed bottom item -->
+    <div class="px-3 py-4">
+        <a class="flex items-center p-2 text-gray-900 rounded-lg cursor-pointer w-6 h-6"
+            (click)="navigate('/dashboard/hosting')">
+            <hw-host-icon></hw-host-icon>
+        </a>
     </div>
 </aside>

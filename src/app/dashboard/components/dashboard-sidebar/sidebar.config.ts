@@ -57,11 +57,11 @@ export const SIDEBAR_ITEMS: ISidebarItem[] = [
         path: '/dashboard/wallet',
         svgComponent: WalletIconComponent,
     },
-    {
-        label: Messages.Headers.hosting,
-        path: '/dashboard/hosting',
-        svgComponent: HostIconComponent,
-    },
+    // {
+    //     label: Messages.Headers.hosting,
+    //     path: '/dashboard/hosting',
+    //     svgComponent: HostIconComponent,
+    // },
     {
         label: Messages.Headers.referralCode,
         path: '/dashboard/referral',

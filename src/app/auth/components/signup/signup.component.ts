@@ -22,7 +22,7 @@ export class SignupComponent implements OnInit {
     password: '',
     referralCode: ''
   };
-  returnUrl: string = '/';
+  returnUrl: string = '/dashboard';
   Messages = Messages;
   baseUrl = environment.apiBaseUrl;
   step: 'phone' | 'code' = 'phone';
@@ -85,7 +85,7 @@ export class SignupComponent implements OnInit {
 
   //#region Validate Code
   ngOnInit(): void {
-    this.returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
+    this.returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/dashboard';
 
     if (this.step === 'code') {
       this.startTimer();
