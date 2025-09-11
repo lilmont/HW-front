@@ -394,6 +394,9 @@ export const Messages = {
         totalPurchasedSupportHostInDay: 'مجموع کاربرانی که هاست پشتیبانی خریدند',
         totalPurchasedSelfHostInDay: 'مجموع کاربرانی که خودش هاست خریدند',
         totalPendingPurchasedHostInDay: 'مجموع کاربرانی که هنوز هاست نخریده اند',
+        hostingGift: 'به همراه دوره وردپرس رایگان',
+        installmentAvailable: 'امکان پرداخت در دو قسط',
+        monthly: 'ماهانه'
     },
     Headers: {
         signup: 'ثبت نام',

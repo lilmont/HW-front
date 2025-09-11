@@ -3,7 +3,7 @@
             'pt-12':anyDiscounted,
             'pt-8':!anyDiscounted,
         }"
-        class="relative w-full sm:w-[300px] p-4 bg-custom-100 border border-gray-100 rounded-2xl shadow-2xl hover:shadow-3xl">
+        class="relative w-full sm:w-[250px] md:w-[300px] p-4 bg-custom-100 border border-gray-100 rounded-2xl shadow-2xl hover:shadow-3xl">
         <div *ngIf="plan.hasDiscountCode" class="absolute top-5 right-0">
             <div class="relative w-[80px] h-8 z-10">
                 <div
@@ -17,7 +17,7 @@
             {{ plan.title }}
         </h5>
 
-        <div class="flex flex-wrap items-baseline text-gray-500 text-center pb-6 justify-center leading-tight">
+        <div class="flex flex-wrap items-baseline text-gray-500 text-center pb-4 justify-center leading-tight">
             <div class="w-full flex-col" *ngIf="plan.hasDiscountCode; else normalPrice">
                 <div class="flex items-baseline justify-center text-center">
                     <span class="text-md md:text-lg font-medium tracking-tight line-through text-red-500">
@@ -35,13 +35,39 @@
                     {{ plan.price | number:'1.0-0' }} {{Messages.Headers.toman}}
                 </span>
             </ng-template>
-            <span class="text-sm w-full mt-1">
-                {{Messages.Labels.yearly}}
+            <span class="text-sm w-full mt-1 text-custom-600 font-bold">
+                {{plan.subscriptionDurationInMonths == '12' ? Messages.Labels.yearly : Messages.Labels.monthly}}
             </span>
         </div>
 
         <hw-create-host-modal *ngIf="isCreatingHostAllowed" [hostingPlanId]="plan.id" [hostingPlanTitle]="plan.title"
             (hostPurchased)="getHostingPlans()"></hw-create-host-modal>
+
+        <div class="flex flex-wrap items-baseline text-gray-500 text-center pb-2 justify-center leading-tight">
+            <div class="h-5 flex justify-center items-center mt-0">
+                <ng-container *ngIf="plan.id==3">
+                    <svg class="shrink-0 w-5 h-5 mb-3 md:ml-3 md:mb-0" viewBox="0 0 24 24" fill="none"
+                        xmlns="http://www.w3.org/2000/svg" stroke="#059669">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path
+                                d="M12 7V20M12 7H8.46429C7.94332 7 7.4437 6.78929 7.07533 6.41421C6.70695 6.03914 6.5 5.53043 6.5 5C6.5 4.46957 6.70695 3.96086 7.07533 3.58579C7.4437 3.21071 7.94332 3 8.46429 3C11.2143 3 12 7 12 7ZM12 7H15.5357C16.0567 7 16.5563 6.78929 16.9247 6.41421C17.293 6.03914 17.5 5.53043 17.5 5C17.5 4.46957 17.293 3.96086 16.9247 3.58579C16.5563 3.21071 16.0567 3 15.5357 3C12.7857 3 12 7 12 7ZM5 12H19V17.8C19 18.9201 19 19.4802 18.782 19.908C18.5903 20.2843 18.2843 20.5903 17.908 20.782C17.4802 21 16.9201 21 15.8 21H8.2C7.07989 21 6.51984 21 6.09202 20.782C5.71569 20.5903 5.40973 20.2843 5.21799 19.908C5 19.4802 5 18.9201 5 17.8V12ZM4.6 12H19.4C19.9601 12 20.2401 12 20.454 11.891C20.6422 11.7951 20.7951 11.6422 20.891 11.454C21 11.2401 21 10.9601 21 10.4V8.6C21 8.03995 21 7.75992 20.891 7.54601C20.7951 7.35785 20.6422 7.20487 20.454 7.10899C20.2401 7 19.9601 7 19.4 7H4.6C4.03995 7 3.75992 7 3.54601 7.10899C3.35785 7.20487 3.20487 7.35785 3.10899 7.54601C3 7.75992 3 8.03995 3 8.6V10.4C3 10.9601 3 11.2401 3.10899 11.454C3.20487 11.6422 3.35785 11.7951 3.54601 11.891C3.75992 12 4.03995 12 4.6 12Z"
+                                stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                    <span class="text-sm text-green-600 font-bold">
+                        {{Messages.Labels.hostingGift}}
+                    </span>
+                </ng-container>
+
+                <ng-container *ngIf="plan.id==2">
+                    <span class="text-sm text-green-600 font-bold">
+                        {{Messages.Labels.installmentAvailable}}
+                    </span>
+                </ng-container>
+            </div>
+        </div>
 
         <ul role="list" [ngClass]="{
             'my-5':isShowMoreExpanded,
@@ -65,7 +91,7 @@
 
                 <li class="flex items-center m-2 mt-3">
                     <ng-container *ngComponentOutlet="WebComponent"></ng-container>
-                    <span class="text-right text-base font-semibold leading-tight text-gray-500 ms-3">
+                    <span class="text-right text-base font-semibold leading-tight ms-3 text-green-600">
                         {{plan.domainNumber}}
                     </span>
                 </li>
@@ -86,14 +112,14 @@
 
                 <li class="flex items-center m-2 mt-3">
                     <ng-container *ngComponentOutlet="MemoryComponent"></ng-container>
-                    <span class="text-right text-base font-semibold leading-tight text-gray-500 ms-3">
+                    <span class="text-right text-base font-semibold leading-tight text-custom-500 ms-3">
                         {{plan.storage}}
                     </span>
                 </li>
 
                 <li class="flex m-2 mt-3">
                     <ng-container *ngComponentOutlet="DatabaseComponent"></ng-container>
-                    <span class="text-right text-base font-semibold leading-tight text-gray-500 ms-3">
+                    <span class="text-right text-base font-semibold leading-tight text-amber-900 ms-3">
                         {{plan.databaseNumber}}
                     </span>
                 </li>
@@ -107,7 +133,7 @@
 
                 <li class="flex m-2 mt-4">
                     <ng-container *ngComponentOutlet="RocketComponent"></ng-container>
-                    <span class="text-right font-semibold leading-tight text-gray-500 ms-3">
+                    <span class="text-right font-semibold leading-tight text-blue-500 ms-3">
                         {{plan.supportedTechnologies}}
                     </span>
                 </li>
