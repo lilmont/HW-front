@@ -396,7 +396,10 @@ export const Messages = {
         totalPendingPurchasedHostInDay: 'مجموع کاربرانی که هنوز هاست نخریده اند',
         hostingGift: 'به همراه دوره وردپرس رایگان',
         installmentAvailable: 'امکان پرداخت در دو قسط',
-        monthly: 'ماهانه'
+        monthly: 'ماهانه',
+        chooseTargetHostingPlan: 'هاست مورد نظر خود را انتخاب کنید',
+        upgradeCost: 'هزینه ارتقا',
+        notUpgradable: 'این هاست قابلیت ارتقا ندارد'
     },
     Headers: {
         signup: 'ثبت نام',
@@ -529,7 +532,8 @@ export const Messages = {
         report: 'گزارش',
         user: 'کاربر',
         dailyUserCreated: 'ثبت نام کاربر روزانه',
-        person: 'نفوس'
+        person: 'نفوس',
+        upgradeHostingPlan: 'ارتقا هاست'
     },
     Alts: {
         logoAlt: 'آموزش برنامه نویسی سایت هاردورکر'

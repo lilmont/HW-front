@@ -11,6 +11,9 @@ import { ISubmitDomainInfo } from '../../models/ISubmitDomainInfo';
 import { IPasswordRecovery } from '../../models/IPasswordRecovery';
 import { IRecoverPasswordRequest } from '../../models/IRecoverPasswordRequest';
 import { JwtHelperService } from './jwt.helper.service';
+import { IUpgradableToHostingPlan } from '../../models/IUpgradableToHostingPlan';
+import { IUpgradeHostCost } from '../../models/IUpgradeHostCost';
+import { IUpgradeRequiredBalanceRequest } from '../../models/IUpgradeHostingPlanRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -145,8 +148,8 @@ export class HostingHttpService {
     );
   }
 
-  getUpgradeHostingPlanRequiredBalance(recoverPasswordRequest: IRecoverPasswordRequest): Observable<number> {
-    return this.http.post<number>(`${this.baseUrl}/hosting/get-required-balance`, recoverPasswordRequest).pipe(
+  getUpgradeHostingPlanRequiredBalance(upgradeRequiredBalanceRequest: IUpgradeRequiredBalanceRequest): Observable<number> {
+    return this.http.post<number>(`${this.baseUrl}/hosting/get-required-balance`, upgradeRequiredBalanceRequest).pipe(
       catchError((error) => {
         if (error.status === 431) {
           this.jwtHelperService.logout();
@@ -177,6 +180,32 @@ export class HostingHttpService {
           this.toastr.error(Messages.Errors.invalidInput, Messages.Errors.error);
         } else if (error.status === 401) {
           this.toastr.error(Messages.Errors.unauthorized, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+        return throwError(() => error);
+      })
+    );
+  }
+
+  getUpgradableToHostingPlans(destinationHostingPlan: number): Observable<IUpgradableToHostingPlan[]> {
+    return this.http.get<IUpgradableToHostingPlan[]>(`${this.baseUrl}/hosting/upgradable-to-plan-list?targetHostingPlanId=${destinationHostingPlan}`).pipe(
+      catchError((error) => {
+        if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+        return throwError(() => error);
+      })
+    );
+  }
+
+  getUpgradeHostCost(userHostId: number, targetHostingPlanId: number): Observable<IUpgradeHostCost> {
+    return this.http.get<IUpgradeHostCost>(`${this.baseUrl}/hosting/upgrade-cost?userHostId=${userHostId}&targetHostingPlanId=${targetHostingPlanId}`).pipe(
+      catchError((error) => {
+        if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
         } else {
           this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
         }

@@ -8,6 +8,8 @@ import { RecoverPasswordRequest } from '../../../models/IRecoverPasswordRequest'
 import { RefreshUserHostsListService } from '../../../core/services/refresh-user-hosts-list.service';
 import { ToastService } from '../../../core/services/toast.service';
 import { PaymentHttpService } from '../../../core/services/payment-http.service';
+import { IUpgradableToHostingPlan } from '../../../models/IUpgradableToHostingPlan';
+import { UpgradeRequiredBalanceRequest } from '../../../models/IUpgradeHostingPlanRequest';
 
 @Component({
   selector: 'hw-user-hosts-table',
@@ -27,6 +29,11 @@ export class UserHostsTableComponent implements AfterViewInit {
   dropdownPosition: { top: string; left: string } = { top: '0px', left: '0px' };
   isChargeWalletModalOpen: boolean = false;
   chargeWalletAmountRequired: number = 0;
+  isUpgradePlanModalOpen: boolean = false;
+  upgradableToHostingPlans: IUpgradableToHostingPlan[] = [];
+  targerUpgradeHostingPlanId: number | null = null;
+  costOfUpgrade: number = 0;
+  selectedHost: IUserHost | undefined = undefined;
 
   @ViewChildren('dropdownTd') dropdownTds!: QueryList<ElementRef>;
   @ViewChild('topScrollbar') topScrollbar!: ElementRef;
@@ -188,15 +195,19 @@ export class UserHostsTableComponent implements AfterViewInit {
     });
   }
 
-  openChgargeWalletModal(host: IUserHost): void {
-    const recoverPasswordRequest = new RecoverPasswordRequest({ productId: host.id });
+  openChgargeWalletModal(): void {
+    if (!this.selectedHost || !this.targerUpgradeHostingPlanId)
+      return;
+
+    const upgradeRequiredBalanceRequest = new UpgradeRequiredBalanceRequest({ productId: this.selectedHost.id, targetHostingPlanId: this.targerUpgradeHostingPlanId });
 
     this.loadingService.show();
-    this.hostingHttpService.getUpgradeHostingPlanRequiredBalance(recoverPasswordRequest).subscribe({
+    this.hostingHttpService.getUpgradeHostingPlanRequiredBalance(upgradeRequiredBalanceRequest).subscribe({
       next: (response) => {
         if (response <= 0) {
-          this.hostingHttpService.upgradeHost(recoverPasswordRequest).subscribe({
+          this.hostingHttpService.upgradeHost(upgradeRequiredBalanceRequest).subscribe({
             next: () => {
+              this.closeUpgradePlanModal();
               this.loadingService.hide();
               this.toastr.success(Messages.Success.hostUpgradedSuccessfully, '');
               this.refreshUserHostsListService.triggerRefreshHosts();
@@ -208,9 +219,10 @@ export class UserHostsTableComponent implements AfterViewInit {
         }
         else {
           this.isChargeWalletModalOpen = true;
+          this.closeUpgradePlanModal();
           this.chargeWalletAmountRequired = response;
+          this.loadingService.hide();
         }
-        this.loadingService.hide();
       },
       error: () => {
         this.loadingService.hide();
@@ -242,5 +254,42 @@ export class UserHostsTableComponent implements AfterViewInit {
         this.loadingService.hide();
       }
     });
+  }
+
+  openUpgradePlanModal(host: IUserHost): void {
+    this.loadingService.show();
+    this.hostingHttpService.getUpgradableToHostingPlans(host.productId).subscribe({
+      next: (data) => {
+        this.upgradableToHostingPlans = data;
+        this.loadingService.hide();
+      },
+      error: () => {
+        this.loadingService.hide();
+      }
+    });
+    this.isUpgradePlanModalOpen = true;
+    this.selectedHost = host;
+  }
+
+  closeUpgradePlanModal() {
+    this.isUpgradePlanModalOpen = false;
+    this.selectedHost = undefined;
+    this.costOfUpgrade = 0;
+    this.targerUpgradeHostingPlanId = null;
+  }
+
+  UpdateHostingPlanTargetId() {
+    if (this.selectedHost && this.targerUpgradeHostingPlanId) {
+      this.loadingService.show();
+      this.hostingHttpService.getUpgradeHostCost(this.selectedHost.id, this.targerUpgradeHostingPlanId).subscribe({
+        next: (data) => {
+          this.costOfUpgrade = data.cost;
+          this.loadingService.hide();
+        },
+        error: () => {
+          this.loadingService.hide();
+        }
+      });
+    }
   }
 }
