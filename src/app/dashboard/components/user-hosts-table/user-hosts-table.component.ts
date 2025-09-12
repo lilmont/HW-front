@@ -111,7 +111,7 @@ export class UserHostsTableComponent implements AfterViewInit {
   }
 
   showUpgradeBtn(host: IUserHost): boolean {
-    if (host.status == 0 && host.paymentStatus == 2 && !host.isUpgraded) {
+    if (host.status == 0 && host.paymentStatus == 2) {
       return true;
     }
     return false;
