@@ -53,26 +53,45 @@ export class UserHostsTableComponent implements AfterViewInit {
       this.openDropdownIndex = null;
     } else {
       this.openDropdownIndex = index;
+
       const button = (event.target as HTMLElement).closest('button');
-      if (button) {
-        const rect = button.getBoundingClientRect();
+      if (!button) return;
+
+      const rect = button.getBoundingClientRect();
+
+      // wait until Angular renders the dropdown
+      setTimeout(() => {
+        const dropdown = document.querySelector('.my-open-dropdown') as HTMLElement;
+        if (!dropdown) return;
+
+        const dropdownHeight = dropdown.offsetHeight;
+        const dropdownWidth = dropdown.offsetWidth;
+        const viewportHeight = window.visualViewport?.height ?? window.innerHeight;
+
+        // vertical positioning (down if fits, else up)
+        let top: number;
+        if (rect.bottom + dropdownHeight <= viewportHeight) {
+          top = rect.bottom;
+        } else {
+          top = rect.top - dropdownHeight;
+        }
+
+        // horizontal positioning (keep inside table)
+        let left = rect.left;
         const tableRect = this.tableContainer.nativeElement.getBoundingClientRect();
-        // Position dropdown's left edge at button's left edge for LTR
-        let left = rect.left + window.scrollX;
-        // Ensure dropdown stays within table bounds to avoid horizontal scroll
-        if (left < tableRect.left + window.scrollX) {
-          left = tableRect.left + window.scrollX; // Align left edge with table's left
+        if (left < tableRect.left) left = tableRect.left;
+        if (left + dropdownWidth > tableRect.right) {
+          left = tableRect.right - dropdownWidth;
         }
-        if (left + 192 > tableRect.right + window.scrollX) {
-          left = tableRect.right + window.scrollX - 192; // Align right edge with table's right
-        }
+
         this.dropdownPosition = {
-          top: `${rect.bottom + window.scrollY}px`,
+          top: `${top}px`,
           left: `${left}px`
         };
-      }
+      }, 0);
     }
   }
+
 
   closeDropdown(): void {
     this.openDropdownIndex = null;

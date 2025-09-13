@@ -149,7 +149,7 @@
                                 </svg>
                             </button>
                             <div *ngIf="openDropdownIndex === i"
-                                class="fixed z-30 w-40 bg-white rounded-lg shadow-lg border border-gray-200"
+                                class="fixed my-open-dropdown z-30 w-40 bg-white rounded-lg shadow-lg border border-gray-200"
                                 [ngStyle]="dropdownPosition">
                                 <div class="py-1">
                                     <button *ngIf="showExtendBtn(host)" (click)="extendHost(host); closeDropdown()"
