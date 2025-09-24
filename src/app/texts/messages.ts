@@ -399,7 +399,8 @@ export const Messages = {
         monthly: 'ماهانه',
         chooseTargetHostingPlan: 'هاست مورد نظر خود را انتخاب کنید',
         upgradeCost: 'هزینه ارتقا',
-        notUpgradable: 'این هاست قابلیت ارتقا ندارد'
+        notUpgradable: 'این هاست قابلیت ارتقا ندارد',
+        useChromeToDownload: 'برای دانلود جلسات از مرورگر Chrome یا Firefox استفاده کنید'
     },
     Headers: {
         signup: 'ثبت نام',
