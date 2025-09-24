@@ -122,6 +122,14 @@ export class UserHostsTableComponent implements AfterViewInit {
     return daysLeft <= 10;
   }
 
+  isExpiredWithinAMonth(expirationDate: string | Date): boolean {
+    const today = new Date();
+    const expiry = new Date(expirationDate);
+    const timeDiff = expiry.getTime() - today.getTime();
+    const daysLeft = timeDiff / (1000 * 3600 * 24);
+    return daysLeft <= 30;
+  }
+
   showRestoreBtn(host: IUserHost): boolean {
     if (host.status == 0 && host.domain) {
       return true;
@@ -276,6 +284,12 @@ export class UserHostsTableComponent implements AfterViewInit {
   }
 
   openUpgradePlanModal(host: IUserHost): void {
+    if (this.isExpiredWithinAMonth(host.expirationDate)) {
+      this.toastr.error(Messages.Errors.cannotUpgradeAboutToBeExpiredHost, Messages.Errors.error);
+      this.closeUpgradePlanModal();
+      return;
+    }
+
     this.loadingService.show();
     this.hostingHttpService.getUpgradableToHostingPlans(host.productId).subscribe({
       next: (data) => {
