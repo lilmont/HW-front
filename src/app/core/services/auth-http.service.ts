@@ -145,4 +145,25 @@ export class AuthHttpService {
       })
     );
   }
+
+  refreshToken(): Observable<IJwtResponse> {
+    return this.http.post<IJwtResponse>(`${this.baseUrl}/auth/refresh-token`, null).pipe(
+      tap((res) => {
+        if (res && res.token) {
+          this.jwtHelperService.setToken(res.token);
+        }
+      }),
+      catchError((error) => {
+        if (error.status === 429) {
+          this.toastr.error(Messages.Errors.wrongValidationCode, Messages.Errors.error);
+        } else if (error.status === 400) {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        } else {
+          this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        }
+
+        return throwError(() => error);
+      })
+    );
+  }
 }

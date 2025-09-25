@@ -3,6 +3,9 @@ import { Messages } from '../../../texts/messages';
 import { LoadingService } from '../../../core/services/loading.service';
 import { UserHttpService } from '../../../core/services/user-http.service';
 import { environment } from '../../../../environments/environment';
+import { JwtHelperService } from '../../../core/services/jwt.helper.service';
+import { AuthHttpService } from '../../../core/services/auth-http.service';
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'hw-referral',
@@ -15,19 +18,24 @@ export class ReferralComponent implements OnInit {
   referralLink = '';
   referralPercentage: number = 0;
   frontBaseUrl = environment.frontBaseUrl;
+  teacherVideoUrl = environment.frontBaseUrl + 'academy'
   constructor(private loadingService: LoadingService,
-    private userHttpService: UserHttpService
+    private userHttpService: UserHttpService,
+    private jwtHelperService: JwtHelperService,
+    private authHttpService: AuthHttpService
   ) { }
 
   ngOnInit(): void {
-    this.getUserReferralCode();
-  }
-
-  getUserReferralCode() {
     this.loadingService.show();
-    this.userHttpService.getUserReferralCode().subscribe({
+
+    this.authHttpService.refreshToken().pipe(
+      switchMap(() => this.userHttpService.getUserReferralCode())
+    ).subscribe({
       next: (data) => {
-        this.referralLink = this.frontBaseUrl + '?ref=' + data.referralCode;
+        const userRole = this.jwtHelperService.getUser()?.role;
+        this.referralLink = userRole === 'Teacher'
+          ? this.teacherVideoUrl + '?ref=' + data.referralCode
+          : this.frontBaseUrl + '?ref=' + data.referralCode;
         this.referralPercentage = data.referralPercentage;
         this.loadingService.hide();
       },
