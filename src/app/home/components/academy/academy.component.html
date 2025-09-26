@@ -1,0 +1,25 @@
+<div class="p-4 md:p-5 text-center">
+    <div class="my-6 mx-5">
+        <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-bold">
+            {{Messages.Titles.academy}}
+        </h1>
+        <h2 class="text-lg sm:text-xl md:text-2xl lg:text-2xl text-custom-600 mt-6 sm:mt-10">
+            {{Messages.Titles.academySubtitle}}
+        </h2>
+        <p class="mt-5 sm:mt-10 text-sm sm:text-lg md:text-md leading-relaxed">
+            {{Messages.Texts.academyText1}}
+        </p>
+        <p class="mt-4 text-sm sm:text-lg md:text-md leading-relaxed">
+            {{Messages.Texts.academyText2}}
+        </p>
+    </div>
+
+    <div class="my-10 flex justify-center">
+        <video
+            class="w-full md:w-3/4 lg:w-3/5 rounded-2xl shadow-xl border border-gray-200 transition-transform duration-300 hover:scale-[1.02]"
+            controls [poster]="baseUrl + '/uploads/utilities/academy.jpg'">
+            <source [src]="baseUrl + '/uploads/support/host.mp4'" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+</div>

@@ -7,6 +7,7 @@ import { ProjectsSectionComponent } from './components/projects-section/projects
 import { HomeRoutingModule } from './home-routing.module';
 import { FormsModule } from '@angular/forms';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
+import { AcademyComponent } from './components/academy/academy.component';
 
 
 
@@ -15,7 +16,8 @@ import { ContactUsComponent } from './components/contact-us/contact-us.component
     OrderProjectFormComponent,
     HomePageComponent,
     ProjectsSectionComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    AcademyComponent
   ],
   imports: [
     CommonModule,
