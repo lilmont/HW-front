@@ -401,7 +401,8 @@ export const Messages = {
         chooseTargetHostingPlan: 'هاست مورد نظر خود را انتخاب کنید',
         upgradeCost: 'هزینه ارتقا',
         notUpgradable: 'این هاست قابلیت ارتقا ندارد',
-        useChromeToDownload: 'برای دانلود جلسات از مرورگر Chrome یا Firefox استفاده کنید'
+        useChromeToDownload: 'برای دانلود جلسات از مرورگر Chrome یا Firefox استفاده کنید',
+        isTeacher: 'معلم است؟'
     },
     Headers: {
         signup: 'ثبت نام',
