@@ -88,6 +88,9 @@ export class SubmitDomainModalComponent {
 
     // Split labels and check each
     const labels = this.submitDomainInfo.domain.split('.');
+
+    if (labels.length !== 2) return false;
+
     if (labels.some(label => label.length < 1 || label.length > 63)) return false;
 
     // Labels cannot start or end with '-'
