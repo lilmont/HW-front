@@ -154,6 +154,8 @@ export class HostingHttpService {
         if (error.status === 431) {
           this.jwtHelperService.logout();
           location.href = '/';
+        } else if (error.status === 402) {
+          this.toastr.error(Messages.Errors.contactSupportForUpgrade, Messages.Errors.error);
         } else if (error.status === 450) {
           this.toastr.error(Messages.Errors.insufficientWalletBalance, Messages.Errors.error);
         } else if (error.status === 400) {
@@ -174,6 +176,8 @@ export class HostingHttpService {
         if (error.status === 431) {
           this.jwtHelperService.logout();
           location.href = '/';
+        } else if (error.status === 402) {
+          this.toastr.error(Messages.Errors.contactSupportForUpgrade, Messages.Errors.error);
         } else if (error.status === 450) {
           this.toastr.error(Messages.Errors.insufficientWalletBalance, Messages.Errors.error);
         } else if (error.status === 400) {
@@ -206,6 +210,8 @@ export class HostingHttpService {
       catchError((error) => {
         if (error.status === 400) {
           this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
+        } else if (error.status === 402) {
+          this.toastr.error(Messages.Errors.contactSupportForUpgrade, Messages.Errors.error);
         } else {
           this.toastr.error(Messages.Errors.invalidRequest, Messages.Errors.error);
         }

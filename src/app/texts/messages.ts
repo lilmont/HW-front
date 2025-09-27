@@ -109,6 +109,7 @@ export const Messages = {
         incompleteUserInfo: 'اطلاعات کاربری (نام و نام خانوادگی) را در قسمت اطلاعات شخصی وارد کنید.',
         negativeOrZeroBalance: 'موجودی صفر یا منفی است',
         cannotUpgradeAboutToBeExpiredHost: 'کمتر از 30 روز به انقضای این هاست باقیمانده. ابتدا هاست خود را تمدید کنید، سپس ارتقا دهید.',
+        contactSupportForUpgrade: 'برای ارتقای هاست خود با پشتیبانی تماس بگیرید'
     },
     Success: {
         loginSuccessful: 'ورود با موفقیت انجام شد',
