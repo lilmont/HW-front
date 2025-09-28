@@ -396,7 +396,7 @@ export const Messages = {
         totalPurchasedSupportHostInDay: 'مجموع کاربرانی که هاست پشتیبانی خریدند',
         totalPurchasedSelfHostInDay: 'مجموع کاربرانی که خودش هاست خریدند',
         totalPendingPurchasedHostInDay: 'مجموع کاربرانی که هنوز هاست نخریده اند',
-        hostingGift: 'به همراه دوره وردپرس رایگان',
+        hostingGift: 'به همراه دوره وردپرس و لاراول رایگان',
         installmentAvailable: 'امکان پرداخت در دو قسط',
         monthly: 'ماهانه',
         chooseTargetHostingPlan: 'هاست مورد نظر خود را انتخاب کنید',
