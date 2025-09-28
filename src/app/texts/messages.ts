@@ -403,7 +403,10 @@ export const Messages = {
         upgradeCost: 'هزینه ارتقا',
         notUpgradable: 'این هاست قابلیت ارتقا ندارد',
         useChromeToDownload: 'برای دانلود جلسات از مرورگر Chrome یا Firefox استفاده کنید',
-        isTeacher: 'معلم است؟'
+        isTeacher: 'معلم است؟',
+        joinTelegram1: 'برای آگاهی از تازه های سایت،',
+        joinTelegramLinkText: 'کانال تلگرام',
+        joinTelegram2: 'ما را دنبال کنید'
     },
     Headers: {
         signup: 'ثبت نام',
