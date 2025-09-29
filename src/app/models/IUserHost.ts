@@ -10,4 +10,5 @@ export interface IUserHost {
     status: number;
     paymentStatus: number
     productId: number;
+    subscriptionDurationInMonths: number;
 }

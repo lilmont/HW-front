@@ -284,7 +284,7 @@ export class UserHostsTableComponent implements AfterViewInit {
   }
 
   openUpgradePlanModal(host: IUserHost): void {
-    if (this.isExpiredWithinAMonth(host.expirationDate)) {
+    if (host.subscriptionDurationInMonths > 1 && this.isExpiredWithinAMonth(host.expirationDate)) {
       this.toastr.error(Messages.Errors.cannotUpgradeAboutToBeExpiredHost, Messages.Errors.error);
       this.closeUpgradePlanModal();
       return;
