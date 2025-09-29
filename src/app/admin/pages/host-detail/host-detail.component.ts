@@ -47,6 +47,8 @@ export class HostDetailComponent implements OnInit {
       bandwidth: ['', Validators.required],
       subscriptionDurationInMonths: [1, [Validators.required, Validators.min(1)]],
       isInstallmentAvailable: [false, Validators.required],
+      isAffiliate: [true, Validators.required],
+      isPurchasable: [true, Validators.required],
       dateCreated: [null],
     });
 
@@ -84,6 +86,8 @@ export class HostDetailComponent implements OnInit {
             bandwidth: hostingPlan.bandwidth,
             subscriptionDurationInMonths: hostingPlan.subscriptionDurationInMonths,
             isInstallmentAvailable: hostingPlan.isInstallmentAvailable,
+            isAffiliate: hostingPlan.isAffiliate,
+            isPurchasable: hostingPlan.isPurchasable,
             dateCreated: hostingPlan.dateCreated,
           });
 
@@ -123,6 +127,8 @@ export class HostDetailComponent implements OnInit {
       bandwidth: formValues.bandwidth,
       subscriptionDurationInMonths: +formValues.subscriptionDurationInMonths,
       isInstallmentAvailable: formValues.isInstallmentAvailable,
+      isPurchasable: formValues.isPurchasable,
+      isAffiliate: formValues.isAffiliate,
     };
 
     this.loadingService.show();

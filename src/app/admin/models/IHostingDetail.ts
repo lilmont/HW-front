@@ -16,6 +16,8 @@ export interface IHostingDetail {
     subscriptionDurationInMonths: number;
     isInstallmentAvailable: boolean;
     dateCreated?: string;
+    isAffiliate: boolean;
+    isPurchasable: boolean;
 }
 
 export class HostingDetail implements IHostingDetail {
@@ -36,6 +38,8 @@ export class HostingDetail implements IHostingDetail {
     subscriptionDurationInMonths: number = 1;
     isInstallmentAvailable: boolean = false;
     dateCreated?: string;
+    isAffiliate: boolean = true;
+    isPurchasable: boolean = true;
 
     constructor(init?: Partial<HostingDetail>) {
         Object.assign(this, init);
