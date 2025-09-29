@@ -406,7 +406,8 @@ export const Messages = {
         isTeacher: 'معلم است؟',
         joinTelegram1: 'برای آگاهی از تازه های سایت،',
         joinTelegramLinkText: 'کانال تلگرام',
-        joinTelegram2: 'ما را دنبال کنید'
+        joinTelegram2: 'ما را دنبال کنید',
+        isAffiliate: 'درصد همکاری دارد؟'
     },
     Headers: {
         signup: 'ثبت نام',

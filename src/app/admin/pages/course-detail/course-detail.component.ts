@@ -49,6 +49,7 @@ export class CourseDetailComponent implements OnInit, OnDestroy {
       courseStatus: [0, Validators.required],
       sessions: this.fb.array([], uniqueSessionNumberValidator),
       dateCreated: [null],
+      isAffiliate: [true],
 
       courseImage: [''],
       courseImageFile: [null],
@@ -110,6 +111,7 @@ export class CourseDetailComponent implements OnInit, OnDestroy {
             courseImage: course.courseImage,
             courseCoverImage: course.courseCoverImage,
             courseVideo: course.courseVideo,
+            isAffiliate: course.isAffiliate,
           });
 
           // Populate sessions
@@ -276,6 +278,7 @@ export class CourseDetailComponent implements OnInit, OnDestroy {
     formData.append('ShowOrder', formValues.showOrder);
     formData.append('SpotPlayerProductId', formValues.spotPlayerProductId);
     formData.append('CourseStatus', formValues.courseStatus.toString());
+    formData.append('IsAffiliate', formValues.isAffiliate);
 
     // Sessions (array)
     formValues.sessions.forEach((session: any, index: number) => {

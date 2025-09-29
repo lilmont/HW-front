@@ -16,6 +16,7 @@ export interface ICourseDetail {
     courseStatus: number;
     dateCreated?: string;
     sessions: ICourseSession[];
+    isAffiliate: boolean;
 }
 
 export class CourseDetail implements ICourseDetail {
@@ -36,6 +37,7 @@ export class CourseDetail implements ICourseDetail {
     courseStatus: number = 0;
     dateCreated?: string = undefined;
     sessions: ICourseSession[] = [];
+    isAffiliate: boolean = true;
 
     constructor(init?: Partial<CourseDetail>) {
         Object.assign(this, init);
