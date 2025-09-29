@@ -1,3 +1,4 @@
 export interface IWebsiteSettings {
-    referralPercentage: number;
+    courseReferralPercentage: number;
+    hostingPlanReferralPercentage: number;
 }

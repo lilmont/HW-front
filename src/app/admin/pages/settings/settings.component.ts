@@ -27,7 +27,8 @@ export class SettingsComponent implements OnInit {
 
   ngOnInit(): void {
     this.settingsForm = this.fb.group({
-      referralPercentage: [0, [Validators.required, Validators.min(0)]],
+      courseReferralPercentage: [0, [Validators.required, Validators.min(0)]],
+      hostingPlanReferralPercentage: [0, [Validators.required, Validators.min(0)]],
     });
 
     this.getWebsiteSettings();
@@ -42,7 +43,8 @@ export class SettingsComponent implements OnInit {
           const websiteSettings = response.data;
 
           this.settingsForm.patchValue({
-            referralPercentage: websiteSettings.referralPercentage,
+            courseReferralPercentage: websiteSettings.courseReferralPercentage,
+            hostingPlanReferralPercentage: websiteSettings.hostingPlanReferralPercentage,
           });
 
         } else {
@@ -65,7 +67,8 @@ export class SettingsComponent implements OnInit {
     const formValues = this.settingsForm.value;
 
     const payload: IWebsiteSettings = {
-      referralPercentage: formValues.referralPercentage
+      courseReferralPercentage: formValues.courseReferralPercentage,
+      hostingPlanReferralPercentage: formValues.hostingPlanReferralPercentage
     };
 
     this.loadingService.show();

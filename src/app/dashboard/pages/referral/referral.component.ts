@@ -18,7 +18,7 @@ export class ReferralComponent implements OnInit {
   referralLink = '';
   referralPercentage: number = 0;
   frontBaseUrl = environment.frontBaseUrl;
-  teacherVideoUrl = environment.frontBaseUrl + 'academy'
+  teacherVideoUrl = environment.frontBaseUrl + '/academy'
   constructor(private loadingService: LoadingService,
     private userHttpService: UserHttpService,
     private jwtHelperService: JwtHelperService,
