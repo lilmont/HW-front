@@ -407,7 +407,9 @@ export const Messages = {
         joinTelegram1: 'برای آگاهی از تازه های سایت،',
         joinTelegramLinkText: 'کانال تلگرام',
         joinTelegram2: 'ما را دنبال کنید',
-        isAffiliate: 'درصد همکاری دارد؟'
+        isAffiliate: 'درصد همکاری دارد؟',
+        wordpressDiscount: '80% تخفیف دوره وردپرس',
+        laravelDiscount: '80% تخفیف دوره لاراول'
     },
     Headers: {
         signup: 'ثبت نام',
