@@ -409,7 +409,8 @@ export const Messages = {
         joinTelegram2: 'ما را دنبال کنید',
         isAffiliate: 'درصد همکاری دارد؟',
         wordpressDiscount: '80% تخفیف دوره وردپرس',
-        laravelDiscount: '80% تخفیف دوره لاراول'
+        laravelDiscount: '80% تخفیف دوره لاراول',
+        isFreeDomain: 'استفاده از دامنه رایگان'
     },
     Headers: {
         signup: 'ثبت نام',

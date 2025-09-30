@@ -4,6 +4,7 @@ import { HostingHttpService } from '../../../core/services/hosting-http.service'
 import { BehaviorSubject } from 'rxjs';
 import { SubmitDomainInfo } from '../../../models/ISubmitDomainInfo';
 import { IPasswordRecovery, PasswordRecovery } from '../../../models/IPasswordRecovery';
+import { JwtHelperService } from '../../../core/services/jwt.helper.service';
 
 @Component({
   selector: 'hw-submit-domain-modal',
@@ -25,7 +26,8 @@ export class SubmitDomainModalComponent {
   loginInfo: IPasswordRecovery = new PasswordRecovery();
 
   constructor(
-    private hostingHttpService: HostingHttpService) { }
+    private hostingHttpService: HostingHttpService,
+    public jwtHelperService: JwtHelperService) { }
 
   openModal() {
     this.isModalOpen = true;
@@ -37,10 +39,12 @@ export class SubmitDomainModalComponent {
   }
 
   submitDomain() {
-    this.domainInvalid = !this.isDomainValid();
+    if (!this.submitDomainInfo.isFreeDomain) {
+      this.domainInvalid = !this.isDomainValid();
 
-    if (this.domainInvalid || this.domainInvalid) {
-      return;
+      if (this.domainInvalid || this.domainInvalid) {
+        return;
+      }
     }
 
     this.submitDomainInfo.productId = this.userHostId;
@@ -60,6 +64,17 @@ export class SubmitDomainModalComponent {
         this._buttonLoading.next(false);
       }
     });
+  }
+
+  onFreeDomainChange() {
+    if (this.submitDomainInfo.isFreeDomain) {
+      const user = this.jwtHelperService.getUser()
+      if (user && user.username)
+        this.submitDomainInfo.domain = `${user?.username}.hwstudents.ir`
+    }
+    else {
+      this.submitDomainInfo.domain = '';
+    }
   }
 
   isDomainValid(): boolean {

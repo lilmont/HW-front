@@ -31,11 +31,19 @@
                     <div class="mb-2">
                         <input type="text" name="domain" id="domain" dir="ltr" [(ngModel)]="submitDomainInfo.domain"
                             class="text-center bg-gray-50 border border-custom-300 text-gray-900 text-sm rounded-lg focus:ring-custom-500 focus:border-custom-500 block w-full p-2.5"
-                            [placeholder]="Messages.Labels.submitDomainPlaceholder" required />
+                            [placeholder]="Messages.Labels.submitDomainPlaceholder"
+                            [readonly]="submitDomainInfo.isFreeDomain" required />
                     </div>
 
                     <div *ngIf="domainInvalid" class="text-red-600 text-sm mt-1">
                         {{Messages.Errors.invalidDomain}}
+                    </div>
+
+                    <div class="text-gray-700 text-center my-4">
+                        <input type="checkbox" [(ngModel)]="submitDomainInfo.isFreeDomain" name="isFreeDomain"
+                            id="isFreeDomain" class="h-5 w-5 ml-3 focus:outline-none focus:ring-0"
+                            (change)="onFreeDomainChange()" />
+                        <label for="isFreeDomain" class="text-gray-700 ">{{Messages.Labels.isFreeDomain}}</label>
                     </div>
 
                     <div *ngIf="showWaitingMessage" class="text-custom-700 text-sm mt-1">
