@@ -29,6 +29,7 @@ export class SettingsComponent implements OnInit {
     this.settingsForm = this.fb.group({
       courseReferralPercentage: [0, [Validators.required, Validators.min(0)]],
       hostingPlanReferralPercentage: [0, [Validators.required, Validators.min(0)]],
+      freeDomain: ['', Validators.required],
     });
 
     this.getWebsiteSettings();
@@ -45,6 +46,7 @@ export class SettingsComponent implements OnInit {
           this.settingsForm.patchValue({
             courseReferralPercentage: websiteSettings.courseReferralPercentage,
             hostingPlanReferralPercentage: websiteSettings.hostingPlanReferralPercentage,
+            freeDomain: websiteSettings.freeDomain,
           });
 
         } else {
@@ -68,7 +70,8 @@ export class SettingsComponent implements OnInit {
 
     const payload: IWebsiteSettings = {
       courseReferralPercentage: formValues.courseReferralPercentage,
-      hostingPlanReferralPercentage: formValues.hostingPlanReferralPercentage
+      hostingPlanReferralPercentage: formValues.hostingPlanReferralPercentage,
+      freeDomain: formValues.freeDomain
     };
 
     this.loadingService.show();

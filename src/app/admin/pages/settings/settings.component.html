@@ -29,6 +29,12 @@
                 {{Messages.Errors.referralPercentageIsRequired}}
             </div>
         </div>
+
+        <div>
+            <label class="block mb-1 font-semibold text-gray-700">{{Messages.TableHeaders.freeDomain}}</label>
+            <input formControlName="freeDomain" class="border rounded px-3 py-2 w-full" dir="ltr"
+                [class.border-red-500]="settingsForm.get('freeDomain')?.invalid && settingsForm.get('freeDomain')?.touched">
+        </div>
     </div>
 
     <div class="pt-4">

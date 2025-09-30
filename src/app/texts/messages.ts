@@ -618,7 +618,8 @@ export const Messages = {
         isChosen: 'منتخب',
         showOrder: 'ترتیب نمایش',
         addContact: 'افزودن مخاطب',
-        cardNumber: 'شماره کارت'
+        cardNumber: 'شماره کارت',
+        freeDomain: 'دامنه رایگان'
     },
     Texts: {
         referralText1: `لینک دعوت خود را با دیگران به اشتراک بگذارید.
