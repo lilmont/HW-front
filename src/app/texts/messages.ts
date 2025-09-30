@@ -410,7 +410,8 @@ export const Messages = {
         isAffiliate: 'درصد همکاری دارد؟',
         wordpressDiscount: '80% تخفیف دوره وردپرس',
         laravelDiscount: '80% تخفیف دوره لاراول',
-        isFreeDomain: 'استفاده از دامنه رایگان'
+        isFreeDomain: 'استفاده از دامنه رایگان',
+        oneFreeDomain: '+ 1 دامنه رایگان'
     },
     Headers: {
         signup: 'ثبت نام',

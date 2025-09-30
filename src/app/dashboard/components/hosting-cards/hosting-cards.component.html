@@ -1,14 +1,20 @@
 <div class="flex flex-wrap gap-4 justify-center text-center">
-    <div *ngFor="let plan of hostingPlans" [ngClass]="{
-            'pt-12':anyDiscounted,
-            'pt-8':!anyDiscounted,
-        }"
-        class="relative w-full sm:w-[250px] md:w-[300px] p-4 bg-custom-100 border border-gray-100 rounded-2xl shadow-2xl hover:shadow-3xl">
+    <div *ngFor="let plan of hostingPlans"
+        class="relative w-full sm:w-[250px] md:w-[300px] p-4 pt-15 bg-custom-100 border border-gray-100 rounded-2xl shadow-2xl hover:shadow-3xl">
         <div *ngIf="plan.hasDiscountCode" class="absolute top-5 right-0">
             <div class="relative w-[80px] h-8 z-10">
                 <div
-                    class="absolute inset-0 bg-green-600 text-white text-xs font-bold flex items-center justify-center shadow-md rounded-bl-md rounded-tl-md">
+                    class="absolute inset-0 bg-green-600/90 text-white text-xs font-bold flex items-center justify-center shadow-md rounded-bl-md rounded-tl-md">
                     {{Messages.Labels.discounted }}
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute top-5 left-0">
+            <div class="relative w-[90px] h-8 z-10">
+                <div
+                    class="absolute inset-0 bg-custom-600/90 text-white text-xs font-bold flex items-center justify-center shadow-md rounded-br-md rounded-tr-md px-2">
+                    {{Messages.Labels.oneFreeDomain }}
                 </div>
             </div>
         </div>
